@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+backend/venv/
+venv/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+backend/.env
+
+# Build
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# SQLite DB (opsiyonel - sunucuda oluşur)
+# backend/*.db
