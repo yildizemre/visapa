@@ -190,10 +190,10 @@ const QueueAnalysis = () => {
   }
 
   return (
-    <div className="p-6">
-      <motion.div initial="hidden" animate="show" className="space-y-6">
+    <div className="p-2 sm:p-3 md:p-4 lg:p-6">
+      <motion.div initial="hidden" animate="show" className="space-y-3 sm:space-y-4 md:space-y-6">
         <motion.div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4">
-          <div><h1 className="text-xl sm:text-2xl font-bold text-white mb-2">{t('queue.title')}</h1><p className="text-sm sm:text-base text-slate-400">{t('queue.subtitle')}</p></div>
+          <div><h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">{t('queue.title')}</h1><p className="text-xs sm:text-sm md:text-base text-slate-400">{t('queue.subtitle')}</p></div>
           <div className="w-full xl:w-auto flex flex-col sm:flex-row gap-4">
             <div className="relative flex-1">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -222,11 +222,11 @@ const QueueAnalysis = () => {
           </div>
         </motion.div>
 
-        <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6"><StatCard icon={<Users />} title={t('queue.totalCustomers')} value={dailyData?.overallStats.totalCustomers.toLocaleString() ?? '0'} /><StatCard icon={<Clock />} title={t('queue.avgWait')} value={formatWaitTime(dailyData?.overallStats.avgWaitTime ?? 0)} /><StatCard icon={<Timer />} title={t('queue.maxWait')} value={formatWaitTime(dailyData?.overallStats.maxWaitTime ?? 0)} /></motion.div>
+        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4 lg:gap-6"><StatCard icon={<Users />} title={t('queue.totalCustomers')} value={dailyData?.overallStats.totalCustomers.toLocaleString() ?? '0'} /><StatCard icon={<Clock />} title={t('queue.avgWait')} value={formatWaitTime(dailyData?.overallStats.avgWaitTime ?? 0)} /><StatCard icon={<Timer />} title={t('queue.maxWait')} value={formatWaitTime(dailyData?.overallStats.maxWaitTime ?? 0)} /></motion.div>
         
-        <motion.div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700/50">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-white font-semibold text-lg">{t('queue.hourlyDetails')}</h3>
+        <motion.div className="bg-slate-800/50 p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg">{t('queue.hourlyDetails')}</h3>
             {isAdmin && hasChanges && (
                 <div className="flex items-center gap-2"><button onClick={handleCancelChanges} className="flex items-center gap-1 text-sm text-slate-300 hover:text-white px-3 py-1 rounded-md hover:bg-slate-700 transition-colors"><XCircle className="w-4 h-4" /> {t('queue.cancel')}</button><button onClick={handleSaveChanges} disabled={isSaving} className="flex items-center gap-1 text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-md transition-colors disabled:opacity-50">{isSaving ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} {isSaving ? t('queue.saving') : t('queue.save')}</button></div>
             )}
@@ -236,7 +236,7 @@ const QueueAnalysis = () => {
                 {t('queue.singleCashierEditDisabled')}
               </div>
           )}
-          <div className="overflow-x-auto"><table className="w-full text-sm text-left"><thead className="text-xs text-slate-400 uppercase bg-slate-700/50"><tr><th scope="col" className="px-6 py-3">{t('queue.timeRange')}</th><th scope="col" className="px-6 py-3 text-center">{t('queue.totalCustomersCol')}</th><th scope="col" className="px-6 py-3 text-center">{t('queue.avgWaitSec')}</th><th scope="col" className="px-6 py-3 text-center">{t('queue.minWait')}</th><th scope="col" className="px-6 py-3 text-center">{t('queue.maxWaitCol')}</th></tr></thead>
+          <div className="overflow-x-auto"><table className="w-full text-xs sm:text-sm text-left min-w-[650px] sm:min-w-0"><thead className="text-xs text-slate-400 uppercase bg-slate-700/50"><tr><th scope="col" className="px-3 sm:px-6 py-2 sm:py-3 whitespace-nowrap">{t('queue.timeRange')}</th><th scope="col" className="px-3 sm:px-6 py-2 sm:py-3 text-center whitespace-nowrap">{t('queue.totalCustomersCol')}</th><th scope="col" className="px-3 sm:px-6 py-2 sm:py-3 text-center whitespace-nowrap">{t('queue.avgWaitSec')}</th><th scope="col" className="px-3 sm:px-6 py-2 sm:py-3 text-center hidden sm:table-cell whitespace-nowrap">{t('queue.minWait')}</th><th scope="col" className="px-3 sm:px-6 py-2 sm:py-3 text-center hidden sm:table-cell whitespace-nowrap">{t('queue.maxWaitCol')}</th></tr></thead>
               <tbody>
                 {/* GÜNCELLEME: Filtrelenmiş veri üzerinden map yapılıyor */}
                 {filteredAndShiftedDailyData.map((hourData, index) => {
@@ -249,29 +249,29 @@ const QueueAnalysis = () => {
 
                   return (
                     <tr key={`${hourData.hour}-${index}`} className={`border-b border-slate-700 hover:bg-slate-700/30 transition-colors ${isEdited ? 'bg-blue-900/30' : ''}`}>
-                      <td className="px-6 py-4 font-medium text-white whitespace-nowrap">{`${hourData.hour}:00 - ${hourData.hour}:59`}</td>
-                      <td className="px-6 py-4 text-center">
+                      <td className="px-3 sm:px-6 py-2 sm:py-4 font-medium text-white whitespace-nowrap">{`${hourData.hour}:00 - ${hourData.hour}:59`}</td>
+                      <td className="px-3 sm:px-6 py-2 sm:py-4 text-center">
                         <input 
                           type="number" 
                           value={currentTotalCustomers}
                           onChange={e => handleDataChange(hourData.hour, 'totalCustomers', e.target.value)} 
-                          className="w-20 bg-slate-800 text-slate-300 text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed" 
+                          className="w-16 sm:w-20 bg-slate-800 text-slate-300 text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed text-xs sm:text-sm" 
                           disabled={!isAdmin || isEditingDisabled || !hourData.editable_id}
                           title={!isAdmin ? t('queue.adminOnlyEdit') : isEditingDisabled ? t('queue.singleCashierNoEdit') : (!hourData.editable_id ? t('queue.noDataThisSlot') : '')}
                         />
                       </td>
-                      <td className="px-6 py-4 text-center">
+                      <td className="px-3 sm:px-6 py-2 sm:py-4 text-center">
                         <input 
                           type="number" 
                           value={typeof currentAvgWait === 'number' ? Math.round(currentAvgWait) : currentAvgWait}
                           onChange={e => handleDataChange(hourData.hour, 'avgWaitTime', e.target.value)} 
-                          className="w-20 bg-slate-800 text-slate-300 text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed" 
+                          className="w-16 sm:w-20 bg-slate-800 text-slate-300 text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed text-xs sm:text-sm" 
                           disabled={!isAdmin || isEditingDisabled || !hourData.editable_id} 
                           title={!isAdmin ? t('queue.adminOnlyEdit') : isEditingDisabled ? t('queue.singleCashierNoEdit') : (!hourData.editable_id ? t('queue.noDataThisSlot') : '')} 
                         />
                       </td>
-                      <td className="px-6 py-4 text-center text-green-400">{formatWaitTime(hourData.minWaitTime)}</td>
-                      <td className="px-6 py-4 text-center text-red-400">{formatWaitTime(hourData.maxWaitTime)}</td>
+                      <td className="px-3 sm:px-6 py-2 sm:py-4 text-center text-green-400 hidden sm:table-cell">{formatWaitTime(hourData.minWaitTime)}</td>
+                      <td className="px-3 sm:px-6 py-2 sm:py-4 text-center text-red-400 hidden sm:table-cell">{formatWaitTime(hourData.maxWaitTime)}</td>
                     </tr>
                   )
                 })}
@@ -280,18 +280,18 @@ const QueueAnalysis = () => {
           </div>
         </motion.div>
 
-        <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <ChartCard title={t('queue.hourlyChart')}><ResponsiveContainer width="100%" height={300}><ComposedChart data={filteredAndShiftedDailyData}><CartesianGrid strokeDasharray="3 3" stroke="#374151" /><XAxis dataKey="hour" stroke="#9CA3AF" fontSize={12} tickFormatter={(hour) => `${hour}:00`}/><YAxis yAxisId="left" stroke="#9CA3AF" fontSize={12} /><YAxis yAxisId="right" orientation="right" stroke={chartColors.accent} fontSize={12} /><Tooltip contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Wait")) ? formatWaitTime(value) : value} /><Legend /><Bar yAxisId="left" dataKey="totalCustomers" fill={chartColors.primary} name={t('queue.customerCount')} /><Line yAxisId="right" type="monotone" dataKey="avgWaitTime" stroke={chartColors.accent} strokeWidth={2} name={t('queue.avgWaitSec')} /></ComposedChart></ResponsiveContainer></ChartCard>
-          <ChartCard title={t('queue.waitDistribution')}><ResponsiveContainer width="100%" height={300}><BarChart data={dailyData?.waitTimeDistribution}><CartesianGrid strokeDasharray="3 3" stroke="#374151" /><XAxis dataKey="range" stroke="#9CA3AF" fontSize={12} /><YAxis stroke="#9CA3AF" fontSize={12} allowDecimals={false} /><Tooltip contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }} /><Bar dataKey="count" fill={chartColors.purple} name={t('queue.customerCount')} /></BarChart></ResponsiveContainer></ChartCard>
+        <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+          <ChartCard title={t('queue.hourlyChart')}><ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]"><ComposedChart data={filteredAndShiftedDailyData}><CartesianGrid strokeDasharray="3 3" stroke="#374151" /><XAxis dataKey="hour" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" tickFormatter={(hour) => `${hour}:00`}/><YAxis yAxisId="left" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" /><YAxis yAxisId="right" orientation="right" stroke={chartColors.accent} fontSize={9} className="sm:text-[10px] md:text-xs" /><Tooltip contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Wait")) ? formatWaitTime(value) : value} /><Legend /><Bar yAxisId="left" dataKey="totalCustomers" fill={chartColors.primary} name={t('queue.customerCount')} /><Line yAxisId="right" type="monotone" dataKey="avgWaitTime" stroke={chartColors.accent} strokeWidth={2} name={t('queue.avgWaitSec')} /></ComposedChart></ResponsiveContainer></ChartCard>
+          <ChartCard title={t('queue.waitDistribution')}><ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]"><BarChart data={dailyData?.waitTimeDistribution}><CartesianGrid strokeDasharray="3 3" stroke="#374151" /><XAxis dataKey="range" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" /><YAxis stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" allowDecimals={false} /><Tooltip contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }} /><Bar dataKey="count" fill={chartColors.purple} name={t('queue.customerCount')} /></BarChart></ResponsiveContainer></ChartCard>
         </motion.div>
 
-        <motion.div><ChartCard title={t('queue.cashierPerformance')}><ResponsiveContainer width="100%" height={300}><BarChart data={dailyData?.cashierPerformance} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}><CartesianGrid strokeDasharray="3 3" stroke="#374151" /><XAxis type="number" stroke="#9CA3AF" fontSize={12} /><YAxis type="category" dataKey="cashier" stroke="#9CA3AF" fontSize={12} width={80} /><Tooltip contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Wait")) ? formatWaitTime(value) : value} /><Legend /><Bar dataKey="totalCustomers" fill={chartColors.primary} name={t('queue.totalCustomers')} /><Bar dataKey="avgWait" fill={chartColors.secondary} name={t('queue.avgWait')} /></BarChart></ResponsiveContainer></ChartCard></motion.div>
+        <motion.div><ChartCard title={t('queue.cashierPerformance')}><ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]"><BarChart data={dailyData?.cashierPerformance} layout="vertical" margin={{ top: 5, right: 15, left: 15, bottom: 5 }}><CartesianGrid strokeDasharray="3 3" stroke="#374151" /><XAxis type="number" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" /><YAxis type="category" dataKey="cashier" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" width={50} /><Tooltip contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Wait")) ? formatWaitTime(value) : value} /><Legend /><Bar dataKey="totalCustomers" fill={chartColors.primary} name={t('queue.totalCustomers')} /><Bar dataKey="avgWait" fill={chartColors.secondary} name={t('queue.avgWait')} /></BarChart></ResponsiveContainer></ChartCard></motion.div>
       </motion.div>
     </div>
   );
 };
 
-const StatCard = ({ icon, title, value }: { icon: React.ReactNode; title: string; value: string }) => (<div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700/50 flex items-center space-x-4"><div className="p-3 bg-blue-600/20 text-blue-400 rounded-lg">{icon}</div><div><p className="text-slate-400 text-sm">{title}</p><h3 className="text-white font-semibold text-2xl">{value}</h3></div></div>);
-const ChartCard = ({ title, children }: { title: string; children: React.ReactNode }) => (<div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700/50"><h3 className="text-white font-semibold text-lg mb-4 flex items-center gap-2"><BarChart2 size={18} /> {title}</h3>{children}</div>);
+const StatCard = ({ icon, title, value }: { icon: React.ReactNode; title: string; value: string }) => (<div className="bg-slate-800/50 p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50 flex items-center space-x-2 sm:space-x-3 md:space-x-4"><div className="p-1.5 sm:p-2 md:p-3 bg-blue-600/20 text-blue-400 rounded-lg">{icon}</div><div><p className="text-slate-400 text-[10px] sm:text-xs md:text-sm">{title}</p><h3 className="text-white font-semibold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">{value}</h3></div></div>);
+const ChartCard = ({ title, children }: { title: string; children: React.ReactNode }) => (<div className="bg-slate-800/50 p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50"><h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4 flex items-center gap-1 sm:gap-2"><BarChart2 size={14} className="sm:w-4 sm:h-4 md:w-[18px] md:h-[18px]" /> {title}</h3>{children}</div>);
 
 export default QueueAnalysis;

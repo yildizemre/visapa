@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Eye, EyeOff, Activity, AlertCircle, X } from 'lucide-react';
+import { Eye, EyeOff, AlertCircle, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageToggle from './LanguageToggle';
 
@@ -93,28 +93,23 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="bg-slate-800/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl w-full max-w-md border border-slate-700/50 relative z-10"
+        className="bg-slate-800/80 backdrop-blur-xl p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-2xl w-full max-w-md mx-3 sm:mx-4 border border-slate-700/50 relative z-10"
       >
         {/* Logo */}
         <motion.div
           initial={{ scale: 0.8 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.3 }}
-          className="flex items-center justify-center mb-8"
+          className="flex flex-col items-center justify-center mb-8"
         >
-          <div className="flex items-center space-x-3">
-            <div className="relative">
-              <Activity className="w-8 h-8 text-blue-400" />
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                className="absolute inset-0 w-8 h-8 border-2 border-transparent border-t-purple-500 rounded-full"
-              />
-            </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-              {t('login.title')}
-            </h1>
-          </div>
+          <img
+            src="/camera_feeds/vislivis_logo_web.png"
+            alt="VISLIVIS"
+            className="h-16 w-auto object-contain mb-4"
+          />
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+            {t('login.title')}
+          </h1>
         </motion.div>
 
         <motion.p

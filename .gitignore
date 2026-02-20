@@ -28,4 +28,6 @@ Thumbs.db
 npm-debug.log*
 
 # SQLite DB (opsiyonel - sunucuda oluşur)
-# backend/*.db
+backend/*.db
+backend/instance/*.db
+*.db

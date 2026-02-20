@@ -1,3 +1,66 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Dark theme için global stiller */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #0f172a; /* slate-900 */
+  color: #ffffff;
+}
+
+#root {
+  height: 100%;
+}
+
+/* Dark scrollbar styling - Force dark theme */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: #475569 #1e293b !important; /* slate-600 slate-800 */
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+*::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+  background: #1e293b !important; /* slate-800 */
+}
+
+*::-webkit-scrollbar-track {
+  background: #1e293b !important; /* slate-800 */
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #475569 !important; /* slate-600 */
+  border-radius: 4px !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #64748b !important; /* slate-500 */
+}
+
+/* Ensure body and html also have dark scrollbars */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+  background: #1e293b !important;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: #1e293b !important;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: #475569 !important;
+  border-radius: 4px !important;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: #64748b !important;
+}

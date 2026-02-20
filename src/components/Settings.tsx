@@ -53,10 +53,10 @@ const CameraViewModal: React.FC<CameraModalProps & { t: (k: string) => string }>
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="bg-slate-800 rounded-xl p-4 md:p-6 max-w-2xl w-full mx-4 border border-slate-700"
+        className="bg-slate-800 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 max-w-2xl w-full mx-2 sm:mx-4 border border-slate-700"
       >
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-semibold text-white">{camera.name}</h3>
+        <div className="flex justify-between items-center mb-3 sm:mb-4">
+          <h3 className="text-sm sm:text-base md:text-lg font-semibold text-white">{camera.name}</h3>
           <button onClick={onClose} className="text-slate-400 hover:text-white p-1 rounded-full hover:bg-slate-700">
             <X className="w-5 h-5" />
           </button>
@@ -295,58 +295,58 @@ const Settings = () => {
     switch (activeTab) {
       case 'profile':
         return (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-8">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 sm:space-y-6 md:space-y-8">
             <div>
-                <h3 className="text-lg font-semibold text-white mb-4">{t('settings.profileInfo')}</h3>
-                <form onSubmit={handleProfileSave} className="space-y-4 max-w-md">
+                <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-white mb-2 sm:mb-3 md:mb-4">{t('settings.profileInfo')}</h3>
+                <form onSubmit={handleProfileSave} className="space-y-3 sm:space-y-4 max-w-md">
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">{t('settings.username')}</label>
-                    <input type="text" value={profile?.username ?? ''} readOnly className="w-full bg-slate-800/50 border border-slate-600 rounded-lg px-3 py-2 text-slate-400 cursor-not-allowed" />
-                    <p className="text-xs text-slate-500 mt-1">{t('settings.usernameReadonly')}</p>
+                    <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1 sm:mb-2">{t('settings.username')}</label>
+                    <input type="text" value={profile?.username ?? ''} readOnly className="w-full bg-slate-800/50 border border-slate-600 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-slate-400 cursor-not-allowed text-xs sm:text-sm" />
+                    <p className="text-[10px] sm:text-xs text-slate-500 mt-0.5 sm:mt-1">{t('settings.usernameReadonly')}</p>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">{t('settings.fullName')}</label>
-                    <input type="text" value={profileForm.full_name} onChange={e => setProfileForm({ ...profileForm, full_name: e.target.value })} placeholder={t('settings.fullNamePlaceholder')} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white" />
+                    <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1 sm:mb-2">{t('settings.fullName')}</label>
+                    <input type="text" value={profileForm.full_name} onChange={e => setProfileForm({ ...profileForm, full_name: e.target.value })} placeholder={t('settings.fullNamePlaceholder')} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-white text-xs sm:text-sm" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">{t('settings.email')}</label>
-                    <input type="email" value={profileForm.email} onChange={e => setProfileForm({ ...profileForm, email: e.target.value })} placeholder={t('settings.emailPlaceholder')} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white" required />
+                    <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1 sm:mb-2">{t('settings.email')}</label>
+                    <input type="email" value={profileForm.email} onChange={e => setProfileForm({ ...profileForm, email: e.target.value })} placeholder={t('settings.emailPlaceholder')} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-white text-xs sm:text-sm" required />
                   </div>
                   {profileMessage.text && (
-                    <div className={`flex items-center gap-2 text-sm p-3 rounded-lg ${profileMessage.type === 'success' ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}`}>
-                      {profileMessage.type === 'success' ? <CheckCircle className="w-5 h-5" /> : <AlertTriangle className="w-5 h-5" />}
-                      {profileMessage.text}
+                    <div className={`flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm p-2 sm:p-3 rounded-lg ${profileMessage.type === 'success' ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}`}>
+                      {profileMessage.type === 'success' ? <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" /> : <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />}
+                      <span>{profileMessage.text}</span>
                     </div>
                   )}
-                  <button type="submit" disabled={isSavingProfile} className="flex items-center gap-2 py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:bg-slate-600">
-                    {isSavingProfile ? <RefreshCw className="w-5 h-5 animate-spin" /> : <CheckCircle className="w-5 h-5" />}
+                  <button type="submit" disabled={isSavingProfile} className="flex items-center gap-1.5 sm:gap-2 py-1.5 sm:py-2 px-3 sm:px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:bg-slate-600 text-xs sm:text-sm">
+                    {isSavingProfile ? <RefreshCw className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" /> : <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />}
                     {t('settings.saveProfile')}
                   </button>
                 </form>
             </div>
-            <div className="border-t border-slate-700 pt-8">
-                <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2"><KeyRound className="w-5 h-5"/> {t('settings.changePassword')}</h3>
-                <form onSubmit={handlePasswordChange} className="space-y-4 max-w-md">
+            <div className="border-t border-slate-700 pt-4 sm:pt-6 md:pt-8">
+                <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-white mb-2 sm:mb-3 md:mb-4 flex items-center gap-1.5 sm:gap-2"><KeyRound className="w-4 h-4 sm:w-5 sm:h-5"/> {t('settings.changePassword')}</h3>
+                <form onSubmit={handlePasswordChange} className="space-y-3 sm:space-y-4 max-w-md">
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">{t('settings.currentPassword')}</label>
-                        <input type="password" value={passwordData.currentPassword} onChange={e => setPasswordData({...passwordData, currentPassword: e.target.value})} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white" required />
+                        <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1 sm:mb-2">{t('settings.currentPassword')}</label>
+                        <input type="password" value={passwordData.currentPassword} onChange={e => setPasswordData({...passwordData, currentPassword: e.target.value})} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-white text-xs sm:text-sm" required />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">{t('settings.newPassword')}</label>
-                        <input type="password" value={passwordData.newPassword} onChange={e => setPasswordData({...passwordData, newPassword: e.target.value})} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white" required />
+                        <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1 sm:mb-2">{t('settings.newPassword')}</label>
+                        <input type="password" value={passwordData.newPassword} onChange={e => setPasswordData({...passwordData, newPassword: e.target.value})} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-white text-xs sm:text-sm" required />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">{t('settings.newPasswordConfirm')}</label>
-                        <input type="password" value={passwordData.confirmPassword} onChange={e => setPasswordData({...passwordData, confirmPassword: e.target.value})} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white" required />
+                        <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1 sm:mb-2">{t('settings.newPasswordConfirm')}</label>
+                        <input type="password" value={passwordData.confirmPassword} onChange={e => setPasswordData({...passwordData, confirmPassword: e.target.value})} className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-white text-xs sm:text-sm" required />
                     </div>
                     {passwordMessage.text && (
-                        <div className={`flex items-center gap-2 text-sm p-3 rounded-lg ${passwordMessage.type === 'success' ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}`}>
-                            {passwordMessage.type === 'success' ? <CheckCircle className="w-5 h-5"/> : <AlertTriangle className="w-5 h-5"/>}
-                            {passwordMessage.text}
+                        <div className={`flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm p-2 sm:p-3 rounded-lg ${passwordMessage.type === 'success' ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}`}>
+                            {passwordMessage.type === 'success' ? <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0"/> : <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0"/>}
+                            <span>{passwordMessage.text}</span>
                         </div>
                     )}
-                    <button type="submit" disabled={isSavingPassword} className="w-full flex items-center justify-center py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:bg-slate-600">
-                        {isSavingPassword ? <RefreshCw className="w-5 h-5 animate-spin"/> : t('settings.updatePassword')}
+                    <button type="submit" disabled={isSavingPassword} className="w-full flex items-center justify-center gap-1.5 sm:gap-2 py-1.5 sm:py-2 px-3 sm:px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:bg-slate-600 text-xs sm:text-sm">
+                        {isSavingPassword ? <RefreshCw className="w-4 h-4 sm:w-5 sm:h-5 animate-spin"/> : t('settings.updatePassword')}
                     </button>
                 </form>
             </div>
@@ -355,35 +355,35 @@ const Settings = () => {
 
       case 'cameras':
         return (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-              <h3 className="text-lg font-semibold text-white">{t('settings.cameraFlows')}</h3>
-              {siteName && <span className="text-slate-400 text-sm">{t('settings.setup')}: {siteName}</span>}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-3 sm:space-y-4 md:space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3 md:mb-4">
+              <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-white">{t('settings.cameraFlows')}</h3>
+              {siteName && <span className="text-slate-400 text-[10px] sm:text-xs md:text-sm">{t('settings.setup')}: {siteName}</span>}
             </div>
-            <p className="text-slate-400 text-sm -mt-2 mb-4">{t('settings.cameraSetupDesc')}</p>
+            <p className="text-slate-400 text-[10px] sm:text-xs md:text-sm -mt-1 sm:-mt-2 mb-2 sm:mb-3 md:mb-4">{t('settings.cameraSetupDesc')}</p>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left">
+              <table className="w-full text-xs sm:text-sm text-left min-w-[650px] sm:min-w-0">
                 <thead className="text-xs text-slate-400 uppercase bg-slate-700/50">
                   <tr>
-                    <th className="px-4 py-3">{t('settings.cameraName')}</th>
-                    <th className="px-4 py-3">{t('settings.type')}</th>
-                    <th className="px-4 py-3">{t('settings.rtspAddress')}</th>
-                    <th className="px-4 py-3 text-right">{t('settings.action')}</th>
+                    <th className="px-2 sm:px-4 py-2 sm:py-3 whitespace-nowrap">{t('settings.cameraName')}</th>
+                    <th className="px-2 sm:px-4 py-2 sm:py-3 hidden sm:table-cell whitespace-nowrap">{t('settings.type')}</th>
+                    <th className="px-2 sm:px-4 py-2 sm:py-3 hidden md:table-cell whitespace-nowrap">{t('settings.rtspAddress')}</th>
+                    <th className="px-2 sm:px-4 py-2 sm:py-3 text-right whitespace-nowrap">{t('settings.action')}</th>
                   </tr>
                 </thead>
                 <tbody className="text-slate-300">
                   {cameras.length === 0 && <tr><td colSpan={4} className="px-4 py-8 text-center text-slate-500">{t('settings.noCameras')}</td></tr>}
                   {cameras.map((camera) => (
                     <tr key={camera.id} className="border-b border-slate-700 hover:bg-slate-700/30">
-                      <td className="px-4 py-3 font-medium text-white">{camera.name}</td>
-                      <td className="px-4 py-3">{camera.type}</td>
-                      <td className="px-4 py-3 font-mono text-xs">{camera.rtsp}</td>
-                      <td className="px-4 py-3 text-right">
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 font-medium text-white">{camera.name}</td>
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 hidden sm:table-cell">{camera.type}</td>
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 font-mono text-xs hidden md:table-cell break-all">{camera.rtsp}</td>
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 text-right">
                         <button 
                           onClick={() => setSelectedCamera(camera)}
-                          className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+                          className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700"
                         >
-                          <Eye className="w-4 h-4" /> {t('settings.view')}
+                          <Eye className="w-3 h-3 sm:w-4 sm:h-4" /> <span className="hidden sm:inline">{t('settings.view')}</span>
                         </button>
                       </td>
                     </tr>
@@ -397,35 +397,35 @@ const Settings = () => {
       // YENİ: Rapor gönderimi sekmesi
       case 'reporting':
         return (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-                <h3 className="text-lg font-semibold text-white mb-4">{t('settings.reportRecipients')}</h3>
-                <p className="text-slate-400 -mt-4 mb-6">{t('settings.reportRecipientsDesc')}</p>
-                <form onSubmit={handleAddEmail} className="flex gap-2 items-start">
-                    <div className="flex-grow">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-3 sm:space-y-4 md:space-y-6">
+                <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-white mb-2 sm:mb-3 md:mb-4">{t('settings.reportRecipients')}</h3>
+                <p className="text-slate-400 text-[10px] sm:text-xs md:text-sm -mt-1 sm:-mt-2 md:-mt-4 mb-3 sm:mb-4 md:mb-6">{t('settings.reportRecipientsDesc')}</p>
+                <form onSubmit={handleAddEmail} className="flex flex-col sm:flex-row gap-2 items-start">
+                    <div className="flex-grow w-full sm:w-auto">
                         <input 
                             type="email" 
                             value={newEmail} 
                             onChange={e => setNewEmail(e.target.value)} 
                             placeholder={t('settings.addEmailPlaceholder')} 
-                            className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white" 
+                            className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-white text-xs sm:text-sm" 
                         />
-                         {emailError && <p className="text-red-400 text-sm mt-1">{emailError}</p>}
+                         {emailError && <p className="text-red-400 text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1">{emailError}</p>}
                     </div>
-                    <button type="submit" className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg">{t('settings.add')}</button>
+                    <button type="submit" className="w-full sm:w-auto px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg text-xs sm:text-sm">{t('settings.add')}</button>
                 </form>
 
-                <div className="border-t border-slate-700 pt-6">
-                    <h4 className="text-md font-semibold text-white mb-3">{t('settings.currentRecipients')}</h4>
-                    <ul className="space-y-2">
+                <div className="border-t border-slate-700 pt-3 sm:pt-4 md:pt-6">
+                    <h4 className="text-xs sm:text-sm md:text-base font-semibold text-white mb-2 sm:mb-3">{t('settings.currentRecipients')}</h4>
+                    <ul className="space-y-1.5 sm:space-y-2">
                         {recipients.map(recipient => (
-                            <li key={recipient.id} className="flex items-center justify-between bg-slate-700/30 p-3 rounded-lg">
-                                <span className="text-slate-200">{recipient.email}</span>
-                                <button onClick={() => handleDeleteEmail(recipient.id)} className="text-red-400 hover:text-red-300 p-1 rounded-full hover:bg-red-500/10">
-                                    <Trash2 className="w-4 h-4" />
+                            <li key={recipient.id} className="flex items-center justify-between bg-slate-700/30 p-2 sm:p-2.5 md:p-3 rounded-lg">
+                                <span className="text-slate-200 text-xs sm:text-sm break-all pr-2">{recipient.email}</span>
+                                <button onClick={() => handleDeleteEmail(recipient.id)} className="text-red-400 hover:text-red-300 p-1 rounded-full hover:bg-red-500/10 flex-shrink-0">
+                                    <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
                                 </button>
                             </li>
                         ))}
-                        {recipients.length === 0 && <p className="text-slate-500 text-center py-4">{t('settings.noRecipients')}</p>}
+                        {recipients.length === 0 && <p className="text-slate-500 text-center py-3 sm:py-4 text-xs sm:text-sm">{t('settings.noRecipients')}</p>}
                     </ul>
                 </div>
             </motion.div>
@@ -439,37 +439,37 @@ const Settings = () => {
   return (
     <>
       <CameraViewModal camera={selectedCamera} onClose={() => setSelectedCamera(null)} t={t} />
-      <div className="p-6">
-        <motion.div variants={container} initial="hidden" animate="show" className="space-y-6">
+      <div className="p-2 sm:p-3 md:p-4 lg:p-6">
+        <motion.div variants={container} initial="hidden" animate="show" className="space-y-3 sm:space-y-4 md:space-y-6">
           <motion.div variants={item}>
-            <h1 className="text-2xl font-bold text-white mb-2">{t('settings.title')}</h1>
-            <p className="text-slate-400">{t('settings.subtitleFull')}</p>
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">{t('settings.title')}</h1>
+            <p className="text-xs sm:text-sm md:text-base text-slate-400">{t('settings.subtitleFull')}</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-6">
-            <motion.div variants={item} className="lg:col-span-1 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50 h-fit">
-              <nav className="space-y-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 xl:gap-6">
+            <motion.div variants={item} className="lg:col-span-1 bg-slate-800/50 p-2 sm:p-3 md:p-4 rounded-lg sm:rounded-xl border border-slate-700/50 h-fit">
+              <nav className="space-y-1 sm:space-y-1.5 md:space-y-2">
                 {tabs.map((tab) => {
                   const Icon = tab.icon;
                   return (
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all text-left ${
+                      className={`w-full flex items-center space-x-2 sm:space-x-2.5 md:space-x-3 px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 rounded-lg transition-all text-left ${
                         activeTab === tab.id
                           ? 'bg-blue-500/20 text-blue-400'
                           : 'text-slate-300 hover:bg-slate-700/50 hover:text-white'
                       }`}
                     >
-                      <Icon className="w-5 h-5" />
-                      <span className="font-medium">{tab.label}</span>
+                      <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 flex-shrink-0" />
+                      <span className="font-medium text-xs sm:text-sm md:text-base">{tab.label}</span>
                     </button>
                   );
                 })}
               </nav>
             </motion.div>
 
-            <motion.div variants={item} className="lg:col-span-3 bg-slate-800/50 p-6 rounded-xl border border-slate-700/50 min-h-[400px]">
+            <motion.div variants={item} className="lg:col-span-3 bg-slate-800/50 p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50 min-h-[300px] sm:min-h-[350px] md:min-h-[400px]">
               {renderTabContent()}
             </motion.div>
           </div>

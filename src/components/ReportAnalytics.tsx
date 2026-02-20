@@ -109,31 +109,31 @@ const ReportAnalytics = () => {
   const item = { hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } };
 
   return (
-    <div className="p-6 min-h-screen bg-slate-900">
-      <motion.div variants={container} initial="hidden" animate="show" className="space-y-6">
+    <div className="p-2 sm:p-3 md:p-4 lg:p-6 bg-slate-900">
+      <motion.div variants={container} initial="hidden" animate="show" className="space-y-3 sm:space-y-4 md:space-y-6">
         {/* Header */}
         <motion.div variants={item}>
-          <h1 className="text-xl sm:text-2xl font-bold text-white mb-2">{t('report.title')}</h1>
+          <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">{t('report.title')}</h1>
           <p className="text-sm sm:text-base text-slate-400">{t('report.subtitle')}</p>
         </motion.div>
 
         {/* Analiz Oluşturma Formu */}
-        <motion.div variants={item} className="bg-slate-800/50 p-6 rounded-xl border border-slate-700/50">
-          <h3 className="text-white font-semibold text-lg mb-4 flex items-center"><Plus className="w-5 h-5 mr-2 text-blue-400" /> {t('report.newAnalysis')}</h3>
-          <div className="space-y-6">
+        <motion.div variants={item} className="bg-slate-800/50 p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+          <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4 flex items-center"><Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-blue-400" /> {t('report.newAnalysis')}</h3>
+          <div className="space-y-3 sm:space-y-4 md:space-y-6">
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">{t('report.selectType')}</label>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1.5 sm:mb-2">{t('report.selectType')}</label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
                 {analysisOptions.map(opt => {
                   const Icon = opt.icon;
                   return (
                     <button key={opt.id} onClick={() => setAnalysisType(opt.id as any)}
-                      className={`p-4 rounded-lg border-2 transition-all flex flex-col items-center justify-center space-y-2 ${
+                      className={`p-2 sm:p-3 md:p-4 rounded-lg border-2 transition-all flex flex-col items-center justify-center space-y-1 sm:space-y-2 ${
                         analysisType === opt.id ? 'bg-blue-500/20 border-blue-500' : 'bg-slate-700/50 border-slate-600 hover:border-slate-500'
                       }`}
                     >
-                      <Icon className={`w-8 h-8 ${analysisType === opt.id ? 'text-blue-400' : 'text-slate-400'}`} />
-                      <span className="font-medium text-white">{opt.label}</span>
+                      <Icon className={`w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 ${analysisType === opt.id ? 'text-blue-400' : 'text-slate-400'}`} />
+                      <span className="font-medium text-white text-xs sm:text-sm md:text-base">{opt.label}</span>
                     </button>
                   );
                 })}
@@ -141,45 +141,45 @@ const ReportAnalytics = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">{t('report.selectDateRange')}</label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="date" value={dateFrom} onChange={e => setDateFrom(e.target.value)} className="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white" />
-                <input type="date" value={dateTo} onChange={e => setDateTo(e.target.value)} className="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white" />
+              <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1.5 sm:mb-2">{t('report.selectDateRange')}</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-4">
+                <input type="date" value={dateFrom} onChange={e => setDateFrom(e.target.value)} className="w-full bg-slate-700 border border-slate-600 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-white text-xs sm:text-sm" />
+                <input type="date" value={dateTo} onChange={e => setDateTo(e.target.value)} className="w-full bg-slate-700 border border-slate-600 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-white text-xs sm:text-sm" />
               </div>
             </div>
 
-            {error && <div className="bg-red-900/20 border border-red-700 text-red-400 text-sm rounded-lg p-3">{error}</div>}
+            {error && <div className="bg-red-900/20 border border-red-700 text-red-400 text-xs sm:text-sm rounded-lg p-2 sm:p-3">{error}</div>}
 
             <button onClick={createAnalysis} disabled={loading || !analysisType}
-              className="w-full flex items-center justify-center py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:bg-slate-600 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:bg-slate-600 disabled:cursor-not-allowed text-xs sm:text-sm md:text-base"
             >
               {loading ? (
-                <> <RefreshCw className="w-4 h-4 mr-2 animate-spin" /> {t('report.creatingAnalysis')} </>
+                <> <RefreshCw className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 animate-spin" /> {t('report.creatingAnalysis')} </>
               ) : (
-                <> <Zap className="w-4 h-4 mr-2" /> {t('report.createAnalysis')} </>
+                <> <Zap className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" /> {t('report.createAnalysis')} </>
               )}
             </button>
           </div>
         </motion.div>
 
         {/* Mevcut Analizler */}
-        <motion.div variants={item} className="bg-slate-800/50 p-6 rounded-xl border border-slate-700/50">
-          <h3 className="text-white font-semibold text-lg mb-4 flex items-center"><FileText className="w-5 h-5 mr-2 text-green-400" /> {t('report.createdAnalyses')}</h3>
-          <div className="space-y-4">
+        <motion.div variants={item} className="bg-slate-800/50 p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+          <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4 flex items-center"><FileText className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-green-400" /> {t('report.createdAnalyses')}</h3>
+          <div className="space-y-2 sm:space-y-3 md:space-y-4">
             {reports.length === 0 ? (
-              <div className="text-center py-8 text-slate-400">{t('report.noAnalyses')}</div>
+              <div className="text-center py-6 sm:py-8 text-slate-400 text-xs sm:text-sm">{t('report.noAnalyses')}</div>
             ) : (
               reports.map(report => (
-                <div key={report.id} className="bg-slate-700/30 p-4 rounded-lg">
-                  <div className="flex justify-between items-start">
+                <div key={report.id} className="bg-slate-700/30 p-2 sm:p-3 md:p-4 rounded-lg">
+                  <div className="flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-0">
                     <div>
-                      <h4 className="font-semibold text-white">{report.name}</h4>
-                      <p className="text-xs text-slate-400">{new Date(report.createdAt).toLocaleString('tr-TR')}</p>
+                      <h4 className="font-semibold text-white text-xs sm:text-sm md:text-base">{report.name}</h4>
+                      <p className="text-[10px] sm:text-xs text-slate-400">{new Date(report.createdAt).toLocaleString('tr-TR')}</p>
                     </div>
-                    <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-900/20 text-green-400">{report.status === 'completed' ? t('report.completed') : report.status === 'processing' ? t('report.processing') : report.status === 'failed' ? t('report.failed') : report.status}</span>
+                    <span className="px-2 py-0.5 sm:py-1 text-[9px] sm:text-xs font-medium rounded-full bg-green-900/20 text-green-400 whitespace-nowrap">{report.status === 'completed' ? t('report.completed') : report.status === 'processing' ? t('report.processing') : report.status === 'failed' ? t('report.failed') : report.status}</span>
                   </div>
-                  <div className="mt-4 pt-4 border-t border-slate-600/50">
-                    <p className="text-slate-200 text-sm whitespace-pre-wrap font-sans">{report.result}</p>
+                  <div className="mt-2 sm:mt-3 md:mt-4 pt-2 sm:pt-3 md:pt-4 border-t border-slate-600/50">
+                    <p className="text-slate-200 text-xs sm:text-sm whitespace-pre-wrap font-sans">{report.result}</p>
                   </div>
                 </div>
               ))

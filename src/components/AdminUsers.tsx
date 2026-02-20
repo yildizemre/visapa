@@ -173,7 +173,7 @@ const AdminUsers: React.FC = () => {
   );
 
   return (
-    <div className="p-6">
+    <div className="p-2 sm:p-3 md:p-4 lg:p-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -181,10 +181,10 @@ const AdminUsers: React.FC = () => {
       >
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-white">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
               {t('admin.title')}
             </h1>
-            <p className="text-slate-400 text-sm mt-1">
+            <p className="text-slate-400 text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1">
               {t('admin.subtitle')}
             </p>
           </div>
@@ -219,20 +219,20 @@ const AdminUsers: React.FC = () => {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full text-xs sm:text-sm min-w-[800px] sm:min-w-0">
                 <thead>
                   <tr className="border-b border-slate-700">
-                    <th className="text-left py-4 px-4 text-slate-400 font-medium">
+                    <th className="text-left py-3 sm:py-4 px-2 sm:px-4 text-slate-400 font-medium whitespace-nowrap">
                       {t('admin.user')}
                     </th>
-                    <th className="text-left py-4 px-4 text-slate-400 font-medium">Email</th>
-                    <th className="text-left py-4 px-4 text-slate-400 font-medium">
+                    <th className="text-left py-3 sm:py-4 px-2 sm:px-4 text-slate-400 font-medium hidden md:table-cell whitespace-nowrap">Email</th>
+                    <th className="text-left py-3 sm:py-4 px-2 sm:px-4 text-slate-400 font-medium whitespace-nowrap">
                       {t('admin.role')}
                     </th>
-                    <th className="text-left py-4 px-4 text-slate-400 font-medium">
+                    <th className="text-left py-3 sm:py-4 px-2 sm:px-4 text-slate-400 font-medium hidden lg:table-cell whitespace-nowrap">
                       {t('admin.setup')}
                     </th>
-                    <th className="text-right py-4 px-4 text-slate-400 font-medium">
+                    <th className="text-right py-3 sm:py-4 px-2 sm:px-4 text-slate-400 font-medium">
                       {t('admin.actions')}
                     </th>
                   </tr>
@@ -240,7 +240,7 @@ const AdminUsers: React.FC = () => {
                 <tbody>
                   {filtered.map((u) => (
                     <tr key={u.id} className="border-b border-slate-700/50 hover:bg-slate-700/20">
-                      <td className="py-4 px-4">
+                      <td className="py-3 sm:py-4 px-2 sm:px-4">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                             {u.role === 'admin' ? (
@@ -257,8 +257,8 @@ const AdminUsers: React.FC = () => {
                           </div>
                         </div>
                       </td>
-                      <td className="py-4 px-4 text-slate-300">{u.email}</td>
-                      <td className="py-4 px-4">
+                      <td className="py-3 sm:py-4 px-2 sm:px-4 text-slate-300 hidden md:table-cell">{u.email}</td>
+                      <td className="py-3 sm:py-4 px-2 sm:px-4">
                         <span
                           className={`px-2 py-1 rounded text-xs font-medium ${
                             u.role === 'admin'
@@ -269,10 +269,10 @@ const AdminUsers: React.FC = () => {
                           {u.role}
                         </span>
                       </td>
-                      <td className="py-4 px-4">
-                        <div className="flex items-center gap-2 text-slate-300 text-sm">
+                      <td className="py-3 sm:py-4 px-2 sm:px-4 hidden lg:table-cell">
+                        <div className="flex items-center gap-2 text-slate-300 text-xs sm:text-sm">
                           <span className="flex items-center gap-1">
-                            <Video className="w-4 h-4 text-slate-500" />
+                            <Video className="w-3 h-3 sm:w-4 sm:h-4 text-slate-500" />
                             {(u.camera_count ?? 0)} {t('admin.cameras')}
                           </span>
                           {u.site_name && u.site_name !== '-' && (
@@ -283,15 +283,15 @@ const AdminUsers: React.FC = () => {
                           </span>
                         </div>
                       </td>
-                      <td className="py-4 px-4 text-right">
-                        <div className="flex justify-end gap-2 items-center">
+                      <td className="py-3 sm:py-4 px-2 sm:px-4 text-right">
+                        <div className="flex justify-end gap-1 sm:gap-2 items-center flex-wrap">
                           <button
                             onClick={() => handleImpersonate(u)}
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/80 hover:bg-emerald-500 text-white text-sm font-medium"
+                            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-emerald-600/80 hover:bg-emerald-500 text-white text-xs sm:text-sm font-medium"
                             title={t('admin.goToPanel')}
                           >
-                            <ExternalLink className="w-4 h-4" />
-                            {t('admin.goToPanel')}
+                            <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+                            <span className="hidden sm:inline">{t('admin.goToPanel')}</span>
                           </button>
                           {u.username !== 'admin' && (
                             <>

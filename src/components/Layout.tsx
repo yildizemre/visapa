@@ -8,7 +8,6 @@ import ServiceHeartbeatIndicator from './ServiceHeartbeatIndicator';
 import WeatherForecastIndicator from './WeatherForecastIndicator';
 import StoreSwitcher from './StoreSwitcher';
 import {
-  Activity,
   Home,
   Users,
   UserCheck,
@@ -90,7 +89,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
   });
 
   return (
-    <div className="flex h-screen bg-slate-900">
+    <div className="flex h-full bg-slate-900 overflow-hidden">
       {/* Sidebar */}
       <motion.div
         animate={{ width: isCollapsed ? 80 : 280 }}
@@ -101,14 +100,13 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
         <div className="flex items-center justify-between p-6 border-b border-slate-700/50">
           <motion.div
             animate={{ opacity: isCollapsed ? 0 : 1 }}
-            className="flex items-center space-x-3"
+            className="flex items-center min-w-0"
           >
-            <Activity className="w-8 h-8 text-blue-400" />
-            {!isCollapsed && (
-              <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                VISLIVIS
-              </h1>
-            )}
+            <img
+              src="/camera_feeds/vislivis_logo_web.png"
+              alt="VISLIVIS"
+              className="h-8 w-auto object-contain flex-shrink-0"
+            />
           </motion.div>
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -164,18 +162,17 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
       {/* Mobile Sidebar */}
       <motion.div
         initial={false}
-        animate={{ x: isCollapsed ? -280 : 0 }}
+        animate={{ x: isCollapsed ? '-100%' : 0 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className="lg:hidden fixed inset-y-0 left-0 z-50 w-280 bg-slate-800/95 backdrop-blur-xl border-r border-slate-700/50"
+        className="lg:hidden fixed inset-y-0 left-0 z-50 w-[280px] bg-slate-800/95 backdrop-blur-xl border-r border-slate-700/50"
       >
         {/* Logo */}
         <div className="flex items-center justify-between p-6 border-b border-slate-700/50">
-                     <div className="flex items-center space-x-3">
-             <Activity className="w-8 h-8 text-blue-400" />
-             <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-               VISLIVIS
-             </h1>
-           </div>
+          <img
+            src="/camera_feeds/vislivis_logo_web.png"
+            alt="VISLIVIS"
+            className="h-8 w-auto object-contain"
+          />
           <button
             onClick={() => setIsCollapsed(true)}
             className="p-2 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 transition-colors"
@@ -237,17 +234,17 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-slate-800/50 backdrop-blur-xl border-b border-slate-700/50 p-4 lg:p-6">
+        <header className="bg-slate-800/50 backdrop-blur-xl border-b border-slate-700/50 p-2 sm:p-3 md:p-4 lg:p-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4 min-w-0 flex-1">
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsCollapsed(false)}
-                className="lg:hidden p-2 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 transition-colors"
+                className="lg:hidden p-1.5 sm:p-2 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 transition-colors flex-shrink-0"
               >
-                <ChevronRight className="w-4 h-4 text-slate-400" />
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
               </button>
-              <h2 className="text-xl font-semibold text-white">
+              <h2 className="text-base sm:text-lg md:text-xl font-semibold text-white truncate">
                 {menuItems.find(item => item.path === location.pathname)?.label || t('nav.dashboard')}
               </h2>
             </div>
@@ -258,37 +255,46 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
               <LanguageToggle />
               
               {/* Date & Time */}
-              <div className="hidden md:flex items-center space-x-2 text-slate-300">
-                <Calendar className="w-4 h-4" />
-                <span className="text-sm">{currentTime.split(',')[0]}</span>
-                <Clock className="w-4 h-4 ml-2" />
-                <span className="text-sm">{currentTime.split(',')[1]}</span>
+              <div className="hidden sm:flex items-center space-x-1 md:space-x-2 text-slate-300">
+                <Calendar className="w-3 h-3 md:w-4 md:h-4" />
+                <span className="text-xs md:text-sm">{currentTime.split(',')[0]}</span>
+                <Clock className="w-3 h-3 md:w-4 md:h-4 ml-1 md:ml-2" />
+                <span className="text-xs md:text-sm hidden md:inline">{currentTime.split(',')[1]}</span>
               </div>
 
               {/* User Profile */}
-              <div className="hidden lg:flex items-center space-x-3">
-                <div className="text-right">
+              <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
+                <div className="text-right hidden lg:block">
                   <p className="text-sm font-medium text-white">{userName || '-'}</p>
                   <p className="text-xs text-slate-400">{roleLabel}</p>
                 </div>
-              </div>
-              <motion.div
+                <motion.div
                   whileHover={{ scale: 1.1 }}
                   className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center cursor-pointer"
                 >
                   <User className="w-4 h-4 lg:w-5 lg:h-5 text-white" />
                 </motion.div>
+              </div>
+              {/* Mobile user icon */}
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                className="md:hidden w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center cursor-pointer"
+              >
+                <User className="w-4 h-4 text-white" />
+              </motion.div>
             </div>
           </div>
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto px-2 lg:px-0">
-          {children}
+        <main className="flex-1 overflow-auto px-2 sm:px-3 md:px-4 lg:px-6 xl:px-8 bg-slate-900">
+          <div className="min-h-full pb-4">
+            {children}
+          </div>
         </main>
       </div>
       <WeatherForecastIndicator />
-      <div className="fixed bottom-4 right-4 z-50 flex flex-row gap-2 items-center">
+      <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 z-50 flex flex-row gap-1.5 sm:gap-2 items-center">
         <ServiceHeartbeatIndicator />
         <HealthStatusIndicator />
       </div>

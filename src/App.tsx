@@ -32,7 +32,7 @@ function App() {
   return (
     <LanguageProvider>
       <Router>
-        <div className="min-h-screen bg-slate-900">
+        <div className="h-screen bg-slate-900 overflow-hidden">
           <AnimatePresence mode="wait">
             {!isAuthenticated ? (
               <LoginPage onLogin={() => setIsAuthenticated(true)} />

@@ -263,7 +263,7 @@ const StaffManagement = () => {
   // Yetki kontrolü
   if (!hasPermission) {
     return (
-      <div className="p-6">
+      <div className="p-2 sm:p-3 md:p-4 lg:p-6">
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
           <div className="bg-red-600/20 border border-red-600/30 rounded-full p-4 mb-6">
             <Users className="w-16 h-16 text-red-400" />
@@ -285,7 +285,7 @@ const StaffManagement = () => {
 
   if (loading) {
     return (
-      <div className="p-6">
+      <div className="p-2 sm:p-3 md:p-4 lg:p-6">
         <div className="animate-pulse">
           <div className="h-8 bg-slate-700 rounded w-1/4 mb-4"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -319,16 +319,16 @@ const StaffManagement = () => {
         </motion.div>
 
         {/* Stats Cards */}
-        <motion.div variants={item} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
+        <motion.div variants={item} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+          <div className="bg-slate-800/50 backdrop-blur-xl p-2.5 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
             <div className="flex items-center justify-between mb-4">
               <div className="p-2 bg-blue-600 rounded-lg">
                 <Users className="w-5 h-5 text-white" />
               </div>
               <ArrowUpRight className="w-4 h-4 text-green-400" />
             </div>
-            <h3 className="text-white font-semibold text-lg lg:text-xl mb-1">{staffData.totalStaff}</h3>
-            <p className="text-slate-400 text-sm">{t('staff.totalStaff')}</p>
+            <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg lg:text-xl mb-0.5 sm:mb-1">{staffData.totalStaff}</h3>
+            <p className="text-slate-400 text-xs sm:text-sm">{t('staff.totalStaff')}</p>
           </div>
 
           <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
@@ -366,25 +366,25 @@ const StaffManagement = () => {
         </motion.div>
 
         {/* Search and Filter Section */}
-        <motion.div variants={item} className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-          <div className="flex flex-col lg:flex-row gap-4 mb-6">
+        <motion.div variants={item} className="bg-slate-800/50 backdrop-blur-xl p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+          <div className="flex flex-col lg:flex-row gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <Search className="absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-slate-400" />
                 <input
                   type="text"
                   placeholder="Personel ara..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-8 sm:pl-10 pr-3 sm:pr-4 py-1.5 sm:py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
                 />
               </div>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm flex-1 sm:flex-none min-w-[100px]"
               >
                 <option value="">Tüm Durumlar</option>
                 <option value="active">Aktif</option>
@@ -394,7 +394,7 @@ const StaffManagement = () => {
               <select
                 value={positionFilter}
                 onChange={(e) => setPositionFilter(e.target.value)}
-                className="px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm flex-1 sm:flex-none min-w-[120px]"
               >
                 <option value="">Tüm Pozisyonlar</option>
                 <option value="Satış Danışmanı">Satış Danışmanı</option>
@@ -405,13 +405,13 @@ const StaffManagement = () => {
               </select>
               <button
                 onClick={handleSearch}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                className="px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-xs sm:text-sm whitespace-nowrap"
               >
                 Ara
               </button>
               <button
                 onClick={handleClearFilters}
-                className="px-4 py-2 bg-slate-600 hover:bg-slate-700 text-white rounded-lg transition-colors"
+                className="px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-slate-600 hover:bg-slate-700 text-white rounded-lg transition-colors text-xs sm:text-sm whitespace-nowrap"
               >
                 Temizle
               </button>
@@ -419,27 +419,27 @@ const StaffManagement = () => {
           </div>
 
           {/* Date Filters */}
-          <div className="flex flex-col lg:flex-row gap-4 mb-6">
-            <div className="flex gap-2">
+          <div className="flex flex-col lg:flex-row gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6">
+            <div className="flex gap-1.5 sm:gap-2">
               <input
                 type="date"
                 value={dateFrom}
                 onChange={(e) => setDateFrom(e.target.value)}
-                className="px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm flex-1"
               />
               <span className="text-slate-400 self-center">-</span>
               <input
                 type="date"
                 value={dateTo}
                 onChange={(e) => setDateTo(e.target.value)}
-                className="px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm flex-1"
               />
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-1.5 sm:gap-2">
               <select
                 value={itemsPerPage}
                 onChange={(e) => handleItemsPerPageChange(Number(e.target.value))}
-                className="px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
               >
                 <option value={5}>5 Kayıt</option>
                 <option value={10}>10 Kayıt</option>
@@ -451,25 +451,25 @@ const StaffManagement = () => {
 
           {/* Staff Table */}
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full text-[10px] sm:text-xs md:text-sm min-w-[700px] sm:min-w-0">
               <thead>
                 <tr className="border-b border-slate-700">
-                  <th className="text-left p-3 text-slate-400 font-medium">Personel</th>
-                  <th className="text-left p-3 text-slate-400 font-medium">Pozisyon</th>
-                  <th className="text-left p-3 text-slate-400 font-medium">Durum</th>
-                  <th className="text-left p-3 text-slate-400 font-medium">Verimlilik</th>
-                  <th className="text-left p-3 text-slate-400 font-medium">Verimli Saat</th>
-                  <th className="text-left p-3 text-slate-400 font-medium">Renk Kodu</th>
-                  <th className="text-left p-3 text-slate-400 font-medium">Konum</th>
-                  <th className="text-left p-3 text-slate-400 font-medium">Görüntü</th>
+                  <th className="text-left p-1.5 sm:p-2 md:p-3 text-slate-400 font-medium text-[9px] sm:text-xs whitespace-nowrap">Personel</th>
+                  <th className="text-left p-1.5 sm:p-2 md:p-3 text-slate-400 font-medium text-[9px] sm:text-xs hidden sm:table-cell whitespace-nowrap">Pozisyon</th>
+                  <th className="text-left p-1.5 sm:p-2 md:p-3 text-slate-400 font-medium text-[9px] sm:text-xs whitespace-nowrap">Durum</th>
+                  <th className="text-left p-1.5 sm:p-2 md:p-3 text-slate-400 font-medium text-[9px] sm:text-xs hidden md:table-cell whitespace-nowrap">Verimlilik</th>
+                  <th className="text-left p-1.5 sm:p-2 md:p-3 text-slate-400 font-medium text-[9px] sm:text-xs hidden lg:table-cell whitespace-nowrap">Verimli Saat</th>
+                  <th className="text-left p-1.5 sm:p-2 md:p-3 text-slate-400 font-medium text-[9px] sm:text-xs hidden lg:table-cell whitespace-nowrap">Renk Kodu</th>
+                  <th className="text-left p-1.5 sm:p-2 md:p-3 text-slate-400 font-medium text-[9px] sm:text-xs hidden xl:table-cell whitespace-nowrap">Konum</th>
+                  <th className="text-left p-1.5 sm:p-2 md:p-3 text-slate-400 font-medium text-[9px] sm:text-xs hidden xl:table-cell whitespace-nowrap">Görüntü</th>
                 </tr>
               </thead>
               <tbody>
                 {staffData.staffList.map((staff) => (
                   <tr key={staff.id} className="border-b border-slate-700 last:border-b-0 hover:bg-slate-700/30 cursor-pointer" onClick={() => handleStaffRowClick(staff)}>
-                    <td className="p-3 text-white">{staff.name}</td>
-                    <td className="p-3 text-white">{staff.position}</td>
-                    <td className={`p-3 font-medium ${
+                    <td className="p-1.5 sm:p-2 md:p-3 text-white text-[10px] sm:text-xs md:text-sm">{staff.name}</td>
+                    <td className="p-1.5 sm:p-2 md:p-3 text-white hidden sm:table-cell">{staff.position}</td>
+                    <td className={`p-1.5 sm:p-2 md:p-3 font-medium text-[10px] sm:text-xs md:text-sm ${
                       staff.status === 'active' ? 'text-green-400' :
                       staff.status === 'break' ? 'text-yellow-400' :
                       'text-red-400'
@@ -477,17 +477,17 @@ const StaffManagement = () => {
                       {staff.status === 'active' ? t('staff.statusActive') : 
                        staff.status === 'break' ? t('staff.statusBreak') : t('staff.statusInactive')}
                     </td>
-                    <td className="p-3 text-white">%{staff.efficiency.toFixed(2)}</td>
-                    <td className="p-3 text-white">{staff.hours} {t('staff.hours')}</td>
-                    <td className="p-3 text-white">{getColorText(staff.colorCode)}</td>
-                    <td className="p-3 text-white">{staff.currentLocation}</td>
-                    <td className="p-3">
+                    <td className="p-1.5 sm:p-2 md:p-3 text-white hidden md:table-cell">%{staff.efficiency.toFixed(2)}</td>
+                    <td className="p-1.5 sm:p-2 md:p-3 text-white hidden lg:table-cell">{staff.hours} {t('staff.hours')}</td>
+                    <td className="p-1.5 sm:p-2 md:p-3 text-white hidden lg:table-cell">{getColorText(staff.colorCode)}</td>
+                    <td className="p-1.5 sm:p-2 md:p-3 text-white hidden xl:table-cell">{staff.currentLocation}</td>
+                    <td className="p-1.5 sm:p-2 md:p-3 hidden xl:table-cell">
                       {staff.lastImage ? (
-                        <button className="text-blue-500 hover:text-blue-400 transition-colors">
+                        <button className="text-blue-500 hover:text-blue-400 transition-colors text-xs">
                           {t('staff.view')}
                         </button>
                       ) : (
-                        <span className="text-slate-500">{t('staff.none')}</span>
+                        <span className="text-slate-500 text-xs">{t('staff.none')}</span>
                       )}
                     </td>
                   </tr>
@@ -498,29 +498,29 @@ const StaffManagement = () => {
 
           {/* Pagination */}
           {staffData.pagination.totalPages > 1 && (
-            <div className="flex items-center justify-between mt-6">
-              <div className="text-slate-400 text-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0 mt-3 sm:mt-4 md:mt-6">
+              <div className="text-slate-400 text-xs sm:text-sm text-center sm:text-left">
                 {language === 'tr'
                   ? `${staffData.pagination.totalCount} ${t('staff.recordsFrom')} ${(currentPage - 1) * itemsPerPage + 1} - ${Math.min(currentPage * itemsPerPage, staffData.pagination.totalCount)} ${t('staff.showingRange')}`
                   : `${t('staff.paginationShowing')} ${(currentPage - 1) * itemsPerPage + 1} - ${Math.min(currentPage * itemsPerPage, staffData.pagination.totalCount)} ${t('staff.paginationOf')} ${staffData.pagination.totalCount} ${t('staff.records')}`}
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-1.5 sm:space-x-2">
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
-                  className="p-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-600/50"
+                  className="p-1.5 sm:p-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-600/50"
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" />
                 </button>
-                <span className="text-white text-sm">
+                <span className="text-white text-xs sm:text-sm">
                   {t('staff.pageOf')} {currentPage} / {staffData.pagination.totalPages}
                 </span>
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === staffData.pagination.totalPages}
-                  className="p-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-600/50"
+                  className="p-1.5 sm:p-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-600/50"
                 >
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
                 </button>
               </div>
             </div>
@@ -528,11 +528,11 @@ const StaffManagement = () => {
         </motion.div>
 
         {/* Charts Section */}
-        <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
           {/* Position Distribution Pie Chart */}
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-            <h3 className="text-white font-semibold text-base lg:text-lg mb-4">{t('staff.positionDistribution')}</h3>
-            <ResponsiveContainer width="100%" height={300}>
+          <div className="bg-slate-800/50 backdrop-blur-xl p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+            <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4">{t('staff.positionDistribution')}</h3>
+            <ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]">
               <PieChart>
                 <Pie
                   data={staffData.positionDistribution}
@@ -573,19 +573,21 @@ const StaffManagement = () => {
           </div>
 
           {/* Efficiency Distribution Bar Chart */}
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-            <h3 className="text-white font-semibold text-base lg:text-lg mb-4">Personel Verimlilik Oranı Dağılımı</h3>
-            <ResponsiveContainer width="100%" height={300}>
+          <div className="bg-slate-800/50 backdrop-blur-xl p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+            <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4">Personel Verimlilik Oranı Dağılımı</h3>
+            <ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]">
               <BarChart data={staffData.efficiencyDistribution}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                 <XAxis 
                   dataKey="range" 
                   stroke="#9CA3AF"
-                  fontSize={12}
+                  fontSize={9}
+                  className="sm:text-[10px] md:text-xs"
                 />
                 <YAxis 
                   stroke="#9CA3AF"
-                  fontSize={12}
+                  fontSize={9}
+                  className="sm:text-[10px] md:text-xs"
                 />
                 <Tooltip 
                   contentStyle={{

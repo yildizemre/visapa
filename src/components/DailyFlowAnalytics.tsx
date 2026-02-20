@@ -113,10 +113,10 @@ const ComparisonStatCard: React.FC<{ stat: ComparisonStat }> = ({ stat }) => {
   const displayChange = change === null ? 'N/A' : `${change > 0 ? '+' : ''}${change}%`;
 
   return (
-    <div className="flex items-center gap-2 text-xs">
-      <span className="text-slate-500 w-20">{period}:</span>
+    <div className="flex items-center gap-1 sm:gap-2 text-[9px] sm:text-xs">
+      <span className="text-slate-500 w-12 sm:w-16 md:w-20">{period}:</span>
       <div className={`flex items-center font-semibold ${color}`}>
-        <Icon className="w-3.5 h-3.5 mr-1" />
+        <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-0.5 sm:mr-1" />
         <span>{displayChange}</span>
       </div>
     </div>
@@ -275,16 +275,16 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
 
 
   return (
-    <motion.div variants={item} className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-      <div className="flex flex-col sm:flex-row items-center justify-between mb-6 gap-4">
-        <h3 className="text-white font-semibold text-base lg:text-lg">Günlük Akış Analizi</h3>
-        <div className="flex items-center gap-2 sm:gap-4 bg-slate-900/50 p-2 rounded-lg border border-slate-700">
-            <button onClick={handlePreviousDay} className="p-2 rounded-md hover:bg-slate-700" aria-label="Önceki Gün"><ChevronLeft className="w-5 h-5 text-slate-300" /></button>
+    <motion.div variants={item} className="bg-slate-800/50 backdrop-blur-xl p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+      <div className="flex flex-col sm:flex-row items-center justify-between mb-3 sm:mb-4 md:mb-6 gap-2 sm:gap-4">
+        <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg">Günlük Akış Analizi</h3>
+        <div className="flex items-center gap-1 sm:gap-2 md:gap-4 bg-slate-900/50 p-1.5 sm:p-2 rounded-lg border border-slate-700">
+            <button onClick={handlePreviousDay} className="p-1 sm:p-1.5 md:p-2 rounded-md hover:bg-slate-700" aria-label="Önceki Gün"><ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-slate-300" /></button>
             <div className="relative flex items-center">
-                <label htmlFor="date-picker" className="flex items-center cursor-pointer gap-2"><Calendar className="w-5 h-5 text-slate-400" /><span className="text-white font-medium text-center text-sm w-36 sm:w-auto">{isToday(selectedDate) ? "Bugün" : selectedDate.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })}</span></label>
+                <label htmlFor="date-picker" className="flex items-center cursor-pointer gap-1 sm:gap-2"><Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" /><span className="text-white font-medium text-center text-xs sm:text-sm w-28 sm:w-36 md:w-auto">{isToday(selectedDate) ? "Bugün" : selectedDate.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })}</span></label>
                 <input type="date" id="date-picker" value={formatDateForAPI(selectedDate)} max={formatDateForAPI(new Date())} onChange={handleDateInputChange} className="opacity-0 absolute inset-0 w-full h-full cursor-pointer" />
             </div>
-            <button onClick={handleNextDay} disabled={isToday(selectedDate)} className="p-2 rounded-md hover:bg-slate-700 disabled:opacity-50" aria-label="Sonraki Gün"><ChevronRight className="w-5 h-5 text-slate-300" /></button>
+            <button onClick={handleNextDay} disabled={isToday(selectedDate)} className="p-1 sm:p-1.5 md:p-2 rounded-md hover:bg-slate-700 disabled:opacity-50" aria-label="Sonraki Gün"><ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-300" /></button>
         </div>
       </div>
 
@@ -293,27 +293,27 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
       : !flowData || filteredHourlyData.length === 0 ? ( <div className="text-center py-10 text-slate-400 flex flex-col items-center"><BarChart3 className="w-12 h-12 mb-4" /><p className="font-semibold">Veri Bulunamadı</p><p className="text-sm">{selectedDate.toLocaleDateString()} için gösterilecek saat aralığında veri yok.</p></div> )
       : (
         <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-             <div className="bg-slate-700/30 p-4 rounded-lg flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
-                <div className="p-3 bg-green-500/20 rounded-full shrink-0"><UserPlus className="w-6 h-6 text-green-400"/></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6">
+             <div className="bg-slate-700/30 p-2 sm:p-3 md:p-4 rounded-lg flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 md:space-x-4">
+                <div className="p-2 sm:p-2.5 md:p-3 bg-green-500/20 rounded-full shrink-0"><UserPlus className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-green-400"/></div>
                 <div className="flex-grow">
-                    <p className="text-slate-400 text-sm">Giren Müşteri</p>
-                    <p className="text-white text-2xl font-bold">{displaySummary.total_entered}</p>
+                    <p className="text-slate-400 text-xs sm:text-sm">Giren Müşteri</p>
+                    <p className="text-white text-lg sm:text-xl md:text-2xl font-bold">{displaySummary.total_entered}</p>
                 </div>
                 {comparisonStats?.entered && (
-                    <div className="flex flex-col items-start sm:items-end gap-1 border-l border-slate-600 pl-4 w-full sm:w-auto">
+                    <div className="flex flex-col items-start sm:items-end gap-0.5 sm:gap-1 border-l border-slate-600 pl-2 sm:pl-3 md:pl-4 w-full sm:w-auto">
                         {comparisonStats.entered.map(stat => <ComparisonStatCard key={stat.period} stat={stat} />)}
                     </div>
                 )}
              </div>
-             <div className="bg-slate-700/30 p-4 rounded-lg flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
-                <div className="p-3 bg-red-500/20 rounded-full shrink-0"><UserMinus className="w-6 h-6 text-red-400"/></div>
+             <div className="bg-slate-700/30 p-2 sm:p-3 md:p-4 rounded-lg flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 md:space-x-4">
+                <div className="p-2 sm:p-2.5 md:p-3 bg-red-500/20 rounded-full shrink-0"><UserMinus className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-red-400"/></div>
                 <div className="flex-grow">
-                    <p className="text-slate-400 text-sm">Çıkan Müşteri</p>
-                    <p className="text-white text-2xl font-bold">{displaySummary.total_exited}</p>
+                    <p className="text-slate-400 text-xs sm:text-sm">Çıkan Müşteri</p>
+                    <p className="text-white text-lg sm:text-xl md:text-2xl font-bold">{displaySummary.total_exited}</p>
                 </div>
                 {comparisonStats?.exited && (
-                    <div className="flex flex-col items-start sm:items-end gap-1 border-l border-slate-600 pl-4 w-full sm:w-auto">
+                    <div className="flex flex-col items-start sm:items-end gap-0.5 sm:gap-1 border-l border-slate-600 pl-2 sm:pl-3 md:pl-4 w-full sm:w-auto">
                         {comparisonStats.exited.map(stat => <ComparisonStatCard key={stat.period} stat={stat} />)}
                     </div>
                 )}
@@ -321,23 +321,23 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
           </div>
 
           <div>
-              <div className="flex justify-between items-center mb-4">
-                <h4 className="text-white font-semibold">Saatlik Döküm (10:00 - 22:00)</h4>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 mb-3 sm:mb-4">
+                <h4 className="text-white font-semibold text-xs sm:text-sm md:text-base">Saatlik Döküm (10:00 - 22:00)</h4>
                 {isAdmin && hasChanges && (
-                    <div className="flex items-center gap-2">
-                        <button onClick={handleCancelChanges} className="flex items-center gap-1 text-sm px-3 py-1 rounded-md hover:bg-slate-700"><XCircle className="w-4 h-4 text-slate-300" /> <span className="text-slate-300">İptal</span></button>
-                        <button onClick={handleSaveChanges} disabled={isSaving} className="flex items-center gap-1 text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-md disabled:opacity-50">{isSaving ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} {isSaving ? 'Kaydediliyor' : 'Kaydet'}</button>
+                    <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                        <button onClick={handleCancelChanges} className="flex items-center gap-1 text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-md hover:bg-slate-700"><XCircle className="w-3 h-3 sm:w-4 sm:h-4 text-slate-300" /> <span className="hidden sm:inline text-slate-300">İptal</span></button>
+                        <button onClick={handleSaveChanges} disabled={isSaving} className="flex items-center gap-1 text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 px-2 sm:px-3 py-1 rounded-md disabled:opacity-50">{isSaving ? <RefreshCw className="w-3 h-3 sm:w-4 sm:h-4 animate-spin" /> : <Save className="w-3 h-3 sm:w-4 sm:h-4" />} <span className="hidden sm:inline">{isSaving ? 'Kaydediliyor' : 'Kaydet'}</span></button>
                     </div>
                 )}
               </div>
-              <div className="max-h-80 overflow-y-auto bg-slate-900/50 rounded-lg border border-slate-700">
-                <table className="w-full text-sm">
+              <div className="max-h-64 sm:max-h-80 overflow-y-auto overflow-x-auto bg-slate-900/50 rounded-lg border border-slate-700">
+                <table className="w-full text-[10px] sm:text-xs md:text-sm min-w-[500px] sm:min-w-0">
                     <thead className="sticky top-0 bg-slate-800 z-10">
                         <tr>
-                            <th className="text-left text-white py-3 px-4 font-medium"><Clock className="w-4 h-4 inline mr-2"/>Saat Aralığı</th>
-                            <th className="text-center text-white py-3 px-4 font-medium"><UserPlus className="w-4 h-4 inline mr-2 text-green-400"/>Giren</th>
-                            <th className="text-center text-white py-3 px-4 font-medium"><UserMinus className="w-4 h-4 inline mr-2 text-red-400"/>Çıkan</th>
-                            <th className="text-left text-white py-3 px-4 font-medium"><Thermometer className="w-4 h-4 inline mr-2 text-orange-400"/>Hava</th>
+                            <th className="text-left text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs whitespace-nowrap"><Clock className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2"/>Saat</th>
+                            <th className="text-center text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs whitespace-nowrap"><UserPlus className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2 text-green-400"/>Giren</th>
+                            <th className="text-center text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs whitespace-nowrap"><UserMinus className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2 text-red-400"/>Çıkan</th>
+                            <th className="text-left text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs hidden sm:table-cell whitespace-nowrap"><Thermometer className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2 text-orange-400"/>Hava</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-700/50">
@@ -368,29 +368,29 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
 
                             return (
                                 <tr key={hour} className={`hover:bg-slate-700/30 transition-colors ${isEdited ? 'bg-blue-900/30' : ''}`}>
-                                    <td className="py-2 px-4 text-white font-mono">{timeRange}</td>
-                                    <td className="py-2 px-4 text-center">
+                                    <td className="py-1.5 sm:py-2 px-2 sm:px-3 md:px-4 text-white font-mono text-[9px] sm:text-xs md:text-sm">{timeRange}</td>
+                                    <td className="py-1.5 sm:py-2 px-2 sm:px-3 md:px-4 text-center">
                                         <input
                                             type="text"
                                             value={currentEntering}
                                             onChange={(e) => handleDataChange(hour, 'entered', e.target.value)}
-                                            className="w-20 bg-slate-800 text-green-400 font-semibold text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed"
+                                            className="w-14 sm:w-16 md:w-20 bg-slate-800 text-green-400 font-semibold text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed text-[9px] sm:text-xs md:text-sm"
                                             disabled={isEditingDisabled} // GÜNCELLEME
                                             title={isEditingDisabled ? disabledTitle : "Giren müşteri sayısını düzenle"} // GÜNCELLEME
                                         />
                                     </td>
-                                    <td className="py-2 px-4 text-center">
+                                    <td className="py-1.5 sm:py-2 px-2 sm:px-3 md:px-4 text-center">
                                         <input
                                             type="text"
                                             value={currentExiting}
                                             onChange={(e) => handleDataChange(hour, 'exited', e.target.value)}
-                                            className="w-20 bg-slate-800 text-red-400 font-semibold text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed"
+                                            className="w-14 sm:w-16 md:w-20 bg-slate-800 text-red-400 font-semibold text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed text-[9px] sm:text-xs md:text-sm"
                                             disabled={isEditingDisabled} // GÜNCELLEME
                                             title={isEditingDisabled ? disabledTitle : "Çıkan müşteri sayısını düzenle"} // GÜNCELLEME
                                         />
                                     </td>
-                                    <td className="py-3 px-4 text-slate-300">
-                                        {weather ? (<div className="flex items-center gap-2">{weather.icon}<span>{`${weather.temp}°C, ${weather.description}`}</span></div>) : (<span>-</span>)}
+                                    <td className="py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 text-slate-300 text-[9px] sm:text-xs md:text-sm hidden sm:table-cell">
+                                        {weather ? (<div className="flex items-center gap-1 sm:gap-2">{weather.icon}<span>{`${weather.temp}°C, ${weather.description}`}</span></div>) : (<span>-</span>)}
                                     </td>
                                 </tr>
                             );

@@ -98,11 +98,11 @@ const ServiceHeartbeatIndicator: React.FC = () => {
         type="button"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className={`flex items-center space-x-2 px-3 py-2 rounded-lg border backdrop-blur-sm transition-all ${styles.button}`}
+        className={`flex items-center space-x-1.5 sm:space-x-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border backdrop-blur-sm transition-all text-xs sm:text-sm ${styles.button}`}
       >
         {styles.icon}
-        <span className="text-sm font-medium">{t('serviceHeartbeat.label')}</span>
-        <span className={`w-2 h-2 rounded-full ${styles.dot}`} />
+        <span className="font-medium hidden sm:inline">{t('serviceHeartbeat.label')}</span>
+        <span className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${styles.dot}`} />
       </motion.button>
     </div>
   );

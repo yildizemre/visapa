@@ -166,7 +166,7 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="p-6">
+      <div className="p-2 sm:p-3 md:p-4 lg:p-6">
         <div className="animate-pulse">
           <div className="h-8 bg-slate-700 rounded w-1/4 mb-4"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -178,102 +178,102 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="p-6">
-      <motion.div variants={container} initial="hidden" animate="show" className="space-y-6">
+    <div className="p-2 sm:p-3 md:p-4 lg:p-6">
+      <motion.div variants={container} initial="hidden" animate="show" className="space-y-3 sm:space-y-4 md:space-y-6">
         {/* GÜNCELLENDİ: Başlık bölümüne tarih aralığı eklendi */}
         <motion.div variants={item} className="flex flex-col xl:flex-row justify-between items-start xl:items-center space-y-4 xl:space-y-0">
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-white mb-2">{t('dashboard.title')}</h1>
-            <div className="flex items-center space-x-3">
-              <p className="text-sm sm:text-base text-slate-400">{t('dashboard.weeklyOverview')}</p>
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">{t('dashboard.title')}</h1>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 sm:space-x-3">
+              <p className="text-xs sm:text-sm md:text-base text-slate-400">{t('dashboard.weeklyOverview')}</p>
               {dateRange.start && dateRange.end && (
-                 <span className="text-xs sm:text-sm text-slate-500 bg-slate-800/60 px-2 py-1 rounded-md">
+                 <span className="text-xs text-slate-500 bg-slate-800/60 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md inline-block">
                    {formatDateForRange(dateRange.start)} - {formatDateForRange(dateRange.end)}
                  </span>
               )}
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <Calendar className="w-4 h-4 text-slate-400" />
-            <span className="text-slate-400 text-sm">{getFormattedDate()}</span>
+          <div className="hidden sm:flex items-center space-x-2">
+            <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-slate-400" />
+            <span className="text-slate-400 text-xs sm:text-sm">{getFormattedDate()}</span>
           </div>
         </motion.div>
 
-        <motion.div variants={item} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-2 bg-blue-600 rounded-lg"><TrendingUp className="w-5 h-5 text-white" /></div>
-              <span className="text-xs text-slate-400">Haftalık</span>
+        <motion.div variants={item} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+          <div className="bg-slate-800/50 backdrop-blur-xl p-2.5 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+            <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
+              <div className="p-1.5 sm:p-2 bg-blue-600 rounded-lg"><TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-white" /></div>
+              <span className="text-[10px] sm:text-xs text-slate-400">Haftalık</span>
             </div>
-            <h3 className="text-white font-semibold text-lg lg:text-xl mb-1">{dashboardData.weeklyStats.customersEntered.toLocaleString()}</h3>
-            <p className="text-slate-400 text-sm">{t('dashboard.customersEntered')}</p>
+            <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg lg:text-xl mb-0.5 sm:mb-1">{dashboardData.weeklyStats.customersEntered.toLocaleString()}</h3>
+            <p className="text-slate-400 text-xs sm:text-sm">{t('dashboard.customersEntered')}</p>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-2 bg-green-600 rounded-lg"><TrendingDown className="w-5 h-5 text-white" /></div>
-              <span className="text-xs text-slate-400">Haftalık</span>
+          <div className="bg-slate-800/50 backdrop-blur-xl p-2.5 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+            <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
+              <div className="p-1.5 sm:p-2 bg-green-600 rounded-lg"><TrendingDown className="w-4 h-4 sm:w-5 sm:h-5 text-white" /></div>
+              <span className="text-[10px] sm:text-xs text-slate-400">Haftalık</span>
             </div>
-            <h3 className="text-white font-semibold text-lg lg:text-xl mb-1">{dashboardData.weeklyStats.customersExited.toLocaleString()}</h3>
-            <p className="text-slate-400 text-sm">{t('dashboard.customersExited')}</p>
+            <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg lg:text-xl mb-0.5 sm:mb-1">{dashboardData.weeklyStats.customersExited.toLocaleString()}</h3>
+            <p className="text-slate-400 text-xs sm:text-sm">{t('dashboard.customersExited')}</p>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-2 bg-purple-600 rounded-lg"><Target className="w-5 h-5 text-white" /></div>
-              <span className="text-xs text-slate-400">En Yoğun Grup</span>
+          <div className="bg-slate-800/50 backdrop-blur-xl p-2.5 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+            <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
+              <div className="p-1.5 sm:p-2 bg-purple-600 rounded-lg"><Target className="w-4 h-4 sm:w-5 sm:h-5 text-white" /></div>
+              <span className="text-[10px] sm:text-xs text-slate-400">En Yoğun Grup</span>
             </div>
-            <h3 className="text-white font-semibold text-lg lg:text-xl mb-1">{dashboardData.weeklyStats.ageDistribution.mostDominantGroup}</h3>
-            <p className="text-slate-400 text-sm">{t('dashboard.ageDistribution')}</p>
+            <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg lg:text-xl mb-0.5 sm:mb-1">{dashboardData.weeklyStats.ageDistribution.mostDominantGroup}</h3>
+            <p className="text-slate-400 text-xs sm:text-sm">{t('dashboard.ageDistribution')}</p>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-2 bg-pink-600 rounded-lg"><UserCheck className="w-5 h-5 text-white" /></div>
-              <span className="text-xs text-slate-400">Haftalık</span>
+          <div className="bg-slate-800/50 backdrop-blur-xl p-2.5 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+            <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
+              <div className="p-1.5 sm:p-2 bg-pink-600 rounded-lg"><UserCheck className="w-4 h-4 sm:w-5 sm:h-5 text-white" /></div>
+              <span className="text-[10px] sm:text-xs text-slate-400">Haftalık</span>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
               <div>
-                <h3 className="text-white font-semibold text-lg">{dashboardData.weeklyStats.genderDistribution.male.toLocaleString()}</h3>
-                <p className="text-slate-400 text-sm">{t('chart.male')}</p>
+                <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg">{dashboardData.weeklyStats.genderDistribution.male.toLocaleString()}</h3>
+                <p className="text-slate-400 text-xs sm:text-sm">{t('chart.male')}</p>
               </div>
               <div>
-                <h3 className="text-white font-semibold text-lg">{dashboardData.weeklyStats.genderDistribution.female.toLocaleString()}</h3>
-                <p className="text-slate-400 text-sm">{t('chart.female')}</p>
+                <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg">{dashboardData.weeklyStats.genderDistribution.female.toLocaleString()}</h3>
+                <p className="text-slate-400 text-xs sm:text-sm">{t('chart.female')}</p>
               </div>
             </div>
           </div>
         </motion.div>
 
-        <motion.div variants={item} className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-2 bg-orange-600 rounded-lg"><Clock className="w-5 h-5 text-white" /></div>
-              <span className="text-xs text-slate-400">Haftalık Ortalama</span>
+        <motion.div variants={item} className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+          <div className="bg-slate-800/50 backdrop-blur-xl p-2.5 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+            <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
+              <div className="p-1.5 sm:p-2 bg-orange-600 rounded-lg"><Clock className="w-4 h-4 sm:w-5 sm:h-5 text-white" /></div>
+              <span className="text-[10px] sm:text-xs text-slate-400">Haftalık Ortalama</span>
             </div>
-            <h3 className="text-white font-semibold text-lg lg:text-xl mb-1">
+            <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg lg:text-xl mb-0.5 sm:mb-1">
               {formatSecondsToMinutes(dashboardData.weeklyStats.avgQueueTime)} dk
             </h3>
-            <p className="text-slate-400 text-sm">{t('dashboard.avgQueueTime')}</p>
+            <p className="text-slate-400 text-xs sm:text-sm">{t('dashboard.avgQueueTime')}</p>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-2 bg-teal-600 rounded-lg"><ShoppingCart className="w-5 h-5 text-white" /></div>
-              <span className="text-xs text-slate-400">Haftanın Lideri</span>
+          <div className="bg-slate-800/50 backdrop-blur-xl p-2.5 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+            <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
+              <div className="p-1.5 sm:p-2 bg-teal-600 rounded-lg"><ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 text-white" /></div>
+              <span className="text-[10px] sm:text-xs text-slate-400">Haftanın Lideri</span>
             </div>
-            <h3 className="text-white font-semibold text-lg mb-1">{dashboardData.weeklyStats.busiestCashier.name}</h3>
-            <p className="text-slate-400 text-sm">
+            <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1">{dashboardData.weeklyStats.busiestCashier.name}</h3>
+            <p className="text-slate-400 text-xs sm:text-sm">
                 {dashboardData.weeklyStats.busiestCashier.weeklyCustomers.toLocaleString()} {t('dashboard.weeklyCustomers')} - 
                 Ort. {formatSecondsToMinutes(dashboardData.weeklyStats.busiestCashier.avgWaitTime)} dk
             </p>
           </div>
         </motion.div>
         
-        <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-            <h3 className="text-white font-semibold text-base lg:text-lg mb-4">{t('dashboard.dailyCustomerFlowTrend')}</h3>
-            <ResponsiveContainer width="100%" height={300}>
+        <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+          <div className="bg-slate-800/50 backdrop-blur-xl p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+            <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4">{t('dashboard.dailyCustomerFlowTrend')}</h3>
+            <ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]">
               <ComposedChart data={dashboardData.dailyCustomerFlow}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="date" stroke="#9CA3AF" fontSize={12} />
-                <YAxis stroke="#9CA3AF" fontSize={12} />
+                <XAxis dataKey="date" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" />
+                <YAxis stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" />
                 <Tooltip contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }} />
                 <Legend />
                 {/* DÜZELTME: dataKey'ler backend'den gelen doğru isimlerle değiştirildi. */}
@@ -282,13 +282,13 @@ const Dashboard = () => {
               </ComposedChart>
             </ResponsiveContainer>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-            <h3 className="text-white font-semibold text-base lg:text-lg mb-4">{t('dashboard.dailyGenderDistribution')}</h3>
-            <ResponsiveContainer width="100%" height={300}>
+          <div className="bg-slate-800/50 backdrop-blur-xl p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+            <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4">{t('dashboard.dailyGenderDistribution')}</h3>
+            <ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]">
               <BarChart data={dashboardData.dailyGenderChartData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="date" stroke="#9CA3AF" fontSize={12} />
-                <YAxis stroke="#9CA3AF" fontSize={12} />
+                <XAxis dataKey="date" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" />
+                <YAxis stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" />
                 <Tooltip contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }} />
                 <Legend />
                 <Bar dataKey="male" fill={chartColors.primary} name={t('chart.male')} />
@@ -296,9 +296,9 @@ const Dashboard = () => {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-            <h3 className="text-white font-semibold text-base lg:text-lg mb-4">{t('dashboard.dailyAgeDistribution')}</h3>
-            <ResponsiveContainer width="100%" height={300}>
+          <div className="bg-slate-800/50 backdrop-blur-xl p-3 sm:p-4 lg:p-6 rounded-xl border border-slate-700/50">
+            <h3 className="text-white font-semibold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4">{t('dashboard.dailyAgeDistribution')}</h3>
+            <ResponsiveContainer width="100%" height={250} className="sm:h-[300px]">
                <BarChart data={dashboardData.dailyAgeChartData}>
                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                  <XAxis dataKey="date" stroke="#9CA3AF" fontSize={12} />

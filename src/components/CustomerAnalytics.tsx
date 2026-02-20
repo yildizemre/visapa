@@ -125,15 +125,15 @@ const CustomerAnalytics = () => {
   const item = { hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } };
 
   return (
-    <div className="p-6 min-h-screen bg-slate-900">
-      <motion.div variants={container} initial="hidden" animate="show" className="space-y-6">
+    <div className="p-2 sm:p-3 md:p-4 lg:p-6 bg-slate-900">
+      <motion.div variants={container} initial="hidden" animate="show" className="space-y-3 sm:space-y-4 md:space-y-6">
         {/* Header ve Kamera Filtresi */}
         <motion.div variants={item} className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-white mb-2">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
               {t('analytics.title')}
             </h1>
-            <p className="text-sm sm:text-base text-slate-400">
+            <p className="text-xs sm:text-sm md:text-base text-slate-400">
               {t('analytics.subtitle')}
             </p>
           </div>
@@ -172,11 +172,11 @@ const CustomerAnalytics = () => {
             </div>
         ) : (
           <>
-            <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
-              <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-                <h3 className="text-white font-semibold text-base lg:text-lg mb-4">{t('analytics.ageDistribution')}</h3>
+            <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+              <div className="bg-slate-800/50 backdrop-blur-xl p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+                <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4">{t('analytics.ageDistribution')}</h3>
                 {(analyticsData.demographics?.ageGroupsChart ?? []).reduce((sum, item) => sum + (item?.value ?? 0), 0) > 0 ? (
-                  <ResponsiveContainer width="100%" height={300}>
+                  <ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]">
                     <RechartsPieChart>
                       <Pie
                         data={analyticsData.demographics?.ageGroupsChart ?? []}
@@ -206,10 +206,10 @@ const CustomerAnalytics = () => {
                 )}
               </div>
 
-              <div className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-                <h3 className="text-white font-semibold text-base lg:text-lg mb-4">{t('analytics.genderDistribution')}</h3>
+              <div className="bg-slate-800/50 backdrop-blur-xl p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+                <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4">{t('analytics.genderDistribution')}</h3>
                  {(analyticsData.demographics?.genderDistributionChart ?? []).reduce((sum, item) => sum + (item?.value ?? 0), 0) > 0 ? (
-                    <ResponsiveContainer width="100%" height={300}>
+                    <ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]">
                         <BarChart data={analyticsData.demographics?.genderDistributionChart ?? []} layout="vertical">
                             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                             <XAxis type="number" stroke="#9CA3AF" />
@@ -226,16 +226,16 @@ const CustomerAnalytics = () => {
               </div>
             </motion.div>
 
-            <motion.div variants={item} className="bg-slate-800/50 backdrop-blur-xl p-4 lg:p-6 rounded-xl border border-slate-700/50">
-              <h3 className="text-white font-semibold text-base lg:text-lg mb-4">
+            <motion.div variants={item} className="bg-slate-800/50 backdrop-blur-xl p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
+              <h3 className="text-white font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base mb-2 sm:mb-3 md:mb-4">
                 {selectedDate.toLocaleDateString('tr-TR')} Tarihli Saatlik Müşteri Akışı (10:00 - 22:00)
               </h3>
-              <ResponsiveContainer width="100%" height={400}>
+              <ResponsiveContainer width="100%" height={250} className="sm:h-[300px] md:h-[350px] lg:h-[400px]">
                 {/* GÜNCELLEME: Grafik verisi filtrelenmiş analyticsData.hourlyCustomerFlow'dan besleniyor */}
                 <ComposedChart data={analyticsData.hourlyCustomerFlow ?? []}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                  <XAxis dataKey="hour" stroke="#9CA3AF" fontSize={12} tickFormatter={(hour) => formatTimeToUTC3(hour)} />
-                  <YAxis stroke="#9CA3AF" fontSize={12} />
+                  <XAxis dataKey="hour" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" tickFormatter={(hour) => formatTimeToUTC3(hour)} />
+                  <YAxis stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" />
                   <Tooltip
                     contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }}
                     labelFormatter={(label) => `Saat: ${formatTimeToUTC3(label)}`}

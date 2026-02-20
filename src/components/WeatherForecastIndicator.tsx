@@ -55,7 +55,7 @@ const WeatherForecastIndicator: React.FC = () => {
 
   return (
     <div
-      className="fixed bottom-16 right-4 z-50" // HealthStatusIndicator'ın hemen üstünde
+      className="fixed bottom-14 sm:bottom-16 right-2 sm:right-4 z-50" // HealthStatusIndicator'ın hemen üstünde
       onMouseEnter={() => setIsTooltipVisible(true)}
       onMouseLeave={() => setIsTooltipVisible(false)}
     >
@@ -79,11 +79,14 @@ const WeatherForecastIndicator: React.FC = () => {
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg border backdrop-blur-sm transition-all bg-blue-500/10 border-blue-500/30 text-blue-300 hover:bg-blue-500/20"
+        className="flex items-center space-x-1.5 sm:space-x-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border backdrop-blur-sm transition-all bg-blue-500/10 border-blue-500/30 text-blue-300 hover:bg-blue-500/20 text-xs sm:text-sm"
       >
-        <CloudRain className="w-4 h-4" />
-        <span className="text-sm font-medium">
+        <CloudRain className="w-3 h-3 sm:w-4 sm:h-4" />
+        <span className="font-medium hidden sm:inline">
           Yakın Tarihli Yağış: {formatDate(forecast.nextRainyDay)}
+        </span>
+        <span className="font-medium sm:hidden">
+          Yağış: {formatDate(forecast.nextRainyDay)}
         </span>
       </motion.button>
     </div>
