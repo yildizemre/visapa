@@ -120,8 +120,12 @@ const Chat: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
       });
       const data = await res.json();
+      const msg =
+        (data.response && String(data.response).trim()) ||
+        data.error ||
+        data.msg; // backend/JWT hata mesajı
       const assistantContent =
-        data.response ?? (res.ok ? '' : 'Yanıt alınamadı. Lütfen tekrar deneyin.');
+        msg || (res.ok ? '' : 'Yanıt alınamadı. Lütfen tekrar deneyin.');
 
       setMessages((prev) => [...prev, { role: 'assistant', content: assistantContent }]);
 

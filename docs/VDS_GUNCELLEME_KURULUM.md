@@ -143,6 +143,61 @@ sudo systemctl status vislivis-backend
 
 ---
 
+## 2.6 Ollama (LLM / Sohbet) – Ubuntu’da Kurulum
+
+Paneldeki **Sohbet (AI)** özelliği yerel bir LLM kullanır: **Ollama** + **qwen2.5:3b**. Backend varsayılan olarak `http://localhost:11434` adresine istek atar. Ubuntu’da yapman gerekenler:
+
+### Ollama’yı kur
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+Kurulumdan sonra Ollama servisi genelde otomatik başlar. Kontrol:
+
+```bash
+curl -s http://localhost:11434/api/tags
+```
+
+Boş liste `[]` veya model listesi dönerse Ollama ayakta demektir.
+
+### Modeli indir
+
+Panelde kullanılan model **qwen2.5:3b** (hafif, 8 GB RAM’li sunucuda da çalışabilir):
+
+```bash
+ollama pull qwen2.5:3b
+```
+
+İndirme bitince test:
+
+```bash
+ollama run qwen2.5:3b "Merhaba"
+```
+
+### Servisin açılışta başlaması
+
+Ollama kurulumu çoğu dağıtımda systemd servisi ekler. Açılışta çalışsın istiyorsan:
+
+```bash
+sudo systemctl enable ollama
+sudo systemctl start ollama
+sudo systemctl status ollama
+```
+
+### Backend’in Ollama’yı bulması
+
+Backend varsayılanla `http://localhost:11434` ve `qwen2.5:3b` kullanır. Farklı makine/port kullanacaksan `.env` dosyasına ekle:
+
+```env
+OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_MODEL=qwen2.5:3b
+```
+
+Ollama kapalıysa veya model yoksa sohbet ekranında “Ollama’ya bağlanılamıyor” / “Model bulunamadı” benzeri mesaj çıkar; yukarıdaki adımları tamamlaman yeterli.
+
+---
+
 ## 3. Frontend (Vite/React) Build ve Nginx
 
 ### 3.1 Build

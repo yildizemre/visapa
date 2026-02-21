@@ -111,15 +111,15 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
   });
 
   return (
-    <div className="flex h-full bg-slate-900 overflow-hidden">
-      {/* Sidebar */}
+    <div className="flex h-full min-h-0 flex-1 bg-slate-900 overflow-hidden">
+      {/* Sidebar - min-h-0 ile taşmayı önleyip nav scroll çalışsın */}
       <motion.div
-        animate={{ width: isCollapsed ? 80 : 280 }}
+        animate={{ width: isCollapsed ? 80 : 300 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className="bg-slate-800/80 backdrop-blur-xl border-r border-slate-700/50 relative z-10 lg:block hidden"
+        className="h-full min-h-0 flex-shrink-0 flex flex-col bg-slate-800/80 backdrop-blur-xl border-r border-slate-700/50 relative z-10 lg:flex hidden overflow-hidden"
       >
-        {/* Logo */}
-        <div className="flex items-center justify-between p-6 border-b border-slate-700/50">
+        {/* Logo - sabit üst */}
+        <div className="flex-shrink-0 flex items-center justify-between px-6 py-5 border-b border-slate-700/50">
           <motion.div
             animate={{ opacity: isCollapsed ? 0 : 1 }}
             className="flex items-center min-w-0"
@@ -142,8 +142,8 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
           </button>
         </div>
 
-        {/* Navigation */}
-        <nav className="p-4 space-y-2">
+        {/* Navigation - scroll; scrollbar her zaman görünsün */}
+        <nav className="flex-1 min-h-0 overflow-y-scroll overflow-x-hidden px-5 py-5 pb-4 space-y-2.5">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
@@ -154,29 +154,29 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                 onClick={() => navigate(item.path)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
+                className={`w-full flex items-center gap-4 px-5 py-3.5 rounded-xl transition-all text-left ${
                   isActive
                     ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 text-blue-400'
                     : 'text-slate-300 hover:bg-slate-700/50 hover:text-white'
                 }`}
               >
-                <Icon className="w-5 h-5" />
-                {!isCollapsed && <span className="font-medium">{item.label}</span>}
+                <Icon className="w-5 h-5 flex-shrink-0" />
+                {!isCollapsed && <span className="font-medium text-sm leading-snug">{item.label}</span>}
               </motion.button>
             );
           })}
         </nav>
 
-        {/* Logout */}
-        <div className="absolute bottom-4 left-4 right-4">
+        {/* Çıkış Yap - her zaman altta görünür, scroll dışında */}
+        <div className="flex-shrink-0 border-t border-slate-700/60 bg-slate-800/90 px-5 pt-4 pb-5">
           <motion.button
             onClick={onLogout}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-500/10 transition-all"
+            className="w-full flex items-center gap-4 px-5 py-3.5 rounded-xl text-red-400 hover:bg-red-500/10 transition-all text-left"
           >
-            <LogOut className="w-5 h-5" />
-            {!isCollapsed && <span className="font-medium">{t('nav.logout')}</span>}
+            <LogOut className="w-5 h-5 flex-shrink-0" />
+            {!isCollapsed && <span className="font-medium text-sm">{t('nav.logout')}</span>}
           </motion.button>
         </div>
       </motion.div>
@@ -186,10 +186,10 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
         initial={false}
         animate={{ x: isCollapsed ? '-100%' : 0 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className="lg:hidden fixed inset-y-0 left-0 z-50 w-[280px] bg-slate-800/95 backdrop-blur-xl border-r border-slate-700/50"
+        className="lg:hidden fixed inset-y-0 left-0 z-50 w-[300px] h-full flex flex-col overflow-hidden bg-slate-800/95 backdrop-blur-xl border-r border-slate-700/50"
       >
         {/* Logo */}
-        <div className="flex items-center justify-between p-6 border-b border-slate-700/50">
+        <div className="flex-shrink-0 flex items-center justify-between px-6 py-5 border-b border-slate-700/50">
           <img
             src="/camera_feeds/vislivis_logo_web.png"
             alt="VISLIVIS"
@@ -203,8 +203,8 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
           </button>
         </div>
 
-        {/* Navigation */}
-        <nav className="p-4 space-y-2">
+        {/* Navigation - scroll */}
+        <nav className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-5 py-5 pb-4 space-y-2.5">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
@@ -218,29 +218,29 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
+                className={`w-full flex items-center gap-4 px-5 py-3.5 rounded-xl transition-all text-left ${
                   isActive
                     ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 text-blue-400'
                     : 'text-slate-300 hover:bg-slate-700/50 hover:text-white'
                 }`}
               >
-                <Icon className="w-5 h-5" />
-                <span className="font-medium">{item.label}</span>
+                <Icon className="w-5 h-5 flex-shrink-0" />
+                <span className="font-medium text-sm leading-snug">{item.label}</span>
               </motion.button>
             );
           })}
         </nav>
 
-        {/* Logout */}
-        <div className="absolute bottom-4 left-4 right-4">
+        {/* Çıkış Yap - altta sabit */}
+        <div className="flex-shrink-0 border-t border-slate-700/60 bg-slate-800/95 px-5 pt-4 pb-5">
           <motion.button
             onClick={onLogout}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-500/10 transition-all"
+            className="w-full flex items-center gap-4 px-5 py-3.5 rounded-xl text-red-400 hover:bg-red-500/10 transition-all text-left"
           >
-            <LogOut className="w-5 h-5" />
-            <span className="font-medium">{t('nav.logout')}</span>
+            <LogOut className="w-5 h-5 flex-shrink-0" />
+            <span className="font-medium text-sm">{t('nav.logout')}</span>
           </motion.button>
         </div>
       </motion.div>
@@ -254,7 +254,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
       )}
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 min-h-0 flex flex-col">
         {/* Header */}
         <header className="bg-slate-800/50 backdrop-blur-xl border-b border-slate-700/50 p-2 sm:p-3 md:p-4 lg:p-6">
           <div className="flex items-center justify-between">

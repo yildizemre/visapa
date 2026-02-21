@@ -282,7 +282,21 @@ const QueueAnalysis = () => {
 
         <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
           <ChartCard title={t('queue.hourlyChart')}><ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]"><ComposedChart data={filteredAndShiftedDailyData}><CartesianGrid strokeDasharray="3 3" stroke="#374151" /><XAxis dataKey="hour" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" tickFormatter={(hour) => `${hour}:00`}/><YAxis yAxisId="left" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" /><YAxis yAxisId="right" orientation="right" stroke={chartColors.accent} fontSize={9} className="sm:text-[10px] md:text-xs" /><Tooltip contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Wait")) ? formatWaitTime(value) : value} /><Legend /><Bar yAxisId="left" dataKey="totalCustomers" fill={chartColors.primary} name={t('queue.customerCount')} /><Line yAxisId="right" type="monotone" dataKey="avgWaitTime" stroke={chartColors.accent} strokeWidth={2} name={t('queue.avgWaitSec')} /></ComposedChart></ResponsiveContainer></ChartCard>
-          <ChartCard title={t('queue.waitDistribution')}><ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]"><BarChart data={dailyData?.waitTimeDistribution}><CartesianGrid strokeDasharray="3 3" stroke="#374151" /><XAxis dataKey="range" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" /><YAxis stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" allowDecimals={false} /><Tooltip contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }} /><Bar dataKey="count" fill={chartColors.purple} name={t('queue.customerCount')} /></BarChart></ResponsiveContainer></ChartCard>
+          <ChartCard title={t('queue.waitDistribution')}>
+            {(dailyData?.waitTimeDistribution?.length && dailyData.waitTimeDistribution.some((d: WaitTimeDistribution) => (d?.count ?? 0) > 0)) ? (
+              <ResponsiveContainer width="100%" height={240}>
+                <BarChart data={dailyData.waitTimeDistribution} margin={{ top: 8, right: 8, left: 8, bottom: 8 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                  <XAxis dataKey="range" stroke="#94A3B8" fontSize={10} tick={{ fill: '#94A3B8' }} />
+                  <YAxis stroke="#94A3B8" fontSize={10} allowDecimals={false} tick={{ fill: '#94A3B8' }} />
+                  <Tooltip contentStyle={{ backgroundColor: '#1E293B', border: '1px solid #475569', borderRadius: '8px' }} formatter={(value: number) => [value, t('queue.customerCount')]} />
+                  <Bar dataKey="count" fill={chartColors.purple} name={t('queue.customerCount')} radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex items-center justify-center h-[240px] text-slate-500 text-sm">{t('queue.noData')}</div>
+            )}
+          </ChartCard>
         </motion.div>
 
         <motion.div><ChartCard title={t('queue.cashierPerformance')}><ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]"><BarChart data={dailyData?.cashierPerformance} layout="vertical" margin={{ top: 5, right: 15, left: 15, bottom: 5 }}><CartesianGrid strokeDasharray="3 3" stroke="#374151" /><XAxis type="number" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" /><YAxis type="category" dataKey="cashier" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" width={50} /><Tooltip contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Wait")) ? formatWaitTime(value) : value} /><Legend /><Bar dataKey="totalCustomers" fill={chartColors.primary} name={t('queue.totalCustomers')} /><Bar dataKey="avgWait" fill={chartColors.secondary} name={t('queue.avgWait')} /></BarChart></ResponsiveContainer></ChartCard></motion.div>

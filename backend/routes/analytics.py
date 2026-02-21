@@ -337,10 +337,28 @@ def queues_daily_summary():
         for c, v in sorted(by_cashier.items())
     ]
 
+    # Bekleme süresi dağılımı (saniye → aralık): 0-1 dk, 1-2 dk, 2-3 dk, 3-5 dk, 5+ dk
+    buckets = [
+        (0, 60, '0-1 dk'),
+        (60, 120, '1-2 dk'),
+        (120, 180, '2-3 dk'),
+        (180, 300, '3-5 dk'),
+        (300, float('inf'), '5+ dk'),
+    ]
+    dist_counts = defaultdict(int)
+    for r in rows:
+        wt = r.wait_time or 0
+        cnt = getattr(r, 'total_customers', 1) or 1
+        for lo, hi, label in buckets:
+            if lo <= wt < hi:
+                dist_counts[label] += cnt
+                break
+    wait_time_distribution = [{'range': label, 'count': dist_counts[label]} for _, _, label in buckets]
+
     return {
         'overallStats': {'totalCustomers': total_cust, 'avgWaitTime': avg_wait, 'maxWaitTime': max((r.wait_time or 0) for r in rows) if rows else 0},
         'hourlySummary': hourly,
-        'waitTimeDistribution': [],
+        'waitTimeDistribution': wait_time_distribution,
         'cashierPerformance': cashier_perf,
         'allCashiers': all_cashiers,
         'availableCashiers': all_cashiers,

@@ -176,31 +176,48 @@ const CustomerAnalytics = () => {
               <div className="bg-slate-800/50 backdrop-blur-xl p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl border border-slate-700/50">
                 <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4">{t('analytics.ageDistribution')}</h3>
                 {(analyticsData.demographics?.ageGroupsChart ?? []).reduce((sum, item) => sum + (item?.value ?? 0), 0) > 0 ? (
-                  <ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]">
-                    <RechartsPieChart>
+                  <ResponsiveContainer width="100%" height={280}>
+                    <RechartsPieChart margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
                       <Pie
                         data={analyticsData.demographics?.ageGroupsChart ?? []}
                         cx="50%"
                         cy="50%"
-                        labelLine={false}
-                        label={({ name, value, percent }) => `${name}: ${((percent ?? 0) * 100).toFixed(0)}%`}
-                        outerRadius={100}
-                        fill="#8884d8"
+                        innerRadius="52%"
+                        outerRadius="78%"
+                        paddingAngle={2}
+                        stroke="rgba(15, 23, 42, 0.6)"
+                        strokeWidth={1.5}
                         dataKey="value"
+                        labelLine={false}
+                        label={false}
                       >
                         {(analyticsData.demographics?.ageGroupsChart ?? []).map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />
                         ))}
                       </Pie>
                       <Tooltip
-                          contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }}
-                          formatter={(value: number, name: string) => [value, name]}
+                        contentStyle={{ backgroundColor: '#1E293B', border: '1px solid #475569', borderRadius: '8px' }}
+                        formatter={(value: number, name: string) => {
+                          const total = (analyticsData.demographics?.ageGroupsChart ?? []).reduce((s, i) => s + (i?.value ?? 0), 0);
+                          const pct = total > 0 ? ((Number(value) / total) * 100).toFixed(1) : '0';
+                          return [`${value} kişi (${pct}%)`, name];
+                        }}
                       />
-                      <Legend />
+                      <Legend
+                        layout="horizontal"
+                        align="center"
+                        verticalAlign="bottom"
+                        formatter={(value, entry) => {
+                          const total = (analyticsData.demographics?.ageGroupsChart ?? []).reduce((s, i) => s + (i?.value ?? 0), 0);
+                          const item = (analyticsData.demographics?.ageGroupsChart ?? []).find((i: { name: string }) => i.name === value);
+                          const pct = item && total > 0 ? ((item.value / total) * 100).toFixed(0) : '0';
+                          return <span className="text-slate-300 text-sm">{value} ({pct}%)</span>;
+                        }}
+                      />
                     </RechartsPieChart>
                   </ResponsiveContainer>
                 ) : (
-                  <div className="flex items-center justify-center h-[300px] text-slate-500">
+                  <div className="flex items-center justify-center h-[280px] text-slate-500">
                     <PieChartIcon className="w-8 h-8 mr-2"/> Veri yok
                   </div>
                 )}

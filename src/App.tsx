@@ -34,7 +34,7 @@ function App() {
   return (
     <LanguageProvider>
       <Router>
-        <div className="h-screen bg-slate-900 overflow-hidden">
+        <div className="h-screen min-h-0 flex flex-col bg-slate-900 overflow-hidden">
           <AnimatePresence mode="wait">
             {!isAuthenticated ? (
               <LoginPage onLogin={() => setIsAuthenticated(true)} />
