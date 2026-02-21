@@ -15,6 +15,7 @@ import SelectDropdown from '../components/SelectDropdown';
 import { apiFetch } from '../lib/api';
 import { useStoreChange } from '../hooks/useStoreChange';
 import Header from '../components/Header';
+import LoadingOverlay from '../components/LoadingOverlay';
 import { PieChart, BarChart, LineChart } from 'react-native-chart-kit';
 
 const screenWidth = Dimensions.get('window').width;
@@ -154,6 +155,15 @@ const CustomerAnalytics: React.FC<CustomerAnalyticsProps> = ({ onLogout }) => {
   const hourlyEntering = analyticsData.hourlyCustomerFlow.map((item) => item.entering || 0);
   const hourlyExiting = analyticsData.hourlyCustomerFlow.map((item) => item.exiting || 0);
 
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <Header title={t('nav.customerAnalytics')} onLogout={onLogout} />
+        <LoadingOverlay message={t('common.loading')} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Header title={t('nav.customerAnalytics')} onLogout={onLogout} />
@@ -175,12 +185,7 @@ const CustomerAnalytics: React.FC<CustomerAnalyticsProps> = ({ onLogout }) => {
             />
           </View>
 
-          {loading ? (
-            <View style={styles.loadingContainer}>
-              <ActivityIndicator size="large" color="#3B82F6" />
-              <Text style={styles.loadingText}>{t('common.loading')}</Text>
-            </View>
-          ) : error ? (
+          {error ? (
             <View style={styles.errorContainer}>
               <AlertCircle size={48} color="#EF4444" />
               <Text style={styles.errorTitle}>Hata Oluştu</Text>

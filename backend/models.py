@@ -156,3 +156,68 @@ class Report(db.Model):
     date_to = db.Column(db.Date)
     description = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+class Conversation(db.Model):
+    """Sohbet oturumu (ChatGPT tarzı liste için)."""
+    __tablename__ = 'conversations'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    title = db.Column(db.String(200), default='Sohbet')
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+            'updated_at': self.updated_at.isoformat() if self.updated_at else None,
+        }
+
+
+class ChatMessage(db.Model):
+    """Kullanıcı–asistan sohbet geçmişi (LLM). conversation_id ile oturuma bağlı."""
+    __tablename__ = 'chat_messages'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    conversation_id = db.Column(db.Integer, db.ForeignKey('conversations.id'), nullable=True)
+    role = db.Column(db.String(20), nullable=False)  # 'user' | 'assistant'
+    content = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'role': self.role,
+            'content': self.content,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+        }
+
+
+class ActivityLog(db.Model):
+    """Panel aktivite logları: giriş, sayfa görüntüleme, sohbet, hatalar. Sohbet içeriği burada tutulmaz."""
+    __tablename__ = 'activity_logs'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)  # null = login_fail vb.
+    type = db.Column(db.String(40), nullable=False)  # login_ok, login_fail, logout, page_view, chat_message, error
+    ip = db.Column(db.String(64), nullable=True)
+    user_agent = db.Column(db.String(512), nullable=True)
+    method = db.Column(db.String(10), nullable=True)
+    path = db.Column(db.String(256), nullable=True)
+    extra = db.Column(db.Text, nullable=True)  # JSON: route, conversation_id, status_code, message, vb.
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def to_dict(self):
+        import json
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'type': self.type,
+            'ip': self.ip,
+            'user_agent': self.user_agent,
+            'method': self.method,
+            'path': self.path,
+            'extra': json.loads(self.extra) if self.extra else None,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+        }

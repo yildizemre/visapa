@@ -2,16 +2,18 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jwt
 
 from models import db, User, ManagedStore
+from activity_logger import log_activity
 
 auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     username_or_email = data.get('username') or data.get('email')
     password = data.get('password')
 
     if not username_or_email or not password:
+        log_activity('login_fail', user_id=None, extra={'reason': 'missing_credentials'})
         return jsonify({'error': 'Kullanıcı adı/email ve şifre gerekli'}), 400
 
     user = User.query.filter(
@@ -19,10 +21,14 @@ def login():
     ).first()
 
     if not user or not user.check_password(password):
+        log_activity('login_fail', user_id=None, extra={'username_attempt': username_or_email})
         return jsonify({'error': 'Geçersiz kullanıcı adı veya şifre'}), 401
 
     if not user.is_active:
+        log_activity('login_fail', user_id=user.id, extra={'reason': 'account_inactive'})
         return jsonify({'error': 'Hesap devre dışı'}), 403
+
+    log_activity('login_ok', user_id=user.id, extra={'username': user.username, 'role': user.role})
 
     access_token = create_access_token(
         identity=user.id,

@@ -10,6 +10,7 @@ import {
   ScrollView,
   ActivityIndicator,
   Image,
+  useWindowDimensions,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Eye, EyeOff, AlertCircle } from 'lucide-react-native';
@@ -23,12 +24,17 @@ interface LoginPageProps {
 }
 
 const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
+  const { width: windowWidth } = useWindowDimensions();
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState('');
   const { t } = useLanguage();
+
+  const logoWidth = Math.min(160, windowWidth * 0.5);
+  const logoHeight = logoWidth / 2;
+  const cardPadding = Math.max(20, Math.min(24, windowWidth * 0.05));
 
   const clearError = () => setLoginError('');
 
@@ -88,10 +94,10 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           <LanguageToggle />
         </View>
 
-        <View style={styles.card}>
+        <View style={[styles.card, { padding: cardPadding }]}>
           <Image
             source={require('../../vislivis_logo.png')}
-            style={styles.logo}
+            style={[styles.logo, { width: logoWidth, height: logoHeight }]}
             resizeMode="contain"
           />
           <Text style={styles.title}>{t('login.title')}</Text>
@@ -170,24 +176,24 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     justifyContent: 'center',
-    padding: 20,
+    padding: 16,
   },
   languageToggle: {
     position: 'absolute',
     top: 50,
-    right: 20,
+    right: 16,
     zIndex: 10,
   },
   card: {
     backgroundColor: '#1e293b',
     borderRadius: 16,
-    padding: 24,
     borderWidth: 1,
     borderColor: '#334155',
+    width: '100%',
+    maxWidth: 400,
+    alignSelf: 'center',
   },
   logo: {
-    width: 160,
-    height: 80,
     alignSelf: 'center',
     marginBottom: 16,
   },

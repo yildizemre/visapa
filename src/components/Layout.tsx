@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import { apiFetch } from '../lib/api';
 import LanguageToggle from './LanguageToggle';
 import HealthStatusIndicator from './HealthStatusIndicator';
 import ServiceHeartbeatIndicator from './ServiceHeartbeatIndicator';
@@ -21,6 +22,8 @@ import {
   Calendar,
   BarChart3,
   Shield,
+  MessageCircle,
+  FileText,
 } from 'lucide-react';
 
 interface LayoutProps {
@@ -65,6 +68,21 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
     }
   }, []);
 
+  // Sayfa görüntüleme logu (ekranda kaçta girdi)
+  React.useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token || !location.pathname) return;
+    apiFetch('/api/log/page-view', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        route: location.pathname,
+        title: document.title,
+        entered_at: new Date().toISOString(),
+      }),
+    }).catch(() => {});
+  }, [location.pathname]);
+
   const roleLabel = userRole === 'admin' ? t('role.admin') : userRole === 'brand_manager' ? t('role.brandManager') : t('role.storeManager');
 
   const baseMenuItems = [
@@ -74,7 +92,11 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
     { icon: Map, label: t('nav.heatmaps'), path: '/heatmaps' },
     { icon: Clock, label: t('nav.queueAnalysis'), path: '/queue-analysis' },
     { icon: BarChart3, label: t('nav.reportAnalytics'), path: '/report-analytics' },
-    ...(userRole === 'admin' ? [{ icon: Shield, label: t('nav.userManagement'), path: '/admin/users' }] : []),
+    { icon: MessageCircle, label: t('nav.chat'), path: '/chat' },
+    ...(userRole === 'admin' ? [
+      { icon: Shield, label: t('nav.userManagement'), path: '/admin/users' },
+      { icon: FileText, label: t('nav.activityLogs'), path: '/admin/activity-logs' },
+    ] : []),
     { icon: Settings, label: t('nav.settings'), path: '/settings' },
   ];
   const menuItems = baseMenuItems;

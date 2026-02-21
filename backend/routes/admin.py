@@ -3,7 +3,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token
 from sqlalchemy import func
 
-from models import db, User, CameraConfig, SiteConfig, ManagedStore
+from models import db, User, CameraConfig, SiteConfig, ManagedStore, ActivityLog
 from auth_utils import admin_required
 
 admin_bp = Blueprint('admin', __name__)
@@ -203,4 +203,44 @@ def impersonate_user(user_id):
     return jsonify({
         'access_token': access_token,
         'user': user_dict
+    })
+
+
+@admin_bp.route('/activity-logs', methods=['GET'])
+@admin_required
+def activity_logs():
+    """
+    GET /api/admin/activity-logs?page=1&per_page=50&user_id=2&type=login_ok&date_from=2025-02-01&date_to=2025-02-28
+    Kullanıcı bazlı rapor: giriş, sayfa görüntüleme, sohbet, hata logları.
+    """
+    from datetime import datetime
+    page = request.args.get('page', 1, type=int)
+    per_page = min(request.args.get('per_page', 50, type=int), 200)
+    user_id = request.args.get('user_id', type=int)
+    type_filter = request.args.get('type', '').strip() or None
+    date_from = request.args.get('date_from')
+    date_to = request.args.get('date_to')
+
+    q = ActivityLog.query
+    if user_id is not None:
+        q = q.filter(ActivityLog.user_id == user_id)
+    if type_filter:
+        q = q.filter(ActivityLog.type == type_filter)
+    if date_from:
+        try:
+            q = q.filter(db.func.date(ActivityLog.created_at) >= date_from)
+        except Exception:
+            pass
+    if date_to:
+        try:
+            q = q.filter(db.func.date(ActivityLog.created_at) <= date_to)
+        except Exception:
+            pass
+    q = q.order_by(ActivityLog.created_at.desc())
+    pagination = q.paginate(page=page, per_page=per_page)
+    return jsonify({
+        'logs': [r.to_dict() for r in pagination.items],
+        'total': pagination.total,
+        'page': page,
+        'per_page': per_page,
     })

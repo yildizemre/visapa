@@ -1,11 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Modal, ScrollView, Image } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Modal,
+  ScrollView,
+  Image,
+  useWindowDimensions,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useLanguage } from '../contexts/LanguageContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Menu, X, Home, Users, UserCheck, Map, Clock, BarChart3, Settings, LogOut, Shield } from 'lucide-react-native';
+import {
+  Menu,
+  X,
+  Home,
+  Users,
+  UserCheck,
+  Map,
+  Clock,
+  BarChart3,
+  Settings,
+  LogOut,
+  Shield,
+} from 'lucide-react-native';
 import HealthStatusIndicator from './HealthStatusIndicator';
 
 type RootStackParamList = {
@@ -33,6 +54,11 @@ const Header: React.FC<HeaderProps> = ({ title, onLogout }) => {
   const navigation = useNavigation<NavigationProp>();
   const { t } = useLanguage();
   const insets = useSafeAreaInsets();
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
+
+  const menuWidth = Math.min(280, windowWidth * 0.85);
+  const headerLogoHeight = Math.min(28, windowWidth * 0.06);
+  const menuLogoHeight = Math.min(44, windowHeight * 0.055);
 
   useEffect(() => {
     const checkAdmin = async () => {
@@ -73,8 +99,14 @@ const Header: React.FC<HeaderProps> = ({ title, onLogout }) => {
         <TouchableOpacity onPress={() => setMenuVisible(true)} style={styles.menuButton}>
           <Menu size={24} color="#fff" />
         </TouchableOpacity>
-        <Text style={styles.title}>{title}</Text>
-        <HealthStatusIndicator />
+        <Image
+          source={require('../../vislivis_logo.png')}
+          style={[styles.headerLogo, { height: headerLogoHeight, maxWidth: 120 }]}
+          resizeMode="contain"
+        />
+        <View style={styles.headerRight}>
+          <HealthStatusIndicator />
+        </View>
       </View>
 
       <Modal
@@ -88,18 +120,31 @@ const Header: React.FC<HeaderProps> = ({ title, onLogout }) => {
           activeOpacity={1}
           onPress={() => setMenuVisible(false)}
         >
-          <View style={styles.menuContainer}>
+          <View
+            style={[styles.menuContainer, { width: menuWidth, maxHeight: windowHeight }]}
+            onStartShouldSetResponder={() => true}
+          >
             <View style={styles.menuHeader}>
               <Image
                 source={require('../../vislivis_logo.png')}
-                style={styles.menuLogo}
+                style={[styles.menuLogo, { height: menuLogoHeight }]}
                 resizeMode="contain"
               />
-              <TouchableOpacity onPress={() => setMenuVisible(false)}>
+              <TouchableOpacity
+                onPress={() => setMenuVisible(false)}
+                style={styles.closeButton}
+                hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+              >
                 <X size={24} color="#fff" />
               </TouchableOpacity>
             </View>
-            <ScrollView style={styles.menuContent}>
+            <ScrollView
+              style={styles.menuScroll}
+              contentContainerStyle={styles.menuScrollContent}
+              showsVerticalScrollIndicator={true}
+              bounces={true}
+              keyboardShouldPersistTaps="handled"
+            >
               {menuItems.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -112,15 +157,15 @@ const Header: React.FC<HeaderProps> = ({ title, onLogout }) => {
                     }}
                   >
                     <Icon size={20} color="#94a3b8" />
-                    <Text style={styles.menuItemText}>{item.label}</Text>
+                    <Text style={styles.menuItemText} numberOfLines={1}>{item.label}</Text>
                   </TouchableOpacity>
                 );
               })}
+              <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+                <LogOut size={20} color="#ef4444" />
+                <Text style={styles.logoutText}>{t('nav.logout')}</Text>
+              </TouchableOpacity>
             </ScrollView>
-            <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-              <LogOut size={20} color="#ef4444" />
-              <Text style={styles.logoutText}>{t('nav.logout')}</Text>
-            </TouchableOpacity>
           </View>
         </TouchableOpacity>
       </Modal>
@@ -133,7 +178,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
+    paddingHorizontal: 12,
     paddingBottom: 12,
     backgroundColor: '#1e293b',
     borderBottomWidth: 1,
@@ -146,59 +191,64 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#fff',
+  headerLogo: {
     flex: 1,
-    textAlign: 'center',
+    marginHorizontal: 8,
   },
-  placeholder: {
-    width: 40,
+  headerRight: {
+    minWidth: 48,
+    alignItems: 'flex-end',
   },
   modalOverlay: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   menuContainer: {
-    width: 280,
-    height: '100%',
+    flex: 1,
     backgroundColor: '#1e293b',
-    paddingTop: 50,
     alignSelf: 'flex-start',
-    justifyContent: 'flex-start',
   },
   menuHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#334155',
   },
   menuLogo: {
     width: 120,
-    height: 40,
-  },
-  menuContent: {
     flex: 1,
-    paddingTop: 10,
+  },
+  closeButton: {
+    padding: 4,
+  },
+  menuScroll: {
+    flex: 1,
+  },
+  menuScrollContent: {
+    paddingTop: 12,
+    paddingBottom: 32,
   },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
     gap: 12,
   },
   menuItemText: {
     fontSize: 16,
     color: '#94a3b8',
+    flex: 1,
   },
   logoutButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
-    marginTop: 20,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    marginTop: 12,
     borderTopWidth: 1,
     borderTopColor: '#334155',
     gap: 12,

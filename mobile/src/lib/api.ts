@@ -1,9 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Mobilde localhost çalışmaz, bilgisayarın IP adresini kullanın
-// Örnek: http://192.168.1.100:5000
-// Veya .env dosyasında EXPO_PUBLIC_API_URL=http://YOUR_IP:5000 şeklinde ayarlayın
-const API_BASE = process.env.EXPO_PUBLIC_API_URL || 'http://192.168.1.100:5000';
+// .env dosyasında EXPO_PUBLIC_API_URL ile ayarlayın
+const API_BASE = process.env.EXPO_PUBLIC_API_URL || 'https://ai.vislivis.com';
 
 async function getToken(): Promise<string> {
   return (await AsyncStorage.getItem('token'))?.trim() || '';

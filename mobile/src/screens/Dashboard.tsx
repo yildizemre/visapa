@@ -21,6 +21,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { apiFetch, testConnection } from '../lib/api';
 import { useStoreChange } from '../hooks/useStoreChange';
 import Header from '../components/Header';
+import LoadingOverlay from '../components/LoadingOverlay';
 import {
   LineChart,
   BarChart,
@@ -242,10 +243,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
     return (
       <View style={styles.container}>
         <Header title={t('nav.dashboard')} onLogout={onLogout} />
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#3B82F6" />
-          <Text style={styles.loadingText}>{t('common.loading')}</Text>
-        </View>
+        <LoadingOverlay message={t('common.loading')} />
       </View>
     );
   }

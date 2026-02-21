@@ -10,7 +10,7 @@ import {
   Users,
   MapPin,
   Clock,
-  Zap, // Yeni ikon
+  Zap,
   X,
   RefreshCw
 } from 'lucide-react';
@@ -32,13 +32,41 @@ const ReportAnalytics = () => {
   const { t } = useLanguage();
   const storeRefresh = useStoreChange();
 
-  // State'leri basitleştirelim
+  const [userRole, setUserRole] = useState<string>('');
+  const [hasPermission, setHasPermission] = useState(false);
+
   const [analysisType, setAnalysisType] = useState<'customer' | 'heatmap' | 'queue' | null>(null);
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
   const [reports, setReports] = useState<AiReport[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const userStr = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    if (userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        const role = user.role || 'user';
+        setUserRole(role);
+        setHasPermission(role === 'admin');
+      } catch {
+        setHasPermission(false);
+      }
+    } else if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const role = payload.role || 'user';
+        setUserRole(role);
+        setHasPermission(role === 'admin');
+      } catch {
+        setHasPermission(false);
+      }
+    } else {
+      setHasPermission(false);
+    }
+  }, []);
 
   // Tarihleri varsayılan olarak ayarla
   useEffect(() => {
@@ -107,6 +135,22 @@ const ReportAnalytics = () => {
 
   const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.1 } } };
   const item = { hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } };
+
+  if (!hasPermission) {
+    return (
+      <div className="p-2 sm:p-3 md:p-4 lg:p-6">
+        <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+          <div className="bg-red-600/20 border border-red-600/30 rounded-full p-4 mb-6">
+            <FileText className="w-16 h-16 text-red-400" />
+          </div>
+          <h1 className="text-2xl font-bold text-white mb-4">Erişim Reddedildi</h1>
+          <p className="text-slate-400 text-lg mb-6 max-w-md">
+            {t('report.accessDenied')}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="p-2 sm:p-3 md:p-4 lg:p-6 bg-slate-900">

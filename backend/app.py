@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 
@@ -36,6 +36,8 @@ def create_app(config_class=Config):
     from routes.health import health_bp
     from routes.weather import weather_bp
     from routes.staff import staff_bp
+    from routes.chat_routes import chat_bp
+    from routes.log_routes import log_bp
 
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(admin_bp, url_prefix='/api/admin')
@@ -45,6 +47,26 @@ def create_app(config_class=Config):
     app.register_blueprint(health_bp, url_prefix='/api/health')
     app.register_blueprint(weather_bp, url_prefix='/api/weather')
     app.register_blueprint(staff_bp, url_prefix='/api/staff')
+    app.register_blueprint(chat_bp, url_prefix='/api/chat')
+    app.register_blueprint(log_bp, url_prefix='/api/log')
+
+    @app.errorhandler(Exception)
+    def handle_error(err):
+        from werkzeug.exceptions import HTTPException
+        code = getattr(err, 'code', 500)
+        if code >= 500 or not isinstance(err, HTTPException):
+            try:
+                from activity_logger import log_activity
+                log_activity('error', user_id=None, extra={
+                    'status_code': code,
+                    'message': str(err)[:500],
+                    'path': request.path if request else None,
+                })
+            except Exception:
+                pass
+        if isinstance(err, HTTPException):
+            return jsonify({'error': err.description or str(err)}), err.code
+        return jsonify({'error': 'Sunucu hatası.'}), 500
 
     @app.route('/api/init', methods=['POST'])
     def init_db():
@@ -58,6 +80,9 @@ def create_app(config_class=Config):
                 db.session.commit()
                 return {'message': 'Veritabanı oluşturuldu. Admin kullanıcı: admin / admin'}
             return {'message': 'Veritabanı zaten mevcut.'}
+
+    with app.app_context():
+        db.create_all()
 
     return app
 

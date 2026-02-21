@@ -17,6 +17,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { apiFetch } from '../lib/api';
 import { useStoreChange } from '../hooks/useStoreChange';
 import Header from '../components/Header';
+import LoadingOverlay from '../components/LoadingOverlay';
 import { LineChart } from 'react-native-chart-kit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -195,10 +196,7 @@ const Heatmaps: React.FC<HeatmapsProps> = ({ onLogout }) => {
     return (
       <View style={styles.container}>
         <Header title={t('heatmap.title')} onLogout={onLogout} />
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#3B82F6" />
-          <Text style={styles.loadingText}>{t('heatmap.loading')}</Text>
-        </View>
+        <LoadingOverlay message={t('heatmap.loading')} />
       </View>
     );
   }

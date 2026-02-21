@@ -14,6 +14,7 @@ import { Plus, Edit2, Trash2, Shield, Search, X, ExternalLink } from 'lucide-rea
 import { useLanguage } from '../contexts/LanguageContext';
 import { apiFetch } from '../lib/api';
 import Header from '../components/Header';
+import LoadingOverlay from '../components/LoadingOverlay';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -213,6 +214,15 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ onLogout }) => {
       u.email.toLowerCase().includes(search.toLowerCase())
   );
 
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <Header title={t('admin.title')} onLogout={onLogout} />
+        <LoadingOverlay message={t('common.loading')} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Header title={t('admin.title')} onLogout={onLogout} />
@@ -240,13 +250,8 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ onLogout }) => {
             />
           </View>
 
-          {loading ? (
-            <View style={styles.loadingContainer}>
-              <ActivityIndicator size="large" color="#3B82F6" />
-            </View>
-          ) : (
-            <>
-              <View style={styles.statsRow}>
+          <>
+            <View style={styles.statsRow}>
                 <Text style={styles.statsText}>
                   {total} {t('admin.usersCount')}
                 </Text>
@@ -309,7 +314,6 @@ const AdminUsers: React.FC<AdminUsersProps> = ({ onLogout }) => {
                 </View>
               )}
             </>
-          )}
         </View>
       </ScrollView>
 

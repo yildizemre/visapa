@@ -13,6 +13,8 @@ import QueueAnalysis from './components/QueueAnalysis';
 import ReportAnalytics from './components/ReportAnalytics';
 import Settings from './components/Settings';
 import AdminGuard from './components/AdminGuard';
+import ActivityLogs from './components/ActivityLogs';
+import Chat from './components/Chat';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -46,7 +48,9 @@ function App() {
                   <Route path="/queue-analysis" element={<QueueAnalysis />} />
 
                   <Route path="/report-analytics" element={<ReportAnalytics />} />
+                  <Route path="/chat" element={<Chat />} />
                   <Route path="/admin/users" element={<AdminGuard />} />
+                  <Route path="/admin/activity-logs" element={<ActivityLogs />} />
                   <Route path="/settings" element={<Settings />} />
                   <Route path="/" element={<Navigate to="/dashboard" replace />} />
                 </Routes>

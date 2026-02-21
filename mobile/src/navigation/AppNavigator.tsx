@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginPage from '../components/LoginPage';
@@ -10,6 +11,7 @@ import QueueAnalysis from '../screens/QueueAnalysis';
 import ReportAnalytics from '../screens/ReportAnalytics';
 import Settings from '../screens/Settings';
 import AdminUsers from '../screens/AdminUsers';
+import LoadingOverlay from '../components/LoadingOverlay';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
@@ -53,7 +55,11 @@ export const AppNavigator: React.FC = () => {
   };
 
   if (isLoading) {
-    return null;
+    return (
+      <View style={{ flex: 1, backgroundColor: '#0f172a' }}>
+        <LoadingOverlay message="Yükleniyor..." />
+      </View>
+    );
   }
 
   return (
