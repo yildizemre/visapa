@@ -221,3 +221,79 @@ class ActivityLog(db.Model):
             'extra': json.loads(self.extra) if self.extra else None,
             'created_at': self.created_at.isoformat() if self.created_at else None,
         }
+
+
+class Ticket(db.Model):
+    """Destek talebi. Kullanıcı açar, admin cevaplar/kapatır."""
+    __tablename__ = 'tickets'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    subject = db.Column(db.String(200), nullable=False)  # konu
+    category = db.Column(db.String(50), nullable=False)  # teknik, fatura, genel, diğer
+    priority = db.Column(db.String(20), nullable=False)   # acil, yüksek, normal, düşük
+    status = db.Column(db.String(20), default='open')     # open, answered, closed
+    message = db.Column(db.Text, nullable=False)         # ilk mesaj
+    admin_read_at = db.Column(db.DateTime, nullable=True)  # admin son okuma; null = okunmadı
+    user_read_at = db.Column(db.DateTime, nullable=True)   # kullanıcı son okuma; cevap okundu mu
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_ip = db.Column(db.String(64), nullable=True)   # talep açılırken IP
+    created_user_agent = db.Column(db.String(512), nullable=True)  # tarayıcı bilgisi
+    closed_at = db.Column(db.DateTime, nullable=True)
+    closed_by_user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)  # kim kapattı
+
+    def to_dict(self, include_user=False):
+        d = {
+            'id': self.id,
+            'user_id': self.user_id,
+            'subject': self.subject,
+            'category': self.category,
+            'priority': self.priority,
+            'status': self.status,
+            'message': self.message,
+            'admin_read_at': self.admin_read_at.isoformat() if self.admin_read_at else None,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+            'updated_at': self.updated_at.isoformat() if self.updated_at else None,
+            'created_ip': self.created_ip,
+            'created_user_agent': self.created_user_agent,
+            'closed_at': self.closed_at.isoformat() if self.closed_at else None,
+        }
+        if self.closed_by_user_id:
+            closer = User.query.get(self.closed_by_user_id)
+            if closer:
+                d['closed_by'] = closer.full_name or closer.username or str(closer.id)
+                d['closed_by_role'] = closer.role  # admin, user, brand_manager, store_manager vb.
+            else:
+                d['closed_by'] = None
+                d['closed_by_role'] = None
+        else:
+            d['closed_by'] = None
+            d['closed_by_role'] = None
+        if include_user and self.user_id:
+            u = User.query.get(self.user_id)
+            if u:
+                d['user'] = {'id': u.id, 'username': u.username, 'email': u.email, 'full_name': u.full_name}
+        return d
+
+
+class TicketReply(db.Model):
+    """Ticket cevabı (kullanıcı veya admin)."""
+    __tablename__ = 'ticket_replies'
+    id = db.Column(db.Integer, primary_key=True)
+    ticket_id = db.Column(db.Integer, db.ForeignKey('tickets.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    is_staff = db.Column(db.Boolean, default=False)  # True = admin cevabı
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def to_dict(self):
+        u = User.query.get(self.user_id)
+        return {
+            'id': self.id,
+            'ticket_id': self.ticket_id,
+            'user_id': self.user_id,
+            'message': self.message,
+            'is_staff': self.is_staff,
+            'author_name': (u.full_name or u.username or str(u.id)) if u else None,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+        }

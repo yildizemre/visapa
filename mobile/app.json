@@ -1,35 +1,32 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "Vislivis AI",
+    "slug": "vislivis-ai",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./vislivis_logo.png",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./vislivis_logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0f172a"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./vislivis_logo.png",
+        "backgroundColor": "#0f172a"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "package": "com.vislivis.mobile",
-      "permissions": [
-        "INTERNET",
-        "ACCESS_NETWORK_STATE"
-      ]
+      "permissions": ["INTERNET", "ACCESS_NETWORK_STATE"]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./vislivis_logo.png"
     },
     "extra": {
       "eas": {

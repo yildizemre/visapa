@@ -38,6 +38,7 @@ def create_app(config_class=Config):
     from routes.staff import staff_bp
     from routes.chat_routes import chat_bp
     from routes.log_routes import log_bp
+    from routes.ticket_routes import ticket_bp
 
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(admin_bp, url_prefix='/api/admin')
@@ -49,6 +50,7 @@ def create_app(config_class=Config):
     app.register_blueprint(staff_bp, url_prefix='/api/staff')
     app.register_blueprint(chat_bp, url_prefix='/api/chat')
     app.register_blueprint(log_bp, url_prefix='/api/log')
+    app.register_blueprint(ticket_bp, url_prefix='/api/tickets')
 
     @app.errorhandler(Exception)
     def handle_error(err):

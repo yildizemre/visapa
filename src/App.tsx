@@ -15,6 +15,9 @@ import Settings from './components/Settings';
 import AdminGuard from './components/AdminGuard';
 import ActivityLogs from './components/ActivityLogs';
 import Chat from './components/Chat';
+import Ticket from './components/Ticket';
+import AdminTickets from './components/AdminTickets';
+import AdminHealthOverview from './components/AdminHealthOverview';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -49,8 +52,11 @@ function App() {
 
                   <Route path="/report-analytics" element={<ReportAnalytics />} />
                   <Route path="/chat" element={<Chat />} />
+                  <Route path="/tickets" element={<Ticket />} />
                   <Route path="/admin/users" element={<AdminGuard />} />
+                  <Route path="/admin/tickets" element={<AdminTickets />} />
                   <Route path="/admin/activity-logs" element={<ActivityLogs />} />
+                  <Route path="/admin/health" element={<AdminHealthOverview />} />
                   <Route path="/settings" element={<Settings />} />
                   <Route path="/" element={<Navigate to="/dashboard" replace />} />
                 </Routes>

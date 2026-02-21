@@ -24,6 +24,8 @@ import {
   Shield,
   MessageCircle,
   FileText,
+  Headphones,
+  HeartPulse,
 } from 'lucide-react';
 
 interface LayoutProps {
@@ -36,6 +38,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
   const [userRole, setUserRole] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
   const [showStoreSwitcher, setShowStoreSwitcher] = useState(false);
+  const [ticketUnreadCount, setTicketUnreadCount] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
   const { t, language } = useLanguage();
@@ -83,6 +86,30 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
     }).catch(() => {});
   }, [location.pathname]);
 
+  const fetchTicketUnreadCount = React.useCallback(() => {
+    if (userRole === 'admin') {
+      setTicketUnreadCount(0);
+      return;
+    }
+    const token = localStorage.getItem('token');
+    if (!token) return;
+    apiFetch('/api/tickets/unread-count')
+      .then((r) => r.ok ? r.json() : { unread_count: 0 })
+      .then((data) => setTicketUnreadCount(data?.unread_count ?? 0))
+      .catch(() => setTicketUnreadCount(0));
+  }, [userRole]);
+
+  // Okunmamış destek sayısı (menüde badge; sadece admin olmayan kullanıcılar)
+  React.useEffect(() => {
+    fetchTicketUnreadCount();
+  }, [fetchTicketUnreadCount, location.pathname]);
+
+  React.useEffect(() => {
+    const handler = () => fetchTicketUnreadCount();
+    window.addEventListener('ticket-unread-update', handler);
+    return () => window.removeEventListener('ticket-unread-update', handler);
+  }, [fetchTicketUnreadCount]);
+
   const roleLabel = userRole === 'admin' ? t('role.admin') : userRole === 'brand_manager' ? t('role.brandManager') : t('role.storeManager');
 
   const baseMenuItems = [
@@ -91,10 +118,14 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
     { icon: UserCheck, label: t('nav.staffManagement'), path: '/staff-management' },
     { icon: Map, label: t('nav.heatmaps'), path: '/heatmaps' },
     { icon: Clock, label: t('nav.queueAnalysis'), path: '/queue-analysis' },
-    { icon: BarChart3, label: t('nav.reportAnalytics'), path: '/report-analytics' },
+    ...(userRole === 'admin' ? [{ icon: BarChart3, label: t('nav.reportAnalytics'), path: '/report-analytics' }] : []),
     { icon: MessageCircle, label: t('nav.chat'), path: '/chat' },
+    ...(userRole === 'admin'
+      ? [{ icon: Headphones, label: t('nav.ticketManagement'), path: '/admin/tickets' }]
+      : [{ icon: Headphones, label: t('nav.tickets'), path: '/tickets', badge: ticketUnreadCount }]),
     ...(userRole === 'admin' ? [
       { icon: Shield, label: t('nav.userManagement'), path: '/admin/users' },
+      { icon: HeartPulse, label: t('nav.healthOverview'), path: '/admin/health' },
       { icon: FileText, label: t('nav.activityLogs'), path: '/admin/activity-logs' },
     ] : []),
     { icon: Settings, label: t('nav.settings'), path: '/settings' },
@@ -161,7 +192,14 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                 }`}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
-                {!isCollapsed && <span className="font-medium text-sm leading-snug">{item.label}</span>}
+                {!isCollapsed && (
+                  <span className="font-medium text-sm leading-snug">
+                    {item.label}
+                    {'badge' in item && typeof item.badge === 'number' && item.badge > 0 && (
+                      <span className="ml-1.5 text-amber-400">({item.badge})</span>
+                    )}
+                  </span>
+                )}
               </motion.button>
             );
           })}
@@ -225,7 +263,12 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                 }`}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
-                <span className="font-medium text-sm leading-snug">{item.label}</span>
+                <span className="font-medium text-sm leading-snug">
+                  {item.label}
+                  {'badge' in item && typeof item.badge === 'number' && item.badge > 0 && (
+                    <span className="ml-1.5 text-amber-400">({item.badge})</span>
+                  )}
+                </span>
               </motion.button>
             );
           })}
@@ -267,7 +310,17 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
               </button>
               <h2 className="text-base sm:text-lg md:text-xl font-semibold text-white truncate">
-                {menuItems.find(item => item.path === location.pathname)?.label || t('nav.dashboard')}
+                {(() => {
+                const item = menuItems.find((i) => i.path === location.pathname);
+                const label = item?.label || t('nav.dashboard');
+                const badge = item != null && 'badge' in item && typeof (item as { badge?: number }).badge === 'number' && (item as { badge?: number }).badge! > 0 ? (item as { badge?: number }).badge! : 0;
+                return (
+                  <>
+                    {label}
+                    {badge > 0 && <span className="ml-1.5 text-amber-400">({badge})</span>}
+                  </>
+                );
+              })()}
               </h2>
             </div>
             
@@ -287,8 +340,19 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
               {/* User Profile */}
               <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
                 <div className="text-right hidden lg:block">
-                  <p className="text-sm font-medium text-white">{userName || '-'}</p>
-                  <p className="text-xs text-slate-400">{roleLabel}</p>
+                  {(() => {
+                    const name = (userName || '').trim();
+                    const isRedundant = userRole === 'admin' && (name.toLowerCase() === 'admin' || name === roleLabel);
+                    if (isRedundant || !name) {
+                      return <p className="text-sm font-medium text-white">{roleLabel}</p>;
+                    }
+                    return (
+                      <>
+                        <p className="text-sm font-medium text-white">{name}</p>
+                        <p className="text-xs text-slate-400">{roleLabel}</p>
+                      </>
+                    );
+                  })()}
                 </div>
                 <motion.div
                   whileHover={{ scale: 1.1 }}

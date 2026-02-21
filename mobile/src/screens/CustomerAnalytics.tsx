@@ -140,13 +140,17 @@ const CustomerAnalytics: React.FC<CustomerAnalyticsProps> = ({ onLogout }) => {
   }, [selectedDate, selectedCamera, storeRefresh]);
 
 
-  const ageGroupsData = analyticsData.demographics.ageGroupsChart.map((item, index) => ({
-    name: item.name,
-    population: item.value,
-    color: PIE_COLORS[index % PIE_COLORS.length],
-    legendFontColor: '#94a3b8',
-    legendFontSize: 12,
-  }));
+  const ageTotal = analyticsData.demographics.ageGroupsChart.reduce((s, i) => s + (i?.value ?? 0), 0);
+  const ageGroupsData = analyticsData.demographics.ageGroupsChart.map((item, index) => {
+    const pct = ageTotal > 0 ? Math.round(((item?.value ?? 0) / ageTotal) * 100) : 0;
+    return {
+      name: `${item.name} (${pct}%)`,
+      population: item.value,
+      color: PIE_COLORS[index % PIE_COLORS.length],
+      legendFontColor: '#94a3b8',
+      legendFontSize: 12,
+    };
+  });
 
   const genderData = analyticsData.demographics.genderDistributionChart.map((item) => item.value);
   const genderLabels = analyticsData.demographics.genderDistributionChart.map((item) => item.gender);

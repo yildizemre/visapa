@@ -16,7 +16,7 @@ import { apiFetch } from '../lib/api';
 import { useStoreChange } from '../hooks/useStoreChange';
 import Header from '../components/Header';
 import LoadingOverlay from '../components/LoadingOverlay';
-import { LineChart } from 'react-native-chart-kit';
+import { LineChart, BarChart } from 'react-native-chart-kit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SelectDropdown from '../components/SelectDropdown';
 
@@ -41,9 +41,16 @@ interface OverallStats {
   maxWaitTime: number;
 }
 
+interface WaitTimeDistributionItem {
+  range: string;
+  count: number;
+}
+
 interface DailyData {
   overallStats: OverallStats;
   hourlySummary: HourlySummary[];
+  waitTimeDistribution?: WaitTimeDistributionItem[];
+  cashierPerformance?: { cashier: string; totalCustomers: number; avgWait: number }[];
   allCashiers: string[];
   availableCashiers: string[];
 }
@@ -103,6 +110,13 @@ const QueueAnalysis: React.FC<QueueAnalysisProps> = ({ onLogout }) => {
         maxWaitTime: 345,
       },
       hourlySummary: hours,
+      waitTimeDistribution: [
+        { range: '0-1 dk', count: 120 },
+        { range: '1-2 dk', count: 280 },
+        { range: '2-3 dk', count: 350 },
+        { range: '3-5 dk', count: 180 },
+        { range: '5+ dk', count: 50 },
+      ],
       allCashiers: ['Kasa-1', 'Kasa-2', 'Kasa-3'],
       availableCashiers: ['Kasa-1', 'Kasa-2', 'Kasa-3'],
     };
@@ -379,6 +393,29 @@ const QueueAnalysis: React.FC<QueueAnalysisProps> = ({ onLogout }) => {
               />
             </View>
           )}
+
+          {(() => {
+            const dist = dailyData?.waitTimeDistribution ?? [];
+            const hasDist = dist.length > 0 && dist.some((d: WaitTimeDistributionItem) => (d?.count ?? 0) > 0);
+            if (!hasDist) return null;
+            return (
+              <View style={styles.chartContainer}>
+                <Text style={styles.chartTitle}>{t('queue.waitDistribution')}</Text>
+                <BarChart
+                  data={{
+                    labels: dist.map((d: WaitTimeDistributionItem) => d.range),
+                    datasets: [{ data: dist.map((d: WaitTimeDistributionItem) => d.count || 0) }],
+                  }}
+                  width={screenWidth - 40}
+                  height={220}
+                  chartConfig={chartConfig}
+                  style={styles.chart}
+                  showValuesOnTopOfBars
+                  fromZero
+                />
+              </View>
+            );
+          })()}
         </View>
       </ScrollView>
     </View>

@@ -9,8 +9,10 @@ import StaffManagement from '../screens/StaffManagement';
 import Heatmaps from '../screens/Heatmaps';
 import QueueAnalysis from '../screens/QueueAnalysis';
 import ReportAnalytics from '../screens/ReportAnalytics';
+import Chat from '../screens/Chat';
 import Settings from '../screens/Settings';
 import AdminUsers from '../screens/AdminUsers';
+import ActivityLogs from '../screens/ActivityLogs';
 import LoadingOverlay from '../components/LoadingOverlay';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -89,11 +91,17 @@ export const AppNavigator: React.FC = () => {
             <Stack.Screen name="ReportAnalytics">
               {(props) => <ReportAnalytics {...props} onLogout={handleLogout} />}
             </Stack.Screen>
+            <Stack.Screen name="Chat">
+              {(props) => <Chat {...props} onLogout={handleLogout} />}
+            </Stack.Screen>
             <Stack.Screen name="Settings">
               {(props) => <Settings {...props} onLogout={handleLogout} />}
             </Stack.Screen>
             <Stack.Screen name="AdminUsers">
               {(props) => <AdminUsers {...props} onLogout={handleLogout} />}
+            </Stack.Screen>
+            <Stack.Screen name="ActivityLogs">
+              {(props) => <ActivityLogs {...props} onLogout={handleLogout} />}
             </Stack.Screen>
           </>
         )}

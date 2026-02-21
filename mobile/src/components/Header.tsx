@@ -23,6 +23,8 @@ import {
   Map,
   Clock,
   BarChart3,
+  MessageCircle,
+  FileText,
   Settings,
   LogOut,
   Shield,
@@ -37,8 +39,10 @@ type RootStackParamList = {
   Heatmaps: undefined;
   QueueAnalysis: undefined;
   ReportAnalytics: undefined;
+  Chat: undefined;
   Settings: undefined;
   AdminUsers: undefined;
+  ActivityLogs: undefined;
 };
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -82,8 +86,12 @@ const Header: React.FC<HeaderProps> = ({ title, onLogout }) => {
     { name: 'Heatmaps', label: t('nav.heatmaps'), icon: Map },
     { name: 'QueueAnalysis', label: t('nav.queueAnalysis'), icon: Clock },
     { name: 'ReportAnalytics', label: t('nav.reportAnalytics'), icon: BarChart3 },
+    { name: 'Chat', label: t('nav.chat'), icon: MessageCircle },
+    ...(isAdmin ? [
+      { name: 'AdminUsers', label: t('nav.userManagement'), icon: Shield },
+      { name: 'ActivityLogs', label: t('nav.activityLogs'), icon: FileText },
+    ] : []),
     { name: 'Settings', label: t('nav.settings'), icon: Settings },
-    ...(isAdmin ? [{ name: 'AdminUsers', label: t('nav.userManagement'), icon: Shield }] : []),
   ];
 
   const handleLogout = async () => {

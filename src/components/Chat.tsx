@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Send, MessageCircle, Bot, User, PlusCircle, Trash2 } from 'lucide-react';
+import { Send, MessageCircle, Bot, User, PlusCircle, Trash2, History } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { apiFetch } from '../lib/api';
 
@@ -27,6 +27,7 @@ const Chat: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [loadingHistory, setLoadingHistory] = useState(false);
   const [loadingList, setLoadingList] = useState(true);
+  const [showHistoryPanel, setShowHistoryPanel] = useState(false);
   const listEndRef = useRef<HTMLDivElement>(null);
 
   const loadConversations = async () => {
@@ -79,10 +80,12 @@ const Chat: React.FC = () => {
   const handleNewChat = () => {
     setCurrentConversationId(null);
     setMessages([]);
+    setShowHistoryPanel(false);
   };
 
   const handleSelectConversation = (id: number) => {
     setCurrentConversationId(id);
+    setShowHistoryPanel(false);
   };
 
   const handleDeleteConversation = async (e: React.MouseEvent, id: number) => {
@@ -157,74 +160,87 @@ const Chat: React.FC = () => {
 
   return (
     <div className="flex h-[calc(100vh-8rem)] min-h-[400px] gap-4">
-      {/* Sol: Geçmiş sohbetler */}
-      <div className="w-56 flex-shrink-0 rounded-xl border border-slate-700/50 bg-slate-800/30 flex flex-col overflow-hidden">
-        <div className="p-3 border-b border-slate-700/50">
-          <motion.button
-            type="button"
-            onClick={handleNewChat}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white py-2.5 text-sm font-medium"
-          >
-            <PlusCircle className="w-4 h-4" />
-            {t('chat.newChat')}
-          </motion.button>
-        </div>
-        <div className="flex-1 overflow-y-auto p-2">
-          <p className="text-xs text-slate-400 px-2 py-1">{t('chat.conversations')}</p>
-          {loadingList ? (
-            <div className="text-slate-400 text-sm py-4 text-center">...</div>
-          ) : conversations.length === 0 ? (
-            <div className="text-slate-500 text-sm py-4 text-center">—</div>
-          ) : (
-            <ul className="space-y-1">
-              {conversations.map((c) => (
-                <li key={c.id}>
-                  <motion.button
-                    type="button"
-                    onClick={() => handleSelectConversation(c.id)}
-                    whileHover={{ backgroundColor: 'rgba(51,65,85,0.5)' }}
-                    className={`w-full text-left rounded-lg px-3 py-2 flex items-center gap-2 group ${
-                      currentConversationId === c.id
-                        ? 'bg-slate-600/60 text-white'
-                        : 'text-slate-300 hover:text-white'
-                    }`}
-                  >
-                    <span className="flex-1 min-w-0 truncate text-sm">{c.title || 'Sohbet'}</span>
-                    <button
+      {/* Sol: Geçmiş sohbetler - sadece açıksa göster */}
+      {showHistoryPanel && (
+        <div className="w-56 flex-shrink-0 rounded-xl border border-slate-700/50 bg-slate-800/30 flex flex-col overflow-hidden">
+          <div className="p-3 border-b border-slate-700/50 flex items-center justify-between">
+            <span className="text-xs text-slate-400">{t('chat.conversations')}</span>
+            <button
+              type="button"
+              onClick={() => setShowHistoryPanel(false)}
+              className="text-slate-400 hover:text-white p-1 rounded"
+              aria-label="Kapat"
+            >
+              ✕
+            </button>
+          </div>
+          <div className="flex-1 overflow-y-auto p-2">
+            {loadingList ? (
+              <div className="text-slate-400 text-sm py-4 text-center">...</div>
+            ) : conversations.length === 0 ? (
+              <div className="text-slate-500 text-sm py-4 text-center">—</div>
+            ) : (
+              <ul className="space-y-1">
+                {conversations.map((c) => (
+                  <li key={c.id}>
+                    <motion.button
                       type="button"
-                      onClick={(e) => handleDeleteConversation(e, c.id)}
-                      className="opacity-0 group-hover:opacity-100 p-0.5 rounded text-slate-400 hover:text-red-400 hover:bg-red-500/10"
-                      title={t('chat.deleteChat')}
+                      onClick={() => handleSelectConversation(c.id)}
+                      whileHover={{ backgroundColor: 'rgba(51,65,85,0.5)' }}
+                      className={`w-full text-left rounded-lg px-3 py-2 flex items-center gap-2 group ${
+                        currentConversationId === c.id
+                          ? 'bg-slate-600/60 text-white'
+                          : 'text-slate-300 hover:text-white'
+                      }`}
                     >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
-                  </motion.button>
-                  <p className="text-xs text-slate-500 px-3 pb-1">{formatDate(c.updated_at ?? c.created_at)}</p>
-                </li>
-              ))}
-            </ul>
-          )}
+                      <span className="flex-1 min-w-0 truncate text-sm">{c.title || 'Sohbet'}</span>
+                      <button
+                        type="button"
+                        onClick={(e) => handleDeleteConversation(e, c.id)}
+                        className="opacity-0 group-hover:opacity-100 p-0.5 rounded text-slate-400 hover:text-red-400 hover:bg-red-500/10"
+                        title={t('chat.deleteChat')}
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </motion.button>
+                    <p className="text-xs text-slate-500 px-3 pb-1">{formatDate(c.updated_at ?? c.created_at)}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Sağ: Mesajlar + input */}
+      {/* Mesajlar + input */}
       <div className="flex-1 flex flex-col min-w-0">
         <div className="flex items-center justify-between gap-2 mb-4">
           <div className="flex items-center gap-2">
             <MessageCircle className="w-6 h-6 text-blue-400" />
             <h2 className="text-xl font-semibold text-white">{t('nav.chat')}</h2>
           </div>
-          {currentConversationId != null && (
+          <div className="flex items-center gap-2">
+            <motion.button
+              type="button"
+              onClick={() => setShowHistoryPanel((v) => !v)}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-slate-700/50 border border-slate-600/50"
+            >
+              <History className="w-4 h-4" />
+              {t('chat.conversations')}
+            </motion.button>
             <motion.button
               type="button"
               onClick={handleNewChat}
-              className="text-sm text-slate-400 hover:text-white"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex items-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white py-2 px-3 text-sm font-medium"
             >
-              {t('chat.clearChat')}
+              <PlusCircle className="w-4 h-4" />
+              {t('chat.newChat')}
             </motion.button>
-          )}
+          </div>
         </div>
 
         <div className="flex-1 rounded-xl border border-slate-700/50 bg-slate-800/30 flex flex-col overflow-hidden">

@@ -83,23 +83,29 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
     >
       <StatusBar style="light" />
+      <View style={styles.languageToggle}>
+        <LanguageToggle />
+      </View>
       <ScrollView
+        style={styles.scroll}
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
+        showsVerticalScrollIndicator={false}
       >
-        <View style={styles.languageToggle}>
-          <LanguageToggle />
-        </View>
-
-        <View style={[styles.card, { padding: cardPadding }]}>
+        <View style={styles.logoSection}>
           <Image
             source={require('../../vislivis_logo.png')}
             style={[styles.logo, { width: logoWidth, height: logoHeight }]}
             resizeMode="contain"
           />
+        </View>
+        <View style={styles.cardWrap}>
+          <View style={[styles.card, { padding: cardPadding }]}>
           <Text style={styles.title}>{t('login.title')}</Text>
           <Text style={styles.subtitle}>{t('login.subtitle')}</Text>
 
@@ -114,6 +120,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 placeholderTextColor="#64748b"
                 autoCapitalize="none"
                 autoCorrect={false}
+                editable={true}
+                contextMenuHidden={false}
               />
             </View>
 
@@ -129,6 +137,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                   secureTextEntry={!showPassword}
                   autoCapitalize="none"
                   autoCorrect={false}
+                  editable={true}
+                  contextMenuHidden={false}
                 />
                 <TouchableOpacity
                   onPress={() => setShowPassword(!showPassword)}
@@ -162,6 +172,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               )}
             </TouchableOpacity>
           </View>
+          </View>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -173,16 +184,33 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#0f172a',
   },
+  scroll: {
+    flex: 1,
+  },
   scrollContent: {
     flexGrow: 1,
-    justifyContent: 'center',
     padding: 16,
+    paddingTop: 24,
+    paddingBottom: 40,
+    justifyContent: 'center',
   },
   languageToggle: {
     position: 'absolute',
     top: 50,
     right: 16,
     zIndex: 10,
+  },
+  logoSection: {
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  logo: {
+    width: 160,
+    height: 80,
+  },
+  cardWrap: {
+    flexGrow: 1,
+    justifyContent: 'center',
   },
   card: {
     backgroundColor: '#1e293b',
@@ -192,10 +220,6 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 400,
     alignSelf: 'center',
-  },
-  logo: {
-    alignSelf: 'center',
-    marginBottom: 16,
   },
   title: {
     fontSize: 28,

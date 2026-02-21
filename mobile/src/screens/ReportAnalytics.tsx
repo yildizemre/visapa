@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { FileText, Calendar, Plus, Users, MapPin, Clock, Zap, RefreshCw } from 'lucide-react-native';
 import { useLanguage } from '../contexts/LanguageContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { apiFetch } from '../lib/api';
 import { useStoreChange } from '../hooks/useStoreChange';
 import Header from '../components/Header';
@@ -31,6 +32,7 @@ interface AiReport {
 const ReportAnalytics: React.FC<ReportAnalyticsProps> = ({ onLogout }) => {
   const { t } = useLanguage();
   const storeRefresh = useStoreChange();
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
 
   const [analysisType, setAnalysisType] = useState<'customer' | 'heatmap' | 'queue' | null>(null);
   const [dateFrom, setDateFrom] = useState('');
@@ -38,6 +40,23 @@ const ReportAnalytics: React.FC<ReportAnalyticsProps> = ({ onLogout }) => {
   const [reports, setReports] = useState<AiReport[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+      try {
+        const userStr = await AsyncStorage.getItem('user');
+        if (userStr) {
+          const user = JSON.parse(userStr);
+          setIsAdmin(user?.role === 'admin');
+        } else {
+          setIsAdmin(false);
+        }
+      } catch {
+        setIsAdmin(false);
+      }
+    };
+    checkAdmin();
+  }, []);
 
   useEffect(() => {
     const today = new Date();
@@ -95,6 +114,18 @@ const ReportAnalytics: React.FC<ReportAnalyticsProps> = ({ onLogout }) => {
       setLoading(false);
     }
   };
+
+  if (isAdmin === false) {
+    return (
+      <View style={styles.container}>
+        <Header title={t('report.title')} onLogout={onLogout} />
+        <View style={styles.accessDeniedBox}>
+          <FileText size={48} color="#94a3b8" />
+          <Text style={styles.accessDeniedText}>{t('report.accessDenied')}</Text>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -249,6 +280,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#0f172a',
+  },
+  accessDeniedBox: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+  accessDeniedText: {
+    color: '#94a3b8',
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 16,
   },
   content: {
     flex: 1,
