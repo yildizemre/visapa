@@ -18,9 +18,9 @@ import requests
 import sys
 import time
 
-API_BASE = "http://127.0.0.1:5000"
-USERNAME = "boyner"
-PASSWORD = "boyner"
+API_BASE = "http://ai.vislivis.com:5000"
+USERNAME = "Boyner"
+PASSWORD = "boyner123"
 INTERVAL_MINUTES = 5
 
 
@@ -46,7 +46,7 @@ def send_heartbeat(base: str, token: str) -> bool:
 
 def main():
     parser = argparse.ArgumentParser(description="Mağaza AI heartbeat - her 5 dakikada bir 'ben ayaktayım' sinyali gönderir.")
-    parser.add_argument("--url", "-U", type=str, default="http://127.0.0.1:5000", help="API base URL")
+    parser.add_argument("--url", "-U", type=str, default="http://ai.vislivis.com:5000", help="API base URL")
     parser.add_argument("-u", "--username", type=str, default=USERNAME, help="Kullanıcı adı")
     parser.add_argument("-p", "--password", type=str, default=PASSWORD, help="Şifre")
     parser.add_argument("--interval", type=int, default=INTERVAL_MINUTES, help="Ping aralığı (dakika)")

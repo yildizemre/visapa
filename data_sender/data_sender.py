@@ -11,8 +11,10 @@ Kullanım:
 import argparse
 import json
 import os
-import requests
 import sys
+from datetime import datetime
+
+import requests
 
 API_BASE = "http://ai.vislivis.com:5000"
 USERNAME = "beymen"
@@ -78,6 +80,11 @@ def main():
     except json.JSONDecodeError as e:
         print(f"Hata: Geçersiz JSON - {e}")
         sys.exit(1)
+
+    # Eğer timestamp JSON'da yoksa veya boşsa, şu anki saati otomatik yaz (ör. 2026-02-21T14:00)
+    if not payload.get("timestamp"):
+        now = datetime.now().replace(minute=0, second=0, microsecond=0)
+        payload["timestamp"] = now.isoformat(timespec="minutes")
 
     entered = payload.get("entered", 0) or 0
     exited = payload.get("exited", 0) or 0

@@ -18,6 +18,7 @@ import Chat from './components/Chat';
 import Ticket from './components/Ticket';
 import AdminTickets from './components/AdminTickets';
 import AdminHealthOverview from './components/AdminHealthOverview';
+import AdminDataEditor from './components/AdminDataEditor';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -57,6 +58,7 @@ function App() {
                   <Route path="/admin/tickets" element={<AdminTickets />} />
                   <Route path="/admin/activity-logs" element={<ActivityLogs />} />
                   <Route path="/admin/health" element={<AdminHealthOverview />} />
+                  <Route path="/admin/data-editor" element={<AdminDataEditor />} />
                   <Route path="/settings" element={<Settings />} />
                   <Route path="/" element={<Navigate to="/dashboard" replace />} />
                 </Routes>

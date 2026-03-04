@@ -26,6 +26,7 @@ import {
   FileText,
   Headphones,
   HeartPulse,
+  Database,
 } from 'lucide-react';
 
 interface LayoutProps {
@@ -127,6 +128,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
       { icon: Shield, label: t('nav.userManagement'), path: '/admin/users' },
       { icon: HeartPulse, label: t('nav.healthOverview'), path: '/admin/health' },
       { icon: FileText, label: t('nav.activityLogs'), path: '/admin/activity-logs' },
+      { icon: Database, label: t('nav.dataEditor'), path: '/admin/data-editor' },
     ] : []),
     { icon: Settings, label: t('nav.settings'), path: '/settings' },
   ];
