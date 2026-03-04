@@ -266,9 +266,8 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
       return Object.entries(flowData.hourly_data)
           .filter(([hour]) => {
               const hourValue = parseInt(hour.split(':')[0], 10);
-              // Filtreleme hala UTC'ye göre yapılır, bu doğru.
-              // 10:00-22:00 (UTC+3) aralığını göstermek için 07:00-21:00 (UTC) arasını seçeriz.
-              return hourValue >= 7 && hourValue <= 18;
+              // 10:00-22:00 yerel aralığını göstermek için doğrudan 10–22 saatlerini kullan.
+              return hourValue >= 10 && hourValue <= 22;
           })
           .sort(([hourA], [hourB]) => hourA.localeCompare(hourB));
   }, [flowData]);

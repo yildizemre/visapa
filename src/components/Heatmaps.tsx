@@ -172,16 +172,15 @@ const Heatmaps = () => {
     fetchDailySummary();
   }, [selectedDate, selectedZone, storeRefresh]);
   
-  // GÜNCELLEME: Filtrelenmiş ve saat dilimi ayarlanmış veri
+  // GÜNCELLEME: Filtrelenmiş veri (sadece 10:00-22:00 arası)
   const filteredAndShiftedHourlyData = useMemo(() => {
     if (!dailyData?.hourlySummary) return [];
     
     return dailyData.hourlySummary
-      .map(summary => {
-          const hour = parseInt(summary.hour, 10);
-          const newHour = (hour + 3) % 24;
-          return { ...summary, hour: String(newHour).padStart(2, '0') };
-      })
+      .map(summary => ({
+          ...summary,
+          hour: String(parseInt(summary.hour, 10)).padStart(2, '0'),
+      }))
       .filter(summary => {
           const hour = parseInt(summary.hour, 10);
           return hour >= 10 && hour <= 22;
@@ -203,8 +202,10 @@ const Heatmaps = () => {
     setIsSaving(true);
     const token = localStorage.getItem('token');
     const updatePromises = Object.entries(editedData).map(([hour, changes]) => {
-      const originalHour = String((parseInt(hour, 10) - 3 + 24) % 24).padStart(2, '0');
-      const recordId = dailyData?.hourlySummary.find(h => h.hour === originalHour)?.editable_id;
+      const recordId = dailyData?.hourlySummary.find(h => {
+        const hHour = String(parseInt(h.hour, 10)).padStart(2, '0');
+        return hHour === hour;
+      })?.editable_id;
       if (!recordId) return Promise.resolve({ success: false, hour });
 
       const cleanedChanges: Partial<EditableFields> = {};

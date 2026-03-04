@@ -63,7 +63,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         await AsyncStorage.setItem('user', JSON.stringify(data.user));
         onLogin();
       } else {
-        setLoginError(t('login.errorWrongCredentials'));
+        const msg = t('login.errorWrongCredentials');
+        setLoginError(msg.replace(/\s*Demo hesap:?\s*admin\s*\/\s*admin\.?\s*/gi, '').trim() || msg);
       }
     } catch (err: any) {
       console.error('Login error:', err);
@@ -73,7 +74,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           'Sunucuya bağlanılamadı. Backend çalışıyor mu? Aynı ağda mısınız?'
         );
       } else {
-        setLoginError(errorMessage);
+        const cleaned = errorMessage.replace(/\s*Demo hesap:?\s*admin\s*\/\s*admin\.?\s*/gi, '').trim();
+        setLoginError(cleaned || t('login.errorWrongCredentials'));
       }
     } finally {
       setLoading(false);
@@ -106,7 +108,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         </View>
         <View style={styles.cardWrap}>
           <View style={[styles.card, { padding: cardPadding }]}>
-          <Text style={styles.title}>{t('login.title')}</Text>
           <Text style={styles.subtitle}>{t('login.subtitle')}</Text>
 
           <View style={styles.form}>

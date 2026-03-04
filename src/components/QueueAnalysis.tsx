@@ -166,18 +166,14 @@ const QueueAnalysis = () => {
     await fetchDailySummary(false);
   };
   
-  const shiftHour = (hourString: string): string => {
-    const hour = parseInt(hourString, 10);
-    if (isNaN(hour)) return hourString;
-    const newHour = (hour + 3) % 24;
-    return String(newHour).padStart(2, '0');
-  };
-
-  // GÜNCELLEME: Filtrelenmiş ve saat dilimi ayarlanmış veri
+  // GÜNCELLEME: Filtrelenmiş veri (sadece 10:00-22:00 arası)
   const filteredAndShiftedDailyData = useMemo(() => {
     if (!dailyData) return [];
     return dailyData.hourlySummary
-      .map(summary => ({ ...summary, hour: shiftHour(summary.hour) }))
+      .map(summary => ({
+        ...summary,
+        hour: String(parseInt(summary.hour, 10)).padStart(2, '0'),
+      }))
       .filter(summary => {
           const hour = parseInt(summary.hour, 10);
           return hour >= 10 && hour <= 22;

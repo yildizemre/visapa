@@ -45,12 +45,10 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         onLogin();
       } else {
         setError(t('login.errorWrongCredentials'));
-        setErrorHint(t('login.errorHint'));
       }
     } catch (err) {
       console.error('Login error:', err);
       setError(t('msg.serverError'));
-      setErrorHint(t('msg.adminAccount'));
     }
   };
 
@@ -107,9 +105,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             alt="VISLIVIS"
             className="h-16 w-auto object-contain mb-4"
           />
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-            {t('login.title')}
-          </h1>
         </motion.div>
 
         <motion.p

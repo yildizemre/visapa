@@ -14,7 +14,7 @@ import os
 import requests
 import sys
 
-API_BASE = "http://127.0.0.1:5000"
+API_BASE = "http://ai.vislivis.com:5000"
 USERNAME = "beymen"
 PASSWORD = "beymen"
 
@@ -62,7 +62,7 @@ def send_customer_data(token: str, payload: dict) -> dict:
 def main():
     parser = argparse.ArgumentParser(description="Müşteri sayım verisi gönderir.")
     parser.add_argument("-j", "--json", type=str, required=True, help="Payload JSON (örn: payload.json)")
-    parser.add_argument("--url", type=str, default="http://127.0.0.1:5000", help="API base URL")
+    parser.add_argument("--url", type=str, default="http://ai.vislivis.com:5000", help="API base URL")
     args = parser.parse_args()
 
     global API_BASE

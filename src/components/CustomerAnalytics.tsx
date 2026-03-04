@@ -91,11 +91,17 @@ const CustomerAnalytics = () => {
         const data = await response.json();
         const hourlyFlow = data.hourlyCustomerFlow || [];
         const filteredHourlyFlow = Array.isArray(hourlyFlow)
-          ? hourlyFlow.filter((item: { hour?: string }) => {
-              const h = item?.hour || '00:00';
-              const hourValue = parseInt(String(h).split(':')[0], 10);
-              return hourValue >= 7 && hourValue <= 19;
-            })
+          ? hourlyFlow
+              .map((item: { hour?: string }) => {
+                const h = item?.hour || '00:00';
+                const hourValue = parseInt(String(h).split(':')[0], 10);
+                const hourLabel = `${String(hourValue).padStart(2, '0')}:00`;
+                return { ...item, hour: hourLabel };
+              })
+              .filter((item: { hour: string }) => {
+                const hourValue = parseInt(item.hour.split(':')[0], 10);
+                return hourValue >= 10 && hourValue <= 22;
+              })
           : [];
 
         setAnalyticsData({
