@@ -170,13 +170,6 @@ def post_customer():
     )
     db.session.add(r)
     db.session.commit()
-    try:
-        print("[DEBUG post_customer]",
-              "user_id=", target_user_id,
-              "timestamp=", r.timestamp.isoformat() if r.timestamp else None,
-              "entered=", r.entered, "exited=", r.exited)
-    except Exception:
-        pass
     return {'id': r.id, 'message': 'Kaydedildi'}, 201
 
 
@@ -234,14 +227,6 @@ def get_flow_data():
             hour_key = f'{h:02d}:00'
             if hour_key not in hourly:
                 hourly[hour_key] = {'entered': 0, 'exited': 0, 'editable_id': None}
-
-    try:
-        print("[DEBUG flow-data]",
-              "date_from=", date_from,
-              "user_ids=", user_ids,
-              "available_dates=", sorted(result_data.keys()))
-    except Exception:
-        pass
 
     return {'data': result_data}
 
@@ -388,15 +373,6 @@ def post_queue():
     )
     db.session.add(r)
     db.session.commit()
-    try:
-        print("[DEBUG post_queue]",
-              "user_id=", get_jwt_identity(),
-              "recorded_at=", r.recorded_at.isoformat() if r.recorded_at else None,
-              "cashier=", r.cashier_id,
-              "total_customers=", r.total_customers,
-              "wait_time=", r.wait_time)
-    except Exception:
-        pass
     return {'id': r.id, 'message': 'Kaydedildi'}, 201
 
 
@@ -567,16 +543,6 @@ def post_heatmap():
     )
     db.session.add(r)
     db.session.commit()
-    try:
-        print("[DEBUG post_heatmap]",
-              "user_id=", get_jwt_identity(),
-              "date_recorded=", str(date_rec),
-              "recorded_at=", r.recorded_at.isoformat() if r.recorded_at else None,
-              "zone=", r.zone,
-              "visitor_count=", r.visitor_count,
-              "intensity=", r.intensity)
-    except Exception:
-        pass
     return {'id': r.id, 'message': 'Kaydedildi'}, 201
 
 
