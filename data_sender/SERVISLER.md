@@ -72,6 +72,8 @@ python heartbeat_sender.py -u boyner -p boyner123 --interval 5
 
 **Amaç:** Giriş/çıkış sayıları, mağaza içi doluluk.
 
+**Önemli:** Panelde saatlik dökümün (10:00–11:00, 11:00–12:00, …) dolu görünmesi için **her saat için ayrı kayıt** atılmalıdır. Yani her saat başı `timestamp`: `YYYY-MM-DDTHH:00` ile bir istek (örn. `run_hourly.sh` veya cron ile) gönderin. Tek bir toplam kayıt atarsanız panelde yalnızca o saatte görünür.
+
 ### Payload Örneği (`payload.json`)
 
 ```json

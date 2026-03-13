@@ -1,6 +1,6 @@
 // --- START OF FILE CustomerAnalytics.tsx ---
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   PieChart as PieChartIcon,
@@ -38,23 +38,36 @@ const formatDateForAPI = (date: Date) => {
     return `${year}-${month}-${day}`;
 };
 
+interface CustomerRow {
+  id?: number;
+  timestamp?: string | null;
+  entered?: number;
+  exited?: number;
+  male_count?: number;
+  female_count?: number;
+  age_18_30?: number;
+  age_30_50?: number;
+  age_50_plus?: number;
+  camera_id?: string | null;
+}
+
+function getDateFromTimestamp(ts: string | null | undefined): string | null {
+  if (!ts) return null;
+  const s = String(ts).trim();
+  if (s.length >= 10 && s[4] === '-' && s[7] === '-') return s.slice(0, 10);
+  const d = new Date(s);
+  if (isNaN(d.getTime())) return null;
+  return d.toISOString().slice(0, 10);
+}
+
 const CustomerAnalytics = () => {
   const { t } = useLanguage();
   const storeRefresh = useStoreChange();
 
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  // YENİ: Kamera filtresi için state'ler
+  const [rawCustomerData, setRawCustomerData] = useState<CustomerRow[] | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date>(() => new Date());
   const [selectedCamera, setSelectedCamera] = useState<string>('all');
   const [allCameras, setAllCameras] = useState<string[]>([]);
-
-  const [analyticsData, setAnalyticsData] = useState({
-    demographics: {
-      ageGroupsChart: [] as { name: string; value: number }[],
-      genderDistributionChart: [] as { gender: string; value: number }[],
-    },
-    hourlyCustomerFlow: [] as { hour: string; entering: number; exiting: number }[],
-  });
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -68,63 +81,96 @@ const CustomerAnalytics = () => {
   };
   const PIE_COLORS = [chartColors.primary, chartColors.accent, chartColors.secondary, chartColors.purple, chartColors.pink];
 
-  // Backend'den müşteri verilerini çek (Kamera filtresi eklendi)
+  // Tek istek: tarih filtresi OLMADAN müşteri verisini çek (Dashboard ile aynı veri kaynağı)
   useEffect(() => {
-    const fetchCustomerData = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const token = localStorage.getItem('token');
-        const dateStr = formatDateForAPI(selectedDate);
-
-        const url = apiUrl(`/api/analytics/customers?date=${dateStr}&camera_id=${selectedCamera}`);
-
-        const response = await fetch(url, {
-          headers: { 'Authorization': `Bearer ${token}` }
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || 'Veri çekme başarısız oldu.');
+    let cancelled = false;
+    setLoading(true);
+    setError(null);
+    const token = localStorage.getItem('token');
+    fetch(apiUrl('/api/analytics/customers?camera_id=all'), {
+      headers: { 'Authorization': `Bearer ${token}` },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Veri çekilemedi');
+        return res.json();
+      })
+      .then((data: { data?: CustomerRow[]; all_cameras?: string[] }) => {
+        if (cancelled) return;
+        const rows = Array.isArray(data?.data) ? data.data : [];
+        setRawCustomerData(rows);
+        if (Array.isArray(data?.all_cameras)) setAllCameras(data.all_cameras);
+        if (rows.length > 0) {
+          let maxDateStr = '';
+          for (const r of rows) {
+            const dateStr = getDateFromTimestamp(r?.timestamp);
+            if (dateStr && (!maxDateStr || dateStr > maxDateStr)) maxDateStr = dateStr;
+          }
+          if (maxDateStr) {
+            const [y, m, d] = maxDateStr.split('-').map(Number);
+            if (y && m && d) setSelectedDate(new Date(y, m - 1, d));
+          }
         }
+      })
+      .catch((err) => {
+        if (!cancelled) setError(err instanceof Error ? err.message : 'Veri çekilemedi');
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => { cancelled = true; };
+  }, [storeRefresh]);
 
-        const data = await response.json();
-        const hourlyFlow = data.hourlyCustomerFlow || [];
-        const filteredHourlyFlow = Array.isArray(hourlyFlow)
-          ? hourlyFlow
-              .map((item: { hour?: string }) => {
-                const h = item?.hour || '00:00';
-                const hourValue = parseInt(String(h).split(':')[0], 10);
-                const hourLabel = `${String(hourValue).padStart(2, '0')}:00`;
-                return { ...item, hour: hourLabel };
-              })
-              .filter((item: { hour: string }) => {
-                const hourValue = parseInt(item.hour.split(':')[0], 10);
-                return hourValue >= 10 && hourValue <= 22;
-              })
-          : [];
+  const dateStr = formatDateForAPI(selectedDate);
 
-        setAnalyticsData({
-          demographics: data.demographics || {
-            ageGroupsChart: [],
-            genderDistributionChart: [],
-          },
-          hourlyCustomerFlow: filteredHourlyFlow,
-        });
+  const analyticsData = useMemo(() => {
+    const rows = rawCustomerData ?? [];
+    const filtered = rows.filter((r) => {
+      const rowDate = getDateFromTimestamp(r?.timestamp);
+      if (!rowDate || rowDate !== dateStr) return false;
+      if (selectedCamera !== 'all' && r.camera_id !== selectedCamera) return false;
+      return true;
+    });
 
-        if (selectedCamera === 'all' && Array.isArray(data.all_cameras)) {
-          setAllCameras(data.all_cameras);
-        }
+    const age_18_30 = filtered.reduce((s, r) => s + (r.age_18_30 ?? 0), 0);
+    const age_30_50 = filtered.reduce((s, r) => s + (r.age_30_50 ?? 0), 0);
+    const age_50_plus = filtered.reduce((s, r) => s + (r.age_50_plus ?? 0), 0);
+    const total_male = filtered.reduce((s, r) => s + (r.male_count ?? 0), 0);
+    const total_female = filtered.reduce((s, r) => s + (r.female_count ?? 0), 0);
 
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Bilinmeyen bir hata oluştu.');
-      } finally {
-        setLoading(false);
-      }
+    const byHour: Record<string, { entering: number; exiting: number }> = {};
+    for (let h = 10; h <= 22; h++) {
+      byHour[`${String(h).padStart(2, '0')}:00`] = { entering: 0, exiting: 0 };
+    }
+    for (const r of filtered) {
+      const ts = r?.timestamp;
+      if (!ts) continue;
+      const d = new Date(ts);
+      const hour = isNaN(d.getTime()) ? 12 : d.getHours();
+      if (hour < 10 || hour > 22) continue;
+      const key = `${String(hour).padStart(2, '0')}:00`;
+      if (!byHour[key]) byHour[key] = { entering: 0, exiting: 0 };
+      byHour[key].entering += r.entered ?? 0;
+      byHour[key].exiting += r.exited ?? 0;
+    }
+    const hourlyCustomerFlow = Object.entries(byHour)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([hour, v]) => ({ hour, entering: v.entering, exiting: v.exiting }));
+
+    return {
+      demographics: {
+        ageGroupsChart: [
+          { name: '18-30', value: age_18_30 },
+          { name: '30-50', value: age_30_50 },
+          { name: '50+', value: age_50_plus },
+        ],
+        genderDistributionChart: [
+          { gender: 'Erkek', value: total_male },
+          { gender: 'Kadın', value: total_female },
+        ],
+      },
+      hourlyCustomerFlow,
     };
-
-    fetchCustomerData();
-  }, [selectedDate, selectedCamera, storeRefresh]);
+  }, [rawCustomerData, dateStr, selectedCamera]);
 
 
   const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.1 } } };

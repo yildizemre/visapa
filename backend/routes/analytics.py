@@ -15,6 +15,24 @@ def _user_ids():
     return ids if ids else [get_jwt_identity()]
 
 
+# --- Customer Analytics: veri olan en son tarih (Müşteri Analizi sayfası varsayılan tarih için) ---
+@analytics_bp.route('/customers/latest-date', methods=['GET'])
+@jwt_required()
+def get_customers_latest_date():
+    """Kullanıcının (veya mağazanın) müşteri verisi olan en son tarihi döner. Tarih yoksa bugün."""
+    user_ids = _user_ids()
+    from sqlalchemy import func
+    row = (
+        db.session.query(func.max(db.func.date(CustomerData.timestamp)))
+        .filter(CustomerData.user_id.in_(user_ids))
+        .scalar()
+    )
+    if row:
+        return {'date': str(row)}
+    today = datetime.utcnow().strftime('%Y-%m-%d')
+    return {'date': today}
+
+
 # --- Customer Analytics ---
 @analytics_bp.route('/customers', methods=['GET'])
 @jwt_required()
@@ -115,11 +133,25 @@ def _parse_timestamp(ts_str):
 @analytics_bp.route('/customers', methods=['POST'])
 @jwt_required()
 def post_customer():
-    user_id = get_jwt_identity()
-    data = request.get_json()
-    ts = _parse_timestamp(data.get('timestamp'))
+    """
+    Müşteri verisi ekleme.
+    ÖNEMLİ: Script'ten gelen timestamp'i (örn. '2026-03-09T10:00') doğrudan kullan.
+    Daha önce parse hatası yüzünden timestamp boş kalıp datetime.utcnow() ile BUGÜNE yazılıyordu.
+    """
+    target_user_id = get_jwt_identity()
+    data = request.get_json() or {}
+
+    ts_raw = data.get('timestamp')
+    ts = None
+    if ts_raw:
+        try:
+            # ISO format (YYYY-MM-DDTHH:MM veya HH:MM:SS) bekliyoruz
+            ts = datetime.fromisoformat(str(ts_raw))
+        except Exception:
+            ts = _parse_timestamp(ts_raw)
+
     r = CustomerData(
-        user_id=user_id,
+        user_id=target_user_id,
         timestamp=ts if ts else datetime.utcnow(),
         camera_id=data.get('camera_id'),
         location=data.get('location'),
@@ -138,12 +170,21 @@ def post_customer():
     )
     db.session.add(r)
     db.session.commit()
+    try:
+        print("[DEBUG post_customer]",
+              "user_id=", target_user_id,
+              "timestamp=", r.timestamp.isoformat() if r.timestamp else None,
+              "entered=", r.entered, "exited=", r.exited)
+    except Exception:
+        pass
     return {'id': r.id, 'message': 'Kaydedildi'}, 201
 
 
 @analytics_bp.route('/customers/flow-data', methods=['GET'])
 @jwt_required()
 def get_flow_data():
+    """Günlük akış: tarih ve saate göre gruplar. Saat saat (10–23) döner; veri yoksa 0.
+    Veritabanında saatlik veri için: POST /customers ile her saat için ayrı kayıt atılmalı (timestamp o saatin başı)."""
     user_ids = _user_ids()
     date_from = request.args.get('date_from')
     camera_id = request.args.get('camera_id')
@@ -185,6 +226,22 @@ def get_flow_data():
         }
         result_data[date_str]['summary']['total_entered'] += v['entered']
         result_data[date_str]['summary']['total_exited'] += v['exited']
+
+    # Her tarih için 10:00–23:00 arası tüm saatleri döndür; veri yoksa 0 (saat saat gösterim için)
+    for date_str in result_data:
+        hourly = result_data[date_str]['hourly_data']
+        for h in range(10, 24):
+            hour_key = f'{h:02d}:00'
+            if hour_key not in hourly:
+                hourly[hour_key] = {'entered': 0, 'exited': 0, 'editable_id': None}
+
+    try:
+        print("[DEBUG flow-data]",
+              "date_from=", date_from,
+              "user_ids=", user_ids,
+              "available_dates=", sorted(result_data.keys()))
+    except Exception:
+        pass
 
     return {'data': result_data}
 
@@ -309,8 +366,14 @@ def get_queues():
 @analytics_bp.route('/queues', methods=['POST'])
 @jwt_required()
 def post_queue():
-    data = request.get_json()
-    ts = _parse_timestamp(data.get('timestamp'))
+    data = request.get_json() or {}
+    ts_raw = data.get('timestamp')
+    ts = None
+    if ts_raw:
+        try:
+            ts = datetime.fromisoformat(str(ts_raw))
+        except Exception:
+            ts = _parse_timestamp(ts_raw)
     r = QueueData(
         user_id=get_jwt_identity(),
         customer_id=data.get('customer_id'),
@@ -325,6 +388,15 @@ def post_queue():
     )
     db.session.add(r)
     db.session.commit()
+    try:
+        print("[DEBUG post_queue]",
+              "user_id=", get_jwt_identity(),
+              "recorded_at=", r.recorded_at.isoformat() if r.recorded_at else None,
+              "cashier=", r.cashier_id,
+              "total_customers=", r.total_customers,
+              "wait_time=", r.wait_time)
+    except Exception:
+        pass
     return {'id': r.id, 'message': 'Kaydedildi'}, 201
 
 
@@ -468,8 +540,14 @@ def get_heatmaps():
 @analytics_bp.route('/heatmaps', methods=['POST'])
 @jwt_required()
 def post_heatmap():
-    data = request.get_json()
-    ts = _parse_timestamp(data.get('timestamp'))
+    data = request.get_json() or {}
+    ts_raw = data.get('timestamp')
+    ts = None
+    if ts_raw:
+        try:
+            ts = datetime.fromisoformat(str(ts_raw))
+        except Exception:
+            ts = _parse_timestamp(ts_raw)
     dt = ts if ts else datetime.utcnow()
     if data.get('date_recorded'):
         try:
@@ -489,6 +567,16 @@ def post_heatmap():
     )
     db.session.add(r)
     db.session.commit()
+    try:
+        print("[DEBUG post_heatmap]",
+              "user_id=", get_jwt_identity(),
+              "date_recorded=", str(date_rec),
+              "recorded_at=", r.recorded_at.isoformat() if r.recorded_at else None,
+              "zone=", r.zone,
+              "visitor_count=", r.visitor_count,
+              "intensity=", r.intensity)
+    except Exception:
+        pass
     return {'id': r.id, 'message': 'Kaydedildi'}, 201
 
 

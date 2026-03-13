@@ -162,7 +162,11 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
       }
 
       const flowJson = await flowResponse.json();
-      setFlowData(flowJson.data && flowJson.data[dateStr] ? flowJson.data[dateStr] : null);
+      const data = flowJson.data && typeof flowJson.data === 'object' ? flowJson.data : {};
+      const dataForDate = data[dateStr];
+      const fallbackDateKey = Object.keys(data).length > 0 ? Object.keys(data)[0] : null;
+      const resolved = dataForDate ?? (fallbackDateKey ? data[fallbackDateKey] : null);
+      setFlowData(resolved && resolved.hourly_data ? resolved : null);
       setWeatherData(weatherResponse);
       setComparisonStats(flowJson.comparison_stats || null);
 
@@ -261,15 +265,16 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
 
   const item = { hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } };
 
+  // 10:00 - 23:00 sabit + API'den gelen ve bu aralık dışındaki saatler (veritabanındaki toplam tek saatte dönebiliyor)
   const filteredHourlyData = useMemo(() => {
-      if (!flowData?.hourly_data) return [];
-      return Object.entries(flowData.hourly_data)
-          .filter(([hour]) => {
-              const hourValue = parseInt(hour.split(':')[0], 10);
-              // 10:00-22:00 yerel aralığını göstermek için doğrudan 10–22 saatlerini kullan.
-              return hourValue >= 10 && hourValue <= 22;
-          })
-          .sort(([hourA], [hourB]) => hourA.localeCompare(hourB));
+      const hourly = flowData?.hourly_data ?? {};
+      const baseSlots = Array.from({ length: 14 }, (_, i) => `${String(10 + i).padStart(2, '0')}:00`);
+      const apiHours = Object.keys(hourly).filter((h) => !baseSlots.includes(h)).sort();
+      const allSlots = [...baseSlots, ...apiHours];
+      return allSlots.map((hour) => {
+        const data = hourly[hour] ?? { entered: 0, exited: 0, editable_id: null };
+        return [hour, data] as const;
+      });
   }, [flowData]);
 
 
@@ -289,7 +294,7 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
 
       {loading ? ( <div className="text-center py-10"><RefreshCw className="w-8 h-8 mx-auto animate-spin text-blue-400" /></div> )
       : error ? ( <div className="text-center py-10 text-red-400 flex flex-col items-center"><AlertCircle className="w-12 h-12 mb-4" /><p className="font-semibold">Hata Oluştu</p><p className="text-sm">{error}</p></div> )
-      : !flowData || filteredHourlyData.length === 0 ? ( <div className="text-center py-10 text-slate-400 flex flex-col items-center"><BarChart3 className="w-12 h-12 mb-4" /><p className="font-semibold">Veri Bulunamadı</p><p className="text-sm">{selectedDate.toLocaleDateString()} için gösterilecek saat aralığında veri yok.</p></div> )
+      : !flowData ? ( <div className="text-center py-10 text-slate-400 flex flex-col items-center"><BarChart3 className="w-12 h-12 mb-4" /><p className="font-semibold">Veri Bulunamadı</p><p className="text-sm">{selectedDate.toLocaleDateString()} için gösterilecek saat aralığında veri yok.</p></div> )
       : (
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6">
@@ -321,7 +326,7 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
 
           <div>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 mb-3 sm:mb-4">
-                <h4 className="text-white font-semibold text-xs sm:text-sm md:text-base">Saatlik Döküm (10:00 - 22:00)</h4>
+                <h4 className="text-white font-semibold text-xs sm:text-sm md:text-base">Saatlik Döküm (10:00 - 23:00)</h4>
                 {isAdmin && hasChanges && (
                     <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                         <button onClick={handleCancelChanges} className="flex items-center gap-1 text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-md hover:bg-slate-700"><XCircle className="w-3 h-3 sm:w-4 sm:h-4 text-slate-300" /> <span className="hidden sm:inline text-slate-300">İptal</span></button>
@@ -347,11 +352,12 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
                             const isEdited = !!editedData[hour];
                             const weather = weatherData ? weatherData[hour] : null;
 
-                            const startTimeUTC3 = formatTimeToUTC3(hour);
-                            const startHourValue = parseInt(startTimeUTC3.split(':')[0], 10);
-                            const endHourValue = (startHourValue + 1);
-                            const endTimeUTC3 = `${endHourValue.toString().padStart(2, '0')}:00`;
-                            const timeRange = `${startTimeUTC3} - ${endTimeUTC3}`;
+                            // Saat bilgisi backend'den zaten yerel (10:00, 11:00, ...) olarak geliyor.
+                            const startHourValue = parseInt(hour.split(':')[0], 10);
+                            const endHourValue = startHourValue + 1;
+                            const startLabel = `${startHourValue.toString().padStart(2, '0')}:00`;
+                            const endLabel = `${endHourValue.toString().padStart(2, '0')}:00`;
+                            const timeRange = `${startLabel} - ${endLabel}`;
 
                             // GÜNCELLEME: Düzenlemenin ne zaman devre dışı kalacağını belirleyen değişken
                             const isEditingDisabled = !isAdmin || !data.editable_id || selectedCamera === 'all';

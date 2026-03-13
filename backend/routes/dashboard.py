@@ -41,6 +41,11 @@ def weekly_overview():
         busiest_age = max(age_groups, key=age_groups.get)
         busiest_age = {'age_18_30': '18-30', 'age_30_50': '30-50', 'age_50_plus': '50+'}.get(busiest_age, busiest_age)
 
+    # Müşteri Analizi sayfası için: veri olan en son tarih (varsayılan seçili gün)
+    latest_customer_date = None
+    if customer_rows:
+        latest_customer_date = max(r.timestamp.date() for r in customer_rows if r.timestamp)
+
     # Kuyruk verileri
     queue_rows = QueueData.query.filter(
         QueueData.user_id.in_(user_ids),
@@ -82,6 +87,7 @@ def weekly_overview():
                 'male': total_male,
                 'female': total_female,
                 'busiest_age_group': busiest_age,
+                'latest_customer_date': str(latest_customer_date) if latest_customer_date else None,
             },
             'queues': {
                 'avg_wait_time': avg_wait,
