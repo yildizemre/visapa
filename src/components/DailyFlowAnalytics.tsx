@@ -10,7 +10,6 @@ import {
   Thermometer, ChevronLeft, ChevronRight, Save, XCircle, RefreshCw,
   TrendingUp, TrendingDown, Minus, Sun, Cloud, CloudRain
 } from 'lucide-react';
-import { formatTimeToUTC3 } from '../utils/timeUtils';
 
 // --- Veri Modelleri ---
 interface HourlyFlowData {
@@ -265,10 +264,10 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
 
   const item = { hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } };
 
-  // 10:00 - 23:00 sabit + API'den gelen ve bu aralık dışındaki saatler (veritabanındaki toplam tek saatte dönebiliyor)
+  // 10:00 - 22:00 sabit + API'den gelen ve bu aralık dışındaki saatler (veritabanındaki toplam tek saatte dönebiliyor)
   const filteredHourlyData = useMemo(() => {
       const hourly = flowData?.hourly_data ?? {};
-      const baseSlots = Array.from({ length: 14 }, (_, i) => `${String(10 + i).padStart(2, '0')}:00`);
+      const baseSlots = Array.from({ length: 13 }, (_, i) => `${String(10 + i).padStart(2, '0')}:00`);
       const apiHours = Object.keys(hourly).filter((h) => !baseSlots.includes(h)).sort();
       const allSlots = [...baseSlots, ...apiHours];
       return allSlots.map((hour) => {
@@ -326,7 +325,7 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
 
           <div>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 mb-3 sm:mb-4">
-                <h4 className="text-white font-semibold text-xs sm:text-sm md:text-base">Saatlik Döküm (10:00 - 23:00)</h4>
+                <h4 className="text-white font-semibold text-xs sm:text-sm md:text-base">Saatlik Döküm (10:00 - 22:00)</h4>
                 {isAdmin && hasChanges && (
                     <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                         <button onClick={handleCancelChanges} className="flex items-center gap-1 text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-md hover:bg-slate-700"><XCircle className="w-3 h-3 sm:w-4 sm:h-4 text-slate-300" /> <span className="hidden sm:inline text-slate-300">İptal</span></button>

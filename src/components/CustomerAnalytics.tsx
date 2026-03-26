@@ -28,7 +28,6 @@ import {
 } from 'recharts';
 
 import DailyFlowAnalytics from './DailyFlowAnalytics';
-import { formatTimeToUTC3 } from '../utils/timeUtils';
 
 // Tarih formatlama yardımcısı
 const formatDateForAPI = (date: Date) => {
@@ -303,11 +302,11 @@ const CustomerAnalytics = () => {
                 {/* GÜNCELLEME: Grafik verisi filtrelenmiş analyticsData.hourlyCustomerFlow'dan besleniyor */}
                 <ComposedChart data={analyticsData.hourlyCustomerFlow ?? []}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                  <XAxis dataKey="hour" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" tickFormatter={(hour) => formatTimeToUTC3(hour)} />
+                  <XAxis dataKey="hour" stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" />
                   <YAxis stroke="#9CA3AF" fontSize={9} className="sm:text-[10px] md:text-xs" />
                   <Tooltip
                     contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151' }}
-                    labelFormatter={(label) => `Saat: ${formatTimeToUTC3(label)}`}
+                    labelFormatter={(label) => `Saat: ${label}`}
                   />
                   <Legend />
                   <Line type="monotone" dataKey="entering" stroke={chartColors.secondary} name="Giren" />

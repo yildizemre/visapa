@@ -2,11 +2,13 @@ from flask import Blueprint, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from datetime import datetime, timedelta, date, time
 from collections import defaultdict
+from zoneinfo import ZoneInfo
 
 from models import db, CustomerData, QueueData, HeatmapData, StaffData, Report
 from user_context import get_resolved_user_ids
 
 analytics_bp = Blueprint('analytics', __name__)
+ISTANBUL_TZ = ZoneInfo("Europe/Istanbul")
 
 
 def _user_ids():
@@ -130,6 +132,15 @@ def _parse_timestamp(ts_str):
     return None
 
 
+def _to_istanbul_local_naive(dt_val):
+    """Tüm modüller için tek standart: Europe/Istanbul local saat (naive)."""
+    if not dt_val:
+        return None
+    if dt_val.tzinfo is not None:
+        return dt_val.astimezone(ISTANBUL_TZ).replace(tzinfo=None)
+    return dt_val
+
+
 @analytics_bp.route('/customers', methods=['POST'])
 @jwt_required()
 def post_customer():
@@ -149,6 +160,7 @@ def post_customer():
             ts = datetime.fromisoformat(str(ts_raw))
         except Exception:
             ts = _parse_timestamp(ts_raw)
+    ts = _to_istanbul_local_naive(ts)
 
     r = CustomerData(
         user_id=target_user_id,
@@ -220,10 +232,10 @@ def get_flow_data():
         result_data[date_str]['summary']['total_entered'] += v['entered']
         result_data[date_str]['summary']['total_exited'] += v['exited']
 
-    # Her tarih için 10:00–23:00 arası tüm saatleri döndür; veri yoksa 0 (saat saat gösterim için)
+    # Her tarih için 10:00–22:00 arası tüm saatleri döndür; veri yoksa 0 (saat saat gösterim için)
     for date_str in result_data:
         hourly = result_data[date_str]['hourly_data']
-        for h in range(10, 24):
+        for h in range(10, 23):
             hour_key = f'{h:02d}:00'
             if hour_key not in hourly:
                 hourly[hour_key] = {'entered': 0, 'exited': 0, 'editable_id': None}
@@ -359,11 +371,16 @@ def post_queue():
             ts = datetime.fromisoformat(str(ts_raw))
         except Exception:
             ts = _parse_timestamp(ts_raw)
+    ts = _to_istanbul_local_naive(ts)
+    enter_time = datetime.fromisoformat(data['enter_time']) if data.get('enter_time') else None
+    exit_time = datetime.fromisoformat(data['exit_time']) if data.get('exit_time') else None
+    enter_time = _to_istanbul_local_naive(enter_time)
+    exit_time = _to_istanbul_local_naive(exit_time)
     r = QueueData(
         user_id=get_jwt_identity(),
         customer_id=data.get('customer_id'),
-        enter_time=datetime.fromisoformat(data['enter_time']) if data.get('enter_time') else None,
-        exit_time=datetime.fromisoformat(data['exit_time']) if data.get('exit_time') else None,
+        enter_time=enter_time,
+        exit_time=exit_time,
         wait_time=float(data.get('wait_time', 0) or 0),
         queue_position=data.get('queue_position'),
         cashier_id=data.get('cashier_id'),

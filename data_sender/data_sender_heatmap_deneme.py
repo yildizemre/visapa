@@ -1,8 +1,8 @@
 import requests
 
-API_BASE = "http://127.0.0.1:5000"
-USERNAME = "deneme"
-PASSWORD = "deneme"
+API_BASE = "https://ai.vislivis.com"
+USERNAME = "demo"
+PASSWORD = "demo"
 
 ZONES = [
     ("Giriş", 45, 120.0),
