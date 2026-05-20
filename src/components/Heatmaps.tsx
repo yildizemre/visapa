@@ -1,0 +1,509 @@
+// Heatmaps.tsx dosyasının TAMAMI
+
+import React, { useState, useEffect, useMemo } from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Users, 
+  Clock, 
+  MapPin,
+  BarChart2,
+  Filter,
+  Save,
+  XCircle,
+  RefreshCw,
+  ArrowUp,
+  ArrowDown,
+  Minus,
+  TrendingUp,
+  TrendingDown
+} from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { apiUrl } from '../lib/api';
+import { useStoreChange } from '../hooks/useStoreChange';
+import {
+  ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
+  PieChart, Pie, Cell, AreaChart, Area,
+} from 'recharts';
+import InsightsPanel from './shared/InsightsPanel';
+import CameraViewer from './shared/CameraViewer';
+import DateRangePicker from './shared/DateRangePicker';
+
+// Veri tipleri
+interface ComparisonStat {
+  period: string;
+  change: number | null;
+}
+interface HourlySummary {
+  hour: string;
+  totalVisitors: number;
+  avgDwellTime: number; // saniye cinsinden
+  editable_id: number | null;
+}
+interface OverallStats {
+  totalVisitors: number;
+  avgDwellTime: number;
+  busiestZone: string;
+}
+interface DwellTimeDistribution {
+  range: string;
+  count: number;
+}
+interface ZonePerformance {
+  zone: string;
+  totalVisitors: number;
+  avgDwell: number; // saniye cinsinden
+}
+interface DailyData {
+    overallStats: OverallStats;
+    hourlySummary: HourlySummary[];
+    dwellTimeDistribution: DwellTimeDistribution[];
+    zonePerformance: ZonePerformance[];
+    allZones: string[];
+    comparisonStats: {
+        totalVisitors: ComparisonStat[];
+    }
+}
+type EditableFields = {
+    totalVisitors?: number | '';
+    avgDwellTime?: number | '';
+};
+
+const ComparisonStatCard: React.FC<{ stat: ComparisonStat }> = ({ stat }) => {
+    const { change, period } = stat;
+    let color = 'text-slate-400';
+    let Icon = Minus;
+  
+    if (change !== null) {
+      if (change > 0) {
+        color = 'text-green-400';
+        Icon = TrendingUp;
+      } else if (change < 0) {
+        color = 'text-red-400';
+        Icon = TrendingDown;
+      }
+    }
+  
+    const displayChange = change === null ? 'N/A' : `${change > 0 ? '+' : ''}${change}%`;
+  
+    return (
+      <div className="flex items-center gap-1 sm:gap-2 text-[9px] sm:text-xs">
+        <span className="text-slate-500 w-12 sm:w-16 md:w-20">{period}:</span>
+        <div className={`flex items-center font-semibold ${color}`}>
+          <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-0.5 sm:mr-1" />
+          <span>{displayChange}</span>
+        </div>
+      </div>
+    );
+};
+
+const ChangeIndicator = ({ change }: { change: number | null }) => {
+    if (change === null || isNaN(change) || !isFinite(change)) {
+      return <span className="flex items-center text-slate-500 text-[9px] sm:text-xs"><Minus size={12} className="sm:w-3.5 sm:h-3.5" /> N/A</span>;
+    }
+    const isIncrease = change > 0;
+    const isDecrease = change < 0;
+    const color = isIncrease ? 'text-green-400' : isDecrease ? 'text-red-400' : 'text-slate-400';
+    const Icon = isIncrease ? ArrowUp : isDecrease ? ArrowDown : Minus;
+  
+    return (
+      <span className={`flex items-center text-[9px] sm:text-xs font-medium ${color}`}>
+        <Icon size={12} className="sm:w-3.5 sm:h-3.5 mr-0.5 sm:mr-1" />
+        {Math.abs(change).toFixed(1)}%
+      </span>
+    );
+};
+
+const Heatmaps = () => {
+  const { t } = useLanguage();
+  const storeRefresh = useStoreChange();
+  
+  const [dailyData, setDailyData] = useState<DailyData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const todayStr = new Date().toISOString().split('T')[0];
+  const [selectedDate, setSelectedDate] = useState(todayStr);
+  const [startDate, setStartDate] = useState(todayStr);
+  const [endDate, setEndDate] = useState(todayStr);
+  const [selectedZone, setSelectedZone] = useState<string>('all');
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const [editedData, setEditedData] = useState<{ [hour: string]: EditableFields }>({});
+  const [isSaving, setIsSaving] = useState(false);
+  const hasChanges = Object.keys(editedData).length > 0;
+  const isEditingDisabled = selectedZone !== 'all';
+
+  const chartColors = { primary: '#6366f1', secondary: '#f43f5e', accent: '#3b82f6', purple: '#8b5cf6' };
+
+  const tooltipStyle = {
+    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+    border: '1px solid rgba(148, 163, 184, 0.2)',
+    borderRadius: '12px',
+    boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
+    padding: '12px 16px',
+  };
+
+  const formatDwellTime = (seconds: number) => {
+    if (!seconds || seconds < 1) return '0 sn';
+    if (seconds < 60) return `${Math.round(seconds)} sn`;
+    const minutes = Math.floor(seconds / 60);
+    const sec = Math.round(seconds % 60);
+    return `${minutes} dk ${sec} sn`;
+  };
+
+  const fetchDailySummary = async (showLoading = true, sDate?: string, eDate?: string) => {
+    if (showLoading) setLoading(true);
+    setEditedData({});
+    try {
+      const token = localStorage.getItem('token');
+      const from = sDate ?? startDate;
+      const to = eDate ?? endDate;
+      const params = new URLSearchParams({ date_from: from, date_to: to });
+      if (selectedZone !== 'all') params.append('zone_ids', selectedZone);
+      const response = await fetch(apiUrl(`/api/analytics/heatmaps/daily-summary?${params}`), {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setDailyData(data);
+      } else {
+        setDailyData(null);
+      }
+    } catch (error) {
+      console.error('Günlük heatmap özeti çekme hatası:', error);
+      setDailyData(null);
+    } finally {
+      if (showLoading) setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const userString = localStorage.getItem('user');
+    if (userString) {
+        try {
+            const user = JSON.parse(userString);
+            setIsAdmin(user && user.role === 'admin');
+        } catch {
+            setIsAdmin(false);
+        }
+    }
+    fetchDailySummary();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedDate, startDate, endDate, selectedZone, storeRefresh]);
+  
+  // GÜNCELLEME: Filtrelenmiş veri (sadece 10:00-22:00 arası)
+  const filteredAndShiftedHourlyData = useMemo(() => {
+    if (!dailyData?.hourlySummary) return [];
+    
+    return dailyData.hourlySummary
+      .map(summary => ({
+          ...summary,
+          hour: String(parseInt(summary.hour, 10)).padStart(2, '0'),
+      }))
+      .filter(summary => {
+          const hour = parseInt(summary.hour, 10);
+          return hour >= 10 && hour <= 22;
+      })
+      .sort((a, b) => parseInt(a.hour, 10) - parseInt(b.hour, 10));
+  }, [dailyData?.hourlySummary]);
+
+
+  const handleDataChange = (hour: string, field: 'totalVisitors' | 'avgDwellTime', value: string) => {
+    const numericValue = value === '' ? '' : field === 'totalVisitors' ? parseInt(value, 10) : parseFloat(value);
+    if (value === '' || (!isNaN(numericValue as number) && (numericValue as number) >= 0)) {
+        setEditedData(prev => ({ ...prev, [hour]: { ...prev[hour], [field]: numericValue } }));
+    }
+  };
+
+  const handleCancelChanges = () => setEditedData({});
+
+  const handleSaveChanges = async () => {
+    setIsSaving(true);
+    const token = localStorage.getItem('token');
+    const updatePromises = Object.entries(editedData).map(([hour, changes]) => {
+      const recordId = dailyData?.hourlySummary.find(h => {
+        const hHour = String(parseInt(h.hour, 10)).padStart(2, '0');
+        return hHour === hour;
+      })?.editable_id;
+      if (!recordId) return Promise.resolve({ success: false, hour });
+
+      const cleanedChanges: Partial<EditableFields> = {};
+      if (changes.totalVisitors !== '' && changes.totalVisitors !== undefined) {
+        cleanedChanges.totalVisitors = changes.totalVisitors;
+      }
+      if (changes.avgDwellTime !== '' && changes.avgDwellTime !== undefined) {
+        cleanedChanges.avgDwellTime = changes.avgDwellTime;
+      }
+      if (Object.keys(cleanedChanges).length === 0) return Promise.resolve({ success: true, hour });
+
+      return fetch(apiUrl(`/api/analytics/heatmaps/record/${recordId}`), {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify(cleanedChanges)
+      }).then(res => res.ok);
+    });
+    
+    await Promise.all(updatePromises);
+    setIsSaving(false);
+    await fetchDailySummary(false);
+  };
+
+  const hourlyDataWithComparison = useMemo(() => {
+    return filteredAndShiftedHourlyData.map((current, index) => {
+      if (index === 0) return { ...current, visitorChange: null, dwellChange: null };
+      const previous = filteredAndShiftedHourlyData[index - 1];
+      const visitorChange = previous.totalVisitors > 0 ? ((current.totalVisitors - previous.totalVisitors) / previous.totalVisitors) * 100 : current.totalVisitors > 0 ? Infinity : 0;
+      const dwellChange = previous.avgDwellTime > 0 ? ((current.avgDwellTime - previous.avgDwellTime) / previous.avgDwellTime) * 100 : current.avgDwellTime > 0 ? Infinity : 0;
+      return { ...current, visitorChange, dwellChange };
+    });
+  }, [filteredAndShiftedHourlyData]);
+
+  if (loading) {
+    return (
+      <div className="p-6 text-white text-center flex flex-col justify-center items-center h-[80vh]">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+        {t('heatmap.loading')}
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-3 sm:p-4 md:p-5 lg:p-8">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-5 sm:space-y-6 lg:space-y-8">
+        <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4">
+          <div>
+            <div className="flex items-center gap-3 mb-1">
+              <div className="p-2 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 shadow-lg shadow-orange-500/25">
+                <MapPin className="w-5 h-5 text-white" />
+              </div>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight">{t('heatmap.title')}</h1>
+            </div>
+            <p className="text-sm text-slate-400 ml-12">{t('heatmap.subtitle')}</p>
+          </div>
+          <div className="w-full xl:w-auto flex flex-col sm:flex-row gap-3 flex-wrap">
+            <DateRangePicker
+              startDate={startDate}
+              endDate={endDate}
+              onStartDateChange={(d) => { setStartDate(d); setSelectedDate(d); }}
+              onEndDateChange={setEndDate}
+              onApply={() => fetchDailySummary(true, startDate, endDate)}
+            />
+            <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <Filter className="w-5 h-5 text-slate-400" />
+                </div>
+                <select 
+                    value={selectedZone} 
+                    onChange={(e) => setSelectedZone(e.target.value)} 
+                    className="bg-slate-800/60 border border-slate-700/50 text-white text-sm rounded-xl focus:ring-indigo-500/50 focus:border-indigo-500/50 block w-full pl-10 p-2.5"
+                    aria-label={t('heatmap.zone')}
+                >
+                    <option value="all">{t('heatmap.allZones')}</option>
+                    {dailyData?.allZones?.map(zone => (<option key={zone} value={zone}>{zone}</option>))}
+                </select>
+            </div>
+            <div className="relative">
+              <CameraViewer />
+            </div>
+          </div>
+        </div>
+
+        {/* Otomatik Öneriler */}
+        <InsightsPanel module="heatmap" />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
+            <div className="bg-gradient-to-br from-blue-600/10 to-indigo-600/10 p-5 sm:p-6 rounded-2xl border border-blue-500/20 flex flex-col justify-between">
+                <div className="flex items-center space-x-4 mb-4">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/20"><Users className="w-5 h-5 text-white" /></div>
+                    <div>
+                        <p className="text-xs font-semibold text-blue-300/70 uppercase tracking-wider">{t('heatmap.visitorChange')}</p>
+                        <h3 className="text-3xl font-extrabold text-white">{(dailyData?.overallStats.totalVisitors ?? 0).toLocaleString()}</h3>
+                    </div>
+                </div>
+                <div className="flex flex-col gap-1.5 border-t border-blue-500/15 pt-3">
+                    {(dailyData?.comparisonStats?.totalVisitors ?? []).map(stat => <ComparisonStatCard key={stat.period} stat={stat} />)}
+                </div>
+            </div>
+          <div className="bg-gradient-to-br from-orange-600/10 to-rose-600/10 p-5 sm:p-6 rounded-2xl border border-orange-500/20 flex items-center space-x-4">
+            <div className="p-3 rounded-xl bg-gradient-to-br from-orange-500 to-rose-500 shadow-lg shadow-orange-500/20"><Clock className="w-5 h-5 text-white" /></div>
+            <div>
+              <p className="text-xs font-semibold text-orange-300/70 uppercase tracking-wider">{t('heatmap.avgDwell')}</p>
+              <h3 className="text-3xl font-extrabold text-white">{formatDwellTime(dailyData?.overallStats.avgDwellTime ?? 0)}</h3>
+            </div>
+          </div>
+          <div className="bg-gradient-to-br from-emerald-600/10 to-teal-600/10 p-5 sm:p-6 rounded-2xl border border-emerald-500/20 flex items-center space-x-4">
+            <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 shadow-lg shadow-emerald-500/20"><MapPin className="w-5 h-5 text-white" /></div>
+            <div>
+              <p className="text-xs font-semibold text-emerald-300/70 uppercase tracking-wider">{t('heatmap.busiestZone')}</p>
+              <h3 className="text-3xl font-extrabold text-white">{dailyData?.overallStats.busiestZone ?? 'N/A'}</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 mb-4 sm:mb-5">
+            <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider">{t('heatmap.hourlyDetails')}</h3>
+            {isAdmin && hasChanges && (
+                <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                    <button onClick={handleCancelChanges} className="flex items-center gap-1 text-xs sm:text-sm text-slate-300 hover:text-white px-2 sm:px-3 py-1 rounded-md hover:bg-slate-700 transition-colors"><XCircle className="w-3 h-3 sm:w-4 sm:h-4" /> <span className="hidden sm:inline">{t('heatmap.cancel')}</span></button>
+                    <button onClick={handleSaveChanges} disabled={isSaving} className="flex items-center gap-1 text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 px-2 sm:px-3 py-1 rounded-md transition-colors disabled:opacity-50">{isSaving ? <RefreshCw className="w-3 h-3 sm:w-4 sm:h-4 animate-spin" /> : <Save className="w-3 h-3 sm:w-4 sm:h-4" />} <span className="hidden sm:inline">{isSaving ? t('heatmap.saving') : t('heatmap.save')}</span></button>
+                </div>
+            )}
+          </div>
+          {isAdmin && isEditingDisabled && (
+              <div className="mb-3 sm:mb-4 p-2 sm:p-3 bg-yellow-900/20 border border-yellow-700 text-yellow-400 text-xs sm:text-sm rounded-lg">
+                {t('heatmap.singleZoneEditDisabled')}
+              </div>
+          )}
+          <div className="overflow-x-auto">
+            {hourlyDataWithComparison && hourlyDataWithComparison.length > 0 ? (
+              <table className="w-full text-[10px] sm:text-xs md:text-sm text-left min-w-[600px] sm:min-w-0">
+                <thead>
+                  <tr className="bg-gradient-to-r from-slate-800/80 to-slate-800/60">
+                    <th scope="col" className="px-2 sm:px-3 md:px-4 lg:px-6 py-2.5 sm:py-3 md:py-3.5 text-[9px] sm:text-xs text-slate-400 uppercase font-bold tracking-widest whitespace-nowrap">{t('heatmap.timeRange')}</th>
+                    <th scope="col" className="px-2 sm:px-3 md:px-4 lg:px-6 py-2.5 sm:py-3 md:py-3.5 text-[9px] sm:text-xs text-blue-400 uppercase font-bold tracking-widest text-center whitespace-nowrap">{t('heatmap.visitorCount')}</th>
+                    <th scope="col" className="px-2 sm:px-3 md:px-4 lg:px-6 py-2.5 sm:py-3 md:py-3.5 text-[9px] sm:text-xs text-orange-400 uppercase font-bold tracking-widest text-center whitespace-nowrap">{t('heatmap.avgDwellSec')}</th>
+                    <th scope="col" className="px-2 sm:px-3 md:px-4 lg:px-6 py-2.5 sm:py-3 md:py-3.5 text-[9px] sm:text-xs text-emerald-400 uppercase font-bold tracking-widest text-center hidden md:table-cell whitespace-nowrap">{t('heatmap.visitorChangeCol')}</th>
+                    <th scope="col" className="px-2 sm:px-3 md:px-4 lg:px-6 py-2.5 sm:py-3 md:py-3.5 text-[9px] sm:text-xs text-purple-400 uppercase font-bold tracking-widest text-center hidden lg:table-cell whitespace-nowrap">{t('heatmap.dwellChange')}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* GÜNCELLEME: Filtrelenmiş veri üzerinden map yapılıyor */}
+                  {hourlyDataWithComparison.map((hourData) => {
+                    const isEdited = !!editedData[hourData.hour];
+                    const editedDwellTime = editedData[hourData.hour]?.avgDwellTime;
+                    const currentDwellTime = editedDwellTime !== undefined ? editedDwellTime : hourData.avgDwellTime;
+
+                    return (
+                      <tr key={hourData.hour} className={`border-b border-slate-700/30 hover:bg-white/[0.02] transition-colors ${isEdited ? 'bg-indigo-900/20' : ''}`}>
+                        <td className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4 font-medium text-white whitespace-nowrap text-[10px] sm:text-xs md:text-sm">{`${hourData.hour}:00-${hourData.hour}:59`}</td>
+                        <td className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4 text-center">
+                          <input type="number" value={editedData[hourData.hour]?.totalVisitors !== undefined ? editedData[hourData.hour]?.totalVisitors : hourData.totalVisitors} onChange={e => handleDataChange(hourData.hour, 'totalVisitors', e.target.value)} className="w-16 sm:w-20 md:w-24 bg-slate-800 text-blue-400 font-semibold text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed text-[10px] sm:text-xs"
+                          disabled={!isAdmin || isEditingDisabled || !hourData.editable_id}
+                          title={!isAdmin ? "Bu alanı sadece adminler düzenleyebilir." : isEditingDisabled ? "Tekil bölge verisi düzenlenemez." : (!hourData.editable_id ? "Bu saat diliminde düzenlenecek veri yok." : "")} />
+                        </td>
+                        <td className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4 text-center">
+                          <input type="number" value={typeof currentDwellTime === 'number' ? Math.round(currentDwellTime) : currentDwellTime} onChange={e => handleDataChange(hourData.hour, 'avgDwellTime', e.target.value)} className="w-16 sm:w-20 md:w-24 bg-slate-800 text-slate-300 text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed text-[10px] sm:text-xs" 
+                          disabled={!isAdmin || isEditingDisabled || !hourData.editable_id} 
+                          title={!isAdmin ? "Bu alanı sadece adminler düzenleyebilir." : isEditingDisabled ? "Tekil bölge verisi düzenlenemez." : (!hourData.editable_id ? "Bu saat diliminde düzenlenecek veri yok." : "")} />
+                        </td>
+                        <td className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4 text-center hidden md:table-cell"><ChangeIndicator change={hourData.visitorChange} /></td>
+                        <td className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4 text-center hidden lg:table-cell"><ChangeIndicator change={hourData.dwellChange} /></td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            ) : (
+              <div className="text-center py-8 text-slate-400 text-sm">
+                {t('heatmap.noData') || 'Bu tarih için veri bulunamadı.'}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {filteredAndShiftedHourlyData && filteredAndShiftedHourlyData.length > 0 && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+            {/* Grafik 1: Saatlik Ziyaretçi + Bekleme Süresi */}
+            <ChartCard title={t('heatmap.hourlyVisitorDwell')}>
+              <ResponsiveContainer width="100%" height={260}>
+                  <ComposedChart data={filteredAndShiftedHourlyData}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                      <XAxis dataKey="hour" stroke="#9CA3AF" fontSize={9} tickFormatter={(hour) => `${hour}:00`}/>
+                      <YAxis yAxisId="left" stroke="#9CA3AF" fontSize={9} />
+                      <YAxis yAxisId="right" orientation="right" stroke={chartColors.secondary} fontSize={9} />
+                      <Tooltip contentStyle={tooltipStyle} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Dwell")) ? formatDwellTime(value) : value} />
+                      <Legend iconType="circle" iconSize={8} />
+                      <Bar yAxisId="left" dataKey="totalVisitors" fill={chartColors.primary} name={t('heatmap.visitorCount')} radius={[4, 4, 0, 0]} />
+                      <Line yAxisId="right" type="monotone" dataKey="avgDwellTime" stroke={chartColors.secondary} strokeWidth={2.5} name={t('heatmap.avgDwellChart')} dot={{ fill: chartColors.secondary, r: 3 }} />
+                  </ComposedChart>
+              </ResponsiveContainer>
+            </ChartCard>
+
+            {/* Grafik 2: Bölge Performans Karşılaştırma */}
+            {dailyData?.zonePerformance && dailyData.zonePerformance.length > 0 && (
+              <ChartCard title={t('heatmap.zonePerformance')}>
+                <ResponsiveContainer width="100%" height={260}>
+                    <ComposedChart data={dailyData.zonePerformance}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                        <XAxis dataKey="zone" stroke="#9CA3AF" fontSize={9} />
+                        <YAxis yAxisId="left" stroke="#9CA3AF" fontSize={9} />
+                        <YAxis yAxisId="right" orientation="right" stroke={chartColors.accent} fontSize={9} />
+                        <Tooltip contentStyle={tooltipStyle} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Dwell")) ? formatDwellTime(value) : value} />
+                        <Legend iconType="circle" iconSize={8} />
+                        <Bar yAxisId="left" dataKey="totalVisitors" fill={chartColors.primary} name={t('heatmap.visitorCount')} radius={[4, 4, 0, 0]} />
+                        <Line yAxisId="right" type="monotone" dataKey="avgDwell" stroke={chartColors.accent} strokeWidth={2.5} name={t('heatmap.avgDwellShort')} dot={{ fill: chartColors.accent, r: 3 }} />
+                    </ComposedChart>
+                </ResponsiveContainer>
+              </ChartCard>
+            )}
+
+            {/* Grafik 3: Saatlik Ziyaretçi Trend (Alan Grafiği) */}
+            <ChartCard title="Saatlik Ziyaretçi Trendi">
+              <ResponsiveContainer width="100%" height={260}>
+                <AreaChart data={filteredAndShiftedHourlyData}>
+                  <defs>
+                    <linearGradient id="gradVisitors" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor={chartColors.primary} stopOpacity={0.35} />
+                      <stop offset="95%" stopColor={chartColors.primary} stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                  <XAxis dataKey="hour" stroke="#9CA3AF" fontSize={9} tickFormatter={(h) => `${h}:00`} />
+                  <YAxis stroke="#9CA3AF" fontSize={9} />
+                  <Tooltip contentStyle={tooltipStyle} />
+                  <Area type="monotone" dataKey="totalVisitors" stroke={chartColors.primary} strokeWidth={2.5} fill="url(#gradVisitors)" name={t('heatmap.visitorCount')} />
+                </AreaChart>
+              </ResponsiveContainer>
+            </ChartCard>
+
+            {/* Grafik 4: Bölge Ziyaretçi Dağılımı (Pie) */}
+            {dailyData?.zonePerformance && dailyData.zonePerformance.length > 0 && (() => {
+              const PIE_COLORS = ['#6366f1', '#3b82f6', '#06b6d4', '#10b981', '#f59e0b', '#f43f5e', '#8b5cf6', '#ec4899'];
+              const totalZoneVisitors = dailyData.zonePerformance.reduce((s, z) => s + z.totalVisitors, 0);
+              return (
+                <ChartCard title="Bölge Ziyaretçi Dağılımı">
+                  <div className="flex flex-col sm:flex-row items-center gap-4">
+                    <ResponsiveContainer width={200} height={200}>
+                      <PieChart>
+                        <Pie
+                          data={dailyData.zonePerformance}
+                          dataKey="totalVisitors"
+                          nameKey="zone"
+                          cx="50%"
+                          cy="50%"
+                          innerRadius={55}
+                          outerRadius={85}
+                          paddingAngle={3}
+                        >
+                          {dailyData.zonePerformance.map((_, i) => (
+                            <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
+                          ))}
+                        </Pie>
+                        <Tooltip contentStyle={tooltipStyle} formatter={(v: number) => [`${v} ziyaretçi`, '']} />
+                      </PieChart>
+                    </ResponsiveContainer>
+                    <div className="flex flex-col gap-2 flex-1">
+                      {dailyData.zonePerformance.map((z, i) => {
+                        const pct = totalZoneVisitors > 0 ? ((z.totalVisitors / totalZoneVisitors) * 100).toFixed(1) : '0';
+                        return (
+                          <div key={z.zone} className="flex items-center gap-2">
+                            <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: PIE_COLORS[i % PIE_COLORS.length] }} />
+                            <span className="text-xs text-slate-300 flex-1 truncate">{z.zone}</span>
+                            <span className="text-xs font-bold text-white">{pct}%</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </ChartCard>
+              );
+            })()}
+          </div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
+const ChartCard = ({ title, children }: { title: string; children: React.ReactNode }) => (<div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50"><h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5 flex items-center gap-2"><BarChart2 size={16} className="text-indigo-400" /> {title}</h3>{children}</div>);
+
+export default Heatmaps;
