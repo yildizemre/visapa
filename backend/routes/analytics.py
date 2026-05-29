@@ -338,11 +338,16 @@ def edit_customer_hourly():
     data = request.get_json() or {}
     date_str = data.get('date')
     hour_str = data.get('hour')  # "HH:00"
-    entered = int(data.get('entered') or 0)
-    exited = int(data.get('exited') or 0)
 
     if not date_str or not hour_str:
         return {'error': 'date ve hour alanları zorunlu'}, 400
+
+    # Sadece gönderilen alanları güncelle — gönderilmeyenler mevcut değerde kalır
+    has_entered = 'entered' in data
+    has_exited = 'exited' in data
+
+    if not has_entered and not has_exited:
+        return {'error': 'entered veya exited alanından en az biri gerekli'}, 400
 
     try:
         d: date = datetime.strptime(date_str, '%Y-%m-%d').date()
@@ -364,34 +369,67 @@ def edit_customer_hourly():
         CustomerData.timestamp < end_dt,
     )
     rows = q.all()
-    for r in rows:
-        db.session.delete(r)
 
-    # Yeni toplam sıfırsa sadece silmiş oluruz
-    if entered != 0 or exited != 0:
-        # Birden fazla user_id varsa ilkini kullan (genelde tek olur: store_id ile filtrelenmiş)
-        target_user_id = int(uids[0])
-        new_row = CustomerData(
-            user_id=target_user_id,
-            timestamp=start_dt,
-            location=None,
-            customers_inside=0,
-            male_count=0,
-            female_count=0,
-            age_18_30=0,
-            age_30_50=0,
-            age_50_plus=0,
-            zone_visited=None,
-            purchase_amount=0,
-            is_returning=False,
-            satisfaction_score=None,
-            entered=entered,
-            exited=exited,
-        )
-        db.session.add(new_row)
+    if rows:
+        # Mevcut kayıt(lar) var — mevcut toplamları hesapla, sonra güncelle
+        existing_entered = sum(getattr(r, 'entered', 0) or 0 for r in rows)
+        existing_exited = sum(getattr(r, 'exited', 0) or 0 for r in rows)
+
+        new_entered = int(data['entered']) if has_entered else existing_entered
+        new_exited = int(data['exited']) if has_exited else existing_exited
+
+        # Tüm mevcut kayıtları sil, tek birleşik kayıt yaz
+        for r in rows:
+            db.session.delete(r)
+
+        if new_entered != 0 or new_exited != 0:
+            target_user_id = int(uids[0])
+            new_row = CustomerData(
+                user_id=target_user_id,
+                timestamp=start_dt,
+                location=None,
+                customers_inside=0,
+                male_count=0,
+                female_count=0,
+                age_18_30=0,
+                age_30_50=0,
+                age_50_plus=0,
+                zone_visited=None,
+                purchase_amount=0,
+                is_returning=False,
+                satisfaction_score=None,
+                entered=new_entered,
+                exited=new_exited,
+            )
+            db.session.add(new_row)
+    else:
+        # Mevcut kayıt yok — sıfırdan oluştur
+        new_entered = int(data['entered']) if has_entered else 0
+        new_exited = int(data['exited']) if has_exited else 0
+
+        if new_entered != 0 or new_exited != 0:
+            target_user_id = int(uids[0])
+            new_row = CustomerData(
+                user_id=target_user_id,
+                timestamp=start_dt,
+                location=None,
+                customers_inside=0,
+                male_count=0,
+                female_count=0,
+                age_18_30=0,
+                age_30_50=0,
+                age_50_plus=0,
+                zone_visited=None,
+                purchase_amount=0,
+                is_returning=False,
+                satisfaction_score=None,
+                entered=new_entered,
+                exited=new_exited,
+            )
+            db.session.add(new_row)
 
     db.session.commit()
-    return {'message': 'Saatlik toplam güncellendi', 'date': date_str, 'hour': hour_str, 'entered': entered, 'exited': exited}
+    return {'message': 'Saatlik toplam güncellendi', 'date': date_str, 'hour': hour_str}
 
 
 # --- Queue Analytics ---
