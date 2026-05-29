@@ -189,6 +189,19 @@ const CustomerAnalytics = () => {
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([hour, v]) => ({ hour, entering: v.entering, exiting: v.exiting }));
 
+    // Günlük bazlı akış (aralık modunda kullanılır)
+    const byDay: Record<string, { entering: number; exiting: number }> = {};
+    for (const r of filtered) {
+      const d = getDateFromTimestamp(r?.timestamp);
+      if (!d) continue;
+      if (!byDay[d]) byDay[d] = { entering: 0, exiting: 0 };
+      byDay[d].entering += r.entered ?? 0;
+      byDay[d].exiting += r.exited ?? 0;
+    }
+    const dailyCustomerFlow = Object.entries(byDay)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([date, v]) => ({ date: date.slice(5), entering: v.entering, exiting: v.exiting }));
+
     return {
       demographics: {
         ageGroupsChart: [
@@ -202,6 +215,7 @@ const CustomerAnalytics = () => {
         ],
       },
       hourlyCustomerFlow,
+      dailyCustomerFlow,
       totalEntered: filtered.reduce((s, r) => s + (r.entered ?? 0), 0),
       totalExited: filtered.reduce((s, r) => s + (r.exited ?? 0), 0),
     };
@@ -279,17 +293,19 @@ const CustomerAnalytics = () => {
           </motion.div>
         )}
 
-        <DailyFlowAnalytics
-            selectedDate={selectedDate}
-            onDateChange={(d) => {
-              const ds = formatDateForAPI(d);
-              setSelectedDate(d);
-              setStartDate(ds);
-              setEndDate(ds);
-              fetchCustomerData(ds, ds);
-            }}
-            selectedCamera={selectedCamera}
-        />
+        {!isRangeMode && (
+          <DailyFlowAnalytics
+              selectedDate={selectedDate}
+              onDateChange={(d) => {
+                const ds = formatDateForAPI(d);
+                setSelectedDate(d);
+                setStartDate(ds);
+                setEndDate(ds);
+                fetchCustomerData(ds, ds);
+              }}
+              selectedCamera={selectedCamera}
+          />
+        )}
 
         {loading ? (
           <div className="text-center py-10"><RefreshCw className="w-8 h-8 mx-auto animate-spin text-blue-400" /></div>
@@ -336,7 +352,7 @@ const CustomerAnalytics = () => {
                         layout="horizontal"
                         align="center"
                         verticalAlign="bottom"
-                        formatter={(value, entry) => {
+                        formatter={(value) => {
                           const total = (analyticsData.demographics?.ageGroupsChart ?? []).reduce((s, i) => s + (i?.value ?? 0), 0);
                           const item = (analyticsData.demographics?.ageGroupsChart ?? []).find((i: { name: string }) => i.name === value);
                           const pct = item && total > 0 ? ((item.value / total) * 100).toFixed(0) : '0';
@@ -373,26 +389,41 @@ const CustomerAnalytics = () => {
             </motion.div>
 
             <motion.div variants={item} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50">
-              <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5">
-                {isRangeMode
-                  ? `${startDate} — ${endDate} Saatlik Müşteri Akışı`
-                  : `${selectedDate.toLocaleDateString('tr-TR')} Tarihli Saatlik Müşteri Akışı (10:00 - 22:00)`}
-              </h3>
-              <ResponsiveContainer width="100%" height={320}>
-                {/* GÜNCELLEME: Grafik verisi filtrelenmiş analyticsData.hourlyCustomerFlow'dan besleniyor */}
-                <ComposedChart data={analyticsData.hourlyCustomerFlow ?? []}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" />
-                  <XAxis dataKey="hour" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
-                  <Tooltip
-                    contentStyle={tooltipStyle}
-                    labelFormatter={(label) => `Saat: ${label}`}
-                  />
-                  <Legend iconType="circle" iconSize={8} />
-                  <Line type="monotone" dataKey="entering" stroke={chartColors.secondary} strokeWidth={2.5} name="Giren" dot={{ fill: chartColors.secondary, r: 3 }} />
-                  <Line type="monotone" dataKey="exiting" stroke={chartColors.danger} strokeWidth={2.5} name="Çıkan" dot={{ fill: chartColors.danger, r: 3 }} />
-                </ComposedChart>
-              </ResponsiveContainer>
+              {isRangeMode ? (
+                <>
+                  <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5">
+                    {startDate} — {endDate} Günlük Müşteri Akışı
+                  </h3>
+                  <ResponsiveContainer width="100%" height={320}>
+                    <ComposedChart data={analyticsData.dailyCustomerFlow ?? []}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" />
+                      <XAxis dataKey="date" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
+                      <YAxis stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
+                      <Tooltip contentStyle={tooltipStyle} labelFormatter={(label) => `Tarih: ${label}`} />
+                      <Legend iconType="circle" iconSize={8} />
+                      <Line type="monotone" dataKey="entering" stroke={chartColors.secondary} strokeWidth={2.5} name="Giren" dot={{ fill: chartColors.secondary, r: 3 }} />
+                      <Line type="monotone" dataKey="exiting" stroke={chartColors.danger} strokeWidth={2.5} name="Çıkan" dot={{ fill: chartColors.danger, r: 3 }} />
+                    </ComposedChart>
+                  </ResponsiveContainer>
+                </>
+              ) : (
+                <>
+                  <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5">
+                    {selectedDate.toLocaleDateString('tr-TR')} Tarihli Saatlik Müşteri Akışı (10:00 - 22:00)
+                  </h3>
+                  <ResponsiveContainer width="100%" height={320}>
+                    <ComposedChart data={analyticsData.hourlyCustomerFlow ?? []}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" />
+                      <XAxis dataKey="hour" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
+                      <YAxis stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
+                      <Tooltip contentStyle={tooltipStyle} labelFormatter={(label) => `Saat: ${label}`} />
+                      <Legend iconType="circle" iconSize={8} />
+                      <Line type="monotone" dataKey="entering" stroke={chartColors.secondary} strokeWidth={2.5} name="Giren" dot={{ fill: chartColors.secondary, r: 3 }} />
+                      <Line type="monotone" dataKey="exiting" stroke={chartColors.danger} strokeWidth={2.5} name="Çıkan" dot={{ fill: chartColors.danger, r: 3 }} />
+                    </ComposedChart>
+                  </ResponsiveContainer>
+                </>
+              )}
             </motion.div>
           </>
         )}

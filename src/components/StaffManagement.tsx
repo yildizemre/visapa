@@ -178,6 +178,23 @@ const StaffManagement = () => {
           </div>
         </motion.div>
 
+        {/* Mock Data Uyarı Banner */}
+        <motion.div variants={item}>
+          <div className="flex items-start gap-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl px-4 sm:px-5 py-3 sm:py-4">
+            <div className="mt-0.5 shrink-0">
+              <svg className="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z" />
+              </svg>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-amber-300">Örnek Veri Gösterimi</p>
+              <p className="text-xs text-amber-200/70 mt-0.5 leading-relaxed">
+                Bu sayfada görüntülenen veriler <strong>örnek (demo) verilerdir</strong> ve yalnızca sayfanın tasarımını incelemeniz için sunulmuştur. Gerçek personel verileri, API entegrasyonu tamamlandığında burada görüntülenecektir.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Insights */}
         <motion.div variants={item}>
           <InsightsPanel module="staff" />

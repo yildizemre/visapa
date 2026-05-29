@@ -102,48 +102,44 @@ def admin_health_overview():
     return {'users': result}
 
 
-@health_bp.route('/check-dead-services', methods=['GET'])
-def check_dead_services():
+def run_dead_service_check():
     """
-    Cron veya scheduler tarafından çağrılır.
-    Son 1 saat içinde heartbeat göndermeyen mağazaları tespit eder ve Telegram'a bildirim gönderir.
+    Dead service kontrolünü çalıştırır. Hem route hem scheduler tarafından çağrılabilir.
+    Flask uygulama context'i içinde çağrılmalıdır.
     """
     one_hour_ago = datetime.utcnow() - timedelta(hours=1)
-    
-    # Heartbeat kaydı olan ama son 1 saattir sinyal göndermeyen kullanıcılar
+
     dead_services = ServiceHeartbeat.query.filter(
         ServiceHeartbeat.last_ping_at < one_hour_ago
     ).all()
-    
-    # Hiç heartbeat kaydı olmayan kullanıcılar (admin hariç)
+
     all_store_users = User.query.filter(User.role != 'admin').all()
     heartbeat_user_ids = {h.user_id for h in ServiceHeartbeat.query.all()}
     never_pinged = [u for u in all_store_users if u.id not in heartbeat_user_ids]
-    
+
     alerts = []
-    
+
     for service in dead_services:
         user = User.query.get(service.user_id)
         if user:
             name = user.full_name or user.username
             last_ping = service.last_ping_at.strftime('%d.%m.%Y %H:%M')
             alerts.append(f"⚠️ <b>{name}</b> — Son sinyal: {last_ping}")
-    
+
     for user in never_pinged:
         name = user.full_name or user.username
         alerts.append(f"🔴 <b>{name}</b> — Hiç sinyal gelmedi")
-    
+
     if alerts:
         now = datetime.utcnow().strftime('%d.%m.%Y %H:%M UTC')
         message = f"🚨 <b>Vislivis Sağlık Uyarısı</b>\n📅 {now}\n\n"
         message += "Son 1 saat içinde sinyal alınamayan mağazalar:\n\n"
         message += "\n".join(alerts)
         message += "\n\n⚡ Lütfen ilgili mağazaların sistem durumunu kontrol edin."
-        
-        # Telegram'a gönder (async olarak)
+
         thread = threading.Thread(target=send_telegram_alert, args=(message,))
         thread.start()
-    
+
     return {
         'checked_at': datetime.utcnow().isoformat(),
         'dead_count': len(dead_services),
@@ -151,3 +147,10 @@ def check_dead_services():
         'alerts_sent': len(alerts) > 0,
         'details': alerts
     }
+
+
+@health_bp.route('/check-dead-services', methods=['GET'])
+def check_dead_services():
+    """Cron veya manuel tetikleme için route. Aynı zamanda scheduler da run_dead_service_check'i çağırır."""
+    result = run_dead_service_check()
+    return result

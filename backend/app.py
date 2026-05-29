@@ -93,7 +93,33 @@ def create_app(config_class=Config):
 
     return app
 
+
+def _start_health_scheduler(app):
+    """Her 60 dakikada bir dead service kontrolü yapıp Telegram'a bildirim gönderir."""
+    import threading
+    from routes.health import run_dead_service_check
+
+    def run():
+        with app.app_context():
+            try:
+                result = run_dead_service_check()
+                print(f"[HealthScheduler] Kontrol tamamlandı: {result.get('dead_count', 0)} ölü, {result.get('alerts_sent')} bildirim gönderildi.")
+            except Exception as e:
+                print(f"[HealthScheduler] Hata: {e}")
+        # 60 dakika sonra tekrar çalıştır
+        timer = threading.Timer(3600, run)
+        timer.daemon = True
+        timer.start()
+
+    # İlk çalıştırma: uygulama başladıktan 5 dakika sonra
+    timer = threading.Timer(300, run)
+    timer.daemon = True
+    timer.start()
+    print("[HealthScheduler] Başlatıldı. İlk kontrol 5 dakika sonra yapılacak.")
+
+
 app = create_app()
+_start_health_scheduler(app)
 
 if __name__ == '__main__':
     import os
