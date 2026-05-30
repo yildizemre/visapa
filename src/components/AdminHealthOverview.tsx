@@ -193,7 +193,7 @@ export default function AdminHealthOverview() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder={t('healthOverview.searchPlaceholder')}
-          className="px-3 py-2 rounded-xl bg-slate-700/60 border border-slate-600 text-white placeholder-slate-500 text-sm min-w-[200px]"
+          className="px-3 py-2 rounded-xl bg-slate-700/60 border border-slate-600 text-white placeholder-slate-500 text-sm w-full sm:min-w-[200px]"
         />
         <select
           value={filterStatus}
@@ -217,7 +217,7 @@ export default function AdminHealthOverview() {
 
       <div className="rounded-2xl border border-slate-600/80 overflow-hidden bg-slate-800/40">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[500px]">
+          <table className="w-full min-w-[360px] sm:min-w-0">
             <thead>
               <tr className="border-b border-slate-600/80 bg-slate-800/80">
                 <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">

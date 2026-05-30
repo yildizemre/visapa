@@ -371,7 +371,7 @@ const Settings = () => {
             </div>
             <p className="text-slate-400 text-[10px] sm:text-xs md:text-sm -mt-1 sm:-mt-2 mb-2 sm:mb-3 md:mb-4">{t('settings.cameraSetupDesc')}</p>
             <div className="overflow-x-auto">
-              <table className="w-full text-xs sm:text-sm text-left min-w-[650px] sm:min-w-0">
+              <table className="w-full text-xs sm:text-sm text-left min-w-[360px] sm:min-w-0">
                 <thead className="text-xs text-slate-400 uppercase bg-slate-700/50">
                   <tr>
                     <th className="px-2 sm:px-4 py-2 sm:py-3 whitespace-nowrap">{t('settings.cameraName')}</th>

@@ -2,249 +2,116 @@ import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   Camera,
-  Wifi,
-  WifiOff,
   Activity,
-  AlertTriangle,
-  Clock,
-  Signal,
+  Zap,
+  Eye,
+  MonitorSmartphone,
 } from 'lucide-react';
 import {
   BarChart,
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  PieChart as RechartsPieChart,
-  Pie,
-  Cell,
-  Legend,
-  LineChart,
-  Line,
+  AreaChart,
+  Area,
 } from 'recharts';
-import DateRangePicker from './shared/DateRangePicker';
 import InsightsPanel from './shared/InsightsPanel';
-import CameraViewer from './shared/CameraViewer';
 
-// --- Dummy Data ---
 interface CameraInfo {
   id: string;
   name: string;
   location: string;
   status: 'online' | 'offline' | 'warning';
-  uptime: number; // yüzde
+  uptime: number;
   lastPing: string;
   avgFps: number;
   resolution: string;
-  disconnections: number; // son 7 gün
-  avgDisconnectDuration: number; // dakika
-  dailyUptime: { date: string; uptime: number }[];
-  hourlyFps: { hour: string; fps: number }[];
+  disconnections: number;
+  weeklyUptime: number[];
 }
 
-const DUMMY_CAMERAS: CameraInfo[] = [
-  {
-    id: 'cam-01',
-    name: 'Giriş Kamerası',
-    location: 'Ana Giriş',
-    status: 'online',
-    uptime: 99.2,
-    lastPing: new Date(Date.now() - 12000).toISOString(),
-    avgFps: 28.5,
-    resolution: '1920x1080',
-    disconnections: 2,
-    avgDisconnectDuration: 3.5,
-    dailyUptime: [
-      { date: '05-24', uptime: 100 }, { date: '05-25', uptime: 99.5 }, { date: '05-26', uptime: 98.1 },
-      { date: '05-27', uptime: 100 }, { date: '05-28', uptime: 99.8 }, { date: '05-29', uptime: 97.2 },
-      { date: '05-30', uptime: 100 },
-    ],
-    hourlyFps: Array.from({ length: 13 }, (_, i) => ({ hour: `${10 + i}:00`, fps: 25 + Math.random() * 5 })),
-  },
-  {
-    id: 'cam-02',
-    name: 'Kasa Kamerası',
-    location: 'Kasa Bölgesi',
-    status: 'online',
-    uptime: 97.8,
-    lastPing: new Date(Date.now() - 8000).toISOString(),
-    avgFps: 26.1,
-    resolution: '1920x1080',
-    disconnections: 5,
-    avgDisconnectDuration: 8.2,
-    dailyUptime: [
-      { date: '05-24', uptime: 95.3 }, { date: '05-25', uptime: 98.1 }, { date: '05-26', uptime: 100 },
-      { date: '05-27', uptime: 96.4 }, { date: '05-28', uptime: 99.1 }, { date: '05-29', uptime: 97.8 },
-      { date: '05-30', uptime: 98.5 },
-    ],
-    hourlyFps: Array.from({ length: 13 }, (_, i) => ({ hour: `${10 + i}:00`, fps: 22 + Math.random() * 6 })),
-  },
-  {
-    id: 'cam-03',
-    name: 'Depo Kamerası',
-    location: 'Arka Depo',
-    status: 'offline',
-    uptime: 78.4,
-    lastPing: new Date(Date.now() - 3600000).toISOString(),
-    avgFps: 0,
-    resolution: '1280x720',
-    disconnections: 14,
-    avgDisconnectDuration: 22.5,
-    dailyUptime: [
-      { date: '05-24', uptime: 85.2 }, { date: '05-25', uptime: 72.1 }, { date: '05-26', uptime: 90.3 },
-      { date: '05-27', uptime: 68.4 }, { date: '05-28', uptime: 81.2 }, { date: '05-29', uptime: 75.6 },
-      { date: '05-30', uptime: 0 },
-    ],
-    hourlyFps: Array.from({ length: 13 }, (_, i) => ({ hour: `${10 + i}:00`, fps: i < 8 ? 18 + Math.random() * 4 : 0 })),
-  },
-  {
-    id: 'cam-04',
-    name: 'Kadın Giyim Kamerası',
-    location: 'Kadın Giyim Bölgesi',
-    status: 'online',
-    uptime: 99.9,
-    lastPing: new Date(Date.now() - 5000).toISOString(),
-    avgFps: 29.8,
-    resolution: '2560x1440',
-    disconnections: 0,
-    avgDisconnectDuration: 0,
-    dailyUptime: [
-      { date: '05-24', uptime: 100 }, { date: '05-25', uptime: 100 }, { date: '05-26', uptime: 99.9 },
-      { date: '05-27', uptime: 100 }, { date: '05-28', uptime: 100 }, { date: '05-29', uptime: 100 },
-      { date: '05-30', uptime: 100 },
-    ],
-    hourlyFps: Array.from({ length: 13 }, (_, i) => ({ hour: `${10 + i}:00`, fps: 28 + Math.random() * 3 })),
-  },
-  {
-    id: 'cam-05',
-    name: 'Erkek Giyim Kamerası',
-    location: 'Erkek Giyim Bölgesi',
-    status: 'warning',
-    uptime: 91.3,
-    lastPing: new Date(Date.now() - 180000).toISOString(),
-    avgFps: 18.2,
-    resolution: '1920x1080',
-    disconnections: 8,
-    avgDisconnectDuration: 12.1,
-    dailyUptime: [
-      { date: '05-24', uptime: 92.5 }, { date: '05-25', uptime: 88.3 }, { date: '05-26', uptime: 95.1 },
-      { date: '05-27', uptime: 90.2 }, { date: '05-28', uptime: 93.4 }, { date: '05-29', uptime: 89.7 },
-      { date: '05-30', uptime: 91.0 },
-    ],
-    hourlyFps: Array.from({ length: 13 }, (_, i) => ({ hour: `${10 + i}:00`, fps: 14 + Math.random() * 8 })),
-  },
-  {
-    id: 'cam-06',
-    name: 'Kozmetik Kamerası',
-    location: 'Kozmetik Bölgesi',
-    status: 'online',
-    uptime: 98.5,
-    lastPing: new Date(Date.now() - 15000).toISOString(),
-    avgFps: 27.3,
-    resolution: '1920x1080',
-    disconnections: 3,
-    avgDisconnectDuration: 5.0,
-    dailyUptime: [
-      { date: '05-24', uptime: 97.8 }, { date: '05-25', uptime: 99.2 }, { date: '05-26', uptime: 98.0 },
-      { date: '05-27', uptime: 99.5 }, { date: '05-28', uptime: 97.1 }, { date: '05-29', uptime: 98.9 },
-      { date: '05-30', uptime: 99.1 },
-    ],
-    hourlyFps: Array.from({ length: 13 }, (_, i) => ({ hour: `${10 + i}:00`, fps: 24 + Math.random() * 5 })),
-  },
+const CAMERAS: CameraInfo[] = [
+  { id: 'cam-01', name: 'Giriş', location: 'Ana Giriş', status: 'online', uptime: 99.2, lastPing: new Date(Date.now() - 12000).toISOString(), avgFps: 28, resolution: '1080p', disconnections: 2, weeklyUptime: [100, 99.5, 98.1, 100, 99.8, 97.2, 100] },
+  { id: 'cam-02', name: 'Kasa', location: 'Kasa Bölgesi', status: 'online', uptime: 97.8, lastPing: new Date(Date.now() - 8000).toISOString(), avgFps: 26, resolution: '1080p', disconnections: 5, weeklyUptime: [95.3, 98.1, 100, 96.4, 99.1, 97.8, 98.5] },
+  { id: 'cam-03', name: 'Depo', location: 'Arka Depo', status: 'offline', uptime: 78.4, lastPing: new Date(Date.now() - 3600000).toISOString(), avgFps: 0, resolution: '720p', disconnections: 14, weeklyUptime: [85.2, 72.1, 90.3, 68.4, 81.2, 75.6, 0] },
+  { id: 'cam-04', name: 'Kadın Giyim', location: 'Kadın Giyim', status: 'online', uptime: 99.9, lastPing: new Date(Date.now() - 5000).toISOString(), avgFps: 30, resolution: '1440p', disconnections: 0, weeklyUptime: [100, 100, 99.9, 100, 100, 100, 100] },
+  { id: 'cam-05', name: 'Erkek Giyim', location: 'Erkek Giyim', status: 'warning', uptime: 91.3, lastPing: new Date(Date.now() - 180000).toISOString(), avgFps: 18, resolution: '1080p', disconnections: 8, weeklyUptime: [92.5, 88.3, 95.1, 90.2, 93.4, 89.7, 91.0] },
+  { id: 'cam-06', name: 'Kozmetik', location: 'Kozmetik', status: 'online', uptime: 98.5, lastPing: new Date(Date.now() - 15000).toISOString(), avgFps: 27, resolution: '1080p', disconnections: 3, weeklyUptime: [97.8, 99.2, 98.0, 99.5, 97.1, 98.9, 99.1] },
 ];
 
-const STATUS_CONFIG = {
-  online: { label: 'Çevrimiçi', color: 'text-emerald-400', bg: 'bg-emerald-500/20', border: 'border-emerald-500/30', dot: 'bg-emerald-400' },
-  offline: { label: 'Çevrimdışı', color: 'text-rose-400', bg: 'bg-rose-500/20', border: 'border-rose-500/30', dot: 'bg-rose-400' },
-  warning: { label: 'Uyarı', color: 'text-amber-400', bg: 'bg-amber-500/20', border: 'border-amber-500/30', dot: 'bg-amber-400' },
+const STATUS_STYLES = {
+  online: { label: 'Aktif', dot: 'bg-emerald-400', ring: 'ring-emerald-400/30', text: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/30' },
+  offline: { label: 'Kapalı', dot: 'bg-rose-400', ring: 'ring-rose-400/30', text: 'text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/30' },
+  warning: { label: 'Uyarı', dot: 'bg-amber-400', ring: 'ring-amber-400/30', text: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/30' },
 };
 
-const PIE_COLORS = ['#22c55e', '#f43f5e', '#f59e0b'];
-
-const tooltipStyle = {
-  backgroundColor: 'rgba(15, 23, 42, 0.95)',
-  border: '1px solid rgba(148, 163, 184, 0.2)',
-  borderRadius: '12px',
-  boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
-  padding: '12px 16px',
-};
+const tooltipStyle = { backgroundColor: 'rgba(15,23,42,0.95)', border: '1px solid rgba(148,163,184,0.2)', borderRadius: '10px', padding: '8px 12px' };
 
 const CameraHealth = () => {
-  const todayStr = new Date().toISOString().split('T')[0];
-  const [startDate, setStartDate] = useState(todayStr);
-  const [endDate, setEndDate] = useState(todayStr);
-  const [selectedCamera, setSelectedCamera] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const cameras = DUMMY_CAMERAS;
+  const stats = useMemo(() => {
+    const total = CAMERAS.length;
+    const online = CAMERAS.filter(c => c.status === 'online').length;
+    const offline = CAMERAS.filter(c => c.status === 'offline').length;
+    const warning = CAMERAS.filter(c => c.status === 'warning').length;
+    const avgUptime = CAMERAS.reduce((s, c) => s + c.uptime, 0) / total;
+    return { total, online, offline, warning, avgUptime };
+  }, []);
 
-  const overallStats = useMemo(() => {
-    const total = cameras.length;
-    const online = cameras.filter((c) => c.status === 'online').length;
-    const offline = cameras.filter((c) => c.status === 'offline').length;
-    const warning = cameras.filter((c) => c.status === 'warning').length;
-    const avgUptime = cameras.reduce((s, c) => s + c.uptime, 0) / total;
-    const totalDisconnections = cameras.reduce((s, c) => s + c.disconnections, 0);
-    const avgFps = cameras.filter((c) => c.status !== 'offline').reduce((s, c) => s + c.avgFps, 0) / Math.max(online + warning, 1);
-    return { total, online, offline, warning, avgUptime, totalDisconnections, avgFps };
-  }, [cameras]);
+  const selected = selectedId ? CAMERAS.find(c => c.id === selectedId) : null;
 
-  const statusPieData = [
-    { name: 'Çevrimiçi', value: overallStats.online },
-    { name: 'Çevrimdışı', value: overallStats.offline },
-    { name: 'Uyarı', value: overallStats.warning },
-  ].filter((d) => d.value > 0);
+  const uptimeBarData = CAMERAS.map(c => ({ name: c.name, uptime: c.uptime, kopma: c.disconnections }));
 
-  const disconnectionBarData = cameras.map((c) => ({
-    name: c.name.replace(' Kamerası', ''),
-    kopma: c.disconnections,
-    sure: Math.round(c.avgDisconnectDuration),
-  }));
+  const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.06 } } };
+  const item = { hidden: { y: 12, opacity: 0 }, show: { y: 0, opacity: 1 } };
 
-  const selected = selectedCamera ? cameras.find((c) => c.id === selectedCamera) : null;
+  const getUptimeColor = (u: number) => u >= 98 ? 'bg-emerald-500' : u >= 90 ? 'bg-amber-500' : 'bg-rose-500';
+  const getUptimeTextColor = (u: number) => u >= 98 ? 'text-emerald-400' : u >= 90 ? 'text-amber-400' : 'text-rose-400';
 
-  const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } };
-  const item = { hidden: { y: 16, opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.35 } } };
+  const getPingLabel = (lastPing: string) => {
+    const s = Math.round((Date.now() - new Date(lastPing).getTime()) / 1000);
+    if (s < 60) return `${s}s`;
+    if (s < 3600) return `${Math.floor(s / 60)}dk`;
+    return `${Math.floor(s / 3600)}sa`;
+  };
 
   return (
-    <div className="p-3 sm:p-4 md:p-5 lg:p-8">
-      <motion.div variants={container} initial="hidden" animate="show" className="space-y-4 sm:space-y-5 lg:space-y-7">
+    <div className="p-3 sm:p-4 md:p-6 lg:p-8">
+      <motion.div variants={container} initial="hidden" animate="show" className="space-y-5 sm:space-y-6">
 
         {/* Header */}
-        <motion.div variants={item} className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4">
-          <div>
-            <div className="flex items-center gap-3 mb-1">
-              <div className="p-2 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/25">
-                <Camera className="w-5 h-5 text-white" />
-              </div>
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight">Kamera Sağlığı</h1>
+        <motion.div variants={item}>
+          <div className="flex items-center gap-3 mb-1">
+            <div className="p-2.5 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/20">
+              <Camera className="w-6 h-6 text-white" />
             </div>
-            <p className="text-sm text-slate-400 ml-12">Kamera durumu, çalışma süreleri ve performans metrikleri</p>
-          </div>
-          <div className="w-full xl:w-auto flex flex-col sm:flex-row gap-2 sm:gap-3 flex-wrap">
-            <DateRangePicker
-              startDate={startDate}
-              endDate={endDate}
-              onStartDateChange={setStartDate}
-              onEndDateChange={setEndDate}
-            />
-            <CameraViewer />
+            <div>
+              <h1 className="text-xl sm:text-2xl font-extrabold text-white">Kamera Sağlığı</h1>
+              <p className="text-xs text-slate-500">Gerçek zamanlı durum ve performans izleme</p>
+            </div>
           </div>
         </motion.div>
 
-        {/* Demo Banner */}
-        <motion.div variants={item}>
-          <div className="flex items-start gap-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl px-4 sm:px-5 py-3 sm:py-4">
-            <div className="mt-0.5 shrink-0">
-              <AlertTriangle className="w-5 h-5 text-amber-400" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-amber-300">Örnek Veri Gösterimi</p>
-              <p className="text-xs text-amber-200/70 mt-0.5 leading-relaxed">
-                Bu sayfada görüntülenen veriler <strong>örnek (demo) verilerdir</strong>. Gerçek kamera sağlık verileri, mağaza AI servisiniz heartbeat göndermeye başladığında otomatik olarak güncellenecektir.
-              </p>
-            </div>
+        {/* Status Summary - Big colored pills */}
+        <motion.div variants={item} className="flex flex-wrap gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-emerald-500/15 border border-emerald-500/30">
+            <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-sm font-bold text-emerald-300">{stats.online} Aktif</span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-rose-500/15 border border-rose-500/30">
+            <div className="w-2.5 h-2.5 rounded-full bg-rose-400" />
+            <span className="text-sm font-bold text-rose-300">{stats.offline} Kapalı</span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-amber-500/15 border border-amber-500/30">
+            <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+            <span className="text-sm font-bold text-amber-300">{stats.warning} Uyarı</span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-violet-500/15 border border-violet-500/30">
+            <Activity className="w-4 h-4 text-violet-400" />
+            <span className="text-sm font-bold text-violet-300">%{stats.avgUptime.toFixed(1)} Uptime</span>
           </div>
         </motion.div>
 
@@ -253,202 +120,148 @@ const CameraHealth = () => {
           <InsightsPanel module="camera_health" />
         </motion.div>
 
-        {/* KPI Cards */}
-        <motion.div variants={item} className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
-          {[
-            { label: 'Toplam Kamera', value: overallStats.total, icon: <Camera className="w-5 h-5 text-blue-400" />, gradient: 'from-blue-500/15 to-indigo-500/15', border: 'border-blue-500/25' },
-            { label: 'Aktif / Çevrimiçi', value: `${overallStats.online}/${overallStats.total}`, icon: <Wifi className="w-5 h-5 text-emerald-400" />, gradient: 'from-emerald-500/15 to-green-500/15', border: 'border-emerald-500/25' },
-            { label: 'Ort. Uptime', value: `%${overallStats.avgUptime.toFixed(1)}`, icon: <Activity className="w-5 h-5 text-violet-400" />, gradient: 'from-violet-500/15 to-purple-500/15', border: 'border-violet-500/25' },
-            { label: 'Toplam Kopma', value: overallStats.totalDisconnections, icon: <WifiOff className="w-5 h-5 text-rose-400" />, gradient: 'from-rose-500/15 to-pink-500/15', border: 'border-rose-500/25' },
-          ].map((kpi) => (
-            <div key={kpi.label} className={`bg-gradient-to-br ${kpi.gradient} p-4 sm:p-5 rounded-2xl border ${kpi.border}`}>
-              <div className="mb-2">{kpi.icon}</div>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-white">{kpi.value}</h3>
-              <p className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider mt-1 font-semibold">{kpi.label}</p>
-            </div>
-          ))}
-        </motion.div>
+        {/* Camera List */}
+        <motion.div variants={item} className="space-y-3">
+          {CAMERAS.map((cam) => {
+            const style = STATUS_STYLES[cam.status];
+            const isActive = selectedId === cam.id;
 
-        {/* Camera Cards Grid */}
-        <motion.div variants={item}>
-          <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4">Kamera Durumları</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
-            {cameras.map((cam) => {
-              const cfg = STATUS_CONFIG[cam.status];
-              const isSelected = selectedCamera === cam.id;
-              const timeSinceLastPing = Math.round((Date.now() - new Date(cam.lastPing).getTime()) / 1000);
-              const pingLabel = timeSinceLastPing < 60
-                ? `${timeSinceLastPing}s önce`
-                : timeSinceLastPing < 3600
-                ? `${Math.floor(timeSinceLastPing / 60)}dk önce`
-                : `${Math.floor(timeSinceLastPing / 3600)}sa önce`;
-
-              return (
-                <button
-                  key={cam.id}
-                  onClick={() => setSelectedCamera(isSelected ? null : cam.id)}
-                  className={`text-left w-full p-4 sm:p-5 rounded-2xl border transition-all duration-200 ${
-                    isSelected
-                      ? 'border-cyan-500/50 bg-cyan-500/5 ring-1 ring-cyan-500/30'
-                      : 'border-slate-700/50 bg-gradient-to-br from-slate-800/80 to-slate-900/80 hover:border-slate-600/50'
-                  }`}
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-2.5">
-                      <div className={`p-2 rounded-lg ${cfg.bg} border ${cfg.border}`}>
-                        <Camera className={`w-4 h-4 ${cfg.color}`} />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-white">{cam.name}</h4>
-                        <p className="text-[10px] text-slate-500">{cam.location}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <div className={`w-2 h-2 rounded-full ${cfg.dot} ${cam.status === 'online' ? 'animate-pulse' : ''}`} />
-                      <span className={`text-xs font-semibold ${cfg.color}`}>{cfg.label}</span>
-                    </div>
+            return (
+              <motion.button
+                key={cam.id}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setSelectedId(isActive ? null : cam.id)}
+                className={`w-full text-left rounded-2xl border p-4 sm:p-5 transition-all duration-200 ${
+                  isActive
+                    ? 'border-cyan-500/50 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 shadow-lg shadow-cyan-500/5'
+                    : 'border-slate-700/40 bg-slate-800/40 hover:bg-slate-800/70 hover:border-slate-600/50'
+                }`}
+              >
+                <div className="flex items-center gap-3 sm:gap-4">
+                  {/* Status dot with ring */}
+                  <div className={`relative shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${style.bg} border ${style.border} flex items-center justify-center`}>
+                    <Camera className={`w-5 h-5 sm:w-6 sm:h-6 ${style.text}`} />
+                    <div className={`absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full ${style.dot} ring-4 ${style.ring}`} />
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2 text-center">
-                    <div>
-                      <p className="text-lg font-bold text-white">%{cam.uptime.toFixed(1)}</p>
+                  {/* Info */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <h4 className="text-sm sm:text-base font-bold text-white truncate">{cam.name}</h4>
+                      <span className={`text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-full ${style.bg} ${style.text} border ${style.border}`}>
+                        {style.label}
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-500">{cam.location} · {cam.resolution}</p>
+                  </div>
+
+                  {/* Quick stats */}
+                  <div className="hidden sm:flex items-center gap-4 shrink-0">
+                    <div className="text-center">
+                      <p className={`text-lg font-extrabold ${getUptimeTextColor(cam.uptime)}`}>%{cam.uptime.toFixed(0)}</p>
                       <p className="text-[9px] text-slate-500 uppercase">Uptime</p>
                     </div>
-                    <div>
-                      <p className="text-lg font-bold text-white">{cam.avgFps > 0 ? cam.avgFps.toFixed(0) : '-'}</p>
-                      <p className="text-[9px] text-slate-500 uppercase">Ort. FPS</p>
+                    <div className="text-center">
+                      <p className="text-lg font-extrabold text-blue-300">{cam.avgFps || '-'}</p>
+                      <p className="text-[9px] text-slate-500 uppercase">FPS</p>
                     </div>
-                    <div>
-                      <p className="text-lg font-bold text-white">{cam.disconnections}</p>
+                    <div className="text-center">
+                      <p className="text-lg font-extrabold text-slate-200">{cam.disconnections}</p>
                       <p className="text-[9px] text-slate-500 uppercase">Kopma</p>
                     </div>
+                    <div className="text-center">
+                      <p className="text-sm font-bold text-slate-400">{getPingLabel(cam.lastPing)}</p>
+                      <p className="text-[9px] text-slate-500 uppercase">Son Ping</p>
+                    </div>
                   </div>
+                </div>
 
-                  <div className="mt-3 flex items-center justify-between text-[10px] text-slate-500">
-                    <span className="flex items-center gap-1"><Signal className="w-3 h-3" />{cam.resolution}</span>
-                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{pingLabel}</span>
+                {/* Mobile stats row */}
+                <div className="flex sm:hidden items-center gap-3 mt-3 pt-3 border-t border-slate-700/30">
+                  <div className="flex-1 text-center">
+                    <p className={`text-base font-bold ${getUptimeTextColor(cam.uptime)}`}>%{cam.uptime.toFixed(0)}</p>
+                    <p className="text-[8px] text-slate-500 uppercase">Uptime</p>
                   </div>
-                </button>
-              );
-            })}
-          </div>
+                  <div className="flex-1 text-center">
+                    <p className="text-base font-bold text-blue-300">{cam.avgFps || '-'}</p>
+                    <p className="text-[8px] text-slate-500 uppercase">FPS</p>
+                  </div>
+                  <div className="flex-1 text-center">
+                    <p className="text-base font-bold text-slate-200">{cam.disconnections}</p>
+                    <p className="text-[8px] text-slate-500 uppercase">Kopma</p>
+                  </div>
+                  <div className="flex-1 text-center">
+                    <p className="text-sm font-bold text-slate-400">{getPingLabel(cam.lastPing)}</p>
+                    <p className="text-[8px] text-slate-500 uppercase">Ping</p>
+                  </div>
+                </div>
+
+                {/* Uptime progress bar */}
+                <div className="mt-3 h-1.5 rounded-full bg-slate-700/50 overflow-hidden">
+                  <div
+                    className={`h-full rounded-full transition-all duration-700 ${getUptimeColor(cam.uptime)}`}
+                    style={{ width: `${cam.uptime}%` }}
+                  />
+                </div>
+              </motion.button>
+            );
+          })}
         </motion.div>
 
-        {/* Selected Camera Detail */}
+        {/* Selected Detail */}
         {selected && (
-          <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-5">
-            {/* Daily Uptime */}
-            <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50">
-              <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4">
-                {selected.name} — Günlük Uptime (%)
-              </h3>
-              <ResponsiveContainer width="100%" height={240}>
-                <BarChart data={selected.dailyUptime}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" />
-                  <XAxis dataKey="date" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis domain={[0, 100]} stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
-                  <Tooltip contentStyle={tooltipStyle} formatter={(val: number) => [`%${val.toFixed(1)}`, 'Uptime']} />
-                  <Bar dataKey="uptime" fill="#22c55e" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-slate-800/90 to-slate-900/90 p-5 sm:p-6 overflow-hidden min-w-0"
+          >
+            <div className="flex items-center gap-3 mb-5">
+              <Eye className="w-5 h-5 text-cyan-400" />
+              <h3 className="text-base font-bold text-white">{selected.name} — Haftalık Performans</h3>
             </div>
-
-            {/* Hourly FPS */}
-            <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50">
-              <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4">
-                {selected.name} — Saatlik FPS
-              </h3>
-              <ResponsiveContainer width="100%" height={240}>
-                <LineChart data={selected.hourlyFps}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" />
-                  <XAxis dataKey="hour" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
-                  <Tooltip contentStyle={tooltipStyle} formatter={(val: number) => [val.toFixed(1), 'FPS']} />
-                  <Line type="monotone" dataKey="fps" stroke="#6366f1" strokeWidth={2.5} dot={{ fill: '#6366f1', r: 3 }} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
+            <ResponsiveContainer width="100%" height={180}>
+              <AreaChart data={selected.weeklyUptime.map((u, i) => ({ day: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'][i], uptime: u }))}>
+                <defs>
+                  <linearGradient id="uptimeGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#22c55e" stopOpacity={0.4} />
+                    <stop offset="95%" stopColor="#22c55e" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <XAxis dataKey="day" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
+                <YAxis domain={[0, 100]} stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
+                <Tooltip contentStyle={tooltipStyle} formatter={(v: number) => [`%${v.toFixed(1)}`, 'Uptime']} />
+                <Area type="monotone" dataKey="uptime" stroke="#22c55e" strokeWidth={2.5} fill="url(#uptimeGrad)" />
+              </AreaChart>
+            </ResponsiveContainer>
           </motion.div>
         )}
 
-        {/* Charts Row */}
-        <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-5">
-          {/* Status Distribution Pie */}
-          <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50">
-            <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4">Durum Dağılımı</h3>
-            <ResponsiveContainer width="100%" height={280}>
-              <RechartsPieChart>
-                <Pie
-                  data={statusPieData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius="50%"
-                  outerRadius="75%"
-                  paddingAngle={3}
-                  dataKey="value"
-                  stroke="rgba(15,23,42,0.6)"
-                  strokeWidth={1.5}
-                >
-                  {statusPieData.map((_, idx) => (
-                    <Cell key={idx} fill={PIE_COLORS[idx % PIE_COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip contentStyle={tooltipStyle} />
-                <Legend
-                  iconType="circle"
-                  iconSize={8}
-                  formatter={(value) => <span className="text-slate-300 text-sm">{value}</span>}
-                />
-              </RechartsPieChart>
-            </ResponsiveContainer>
+        {/* Overall Chart */}
+        <motion.div variants={item} className="rounded-2xl border border-slate-700/40 bg-slate-800/40 p-5 sm:p-6 overflow-hidden min-w-0">
+          <div className="flex items-center gap-2 mb-4">
+            <Zap className="w-4 h-4 text-amber-400" />
+            <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider">Kamera Bazlı Uptime & Kopma</h3>
           </div>
-
-          {/* Disconnection Bar Chart */}
-          <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50">
-            <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4">Kamera Bazlı Kopma Sayısı & Ort. Süre (dk)</h3>
-            <ResponsiveContainer width="100%" height={280}>
-              <BarChart data={disconnectionBarData} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" />
-                <XAxis type="number" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
-                <YAxis type="category" dataKey="name" stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} width={80} />
-                <Tooltip contentStyle={tooltipStyle} />
-                <Bar dataKey="kopma" name="Kopma Sayısı" fill="#f43f5e" radius={[0, 4, 4, 0]} />
-                <Bar dataKey="sure" name="Ort. Süre (dk)" fill="#f59e0b" radius={[0, 4, 4, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+          <ResponsiveContainer width="100%" height={220}>
+            <BarChart data={uptimeBarData} barCategoryGap="25%">
+              <XAxis dataKey="name" stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} />
+              <YAxis stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} />
+              <Tooltip contentStyle={tooltipStyle} />
+              <Bar dataKey="uptime" name="Uptime %" fill="#22c55e" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="kopma" name="Kopma" fill="#f43f5e" radius={[6, 6, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
         </motion.div>
 
-        {/* Uptime Trend - All Cameras */}
-        <motion.div variants={item} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50">
-          <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4">Tüm Kameralar — 7 Günlük Uptime Trendi</h3>
-          <ResponsiveContainer width="100%" height={320}>
-            <LineChart
-              data={cameras[0].dailyUptime.map((d, idx) => {
-                const point: Record<string, string | number> = { date: d.date };
-                cameras.forEach((cam) => {
-                  point[cam.name.replace(' Kamerası', '')] = cam.dailyUptime[idx]?.uptime ?? 0;
-                });
-                return point;
-              })}
-            >
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" />
-              <XAxis dataKey="date" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
-              <YAxis domain={[0, 100]} stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
-              <Tooltip contentStyle={tooltipStyle} />
-              <Legend iconType="circle" iconSize={8} />
-              {cameras.map((cam, idx) => (
-                <Line
-                  key={cam.id}
-                  type="monotone"
-                  dataKey={cam.name.replace(' Kamerası', '')}
-                  stroke={['#6366f1', '#3b82f6', '#f43f5e', '#22c55e', '#f59e0b', '#8b5cf6'][idx % 6]}
-                  strokeWidth={2}
-                  dot={{ r: 2 }}
-                />
-              ))}
-            </LineChart>
-          </ResponsiveContainer>
+        {/* Info Banner */}
+        <motion.div variants={item}>
+          <div className="flex items-start gap-3 rounded-2xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 p-4 sm:p-5">
+            <MonitorSmartphone className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-semibold text-blue-300">Demo Veriler</p>
+              <p className="text-xs text-blue-200/60 mt-0.5">Bu sayfa örnek verilerle doldurulmuştur. Gerçek kamera heartbeat verileri otomatik olarak güncellenecektir.</p>
+            </div>
+          </div>
         </motion.div>
 
       </motion.div>

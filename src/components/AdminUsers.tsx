@@ -222,7 +222,7 @@ const AdminUsers: React.FC = () => {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-xs sm:text-sm min-w-[800px] sm:min-w-0">
+              <table className="w-full text-xs sm:text-sm min-w-[400px] sm:min-w-0">
                 <thead>
                   <tr className="border-b border-slate-700">
                     <th className="text-left py-3 sm:py-4 px-2 sm:px-4 text-slate-400 font-medium whitespace-nowrap">

@@ -318,7 +318,7 @@ const CustomerAnalytics = () => {
         ) : (
           <>
             <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-5">
-              <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50">
+              <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50 overflow-hidden min-w-0">
                 <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5">{t('analytics.ageDistribution')}</h3>
                 {(analyticsData.demographics?.ageGroupsChart ?? []).reduce((sum, item) => sum + (item?.value ?? 0), 0) > 0 ? (
                   <ResponsiveContainer width="100%" height={280}>
@@ -368,7 +368,7 @@ const CustomerAnalytics = () => {
                 )}
               </div>
 
-              <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50">
+              <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50 overflow-hidden min-w-0">
                 <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5">{t('analytics.genderDistribution')}</h3>
                  {(analyticsData.demographics?.genderDistributionChart ?? []).reduce((sum, item) => sum + (item?.value ?? 0), 0) > 0 ? (
                     <ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]">
@@ -388,7 +388,7 @@ const CustomerAnalytics = () => {
               </div>
             </motion.div>
 
-            <motion.div variants={item} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50">
+            <motion.div variants={item} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-slate-700/50 overflow-hidden min-w-0">
               {isRangeMode ? (
                 <>
                   <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5">

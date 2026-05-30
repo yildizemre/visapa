@@ -336,7 +336,7 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
                 )}
               </div>
               <div className="max-h-72 sm:max-h-96 overflow-y-auto overflow-x-auto bg-slate-900/30 rounded-xl border border-slate-700/30">
-                <table className="w-full text-[10px] sm:text-xs md:text-sm min-w-[500px] sm:min-w-0">
+                <table className="w-full text-[10px] sm:text-xs md:text-sm min-w-[320px] sm:min-w-0">
                     <thead className="sticky top-0 bg-slate-800/90 backdrop-blur-sm z-10">
                         <tr>
                             <th className="text-left text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs whitespace-nowrap"><Clock className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2"/>Saat</th>

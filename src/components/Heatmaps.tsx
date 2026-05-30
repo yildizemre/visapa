@@ -355,7 +355,7 @@ const Heatmaps = () => {
           )}
           <div className="overflow-x-auto">
             {hourlyDataWithComparison && hourlyDataWithComparison.length > 0 ? (
-              <table className="w-full text-[10px] sm:text-xs md:text-sm text-left min-w-[600px] sm:min-w-0">
+              <table className="w-full text-[10px] sm:text-xs md:text-sm text-left min-w-[360px] sm:min-w-0">
                 <thead>
                   <tr className="bg-gradient-to-r from-slate-800/80 to-slate-800/60">
                     <th scope="col" className="px-2 sm:px-3 md:px-4 lg:px-6 py-2.5 sm:py-3 md:py-3.5 text-[9px] sm:text-xs text-slate-400 uppercase font-bold tracking-widest whitespace-nowrap">{t('heatmap.timeRange')}</th>

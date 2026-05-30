@@ -16,6 +16,17 @@ html, body {
   height: 100%;
 }
 
+/* Recharts grafiklerin mobilde taşmasını önle */
+.recharts-wrapper,
+.recharts-surface {
+  max-width: 100% !important;
+}
+
+.recharts-responsive-container {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
 /* Dark scrollbar styling - Force dark theme */
 * {
   scrollbar-width: thin !important;

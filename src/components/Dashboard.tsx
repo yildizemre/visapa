@@ -499,7 +499,7 @@ const Dashboard = () => {
         {/* Charts Grid */}
         <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
           {/* Customer Flow Trend - Area Chart */}
-          <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50">
+          <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50 overflow-hidden min-w-0">
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5">{t('dashboard.dailyCustomerFlowTrend')}</h3>
             <ResponsiveContainer width="100%" height={280}>
               <AreaChart data={dashboardData.dailyCustomerFlow}>
@@ -525,7 +525,7 @@ const Dashboard = () => {
           </div>
 
           {/* Gender Distribution Bar */}
-          <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50">
+          <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50 overflow-hidden min-w-0">
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5">{t('dashboard.dailyGenderDistribution')}</h3>
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={dashboardData.dailyGenderChartData} barCategoryGap="20%">
@@ -541,7 +541,7 @@ const Dashboard = () => {
           </div>
 
           {/* Age Distribution Stacked */}
-          <div className="lg:col-span-2 bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50">
+          <div className="lg:col-span-2 bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50 overflow-hidden min-w-0">
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5">{t('dashboard.dailyAgeDistribution')}</h3>
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={dashboardData.dailyAgeChartData} barCategoryGap="15%">

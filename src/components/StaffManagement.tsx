@@ -365,7 +365,7 @@ const StaffManagement = () => {
               <Timer className="w-4 h-4 text-indigo-400" /> Verimlilik Dağılımı
             </h3>
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <ResponsiveContainer width={180} height={180}>
+              <ResponsiveContainer width="100%" height={180}>
                 <PieChart>
                   <Pie data={efficiencyPieData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={50} outerRadius={75} paddingAngle={4}>
                     {efficiencyPieData.map((_, i) => (
