@@ -53,6 +53,23 @@ def dashboard_insights():
 
     insights = []
 
+    if not this_week and not last_week:
+        insights.append({
+            'type': 'info',
+            'title': 'Veri Bekleniyor',
+            'description': 'Henüz bu dönem için müşteri verisi bulunmuyor. Mağaza AI servisi veri göndermeye başladığında burada otomatik analizler görünecektir.',
+            'metric': '—',
+            'priority': 'medium'
+        })
+        insights.append({
+            'type': 'info',
+            'title': 'İpucu: Tarih Aralığı',
+            'description': 'Farklı bir tarih aralığı seçerek geçmiş verileri görüntüleyebilirsiniz.',
+            'metric': 'Filtre',
+            'priority': 'low'
+        })
+        return {'insights': insights}
+
     # Trafik trendi
     if last_entered > 0:
         change_pct = ((this_entered - last_entered) / last_entered) * 100
@@ -155,6 +172,23 @@ def customer_insights():
 
     insights = []
 
+    if not rows:
+        insights.append({
+            'type': 'info',
+            'title': 'Müşteri Verisi Yok',
+            'description': 'Son 7 gün içinde müşteri verisi bulunmuyor. Kamera sisteminizin aktif olduğundan emin olun.',
+            'metric': '0',
+            'priority': 'medium'
+        })
+        insights.append({
+            'type': 'info',
+            'title': 'İpucu: Demografik Analiz',
+            'description': 'Veri gelmeye başladığında yaş grubu, cinsiyet dağılımı ve geri dönüş oranı analizleri burada otomatik gösterilecektir.',
+            'metric': 'Beklemede',
+            'priority': 'low'
+        })
+        return {'insights': insights}
+
     # Yaş grubu analizi
     age_18_30 = sum(r.age_18_30 or 0 for r in rows)
     age_30_50 = sum(r.age_30_50 or 0 for r in rows)
@@ -228,6 +262,23 @@ def queue_insights():
 
     insights = []
 
+    if not rows:
+        insights.append({
+            'type': 'info',
+            'title': 'Kuyruk Verisi Yok',
+            'description': 'Son 7 gün içinde kuyruk verisi bulunmuyor. Kasa kameralarının aktif olduğundan emin olun.',
+            'metric': '0',
+            'priority': 'medium'
+        })
+        insights.append({
+            'type': 'info',
+            'title': 'İpucu: Kasa Analizi',
+            'description': 'Veri geldiğinde en hızlı/yavaş kasa, yoğun saatler ve bekleme süresi analizleri otomatik oluşturulacaktır.',
+            'metric': 'Beklemede',
+            'priority': 'low'
+        })
+        return {'insights': insights}
+
     # Kasa bazlı performans
     by_cashier = defaultdict(list)
     for r in rows:
@@ -290,6 +341,23 @@ def heatmap_insights():
 
     insights = []
 
+    if not rows:
+        insights.append({
+            'type': 'info',
+            'title': 'Isı Haritası Verisi Yok',
+            'description': 'Son 7 gün içinde ısı haritası verisi bulunmuyor. Bölge kameralarının aktif olduğundan emin olun.',
+            'metric': '0',
+            'priority': 'medium'
+        })
+        insights.append({
+            'type': 'info',
+            'title': 'İpucu: Bölge Analizi',
+            'description': 'Veri geldiğinde en popüler bölge, kalma süresi ve düşük trafikli alan analizleri otomatik üretilecektir.',
+            'metric': 'Beklemede',
+            'priority': 'low'
+        })
+        return {'insights': insights}
+
     # Bölge bazlı yoğunluk
     by_zone = defaultdict(lambda: {'visitors': 0, 'dwell': []})
     for r in rows:
@@ -342,6 +410,23 @@ def staff_insights():
     rows = StaffData.query.filter(StaffData.user_id.in_(user_ids)).all()
 
     insights = []
+
+    if not rows:
+        insights.append({
+            'type': 'info',
+            'title': 'Personel Verisi Yok',
+            'description': 'Henüz personel verisi bulunmuyor. Personel takip sistemi aktif olduğunda burada verimlilik analizleri görünecektir.',
+            'metric': '0',
+            'priority': 'medium'
+        })
+        insights.append({
+            'type': 'info',
+            'title': 'İpucu: Verimlilik Takibi',
+            'description': 'Aktif personel oranı, ortalama verimlilik ve pozisyon dağılımı gibi metrikler otomatik hesaplanacaktır.',
+            'metric': 'Beklemede',
+            'priority': 'low'
+        })
+        return {'insights': insights}
 
     if rows:
         active_count = sum(1 for r in rows if r.status == 'active')
@@ -420,6 +505,23 @@ def flow_insights():
 
     insights = []
 
+    if not today_rows and not yesterday_rows:
+        insights.append({
+            'type': 'info',
+            'title': 'Akış Verisi Yok',
+            'description': 'Bugün ve dün için müşteri akış verisi bulunmuyor. Kamera sisteminizi kontrol edin.',
+            'metric': '0',
+            'priority': 'medium'
+        })
+        insights.append({
+            'type': 'info',
+            'title': 'İpucu: Günlük Takip',
+            'description': 'Veri geldiğinde saatlik zirve, dün ile karşılaştırma ve net akış analizleri otomatik gösterilecektir.',
+            'metric': 'Beklemede',
+            'priority': 'low'
+        })
+        return {'insights': insights}
+
     today_entered = sum(r.entered or 0 for r in today_rows)
     yesterday_entered = sum(r.entered or 0 for r in yesterday_rows)
 
@@ -470,4 +572,48 @@ def flow_insights():
         'priority': 'low'
     })
 
+    return {'insights': insights}
+
+
+@insights_bp.route('/insights/camera_health', methods=['GET'])
+@jwt_required()
+def camera_health_insights():
+    """Kamera sağlığı önerileri (dummy - gerçek veri entegrasyonu yapılacak)."""
+    insights = [
+        {
+            'type': 'warning',
+            'title': 'Çevrimdışı Kamera Tespit Edildi',
+            'description': 'Depo Kamerası son 1 saattir sinyal göndermiyor. Kamera bağlantısını ve ağ ayarlarını kontrol edin.',
+            'metric': '1 kamera',
+            'priority': 'high'
+        },
+        {
+            'type': 'danger',
+            'title': 'Yüksek Kopma Oranı',
+            'description': 'Erkek Giyim Kamerası son 7 günde 8 kez bağlantı kopması yaşadı. Kablo veya ağ altyapısını kontrol edin.',
+            'metric': '8 kopma',
+            'priority': 'high'
+        },
+        {
+            'type': 'success',
+            'title': 'En Stabil Kamera',
+            'description': 'Kadın Giyim Kamerası %99.9 uptime ile en stabil performansı gösteriyor. Hiç kopma yaşanmadı.',
+            'metric': '%99.9',
+            'priority': 'low'
+        },
+        {
+            'type': 'info',
+            'title': 'Ortalama FPS',
+            'description': 'Çevrimiçi kameraların ortalama FPS değeri 26.3. Tüm kameralar kabul edilebilir performans aralığında.',
+            'metric': '26.3 FPS',
+            'priority': 'low'
+        },
+        {
+            'type': 'warning',
+            'title': 'Düşük FPS Uyarısı',
+            'description': 'Erkek Giyim Kamerası ortalama 18.2 FPS ile düşük performans gösteriyor. Kamera kalitesini veya ağ bant genişliğini kontrol edin.',
+            'metric': '18.2 FPS',
+            'priority': 'medium'
+        }
+    ]
     return {'insights': insights}

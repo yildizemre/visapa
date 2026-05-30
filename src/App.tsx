@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { LanguageProvider } from './contexts/LanguageContext';
 import LoginPage from './components/LoginPage';
 import Layout from './components/Layout';
@@ -19,6 +19,7 @@ import Ticket from './components/Ticket';
 import AdminTickets from './components/AdminTickets';
 import AdminHealthOverview from './components/AdminHealthOverview';
 import AdminDataEditor from './components/AdminDataEditor';
+import CameraHealth from './components/CameraHealth';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -59,6 +60,7 @@ function App() {
                   <Route path="/admin/activity-logs" element={<AdminGuardWrapper><ActivityLogs /></AdminGuardWrapper>} />
                   <Route path="/admin/health" element={<AdminGuardWrapper><AdminHealthOverview /></AdminGuardWrapper>} />
                   <Route path="/admin/data-editor" element={<AdminGuardWrapper><AdminDataEditor /></AdminGuardWrapper>} />
+                  <Route path="/camera-health" element={<CameraHealth />} />
                   <Route path="/settings" element={<Settings />} />
                   <Route path="/" element={<Navigate to="/dashboard" replace />} />
                 </Routes>

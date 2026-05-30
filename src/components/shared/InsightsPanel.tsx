@@ -12,7 +12,7 @@ interface Insight {
 }
 
 interface InsightsPanelProps {
-  module: 'dashboard' | 'customer' | 'queue' | 'heatmap' | 'staff' | 'flow';
+  module: 'dashboard' | 'customer' | 'queue' | 'heatmap' | 'staff' | 'flow' | 'camera_health';
   refreshTrigger?: number;
 }
 
