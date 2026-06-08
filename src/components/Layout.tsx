@@ -65,7 +65,8 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
+        const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+        const payload = JSON.parse(atob(base64));
         setUserRole(payload.role || 'user');
         setUserName(payload.username || '');
       } catch {
