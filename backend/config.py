@@ -9,7 +9,7 @@ def _cors_origins():
 
 # ÖNEMLİ: Production'da SECRET_KEY ve JWT_SECRET_KEY env var olarak ayarlanmalıdır.
 # Aksi halde her yeniden başlatmada rastgele üretilir ve mevcut token'lar geçersiz olur.
-_fallback_secret = secrets.token_hex(32)
+_fallback_secret = os.environ.get('SECRET_KEY') or 'vislivis-dev-secret-key-change-in-production-2026'
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or _fallback_secret
