@@ -95,15 +95,26 @@ def create_app(config_class=Config):
 
 
 def _start_health_scheduler(app):
-    """Her 60 dakikada bir dead service kontrolü yapıp Telegram'a bildirim gönderir."""
+    """Her 60 dakikada bir dead service kontrolü yapıp Telegram'a bildirim gönderir.
+    Gunicorn multi-worker ortamında sadece 1 worker scheduler başlatır (lock dosyası ile)."""
     import threading
+    import fcntl
     from routes.health import run_dead_service_check
+
+    LOCK_FILE = '/tmp/vislivis_scheduler.lock'
+
+    try:
+        lock_fd = open(LOCK_FILE, 'w')
+        fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except (IOError, OSError):
+        print("[HealthScheduler] Başka bir worker zaten çalışıyor, bu worker scheduler başlatmıyor.")
+        return
 
     def run():
         with app.app_context():
             try:
                 result = run_dead_service_check()
-                print(f"[HealthScheduler] Kontrol tamamlandı: {result.get('dead_count', 0)} ölü, {result.get('alerts_sent')} bildirim gönderildi.")
+                print(f"[HealthScheduler] Kontrol tamamlandı: {result.get('dead_count', 0)} ölü, {result.get('alive_count', 0)} aktif.")
             except Exception as e:
                 print(f"[HealthScheduler] Hata: {e}")
         # 60 dakika sonra tekrar çalıştır
@@ -115,7 +126,7 @@ def _start_health_scheduler(app):
     timer = threading.Timer(300, run)
     timer.daemon = True
     timer.start()
-    print("[HealthScheduler] Başlatıldı. İlk kontrol 5 dakika sonra yapılacak.")
+    print("[HealthScheduler] Başlatıldı (tek worker). İlk kontrol 5 dakika sonra yapılacak.")
 
 
 app = create_app()

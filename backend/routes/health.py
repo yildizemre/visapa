@@ -11,7 +11,7 @@ from auth_utils import admin_required
 
 health_bp = Blueprint('health', __name__)
 
-HEARTBEAT_TIMEOUT_MINUTES = 5
+HEARTBEAT_TIMEOUT_MINUTES = 90
 
 # Telegram bildirim ayarları
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT', '7922868902:AAEK-DPfMUsMB-QUCq8mVsU7p08k53FvCRE')
@@ -107,45 +107,63 @@ def run_dead_service_check():
     Dead service kontrolünü çalıştırır. Hem route hem scheduler tarafından çağrılabilir.
     Flask uygulama context'i içinde çağrılmalıdır.
     """
-    one_hour_ago = datetime.utcnow() - timedelta(hours=1)
+    cutoff = datetime.utcnow() - timedelta(minutes=HEARTBEAT_TIMEOUT_MINUTES)
 
-    dead_services = ServiceHeartbeat.query.filter(
-        ServiceHeartbeat.last_ping_at < one_hour_ago
-    ).all()
+    all_heartbeats = ServiceHeartbeat.query.all()
+    heartbeat_map = {h.user_id: h for h in all_heartbeats}
 
-    all_store_users = User.query.filter(User.role != 'admin').all()
-    heartbeat_user_ids = {h.user_id for h in ServiceHeartbeat.query.all()}
-    never_pinged = [u for u in all_store_users if u.id not in heartbeat_user_ids]
+    all_store_users = User.query.filter(User.role != 'admin', User.is_active == True).all()
 
-    alerts = []
+    dead_users = []
+    alive_users = []
 
-    for service in dead_services:
-        user = User.query.get(service.user_id)
-        if user:
-            name = user.full_name or user.username
-            last_ping = service.last_ping_at.strftime('%d.%m.%Y %H:%M')
-            alerts.append(f"⚠️ <b>{name}</b> — Son sinyal: {last_ping}")
+    for u in all_store_users:
+        h = heartbeat_map.get(u.id)
+        if h is None:
+            continue  # Hiç ping gelmemiş — uyarıya dahil etme
+        if h.last_ping_at < cutoff:
+            dead_users.append((u, h))
+        else:
+            alive_users.append((u, h))
 
-    for user in never_pinged:
+    dead_lines = []
+    for user, service in dead_users:
         name = user.full_name or user.username
-        alerts.append(f"🔴 <b>{name}</b> — Hiç sinyal gelmedi")
+        last_ping = service.last_ping_at.strftime('%d.%m.%Y %H:%M')
+        dead_lines.append(f"⚠️ <b>{name}</b> — Son sinyal: {last_ping}")
 
-    if alerts:
-        now = datetime.utcnow().strftime('%d.%m.%Y %H:%M UTC')
-        message = f"🚨 <b>Vislivis Sağlık Uyarısı</b>\n📅 {now}\n\n"
-        message += "Son 1 saat içinde sinyal alınamayan mağazalar:\n\n"
-        message += "\n".join(alerts)
-        message += "\n\n⚡ Lütfen ilgili mağazaların sistem durumunu kontrol edin."
+    alive_lines = []
+    for user, service in alive_users:
+        name = user.full_name or user.username
+        last_ping = service.last_ping_at.strftime('%d.%m.%Y %H:%M')
+        alive_lines.append(f"✅ <b>{name}</b> — Son sinyal: {last_ping}")
+
+    if dead_lines or alive_lines:
+        now_str = datetime.utcnow().strftime('%d.%m.%Y %H:%M UTC')
+        message = f"� <b>Vislivis Sistem Durumu</b>\n📅 {now_str}\n\n"
+
+        if dead_lines:
+            message += f"🔴 <b>Sinyal Alınamayan ({len(dead_lines)} mağaza):</b>\n"
+            message += "\n".join(dead_lines)
+            message += "\n\n"
+
+        if alive_lines:
+            message += f"🟢 <b>Aktif Mağazalar ({len(alive_lines)} mağaza):</b>\n"
+            message += "\n".join(alive_lines)
+            message += "\n"
+
+        if dead_lines:
+            message += "\n⚡ Lütfen kapalı mağazaların sistem durumunu kontrol edin."
 
         thread = threading.Thread(target=send_telegram_alert, args=(message,))
         thread.start()
 
     return {
         'checked_at': datetime.utcnow().isoformat(),
-        'dead_count': len(dead_services),
-        'never_pinged_count': len(never_pinged),
-        'alerts_sent': len(alerts) > 0,
-        'details': alerts
+        'dead_count': len(dead_lines),
+        'alive_count': len(alive_lines),
+        'alerts_sent': len(dead_lines) > 0 or len(alive_lines) > 0,
+        'details': dead_lines
     }
 
 
