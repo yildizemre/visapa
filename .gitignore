@@ -27,6 +27,7 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# SQLite DB - backend/instance/vislivis.db dummy data ile commit edilir
+# SQLite DB - asla commit etme
 backend/*.db
-!backend/instance/vislivis.db
+backend/instance/*.db
+*.db

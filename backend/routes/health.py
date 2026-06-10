@@ -11,7 +11,7 @@ from auth_utils import admin_required
 
 health_bp = Blueprint('health', __name__)
 
-HEARTBEAT_TIMEOUT_MINUTES = 90
+HEARTBEAT_TIMEOUT_MINUTES = 10
 
 # Telegram bildirim ayarları
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT', '7922868902:AAEK-DPfMUsMB-QUCq8mVsU7p08k53FvCRE')
