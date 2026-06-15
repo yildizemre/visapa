@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
 import { LanguageProvider } from './contexts/LanguageContext';
 import LoginPage from './components/LoginPage';
 import Layout from './components/Layout';
@@ -55,13 +54,12 @@ function App() {
   return (
     <LanguageProvider>
       <Router>
-        <div className="h-screen min-h-0 flex flex-col bg-[#0c1222] overflow-hidden">
-          <AnimatePresence mode="wait">
-            {!isAuthenticated ? (
-              <LoginPage onLogin={() => setIsAuthenticated(true)} />
-            ) : (
-              <Layout onLogout={handleLogout}>
-                <Routes>
+        <div className="h-screen min-h-0 flex flex-col bg-[#0c1222] overflow-hidden" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
+          {!isAuthenticated ? (
+            <LoginPage onLogin={() => setIsAuthenticated(true)} />
+          ) : (
+            <Layout onLogout={handleLogout}>
+              <Routes>
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/customer-analytics" element={<CustomerAnalytics />} />
                   <Route path="/staff-management" element={<StaffManagement />} />
@@ -82,7 +80,6 @@ function App() {
                 </Routes>
               </Layout>
             )}
-          </AnimatePresence>
         </div>
       </Router>
     </LanguageProvider>
