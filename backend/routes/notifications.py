@@ -45,45 +45,57 @@ def _send_telegram(message: str):
         print(f"[Anomaly Telegram Error] {e}")
 
 
-def check_anomalies_for_user(user_id: int, user_name: str = ''):
+def check_anomalies_for_user(user_id: int, user_name: str = '', data_timestamp: datetime = None):
     """
     Belirli bir kullanıcı için anomali kontrolü yapar.
     Bu fonksiyon, veri POST edildiğinde (saatlik veri geldiğinde) çağrılır.
+    data_timestamp: POST edilen verinin timestamp'i (None ise şimdiki zaman)
     """
     now = datetime.now()
-    current_hour = now.hour
-    
+    # Verinin timestamp saatini kullan, şimdiki saati değil
+    ref_time = data_timestamp if data_timestamp else now
+    current_hour = ref_time.hour
+
+    # Gece 22:00 - sabah 08:00 arası anomali tespiti yapma (mağaza kapalı)
+    if current_hour >= 22 or current_hour < 8:
+        return
+
     # Son 7 günün aynı saatindeki ortalama müşteri sayısını hesapla
     seven_days_ago = now - timedelta(days=7)
-    
+
     historical_rows = CustomerData.query.filter(
         CustomerData.user_id == user_id,
         CustomerData.timestamp >= seven_days_ago,
-        CustomerData.timestamp < now - timedelta(hours=1),
+        CustomerData.timestamp < ref_time - timedelta(hours=1),
     ).all()
-    
+
     # Aynı saatteki geçmiş veriler
     same_hour_entries = [
-        r for r in historical_rows 
+        r for r in historical_rows
         if r.timestamp and r.timestamp.hour == current_hour
     ]
-    
+
     if len(same_hour_entries) < 3:
         return  # Yeterli geçmiş veri yok, anomali tespiti yapma
-    
+
     avg_entered = sum(getattr(r, 'entered', 0) or 0 for r in same_hour_entries) / len(same_hour_entries)
-    
-    # Bugünün bu saatindeki veri
-    today_start = datetime.combine(now.date(), datetime.min.time())
+
+    # Ortalama çok düşükse (mağaza zaten trafiksiz saatler) uyarı üretme
+    if avg_entered < 5:
+        return
+
+    # Verinin timestamp'ine göre o saatin aralığı
+    ref_date = ref_time.date()
+    today_start = datetime.combine(ref_date, datetime.min.time())
     today_hour_start = today_start.replace(hour=current_hour)
     today_hour_end = today_hour_start + timedelta(hours=1)
-    
+
     today_rows = CustomerData.query.filter(
         CustomerData.user_id == user_id,
         CustomerData.timestamp >= today_hour_start,
         CustomerData.timestamp < today_hour_end,
     ).all()
-    
+
     today_entered = sum(getattr(r, 'entered', 0) or 0 for r in today_rows)
     
     alerts = []
@@ -222,6 +234,36 @@ def mark_notifications_read():
     db.session.commit()
     
     return {'message': 'Bildirimler okundu olarak işaretlendi'}
+
+
+@notifications_bp.route('/notifications/<int:notif_id>', methods=['DELETE'])
+@jwt_required()
+def delete_notification(notif_id: int):
+    """Tek bir bildirimi sil."""
+    user_ids, _ = get_resolved_user_ids()
+    if not user_ids:
+        user_ids = [get_jwt_identity()]
+    notif = Notification.query.filter(
+        Notification.id == notif_id,
+        Notification.user_id.in_(user_ids)
+    ).first()
+    if not notif:
+        return {'error': 'Bildirim bulunamadı'}, 404
+    db.session.delete(notif)
+    db.session.commit()
+    return {'message': 'Bildirim silindi'}
+
+
+@notifications_bp.route('/notifications/delete-all', methods=['DELETE'])
+@jwt_required()
+def delete_all_notifications():
+    """Tüm bildirimleri sil."""
+    user_ids, _ = get_resolved_user_ids()
+    if not user_ids:
+        user_ids = [get_jwt_identity()]
+    Notification.query.filter(Notification.user_id.in_(user_ids)).delete(synchronize_session=False)
+    db.session.commit()
+    return {'message': 'Tüm bildirimler silindi'}
 
 
 @notifications_bp.route('/notifications/check-anomalies', methods=['POST'])

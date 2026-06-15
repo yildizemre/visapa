@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Store, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { getSelectedStoreId } from '../lib/api';
+import { getSelectedStoreId, setSelectedStoreId } from '../lib/api';
 
 interface ManagedStore {
   id: number;
@@ -20,9 +20,15 @@ const StoreSwitcher: React.FC = () => {
     if (!userStr) return;
     try {
       const user = JSON.parse(userStr);
-      const list = user.managed_stores || [];
+      const list: ManagedStore[] = user.managed_stores || [];
       setStores(list);
-      setSelectedId(getSelectedStoreId());
+      const saved = getSelectedStoreId();
+      if (saved && list.some((s) => String(s.id) === saved)) {
+        setSelectedId(saved);
+      } else {
+        // Kayıtlı seçim yoksa null (Tüm Mağazalar) - konsolide mod
+        setSelectedId(null);
+      }
     } catch {
       setStores([]);
     }
@@ -32,10 +38,10 @@ const StoreSwitcher: React.FC = () => {
 
   const handleSelect = (id: number | null) => {
     if (id === null) {
-      sessionStorage.removeItem('selectedStoreId');
+      setSelectedStoreId(null);
       setSelectedId(null);
     } else {
-      sessionStorage.setItem('selectedStoreId', String(id));
+      setSelectedStoreId(String(id));
       setSelectedId(String(id));
     }
     setOpen(false);
@@ -69,6 +75,7 @@ const StoreSwitcher: React.FC = () => {
             >
               {t('storeSwitcher.all')}
             </button>
+            <div className="border-t border-slate-700/50 my-1" />
             {stores.map((s) => (
               <button
                 key={s.id}

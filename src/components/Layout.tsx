@@ -32,9 +32,6 @@ import {
   Database,
   ArrowLeftCircle,
   Video,
-  Sun,
-  CloudRain,
-  Cloud,
 } from 'lucide-react';
 
 interface LayoutProps {
@@ -49,9 +46,9 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
   const [userLogo, setUserLogo] = useState<string | null>(null);
   const [showStoreSwitcher, setShowStoreSwitcher] = useState(false);
   const [ticketUnreadCount, setTicketUnreadCount] = useState(0);
-  const [weather, setWeather] = useState<{ temp: number; condition: string } | null>(null);
   const [logoUploading, setLogoUploading] = useState(false);
   const logoInputRef = useRef<HTMLInputElement>(null);
+  const mainRef = useRef<HTMLElement>(null);
   const [cropModal, setCropModal] = useState<{ dataUrl: string } | null>(null);
   const [cropScale, setCropScale] = useState<number>(1);
   const [cropX, setCropX] = useState<number>(0);
@@ -60,26 +57,12 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
   const location = useLocation();
   const { t, language } = useLanguage();
 
+  // Route değişince scroll en üste al
   React.useEffect(() => {
-    const fetchTopWeather = () => {
-      const token = localStorage.getItem('token');
-      if (!token) return;
-      const lat = localStorage.getItem('weather_lat') || '41.0082';
-      const lon = localStorage.getItem('weather_lon') || '28.9784';
-      apiFetch(`/api/weather/forecast?lat=${lat}&lon=${lon}`)
-        .then(res => res.ok ? res.json() : null)
-        .then(data => {
-          if (data) {
-            setWeather({ temp: data.temperature, condition: data.condition });
-          }
-        })
-        .catch(() => {});
-    };
-
-    fetchTopWeather();
-    window.addEventListener('weatherLocationChanged', fetchTopWeather);
-    return () => window.removeEventListener('weatherLocationChanged', fetchTopWeather);
-  }, []);
+    if (mainRef.current) {
+      mainRef.current.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [location.pathname]);
 
   // Logo - dosya secildiginde oncelikle modal ac
   const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -487,19 +470,6 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                 </button>
               )}
               {showStoreSwitcher && <StoreSwitcher />}
-              {/* Weather Widget */}
-              {weather && (
-                <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/40 border border-slate-700/30 text-slate-300 text-xs font-semibold shadow-inner">
-                  {weather.condition === 'rainy' ? (
-                    <CloudRain className="w-4 h-4 text-blue-400 animate-pulse" />
-                  ) : weather.condition === 'cloudy' ? (
-                    <Cloud className="w-4 h-4 text-slate-400" />
-                  ) : (
-                    <Sun className="w-4 h-4 text-amber-400" />
-                  )}
-                  <span>{weather.temp}°C</span>
-                </div>
-              )}
 
               {/* Quick Cameras Access Button */}
               <div className="relative">
@@ -564,7 +534,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 min-w-0 overflow-y-auto overflow-x-hidden bg-[#0c1222]">
+        <main ref={mainRef} className="flex-1 min-w-0 overflow-y-auto overflow-x-hidden bg-[#0c1222]">
           <div className="min-h-full pb-4">
             {children}
           </div>

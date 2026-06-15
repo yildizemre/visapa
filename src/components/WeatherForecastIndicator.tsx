@@ -56,9 +56,19 @@ const WeatherForecastIndicator: React.FC = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const [currentCity, setCurrentCity] = useState(() => localStorage.getItem('weather_city') || 'İstanbul');
-  const [currentLat, setCurrentLat] = useState(() => localStorage.getItem('weather_lat') || '41.0082');
-  const [currentLon, setCurrentLon] = useState(() => localStorage.getItem('weather_lon') || '28.9784');
+  // Kullanıcı bazlı localStorage key - her kullanıcının kendi şehri ayrı saklanır
+  const userId = (() => {
+    try { return JSON.parse(localStorage.getItem('user') || '{}').id || 'default'; }
+    catch { return 'default'; }
+  })();
+  const cityKey = `weather_city_${userId}`;
+  const latKey = `weather_lat_${userId}`;
+  const lonKey = `weather_lon_${userId}`;
+
+  // Default: Antalya (kullanıcı daha önce seçim yapmamışsa)
+  const [currentCity, setCurrentCity] = useState(() => localStorage.getItem(cityKey) || 'Antalya');
+  const [currentLat, setCurrentLat] = useState(() => localStorage.getItem(latKey) || '36.8969');
+  const [currentLon, setCurrentLon] = useState(() => localStorage.getItem(lonKey) || '30.7133');
 
   const fetchWeather = async (lat: string, lon: string) => {
     setLoading(true);
@@ -98,9 +108,9 @@ const WeatherForecastIndicator: React.FC = () => {
   const selectLocation = (r: LocationResult) => {
     const lat = String(r.lat);
     const lon = String(r.lon);
-    localStorage.setItem('weather_lat', lat);
-    localStorage.setItem('weather_lon', lon);
-    localStorage.setItem('weather_city', r.name);
+    localStorage.setItem(latKey, lat);
+    localStorage.setItem(lonKey, lon);
+    localStorage.setItem(cityKey, r.name);
     setCurrentLat(lat);
     setCurrentLon(lon);
     setCurrentCity(r.name);

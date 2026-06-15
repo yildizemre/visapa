@@ -35,6 +35,7 @@ def login():
         additional_claims={'role': user.role, 'username': user.username}
     )
     user_dict = user.to_public_dict()
+    user_dict['logo_base64'] = user.logo_base64 or None
     if user.role == 'brand_manager':
         rows = ManagedStore.query.filter_by(manager_user_id=user.id).all()
         user_dict['managed_stores'] = []
