@@ -283,7 +283,7 @@ def post_customer():
         from models import User
         user = User.query.get(int(target_user_id))
         user_name = (user.full_name or user.username) if user else ''
-        check_anomalies_for_user(int(target_user_id), user_name)
+        check_anomalies_for_user(int(target_user_id), user_name, data_timestamp=r.timestamp)
     except Exception as e:
         print(f"[Anomaly Check] Hata: {e}")
 
