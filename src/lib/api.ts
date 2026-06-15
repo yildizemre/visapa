@@ -5,7 +5,23 @@ function getToken(): string {
 }
 
 export function getSelectedStoreId(): string | null {
-  return sessionStorage.getItem('selectedStoreId');
+  try {
+    const userId = JSON.parse(localStorage.getItem('user') || '{}').id || 'default';
+    return localStorage.getItem(`selectedStoreId_${userId}`) || null;
+  } catch {
+    return null;
+  }
+}
+
+export function setSelectedStoreId(id: string | null): void {
+  try {
+    const userId = JSON.parse(localStorage.getItem('user') || '{}').id || 'default';
+    if (id === null) {
+      localStorage.removeItem(`selectedStoreId_${userId}`);
+    } else {
+      localStorage.setItem(`selectedStoreId_${userId}`, id);
+    }
+  } catch { /* ignore */ }
 }
 
 export function apiUrl(path: string, params?: Record<string, string>): string {

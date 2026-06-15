@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Store, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { getSelectedStoreId } from '../lib/api';
+import { getSelectedStoreId, setSelectedStoreId } from '../lib/api';
 
 interface ManagedStore {
   id: number;
@@ -32,10 +32,10 @@ const StoreSwitcher: React.FC = () => {
 
   const handleSelect = (id: number | null) => {
     if (id === null) {
-      sessionStorage.removeItem('selectedStoreId');
+      setSelectedStoreId(null);
       setSelectedId(null);
     } else {
-      sessionStorage.setItem('selectedStoreId', String(id));
+      setSelectedStoreId(String(id));
       setSelectedId(String(id));
     }
     setOpen(false);
