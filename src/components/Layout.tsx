@@ -64,8 +64,9 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
     const fetchTopWeather = () => {
       const token = localStorage.getItem('token');
       if (!token) return;
-      const lat = localStorage.getItem('weather_lat') || '41.0082';
-      const lon = localStorage.getItem('weather_lon') || '28.9784';
+      const userId = (() => { try { return JSON.parse(localStorage.getItem('user') || '{}').id || 'default'; } catch { return 'default'; } })();
+      const lat = localStorage.getItem(`weather_lat_${userId}`) || localStorage.getItem('weather_lat') || '36.8969';
+      const lon = localStorage.getItem(`weather_lon_${userId}`) || localStorage.getItem('weather_lon') || '30.7133';
       apiFetch(`/api/weather/forecast?lat=${lat}&lon=${lon}`)
         .then(res => res.ok ? res.json() : null)
         .then(data => {

@@ -356,8 +356,8 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="p-3 sm:p-4 md:p-5 lg:p-8">
-      <motion.div variants={container} initial="hidden" animate="show" className="space-y-5 sm:space-y-6 lg:space-y-8">
+    <div className="p-3 sm:p-4 md:p-5 lg:p-8 w-full min-w-0 overflow-hidden">
+      <motion.div variants={container} initial="hidden" animate="show" className="space-y-5 sm:space-y-6 lg:space-y-8 w-full min-w-0">
         
         {/* Header */}
         <motion.div variants={item} className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4">
