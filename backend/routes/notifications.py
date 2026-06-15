@@ -224,6 +224,36 @@ def mark_notifications_read():
     return {'message': 'Bildirimler okundu olarak işaretlendi'}
 
 
+@notifications_bp.route('/notifications/<int:notif_id>', methods=['DELETE'])
+@jwt_required()
+def delete_notification(notif_id: int):
+    """Tek bir bildirimi sil."""
+    user_ids, _ = get_resolved_user_ids()
+    if not user_ids:
+        user_ids = [get_jwt_identity()]
+    notif = Notification.query.filter(
+        Notification.id == notif_id,
+        Notification.user_id.in_(user_ids)
+    ).first()
+    if not notif:
+        return {'error': 'Bildirim bulunamadı'}, 404
+    db.session.delete(notif)
+    db.session.commit()
+    return {'message': 'Bildirim silindi'}
+
+
+@notifications_bp.route('/notifications/delete-all', methods=['DELETE'])
+@jwt_required()
+def delete_all_notifications():
+    """Tüm bildirimleri sil."""
+    user_ids, _ = get_resolved_user_ids()
+    if not user_ids:
+        user_ids = [get_jwt_identity()]
+    Notification.query.filter(Notification.user_id.in_(user_ids)).delete(synchronize_session=False)
+    db.session.commit()
+    return {'message': 'Tüm bildirimler silindi'}
+
+
 @notifications_bp.route('/notifications/check-anomalies', methods=['POST'])
 @jwt_required()
 def trigger_anomaly_check():

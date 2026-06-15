@@ -20,9 +20,18 @@ const StoreSwitcher: React.FC = () => {
     if (!userStr) return;
     try {
       const user = JSON.parse(userStr);
-      const list = user.managed_stores || [];
+      const list: ManagedStore[] = user.managed_stores || [];
       setStores(list);
-      setSelectedId(getSelectedStoreId());
+      const saved = getSelectedStoreId();
+      if (saved && list.some((s) => String(s.id) === saved)) {
+        setSelectedId(saved);
+      } else if (list.length > 0) {
+        // Kayıtlı seçim yoksa ilk mağazayı otomatik seç
+        const firstId = String(list[0].id);
+        setSelectedStoreId(firstId);
+        setSelectedId(firstId);
+        window.dispatchEvent(new Event('store-changed'));
+      }
     } catch {
       setStores([]);
     }
@@ -62,13 +71,6 @@ const StoreSwitcher: React.FC = () => {
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden />
           <div className="absolute right-0 top-full mt-1 py-1 bg-slate-800 border border-slate-700 rounded-lg shadow-xl z-50 min-w-[180px]">
-            <button
-              type="button"
-              onClick={() => handleSelect(null)}
-              className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-700/50 ${!selectedId ? 'bg-blue-500/20 text-blue-400' : 'text-slate-300'}`}
-            >
-              {t('storeSwitcher.all')}
-            </button>
             {stores.map((s) => (
               <button
                 key={s.id}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Bell, X, AlertTriangle, Info, CheckCircle } from 'lucide-react';
+import { Bell, X, AlertTriangle, Info, CheckCircle, Trash2 } from 'lucide-react';
 import { apiFetch } from '../../lib/api';
 
 interface NotificationItem {
@@ -50,6 +50,25 @@ const NotificationBell: React.FC = () => {
       });
       setUnreadCount(0);
       setNotifications(prev => prev.map(n => ({ ...n, is_read: true })));
+    } catch { /* ignore */ }
+  };
+
+  const deleteNotification = async (id: number) => {
+    try {
+      await apiFetch(`/api/notifications/${id}`, { method: 'DELETE' });
+      setNotifications(prev => prev.filter(n => n.id !== id));
+      setUnreadCount(prev => {
+        const wasUnread = notifications.find(n => n.id === id && !n.is_read);
+        return wasUnread ? Math.max(0, prev - 1) : prev;
+      });
+    } catch { /* ignore */ }
+  };
+
+  const deleteAll = async () => {
+    try {
+      await apiFetch('/api/notifications/delete-all', { method: 'DELETE' });
+      setNotifications([]);
+      setUnreadCount(0);
     } catch { /* ignore */ }
   };
 
@@ -118,7 +137,15 @@ const NotificationBell: React.FC = () => {
                   onClick={markAllRead}
                   className="text-[10px] text-blue-400 hover:text-blue-300 font-medium"
                 >
-                  Tümünü Okundu İşaretle
+                  Okundu
+                </button>
+              )}
+              {notifications.length > 0 && (
+                <button
+                  onClick={deleteAll}
+                  className="text-[10px] text-red-400 hover:text-red-300 font-medium flex items-center gap-0.5"
+                >
+                  <Trash2 className="w-3 h-3" /> Tümünü Sil
                 </button>
               )}
               <button onClick={() => setIsOpen(false)} className="p-1 hover:bg-slate-700/50 rounded-lg">
@@ -137,7 +164,7 @@ const NotificationBell: React.FC = () => {
               notifications.map(n => (
                 <div
                   key={n.id}
-                  className={`px-4 py-3 border-b border-slate-800/50 hover:bg-slate-800/30 transition-colors ${
+                  className={`px-4 py-3 border-b border-slate-800/50 hover:bg-slate-800/30 transition-colors group ${
                     !n.is_read ? 'bg-slate-800/20' : ''
                   }`}
                 >
@@ -148,9 +175,17 @@ const NotificationBell: React.FC = () => {
                         <p className={`text-xs font-semibold truncate ${!n.is_read ? 'text-white' : 'text-slate-300'}`}>
                           {n.title}
                         </p>
-                        {!n.is_read && (
-                          <span className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0" />
-                        )}
+                        <div className="flex items-center gap-1.5 flex-shrink-0">
+                          {!n.is_read && (
+                            <span className="w-2 h-2 bg-blue-500 rounded-full" />
+                          )}
+                          <button
+                            onClick={(e) => { e.stopPropagation(); deleteNotification(n.id); }}
+                            className="opacity-0 group-hover:opacity-100 p-0.5 rounded hover:bg-red-500/20 text-slate-500 hover:text-red-400 transition-all"
+                          >
+                            <Trash2 className="w-3 h-3" />
+                          </button>
+                        </div>
                       </div>
                       <p className="text-[11px] text-slate-400 mt-0.5 line-clamp-2">{n.message}</p>
                       <p className="text-[10px] text-slate-500 mt-1">{formatTime(n.created_at)}</p>
