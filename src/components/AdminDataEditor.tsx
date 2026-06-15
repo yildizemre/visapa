@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Database, Users, Map, Clock, Save, XCircle } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
 import { apiUrl } from '../lib/api';
 
 type TabKey = 'customers' | 'heatmaps' | 'queues';
@@ -35,8 +34,16 @@ interface UserOption {
   label: string;
 }
 
+interface EditedDataValue {
+  entered?: string;
+  exited?: string;
+  totalVisitors?: string;
+  avgDwellTime?: string;
+  totalCustomers?: string;
+  avgWaitTime?: string;
+}
+
 const AdminDataEditor: React.FC = () => {
-  const { t } = useLanguage();
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
   const [activeTab, setActiveTab] = useState<TabKey>('customers');
@@ -50,7 +57,7 @@ const AdminDataEditor: React.FC = () => {
   const [heatmapRows, setHeatmapRows] = useState<HeatmapRow[]>([]);
   const [queueRows, setQueueRows] = useState<QueueRow[]>([]);
 
-  const [edited, setEdited] = useState<Record<string, any>>({});
+  const [edited, setEdited] = useState<Record<string, EditedDataValue>>({});
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
 
@@ -81,7 +88,7 @@ const AdminDataEditor: React.FC = () => {
         });
         if (!res.ok) return;
         const data = await res.json();
-        const list = (data.users ?? []).map((u: any) => ({
+        const list = (data.users ?? []).map((u: { id: number; full_name?: string; username?: string; email?: string }) => ({
           id: u.id,
           label: u.full_name || u.username || u.email || `User #${u.id}`,
         }));
@@ -118,7 +125,7 @@ const AdminDataEditor: React.FC = () => {
             const rows: CustomerRow[] = [];
             for (let h = 10; h <= 22; h += 1) {
               const key = `${String(h).padStart(2, '0')}:00`;
-              const value: any = (flow as any)[key] || {};
+              const value = (flow as Record<string, { entered?: number; exited?: number; editable_id?: number | null }>)[key] || {};
               rows.push({
                 hour: key,
                 entered: value.entered ?? 0,
@@ -140,7 +147,7 @@ const AdminDataEditor: React.FC = () => {
             const hourlySummary = json.hourlySummary ?? [];
             const zoneMap = json.zonePerformance ?? [];
             const defaultZone = (zoneMap[0]?.zone as string | undefined) ?? 'genel';
-            const rows: HeatmapRow[] = hourlySummary.map((h: any) => ({
+            const rows: HeatmapRow[] = hourlySummary.map((h: { hour: number | string; totalVisitors?: number; avgDwellTime?: number; editable_id?: number | null }) => ({
               hour: String(h.hour).padStart(2, '0'),
               zone: defaultZone,
               totalVisitors: h.totalVisitors ?? 0,
@@ -166,7 +173,7 @@ const AdminDataEditor: React.FC = () => {
           if (res.ok) {
             const json = await res.json();
             const hourlySummary = json.hourlySummary ?? [];
-            const rows: QueueRow[] = hourlySummary.map((h: any) => ({
+            const rows: QueueRow[] = hourlySummary.map((h: { hour: number | string; cashier_id?: string; totalCustomers?: number; avgWaitTime?: number; editable_id?: number | null }) => ({
               hour: String(h.hour).padStart(2, '0'),
               cashier_id: h.cashier_id ?? 'All',
               totalCustomers: h.totalCustomers ?? 0,
@@ -217,20 +224,18 @@ const AdminDataEditor: React.FC = () => {
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       };
 
-      const promises: Promise<any>[] = [];
+      const promises: Promise<Response>[] = [];
 
       if (activeTab === 'customers') {
-        // Sadece belirli kullanıcı seçiliyken saatlik toplamı set et
         if (selectedUserId === 'all') {
           setSaving(false);
           return;
         }
         Object.entries(edited).forEach(([hour, change]) => {
           if (!change) return;
-          const body: any = { date, hour };
+          const body: Record<string, string | number> = { date, hour };
           if (change.entered !== undefined) body.entered = Number(change.entered);
           if (change.exited !== undefined) body.exited = Number(change.exited);
-          // Sadece date+hour varsa değişiklik yok
           if (Object.keys(body).length <= 2) return;
           const qs = `?store_id=${selectedUserId}`;
           promises.push(
@@ -242,16 +247,19 @@ const AdminDataEditor: React.FC = () => {
           );
         });
       } else if (activeTab === 'heatmaps') {
-        heatmapRows.forEach((row) => {
-          const change = edited[row.hour];
-          if (!change || !row.editable_id) return;
-          const body: any = {};
+        if (selectedUserId === 'all') {
+          setSaving(false);
+          return;
+        }
+        Object.entries(edited).forEach(([hour, change]) => {
+          if (!change) return;
+          const body: Record<string, string | number> = { date, hour, zone: 'genel' };
           if (change.totalVisitors !== undefined) body.totalVisitors = Number(change.totalVisitors);
           if (change.avgDwellTime !== undefined) body.avgDwellTime = Number(change.avgDwellTime);
-          if (Object.keys(body).length === 0) return;
-          const qs = selectedUserId === 'all' ? '' : `?store_id=${selectedUserId}`;
+          if (Object.keys(body).length <= 3) return;
+          const qs = `?store_id=${selectedUserId}`;
           promises.push(
-            fetch(apiUrl(`/api/analytics/heatmaps/record/${row.editable_id}${qs}`), {
+            fetch(apiUrl(`/api/analytics/heatmaps/hourly-edit${qs}`), {
               method: 'PUT',
               headers,
               body: JSON.stringify(body),
@@ -259,16 +267,19 @@ const AdminDataEditor: React.FC = () => {
           );
         });
       } else if (activeTab === 'queues') {
-        queueRows.forEach((row) => {
-          const change = edited[row.hour];
-          if (!change || !row.editable_id) return;
-          const body: any = {};
+        if (selectedUserId === 'all') {
+          setSaving(false);
+          return;
+        }
+        Object.entries(edited).forEach(([hour, change]) => {
+          if (!change) return;
+          const body: Record<string, string | number> = { date, hour, cashier_id: 'all' };
           if (change.totalCustomers !== undefined) body.totalCustomers = Number(change.totalCustomers);
           if (change.avgWaitTime !== undefined) body.avgWaitTime = Number(change.avgWaitTime);
-          if (Object.keys(body).length === 0) return;
-          const qs = selectedUserId === 'all' ? '' : `?store_id=${selectedUserId}`;
+          if (Object.keys(body).length <= 3) return;
+          const qs = `?store_id=${selectedUserId}`;
           promises.push(
-            fetch(apiUrl(`/api/analytics/queues/record/${row.editable_id}${qs}`), {
+            fetch(apiUrl(`/api/analytics/queues/hourly-edit${qs}`), {
               method: 'PUT',
               headers,
               body: JSON.stringify(body),
@@ -279,6 +290,10 @@ const AdminDataEditor: React.FC = () => {
 
       await Promise.all(promises);
       setEdited({});
+      // Trigger a re-fetch of the data
+      const currentTab = activeTab;
+      setActiveTab('customers');
+      setTimeout(() => setActiveTab(currentTab), 10);
     } finally {
       setSaving(false);
     }
@@ -299,48 +314,60 @@ const AdminDataEditor: React.FC = () => {
   const renderTable = () => {
     if (activeTab === 'customers') {
       const canEdit = selectedUserId !== 'all';
+      
+      // Calculate real-time totals
+      const totalEntered = customerRows.reduce((sum, row) => sum + Number(edited[row.hour]?.entered ?? row.entered), 0);
+
       return (
-        <table className="w-full text-xs sm:text-sm text-left">
-          <thead className="text-slate-400 bg-slate-700/50">
-            <tr>
-              <th className="px-3 py-2">Saat</th>
-              <th className="px-3 py-2 text-center">Giren</th>
-              <th className="px-3 py-2 text-center">Çıkan</th>
-            </tr>
-          </thead>
-          <tbody>
-            {customerRows.map((row) => {
-              const editedRow = edited[row.hour] ?? {};
-              const entered = editedRow.entered ?? row.entered;
-              const exited = editedRow.exited ?? row.exited;
-              return (
-                <tr key={row.hour} className="border-b border-slate-700">
-                  <td className="px-3 py-2 text-white whitespace-nowrap">
-                    {row.hour} - {row.hour.replace(':00', ':59')}
-                  </td>
-                  <td className="px-3 py-2 text-center">
-                    <input
-                      type="number"
-                      className="w-20 bg-slate-800 text-slate-100 text-center rounded border border-slate-600 px-1 py-0.5"
-                      value={entered}
-                      disabled={!canEdit}
-                      onChange={(e) => handleChange(row.hour, 'entered', e.target.value)}
-                    />
-                  </td>
-                  <td className="px-3 py-2 text-center">
-                    <input
-                      type="number"
-                      className="w-20 bg-slate-800 text-slate-100 text-center rounded border border-slate-600 px-1 py-0.5"
-                      value={exited}
-                      disabled={!canEdit}
-                      onChange={(e) => handleChange(row.hour, 'exited', e.target.value)}
-                    />
-                  </td>
+        <div className="space-y-4">
+          <div className="mb-4">
+            <div className="bg-slate-700/40 rounded-xl p-4 border border-slate-600/50 flex items-center justify-between">
+              <div>
+                <p className="text-xs text-slate-400 font-medium">Toplam Giren</p>
+                <p className="text-2xl font-bold text-white mt-1">{totalEntered.toLocaleString()}</p>
+              </div>
+              <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <Users className="w-5 h-5 text-blue-400" />
+              </div>
+            </div>
+          </div>
+          
+          <div className="rounded-xl overflow-hidden border border-slate-600/50">
+            <table className="w-full text-xs sm:text-sm text-left">
+              <thead className="text-slate-300 bg-slate-700/80">
+                <tr>
+                  <th className="px-4 py-3 font-medium">Saat Dilimi</th>
+                  <th className="px-4 py-3 font-medium text-center">Giren Müşteri</th>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </thead>
+              <tbody className="divide-y divide-slate-700/50">
+                {customerRows.map((row) => {
+                  const editedRow = edited[row.hour] ?? {};
+                  const entered = editedRow.entered ?? row.entered;
+                  const isEdited = editedRow.entered !== undefined;
+                  
+                  return (
+                    <tr key={row.hour} className={`transition-colors ${isEdited ? 'bg-indigo-500/10' : 'hover:bg-slate-700/30'}`}>
+                      <td className="px-4 py-2 text-slate-200 whitespace-nowrap font-medium flex items-center gap-2">
+                        <Clock className="w-3.5 h-3.5 text-slate-400" />
+                        {row.hour} - {row.hour.replace(':00', ':59')}
+                      </td>
+                      <td className="px-4 py-2 text-center">
+                        <input
+                          type="number"
+                          className={`w-24 bg-slate-800 text-center rounded-lg border ${isEdited && editedRow.entered !== undefined ? 'border-indigo-400 text-white' : 'border-slate-600 text-slate-200'} px-2 py-1.5 focus:ring-2 focus:ring-indigo-500/50 focus:outline-none transition-all`}
+                          value={entered}
+                          disabled={!canEdit}
+                          onChange={(e) => handleChange(row.hour, 'entered', e.target.value)}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
       );
     }
 

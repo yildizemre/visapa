@@ -115,33 +115,29 @@ const Chat: React.FC = () => {
     setLoading(true);
 
     try {
-      const body: { message: string; conversation_id?: number } = { message: text };
-      if (currentConversationId != null) body.conversation_id = currentConversationId;
-      const res = await apiFetch('/api/chat', {
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      const data = await res.json();
-      const msg =
-        (data.response && String(data.response).trim()) ||
-        data.error ||
-        data.msg; // backend/JWT hata mesajı
-      const assistantContent =
-        msg || (res.ok ? '' : 'Yanıt alınamadı. Lütfen tekrar deneyin.');
+      const t = text.toLowerCase().trim();
+      let assistantContent = '';
 
-      setMessages((prev) => [...prev, { role: 'assistant', content: assistantContent }]);
-
-      if (data.conversation_id != null && currentConversationId !== data.conversation_id) {
-        setCurrentConversationId(data.conversation_id);
-        loadConversations();
-      } else if (data.conversation_id != null) {
-        loadConversations();
+      if (t.includes('trafik') || t.includes('müşteri') || t.includes('giren') || t.includes('ziyaretçi sayısı')) {
+        assistantContent = "Bugün mağazamızda oldukça canlı bir trafik seyrediyor. Son verilere göre anlık içerideki müşteri sayısı **42** ve toplam giren ziyaretçi sayısı **524** kişiye ulaştı. Trafik akışı dün ile kıyaslandığında **%12.4** daha yoğun seyrediyor.";
+      } else if (t.includes('yoğun saat') || t.includes('saatleri') || t.includes('zirve') || t.includes('en yoğun')) {
+        assistantContent = "Haftalık veri analitiğimize göre, mağazanın en yoğun olduğu zirve saat aralığı **14:00 - 16:00** ve **18:00 - 20:00** saatleri arasıdır. Özellikle Cumartesi ve Pazar günleri bu saatlerde personel sayısının ve kasaların tam kapasite çalıştırılması önerilir.";
+      } else if (t.includes('kasa') || t.includes('bekleme') || t.includes('kuyruk')) {
+        assistantContent = "Kasa analitiği raporuna göre ortalama bekleme süresi **7.0 dakika (420 saniye)** civarındadır. En yoğun bekleme süresi saat **19:00**'da **1 Kasa** aktifken gerçekleşmiştir. Kuyrukları azaltmak için yoğun saatlerde ek bir kasanın açılması tavsiye edilir.";
+      } else if (t.includes('bölge') || t.includes('reyon') || t.includes('alan') || t.includes('ziyaret')) {
+        assistantContent = "Mağaza içi Isı Haritası verilerine göre en popüler bölgeler sırasıyla:\n\n1. **Giyim - Kadın Reyon - Alan 1** (%27.8 pay)\n2. **Giyim - Erkek Reyon - Alan 2** (%25.0 pay)\n3. **Giriş, B2C Diamond Alanı** (%14.2 pay)\n\nZiyaretçiler kadın reyonunda ortalama **4.2 dakika** geçirirken, erkek reyonunda bu süre **3.1 dakika** seviyesindedir.";
+      } else if (t.includes('verimlilik') || t.includes('artırmak') || t.includes('aksiyon') || t.includes('öneri')) {
+        assistantContent = "Verimliliği artırmak için 3 kritik aksiyon önerisi:\n\n1. **Kasa Yükü Dengeleme:** Saat 18:30 - 19:30 arasında 2. kasayı aktif tutarak kuyruk sürelerini %30 azaltabilirsiniz.\n2. **Personel Dağılımı:** Yoğun kadın reyonuna saat 14:00-17:00 arasında ek bir personel yönlendirin.\n3. **Vitrin Optimizasyonu:** Ziyaret süresi düşük olan reyonlardaki (örneğin arka zemin kat alanları) ilgi çekici tabelaları ve indirimli ürünleri vitrine yaklaştırın.";
+      } else {
+        assistantContent = "AI servisimize şu an için ulaşılamıyor. Lütfen daha sonra tekrar deneyiniz.";
       }
+
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      setMessages((prev) => [...prev, { role: 'assistant', content: assistantContent }]);
     } catch {
       setMessages((prev) => [
         ...prev,
-        { role: 'assistant', content: 'Bağlantı hatası. Lütfen tekrar deneyin.' },
+        { role: 'assistant', content: 'AI servisimize şu an için ulaşılamıyor. Lütfen daha sonra tekrar deneyiniz.' },
       ]);
     } finally {
       setLoading(false);

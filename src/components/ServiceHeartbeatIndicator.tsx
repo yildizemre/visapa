@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, AlertTriangle, Loader, CheckCircle, XCircle } from 'lucide-react';
 import { apiUrl } from '../lib/api';
@@ -9,6 +9,9 @@ interface StoreStatus {
   full_name: string | null;
   is_alive: boolean;
   last_ping_at: string | null;
+  received_pings?: number;
+  expected_pings?: number;
+  ratio?: string;
 }
 
 function getRole(): string {
@@ -43,7 +46,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const token = localStorage.getItem('token')?.trim();
     if (!token) { setLoading(false); return; }
 
@@ -70,13 +73,13 @@ const ServiceHeartbeatIndicator: React.FC = () => {
       } catch { /* ignore */ }
     }
     setLoading(false);
-  };
+  }, [isAdmin]);
 
   useEffect(() => {
     fetchData();
     const iv = setInterval(fetchData, 30000);
     return () => clearInterval(iv);
-  }, []);
+  }, [fetchData]);
 
   // Close on outside click
   useEffect(() => {
@@ -109,12 +112,16 @@ const ServiceHeartbeatIndicator: React.FC = () => {
   const aliveStores = stores.filter(s => s.is_alive);
 
   return (
-    <div ref={wrapperRef} className="relative">
+    <div 
+      ref={wrapperRef} 
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
       <motion.button
         type="button"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => setIsOpen(v => !v)}
         className={`flex items-center space-x-1.5 sm:space-x-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border backdrop-blur-sm transition-all text-xs sm:text-sm ${buttonStyle}`}
       >
         {loading
@@ -138,8 +145,8 @@ const ServiceHeartbeatIndicator: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.97 }}
             transition={{ duration: 0.18 }}
-            className="absolute bottom-full right-0 mb-2 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl overflow-hidden"
-            style={{ width: isAdmin ? 320 : 260 }}
+            className="absolute bottom-full right-0 mb-2 bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden z-50"
+            style={{ width: isAdmin ? 440 : 340 }}
           >
             {/* Header */}
             <div className="px-4 py-3 border-b border-slate-700 flex items-center justify-between">
@@ -156,7 +163,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
             </div>
 
             {/* Body */}
-            <div className="max-h-72 overflow-y-auto">
+            <div className="max-h-80 overflow-y-auto">
               {loading ? (
                 <div className="flex items-center justify-center py-6 gap-2 text-slate-400 text-sm">
                   <Loader className="w-4 h-4 animate-spin" />
@@ -167,14 +174,37 @@ const ServiceHeartbeatIndicator: React.FC = () => {
                   {deadStores.length > 0 && (
                     <div className="px-3 pt-3 pb-1">
                       <p className="text-xs font-semibold text-red-400 uppercase tracking-wide mb-2">Sinyal Alınamayan</p>
-                      <div className="space-y-1.5">
+                      <div className="space-y-2">
                         {deadStores.map(s => (
-                          <div key={s.id} className="flex items-center justify-between bg-red-500/10 rounded-lg px-3 py-2 border border-red-500/20">
-                            <div className="flex items-center gap-2 min-w-0">
-                              <XCircle className="w-3.5 h-3.5 text-red-400 flex-shrink-0" />
-                              <span className="text-sm text-white truncate">{s.full_name || s.username}</span>
+                          <div key={s.id} className="flex flex-col bg-red-500/10 rounded-xl px-3 py-2.5 border border-red-500/20">
+                            <div className="flex items-center justify-between min-w-0">
+                              <div className="flex items-center gap-2 min-w-0">
+                                <XCircle className="w-3.5 h-3.5 text-red-400 flex-shrink-0" />
+                                <span className="text-sm font-medium text-white truncate">{s.full_name || s.username}</span>
+                              </div>
+                              <div className="flex flex-col items-end flex-shrink-0 ml-2">
+                                <span className="text-[11px] text-red-300">{formatPing(s.last_ping_at)}</span>
+                                {s.ratio && <span className="text-[10px] text-red-400 font-mono font-bold mt-0.5">{s.ratio}</span>}
+                              </div>
                             </div>
-                            <span className="text-xs text-red-300 flex-shrink-0 ml-2">{formatPing(s.last_ping_at)}</span>
+                            
+                            {/* Modüller */}
+                            <div className="flex gap-1.5 mt-2 pt-2 border-t border-slate-700/30 overflow-x-auto scrollbar-none">
+                              {[
+                                { name: 'Kişi Sayım', key: 'counting' },
+                                { name: 'Isı Haritası', key: 'heatmap' },
+                                { name: 'Kasa Analizi', key: 'queue' },
+                                { name: 'Kamera Sağlığı', key: 'camera' }
+                              ].map((m) => (
+                                <span
+                                  key={m.key}
+                                  className="inline-flex items-center text-[9px] px-1.5 py-0.5 rounded-md font-medium gap-1 bg-red-500/5 text-red-400 border border-red-500/10"
+                                >
+                                  <span className="w-1 h-1 rounded-full bg-red-500" />
+                                  {m.name}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -183,14 +213,37 @@ const ServiceHeartbeatIndicator: React.FC = () => {
                   {aliveStores.length > 0 && (
                     <div className="px-3 pt-3 pb-3">
                       <p className="text-xs font-semibold text-green-400 uppercase tracking-wide mb-2">Aktif Mağazalar</p>
-                      <div className="space-y-1.5">
+                      <div className="space-y-2">
                         {aliveStores.map(s => (
-                          <div key={s.id} className="flex items-center justify-between bg-green-500/10 rounded-lg px-3 py-2 border border-green-500/20">
-                            <div className="flex items-center gap-2 min-w-0">
-                              <CheckCircle className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
-                              <span className="text-sm text-white truncate">{s.full_name || s.username}</span>
+                          <div key={s.id} className="flex flex-col bg-green-500/10 rounded-xl px-3 py-2.5 border border-green-500/20">
+                            <div className="flex items-center justify-between min-w-0">
+                              <div className="flex items-center gap-2 min-w-0">
+                                <CheckCircle className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
+                                <span className="text-sm font-medium text-white truncate">{s.full_name || s.username}</span>
+                              </div>
+                              <div className="flex flex-col items-end flex-shrink-0 ml-2">
+                                <span className="text-[11px] text-green-300">{formatPing(s.last_ping_at)}</span>
+                                {s.ratio && <span className="text-[10px] text-green-400 font-mono font-bold mt-0.5">{s.ratio}</span>}
+                              </div>
                             </div>
-                            <span className="text-xs text-green-300 flex-shrink-0 ml-2">{formatPing(s.last_ping_at)}</span>
+
+                            {/* Modüller */}
+                            <div className="flex gap-1.5 mt-2 pt-2 border-t border-slate-700/30 overflow-x-auto scrollbar-none">
+                              {[
+                                { name: 'Kişi Sayım', key: 'counting' },
+                                { name: 'Isı Haritası', key: 'heatmap' },
+                                { name: 'Kasa Analizi', key: 'queue' },
+                                { name: 'Kamera Sağlığı', key: 'camera' }
+                              ].map((m) => (
+                                <span
+                                  key={m.key}
+                                  className="inline-flex items-center text-[9px] px-1.5 py-0.5 rounded-md font-medium gap-1 bg-green-500/5 text-green-400 border border-green-500/10"
+                                >
+                                  <span className="w-1 h-1 rounded-full bg-green-400 animate-pulse" />
+                                  {m.name}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -201,12 +254,30 @@ const ServiceHeartbeatIndicator: React.FC = () => {
                   )}
                 </>
               ) : (
-                <div className="px-4 py-4">
-                  <div className={`flex items-center gap-3 rounded-lg px-3 py-3 border ${ownAlive ? 'bg-green-500/10 border-green-500/20' : 'bg-red-500/10 border-red-500/20'}`}>
+                <div className="px-4 py-4 space-y-4">
+                  <div className={`flex items-center gap-3 rounded-xl px-3.5 py-3 border ${ownAlive ? 'bg-green-500/10 border-green-500/20' : 'bg-red-500/10 border-red-500/20'}`}>
                     {ownAlive
                       ? <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
                       : <XCircle className="w-5 h-5 text-red-400 flex-shrink-0" />}
-                    <p className={`text-sm ${ownAlive ? 'text-green-300' : 'text-red-300'}`}>{ownMessage || (ownAlive ? 'Servis ayakta' : 'Sinyal alınamıyor')}</p>
+                    <p className={`text-sm leading-relaxed ${ownAlive ? 'text-green-300' : 'text-red-300'}`}>{ownMessage || (ownAlive ? 'Servis ayakta' : 'Sinyal alınamıyor')}</p>
+                  </div>
+
+                  {/* Modüller Listesi */}
+                  <div className="border-t border-slate-700/50 pt-3 space-y-2">
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Aktif Modüller</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {[
+                        { name: 'Kişi Sayım', key: 'counting' },
+                        { name: 'Isı Haritası', key: 'heatmap' },
+                        { name: 'Kasa Analizi', key: 'queue' },
+                        { name: 'Kamera Sağlığı', key: 'camera' }
+                      ].map((m) => (
+                        <div key={m.key} className="flex items-center gap-2 bg-slate-800/40 p-2 rounded-lg border border-slate-700/30">
+                          <span className={`w-2 h-2 rounded-full ${ownAlive ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} />
+                          <span className="text-[11px] text-slate-300 font-medium">{m.name}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -214,7 +285,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
 
             {/* Footer */}
             <div className="px-4 py-2 border-t border-slate-700 bg-slate-800/60">
-              <p className="text-xs text-slate-500">Her 30 sn güncellenir • 10 dk sinyal gelmezse kapalı</p>
+              <p className="text-xs text-slate-500">Her 30 sn güncellenir • Son 1 saat içinde sinyal gelmezse kapalı</p>
             </div>
           </motion.div>
         )}

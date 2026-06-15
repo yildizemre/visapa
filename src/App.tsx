@@ -24,10 +24,26 @@ import CameraHealth from './components/CameraHealth';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Sayfa yüklendiğinde token varsa giriş yapılmış say
+  // Sayfa yüklendiğinde token varsa doğrula, geçersizse çıkış yap
   useEffect(() => {
     const token = localStorage.getItem('token')?.trim();
-    if (token) setIsAuthenticated(true);
+    if (!token) return;
+    // Token var, backend'den doğrula
+    fetch('/api/auth/me', { headers: { 'Authorization': `Bearer ${token}` } })
+      .then(res => {
+        if (res.ok) {
+          setIsAuthenticated(true);
+        } else {
+          // Token geçersiz veya süresi dolmuş
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          setIsAuthenticated(false);
+        }
+      })
+      .catch(() => {
+        // Ağ hatası durumunda token varsa yine de göster (offline tolerans)
+        setIsAuthenticated(true);
+      });
   }, []);
 
   const handleLogout = () => {

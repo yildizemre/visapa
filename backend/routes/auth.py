@@ -56,6 +56,7 @@ def me():
     if not user:
         return jsonify({'error': 'Kullanıcı bulunamadı'}), 404
     data = user.to_public_dict()
+    data['logo_base64'] = user.logo_base64 or None
     if user.role == 'brand_manager':
         rows = ManagedStore.query.filter_by(manager_user_id=user.id).all()
         data['managed_stores'] = [{'id': r.store_user_id} for r in rows]
@@ -67,6 +68,23 @@ def me():
     return jsonify(data)
 
 
+@auth_bp.route('/me/logo', methods=['PUT'])
+@jwt_required()
+def update_logo():
+    """Profil logosu / sirketi logosunu guncelle (base64 data URL)."""
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'error': 'Kullanıcı bulunamadı'}), 404
+    data = request.get_json() or {}
+    logo = data.get('logo_base64')
+    if logo is None:
+        return jsonify({'error': 'logo_base64 gerekli'}), 400
+    user.logo_base64 = logo if logo else None
+    db.session.commit()
+    return jsonify({'message': 'Logo güncellendi', 'logo_base64': user.logo_base64})
+
+
 @auth_bp.route('/register', methods=['POST'])
 @jwt_required()
 def register():
@@ -74,13 +92,20 @@ def register():
     if claims.get('role') != 'admin':
         return jsonify({'error': 'Sadece admin kayıt oluşturabilir'}), 403
     data = request.get_json()
-    username = data.get('username')
-    email = data.get('email')
+    username = (data.get('username') or '').strip()
+    email = (data.get('email') or '').strip().lower()
     password = data.get('password')
-    role = data.get('role', 'user')
+    role = (data.get('role', 'user') or '').strip()
 
     if not username or not email or not password:
         return jsonify({'error': 'username, email ve password gerekli'}), 400
+
+    VALID_ROLES = {'user', 'admin', 'brand_manager'}
+    if role not in VALID_ROLES:
+        return jsonify({'error': f'Geçersiz rol. İzin verilenler: {", ".join(VALID_ROLES)}'}), 400
+
+    if len(password) < 6:
+        return jsonify({'error': 'Şifre en az 6 karakter olmalıdır'}), 400
 
     if User.query.filter_by(username=username).first():
         return jsonify({'error': 'Bu kullanıcı adı zaten kullanılıyor'}), 400

@@ -13,6 +13,8 @@ ADMIN_EMAIL="${ADMIN_EMAIL:-admin@vislivis.com}"
 ADMIN_PASS="${ADMIN_PASS:-admin}"
 INSTALL_DIR="${INSTALL_DIR:-/var/www/vislivis}"
 SERVICE_USER="${SERVICE_USER:-www-data}"
+TELEGRAM_BOT="${TELEGRAM_BOT:-}"
+TELEGRAM_ID="${TELEGRAM_ID:-}"
 
 echo "=============================================="
 echo "  VISLIVIS Panel - VDS Kurulum"
@@ -58,6 +60,8 @@ JWT_SECRET_KEY=$JWT_SECRET_KEY
 DATABASE_URL=sqlite:///vislivis.db
 FLASK_ENV=production
 CORS_ORIGINS=https://$PANEL_DOMAIN,http://$PANEL_DOMAIN
+TELEGRAM_BOT=$TELEGRAM_BOT
+TELEGRAM_ID=$TELEGRAM_ID
 EOF
   echo "  .env oluşturuldu."
 else

@@ -33,12 +33,12 @@ interface CameraInfo {
 }
 
 const CAMERAS: CameraInfo[] = [
-  { id: 'cam-01', name: 'Giriş', location: 'Ana Giriş', status: 'online', uptime: 99.2, lastPing: new Date(Date.now() - 12000).toISOString(), avgFps: 28, resolution: '1080p', disconnections: 2, weeklyUptime: [100, 99.5, 98.1, 100, 99.8, 97.2, 100] },
-  { id: 'cam-02', name: 'Kasa', location: 'Kasa Bölgesi', status: 'online', uptime: 97.8, lastPing: new Date(Date.now() - 8000).toISOString(), avgFps: 26, resolution: '1080p', disconnections: 5, weeklyUptime: [95.3, 98.1, 100, 96.4, 99.1, 97.8, 98.5] },
-  { id: 'cam-03', name: 'Depo', location: 'Arka Depo', status: 'offline', uptime: 78.4, lastPing: new Date(Date.now() - 3600000).toISOString(), avgFps: 0, resolution: '720p', disconnections: 14, weeklyUptime: [85.2, 72.1, 90.3, 68.4, 81.2, 75.6, 0] },
-  { id: 'cam-04', name: 'Kadın Giyim', location: 'Kadın Giyim', status: 'online', uptime: 99.9, lastPing: new Date(Date.now() - 5000).toISOString(), avgFps: 30, resolution: '1440p', disconnections: 0, weeklyUptime: [100, 100, 99.9, 100, 100, 100, 100] },
-  { id: 'cam-05', name: 'Erkek Giyim', location: 'Erkek Giyim', status: 'warning', uptime: 91.3, lastPing: new Date(Date.now() - 180000).toISOString(), avgFps: 18, resolution: '1080p', disconnections: 8, weeklyUptime: [92.5, 88.3, 95.1, 90.2, 93.4, 89.7, 91.0] },
-  { id: 'cam-06', name: 'Kozmetik', location: 'Kozmetik', status: 'online', uptime: 98.5, lastPing: new Date(Date.now() - 15000).toISOString(), avgFps: 27, resolution: '1080p', disconnections: 3, weeklyUptime: [97.8, 99.2, 98.0, 99.5, 97.1, 98.9, 99.1] },
+  { id: 'cam-01', name: 'Giriş', location: 'Ana Giriş', status: 'online', uptime: 99.8, lastPing: new Date(Date.now() - 4000).toISOString(), avgFps: 30, resolution: '1080p', disconnections: 0, weeklyUptime: [100, 100, 99.8, 100, 99.9, 100, 100] },
+  { id: 'cam-02', name: 'Kasa', location: 'Kasa Bölgesi', status: 'online', uptime: 99.5, lastPing: new Date(Date.now() - 5000).toISOString(), avgFps: 30, resolution: '1080p', disconnections: 1, weeklyUptime: [99.5, 100, 100, 99.8, 100, 99.5, 100] },
+  { id: 'cam-03', name: 'Depo', location: 'Arka Depo', status: 'online', uptime: 99.1, lastPing: new Date(Date.now() - 6000).toISOString(), avgFps: 28, resolution: '1080p', disconnections: 0, weeklyUptime: [99.0, 99.5, 100, 99.2, 99.8, 99.1, 100] },
+  { id: 'cam-04', name: 'Kadın Giyim', location: 'Kadın Giyim', status: 'online', uptime: 100, lastPing: new Date(Date.now() - 3000).toISOString(), avgFps: 30, resolution: '1440p', disconnections: 0, weeklyUptime: [100, 100, 100, 100, 100, 100, 100] },
+  { id: 'cam-05', name: 'Erkek Giyim', location: 'Erkek Giyim', status: 'online', uptime: 99.6, lastPing: new Date(Date.now() - 7000).toISOString(), avgFps: 29, resolution: '1080p', disconnections: 0, weeklyUptime: [99.5, 100, 99.8, 99.6, 100, 99.7, 100] },
+  { id: 'cam-06', name: 'Kozmetik', location: 'Kozmetik', status: 'online', uptime: 99.7, lastPing: new Date(Date.now() - 5000).toISOString(), avgFps: 30, resolution: '1080p', disconnections: 0, weeklyUptime: [100, 99.5, 99.9, 100, 99.7, 100, 99.8] },
 ];
 
 const STATUS_STYLES = {

@@ -16,11 +16,14 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { apiUrl } from '../lib/api';
 import { useStoreChange } from '../hooks/useStoreChange';
 import {
-  Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart,
+  Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ComposedChart,
 } from 'recharts';
+import { useContainerWidth } from '../hooks/useContainerWidth';
 import InsightsPanel from './shared/InsightsPanel';
 import CameraViewer from './shared/CameraViewer';
 import DateRangePicker from './shared/DateRangePicker';
+import ExportPDFButton from './shared/ExportPDFButton';
+import CustomDropdown from './shared/CustomDropdown';
 
 interface HourlySummary {
   hour: string;
@@ -53,7 +56,10 @@ type EditableFields = {
 const QueueAnalysis = () => {
   const { t } = useLanguage();
   const storeRefresh = useStoreChange();
-  
+  const [chart1Ref, chart1W] = useContainerWidth(800);
+  const [chart2Ref, chart2W] = useContainerWidth(800);
+  const [chart3Ref, chart3W] = useContainerWidth(800);
+
   const [dailyData, setDailyData] = useState<{
     overallStats: OverallStats;
     hourlySummary: HourlySummary[];
@@ -67,6 +73,7 @@ const QueueAnalysis = () => {
   const [selectedDate, setSelectedDate] = useState(todayStr);
   const [startDate, setStartDate] = useState(todayStr);
   const [endDate, setEndDate] = useState(todayStr);
+  const [latestDateLoaded, setLatestDateLoaded] = useState(false);
   const [selectedCashier, setSelectedCashier] = useState<string>('all');
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -93,7 +100,7 @@ const QueueAnalysis = () => {
     return `${minutes} dk ${seconds} sn`;
   };
 
-  const fetchDailySummary = async (showLoading = true, sDate?: string, eDate?: string) => {
+  const fetchDailySummary = React.useCallback(async (showLoading = true, sDate?: string, eDate?: string, signal?: AbortSignal) => {
     if (showLoading) setLoading(true);
     setEditedData({});
     try {
@@ -103,21 +110,23 @@ const QueueAnalysis = () => {
       const params = new URLSearchParams({ date_from: from, date_to: to });
       if (selectedCashier !== 'all') params.append('cashier_ids', selectedCashier);
       const response = await fetch(apiUrl(`/api/analytics/queues/daily-summary?${params}`), {
-        headers: { 'Authorization': `Bearer ${token}` }
+        headers: { 'Authorization': `Bearer ${token}` },
+        signal
       });
       if (response.ok) {
         const data = await response.json();
-        setDailyData(data);
+        if (!signal?.aborted) setDailyData(data);
       } else {
-        setDailyData(null);
+        if (!signal?.aborted) setDailyData(null);
       }
-    } catch (error) {
+    } catch (error: unknown) {
+      if (error instanceof Error && error.name === 'AbortError') return;
       console.error('Günlük kuyruk özeti çekme hatası:', error);
-      setDailyData(null);
+      if (!signal?.aborted) setDailyData(null);
     } finally {
-      if (showLoading) setLoading(false);
+      if (showLoading && !signal?.aborted) setLoading(false);
     }
-  };
+  }, [startDate, endDate, selectedCashier]);
 
   useEffect(() => {
     const userString = localStorage.getItem('user');
@@ -129,9 +138,27 @@ const QueueAnalysis = () => {
             setIsAdmin(false);
         }
     }
-    fetchDailySummary();
+    if (!latestDateLoaded) {
+      const token = localStorage.getItem('token');
+      fetch(apiUrl('/api/analytics/queues/latest-date'), {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+        .then(r => r.json())
+        .then((d: { date?: string }) => {
+          const latest = d?.date || todayStr;
+          setStartDate(latest);
+          setEndDate(latest);
+          setSelectedDate(latest);
+          setLatestDateLoaded(true);
+        })
+        .catch(() => setLatestDateLoaded(true));
+      return;
+    }
+    const controller = new AbortController();
+    fetchDailySummary(true, startDate, endDate, controller.signal);
+    return () => controller.abort();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedDate, startDate, endDate, selectedCashier, storeRefresh]);
+  }, [selectedDate, startDate, endDate, selectedCashier, storeRefresh, latestDateLoaded]);
 
   const handleDataChange = (hour: string, field: 'avgWaitTime' | 'totalCustomers', value: string) => {
     if (value === '') {
@@ -200,7 +227,7 @@ const QueueAnalysis = () => {
   }
 
   return (
-    <div className="p-3 sm:p-4 md:p-5 lg:p-8">
+    <div className="p-3 sm:p-4 md:p-5 lg:p-8" id="queue-analytics-content">
       <motion.div initial="hidden" animate="show" className="space-y-5 sm:space-y-6 lg:space-y-8">
         <motion.div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4">
           <div>
@@ -212,7 +239,8 @@ const QueueAnalysis = () => {
             </div>
             <p className="text-sm text-slate-400 ml-12">{t('queue.subtitle')}</p>
           </div>
-          <div className="w-full xl:w-auto flex flex-col sm:flex-row gap-3 flex-wrap">
+          <div className="w-full xl:w-auto flex flex-col sm:flex-row gap-3 flex-wrap items-center">
+            <ExportPDFButton elementId="queue-analytics-content" filename={`Kuyruk_Analizi_${startDate}`} />
             <DateRangePicker
               startDate={startDate}
               endDate={endDate}
@@ -220,20 +248,16 @@ const QueueAnalysis = () => {
               onEndDateChange={setEndDate}
               onApply={() => fetchDailySummary(true, startDate, endDate)}
             />
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <Filter className="w-5 h-5 text-slate-400" />
-              </div>
-              <select 
-                id="cashier-filter" 
-                value={selectedCashier} 
-                onChange={(e) => setSelectedCashier(e.target.value)} 
-                className="bg-slate-800/60 border border-slate-700/50 text-white text-sm rounded-xl focus:ring-indigo-500/50 focus:border-indigo-500/50 block w-full pl-10 p-2.5"
-              >
-                <option value="all">{t('queue.allCashiers')}</option>
-                {(dailyData?.availableCashiers ?? dailyData?.allCashiers ?? []).map(cashierId => (<option key={cashierId} value={cashierId}>{cashierId}</option>))}
-              </select>
-            </div>
+            <CustomDropdown
+              value={selectedCashier}
+              onChange={setSelectedCashier}
+              options={[
+                { value: 'all', label: t('queue.allCashiers') },
+                ...(dailyData?.availableCashiers ?? dailyData?.allCashiers ?? []).map(cashierId => ({ value: cashierId, label: cashierId }))
+              ]}
+              icon={Filter}
+              placeholder={t('queue.allCashiers')}
+            />
             <div className="relative">
               <CameraViewer />
             </div>
@@ -315,30 +339,30 @@ const QueueAnalysis = () => {
         </motion.div>
 
         <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
-          <ChartCard title={t('queue.hourlyChart')}><ResponsiveContainer width="100%" height={280}><ComposedChart data={filteredAndShiftedDailyData}><CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" /><XAxis dataKey="hour" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(hour) => `${hour}:00`}/><YAxis yAxisId="left" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} /><YAxis yAxisId="right" orientation="right" stroke={chartColors.accent} fontSize={11} tickLine={false} axisLine={false} /><Tooltip contentStyle={tooltipStyle} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Wait")) ? formatWaitTime(value) : value} /><Legend iconType="circle" iconSize={8} /><Bar yAxisId="left" dataKey="totalCustomers" fill={chartColors.primary} name={t('queue.customerCount')} radius={[4,4,0,0]} /><Line yAxisId="right" type="monotone" dataKey="avgWaitTime" stroke={chartColors.accent} strokeWidth={2.5} name={t('queue.avgWaitSec')} dot={{ fill: chartColors.accent, r: 3 }} /></ComposedChart></ResponsiveContainer></ChartCard>
+          <ChartCard title={t('queue.hourlyChart')}><div ref={chart1Ref} style={{width:'100%',overflow:'hidden'}}><ComposedChart width={chart1W} height={360} data={filteredAndShiftedDailyData}><CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" /><XAxis dataKey="hour" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(hour) => `${hour}:00`}/><YAxis yAxisId="left" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} /><YAxis yAxisId="right" orientation="right" stroke={chartColors.accent} fontSize={11} tickLine={false} axisLine={false} /><Tooltip contentStyle={tooltipStyle} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Wait")) ? formatWaitTime(value) : value} /><Legend iconType="circle" iconSize={8} /><Bar yAxisId="left" dataKey="totalCustomers" fill={chartColors.primary} name={t('queue.customerCount')} radius={[4,4,0,0]} /><Line yAxisId="right" type="monotone" dataKey="avgWaitTime" stroke={chartColors.accent} strokeWidth={2.5} name={t('queue.avgWaitSec')} dot={{ fill: chartColors.accent, r: 3 }} /></ComposedChart></div></ChartCard>
           <ChartCard title={t('queue.waitDistribution')}>
             {(dailyData?.waitTimeDistribution?.length && dailyData.waitTimeDistribution.some((d: WaitTimeDistribution) => (d?.count ?? 0) > 0)) ? (
-              <ResponsiveContainer width="100%" height={240}>
-                <BarChart data={dailyData.waitTimeDistribution} margin={{ top: 8, right: 8, left: 8, bottom: 8 }}>
+              <div ref={chart2Ref} style={{width:'100%',overflow:'hidden'}}>
+                <BarChart width={chart2W} height={360} data={dailyData.waitTimeDistribution} margin={{ top: 8, right: 8, left: 8, bottom: 8 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                   <XAxis dataKey="range" stroke="#94A3B8" fontSize={10} tick={{ fill: '#94A3B8' }} />
                   <YAxis stroke="#94A3B8" fontSize={10} allowDecimals={false} tick={{ fill: '#94A3B8' }} />
                   <Tooltip contentStyle={tooltipStyle} formatter={(value: number) => [value, t('queue.customerCount')]} />
                   <Bar dataKey="count" fill={chartColors.teal} name={t('queue.customerCount')} radius={[4, 4, 0, 0]} />
                 </BarChart>
-              </ResponsiveContainer>
+              </div>
             ) : (
               <div className="flex items-center justify-center h-[240px] text-slate-500 text-sm">{t('queue.noData')}</div>
             )}
           </ChartCard>
         </motion.div>
 
-        <motion.div><ChartCard title={t('queue.cashierPerformance')}><ResponsiveContainer width="100%" height={280}><BarChart data={dailyData?.cashierPerformance} layout="vertical" margin={{ top: 5, right: 15, left: 15, bottom: 5 }}><CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" /><XAxis type="number" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} /><YAxis type="category" dataKey="cashier" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} width={60} /><Tooltip contentStyle={tooltipStyle} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Wait")) ? formatWaitTime(value) : value} /><Legend iconType="circle" iconSize={8} /><Bar dataKey="totalCustomers" fill={chartColors.emerald} name={t('queue.totalCustomers')} radius={[0,4,4,0]} /><Bar dataKey="avgWait" fill={chartColors.pink} name={t('queue.avgWait')} radius={[0,4,4,0]} /></BarChart></ResponsiveContainer></ChartCard></motion.div>
+        <motion.div><ChartCard title={t('queue.cashierPerformance')}><div ref={chart3Ref} style={{width:'100%',overflow:'hidden'}}><BarChart width={chart3W} height={360} data={dailyData?.cashierPerformance} layout="vertical" margin={{ top: 5, right: 15, left: 15, bottom: 5 }}><CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" /><XAxis type="number" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} /><YAxis type="category" dataKey="cashier" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} width={60} /><Tooltip contentStyle={tooltipStyle} formatter={(value: number, name: string) => (name.includes("Bekleme") || name.includes("Wait")) ? formatWaitTime(value) : value} /><Legend iconType="circle" iconSize={8} /><Bar dataKey="totalCustomers" fill={chartColors.emerald} name={t('queue.totalCustomers')} radius={[0,4,4,0]} /><Bar dataKey="avgWait" fill={chartColors.pink} name={t('queue.avgWait')} radius={[0,4,4,0]} /></BarChart></div></ChartCard></motion.div>
       </motion.div>
     </div>
   );
 };
 
-const ChartCard = ({ title, children }: { title: string; children: React.ReactNode }) => (<div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50"><h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5 flex items-center gap-2"><BarChart2 size={16} className="text-indigo-400" /> {title}</h3>{children}</div>);
+const ChartCard = ({ title, children }: { title: string; children: React.ReactNode }) => (<div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50 flex flex-col min-h-[420px] min-w-0 overflow-hidden"><h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4 flex items-center gap-2 shrink-0"><BarChart2 size={16} className="text-indigo-400" /> {title}</h3><div style={{flex:1,minHeight:300,width:'100%',overflow:'hidden'}}>{children}</div></div>);
 
 export default QueueAnalysis;

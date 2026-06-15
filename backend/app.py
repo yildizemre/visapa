@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from flask_jwt_extended import JWTManager
+from flask_jwt_extended import JWTManager, jwt_required, get_jwt
 
 from config import Config
 from models import db
@@ -41,6 +41,7 @@ def create_app(config_class=Config):
     from routes.ticket_routes import ticket_bp
     from routes.insights import insights_bp
     from routes.camera_upload import camera_upload_bp
+    from routes.notifications import notifications_bp
 
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(admin_bp, url_prefix='/api/admin')
@@ -53,8 +54,9 @@ def create_app(config_class=Config):
     app.register_blueprint(chat_bp, url_prefix='/api/chat')
     app.register_blueprint(log_bp, url_prefix='/api/log')
     app.register_blueprint(ticket_bp, url_prefix='/api/tickets')
-    app.register_blueprint(insights_bp, url_prefix='/api/analytics')
+    app.register_blueprint(insights_bp, url_prefix='/api/insights')
     app.register_blueprint(camera_upload_bp, url_prefix='/api/camera')
+    app.register_blueprint(notifications_bp, url_prefix='/api')
 
     @app.errorhandler(Exception)
     def handle_error(err):
@@ -75,8 +77,11 @@ def create_app(config_class=Config):
         return jsonify({'error': 'Sunucu hatası.'}), 500
 
     @app.route('/api/init', methods=['POST'])
+    @jwt_required()
     def init_db():
-        # Güvenlik: Sadece DB yoksa veya ilk kurulumda çalışsın
+        claims = get_jwt()
+        if claims.get('role') != 'admin':
+            return jsonify({'error': 'Sadece admin yetkisiyle erişilebilir'}), 403
         from models import User
         with app.app_context():
             db.create_all()
@@ -94,18 +99,30 @@ def create_app(config_class=Config):
     return app
 
 
+_scheduler_lock_fd = None  # Global: GC tarafından kapatılmasın, lock korunsun
+
 def _start_health_scheduler(app):
     """Her 60 dakikada bir dead service kontrolü yapıp Telegram'a bildirim gönderir.
     Gunicorn multi-worker ortamında sadece 1 worker scheduler başlatır (lock dosyası ile)."""
+    global _scheduler_lock_fd
     import threading
-    import fcntl
+    import os
     from routes.health import run_dead_service_check
+
+    # Flask debug modundayken reloader'ın ikinci kez başlatmasını engelle
+    if os.environ.get('FLASK_DEBUG') == '1' and os.environ.get('WERKZEUG_RUN_MAIN') != 'true':
+        print("[HealthScheduler] Reloader parent sürecinde, scheduler başlatılmıyor.")
+        return
 
     LOCK_FILE = '/tmp/vislivis_scheduler.lock'
 
     try:
-        lock_fd = open(LOCK_FILE, 'w')
-        fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        import fcntl
+        _scheduler_lock_fd = open(LOCK_FILE, 'w')
+        fcntl.flock(_scheduler_lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except ImportError:
+        # Windows işletim sisteminde veya fcntl bulunmayan ortamlarda kilitlemeyi geç
+        print("[HealthScheduler] fcntl kütüphanesi yok (Windows veya benzeri), kilit devre dışı bırakıldı.")
     except (IOError, OSError):
         print("[HealthScheduler] Başka bir worker zaten çalışıyor, bu worker scheduler başlatmıyor.")
         return

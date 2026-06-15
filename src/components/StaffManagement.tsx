@@ -33,6 +33,7 @@ import {
 import DateRangePicker from './shared/DateRangePicker';
 import InsightsPanel from './shared/InsightsPanel';
 import CameraViewer from './shared/CameraViewer';
+import CustomDropdown from './shared/CustomDropdown';
 
 // Mock veri - API entegrasyonu sonra yapılacak
 const MOCK_STAFF = [
@@ -67,7 +68,7 @@ const MOCK_DAILY_TREND = [
 ];
 
 const StaffManagement = () => {
-  useLanguage();
+  const { language } = useLanguage();
   useStoreChange();
 
   const todayStr = new Date().toISOString().split('T')[0];
@@ -229,17 +230,16 @@ const StaffManagement = () => {
               className="w-full pl-10 pr-4 py-2.5 bg-slate-800/60 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 text-sm"
             />
           </div>
-          <div className="relative">
-            <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-            <select
-              value={selectedZone}
-              onChange={(e) => setSelectedZone(e.target.value)}
-              className="pl-10 pr-4 py-2.5 bg-slate-800/60 border border-slate-700/50 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 appearance-none w-full sm:w-auto min-w-[160px]"
-            >
-              <option value="all">Tüm Alanlar</option>
-              {allZones.map((z) => <option key={z} value={z}>{z}</option>)}
-            </select>
-          </div>
+          <CustomDropdown
+            value={selectedZone}
+            onChange={setSelectedZone}
+            options={[
+              { value: 'all', label: language === 'tr' ? 'Tüm Alanlar' : 'All Areas' },
+              ...allZones.map(z => ({ value: z, label: z }))
+            ]}
+            icon={Filter}
+            placeholder={language === 'tr' ? 'Alan Seçin' : 'Select Zone'}
+          />
         </motion.div>
 
         {/* Kişi Detay - eğer bir kişi seçiliyse */}

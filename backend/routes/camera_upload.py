@@ -10,7 +10,7 @@ import uuid
 from datetime import datetime
 from flask import Blueprint, request, jsonify, send_from_directory, current_app
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from models import db
+from models import db, CameraConfig
 from user_context import get_resolved_user_ids
 
 camera_upload_bp = Blueprint('camera_upload', __name__)
@@ -100,6 +100,19 @@ def upload_image():
     if size_bytes > MAX_FILE_SIZE_MB * 1024 * 1024:
         return jsonify({'error': f'Dosya boyutu {MAX_FILE_SIZE_MB} MB sınırını aşıyor.'}), 413
 
+    # Mevcut kamera id'ye sahip eski resmi sil (disk şişmesini önle)
+    camera_id_str = request.form.get('camera_id')
+    if camera_id_str:
+        old_record = CameraImage.query.filter_by(user_id=user_id, camera_id=camera_id_str).first()
+        if old_record:
+            old_path = os.path.join(_upload_dir(), old_record.filename)
+            if os.path.exists(old_path):
+                try:
+                    os.remove(old_path)
+                except OSError:
+                    pass
+            db.session.delete(old_record)
+
     ext = file.filename.rsplit('.', 1)[1].lower()
     unique_name = f"{uuid.uuid4().hex}_{int(datetime.utcnow().timestamp())}.{ext}"
 
@@ -110,7 +123,7 @@ def upload_image():
 
     record = CameraImage(
         user_id=user_id,
-        camera_id=request.form.get('camera_id') or None,
+        camera_id=camera_id_str or None,
         filename=unique_name,
         original_name=file.filename,
         file_size=size_bytes,
@@ -211,3 +224,56 @@ def delete_image(image_id: int):
     db.session.delete(record)
     db.session.commit()
     return jsonify({'ok': True, 'message': 'Görüntü silindi.'})
+
+
+@camera_upload_bp.route('/upload-by-name', methods=['POST'])
+@jwt_required()
+def upload_by_name():
+    """
+    POST /api/camera/upload-by-name
+    Form-data:
+      - file: Görüntü dosyası (JPEG/PNG) — zorunlu
+      - camera_name: Kamera adı (örn: "Ana Giriş Kamerası") — zorunlu
+    Yanıt: { ok: true, message, camera_id }
+    """
+    import base64
+    user_id = _current_user_id()
+    if not user_id:
+        return jsonify({'error': 'Kullanıcı kimliği alınamadı.'}), 401
+
+    camera_name = request.form.get('camera_name')
+    if not camera_name:
+        return jsonify({'error': "'camera_name' alanı zorunludur."}), 400
+
+    if 'file' not in request.files:
+        return jsonify({'error': "'file' alanı zorunludur."}), 400
+
+    file = request.files['file']
+    if not file or file.filename == '':
+        return jsonify({'error': 'Dosya seçilmedi.'}), 400
+
+    if not _allowed_file(file.filename):
+        return jsonify({'error': f"Desteklenmeyen format. İzin verilenler: {', '.join(ALLOWED_EXTENSIONS)}"}), 415
+
+    # Kullanıcıya ait belirtilen isimdeki kamerayı bul
+    camera = CameraConfig.query.filter_by(user_id=user_id, name=camera_name).first()
+    if not camera:
+        return jsonify({'error': f"'{camera_name}' isimli kamera bulunamadı."}), 404
+
+    try:
+        # Resmi oku ve base64 formatına çevir
+        file_bytes = file.read()
+        b64_data = base64.b64encode(file_bytes).decode('utf-8')
+        
+        # Kamera kaydını güncelle
+        camera.image_base64 = b64_data
+        db.session.commit()
+        
+        return jsonify({
+            'ok': True,
+            'message': f"'{camera_name}' kamerası için yeni görüntü başarıyla kaydedildi.",
+            'camera_id': camera.id
+        }), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': f"Görüntü kaydedilirken hata oluştu: {str(e)}"}), 500

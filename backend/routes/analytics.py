@@ -3,6 +3,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from datetime import datetime, timedelta, date, time
 from collections import defaultdict
 from zoneinfo import ZoneInfo
+from sqlalchemy import func
 
 from models import db, CustomerData, QueueData, HeatmapData, StaffData, Report
 from user_context import get_resolved_user_ids
@@ -17,21 +18,33 @@ def _user_ids():
     return ids if ids else [get_jwt_identity()]
 
 
+def _get_utc_range_for_local_date(d: date):
+    """
+    Yerel tarih (d) için o günün 00:00:00 ile 23:59:59 arası naive datetime döner.
+    NOT: Veritabanında timestamp'ler naive yerel saat (Istanbul) olarak saklanır.
+    Bu yüzden UTC dönüşümü YAPILMAZ.
+    """
+    local_start = datetime.combine(d, time.min)
+    local_end = datetime.combine(d, time.max)
+    
+    return local_start, local_end
+
+
 # --- Customer Analytics: veri olan en son tarih (Müşteri Analizi sayfası varsayılan tarih için) ---
 @analytics_bp.route('/customers/latest-date', methods=['GET'])
 @jwt_required()
 def get_customers_latest_date():
     """Kullanıcının (veya mağazanın) müşteri verisi olan en son tarihi döner. Tarih yoksa bugün."""
     user_ids = _user_ids()
-    from sqlalchemy import func
     row = (
-        db.session.query(func.max(db.func.date(CustomerData.timestamp)))
+        db.session.query(func.max(CustomerData.timestamp))
         .filter(CustomerData.user_id.in_(user_ids))
         .scalar()
     )
     if row:
-        return {'date': str(row)}
-    today = datetime.utcnow().strftime('%Y-%m-%d')
+        return {'date': row.strftime('%Y-%m-%d')}
+    
+    today = datetime.now(ISTANBUL_TZ).strftime('%Y-%m-%d')
     return {'date': today}
 
 
@@ -46,38 +59,77 @@ def get_customers():
     camera_id = request.args.get('camera_id')
 
     q = CustomerData.query.filter(CustomerData.user_id.in_(user_ids))
-    # date_from/date_to range öncelikli; fallback tek 'date'
+    
+    # Tarih filtrelemesi
     if date_from and date_to:
         try:
             df = datetime.strptime(date_from, '%Y-%m-%d').date()
             dt = datetime.strptime(date_to, '%Y-%m-%d').date()
-            q = q.filter(db.func.date(CustomerData.timestamp) >= df,
-                         db.func.date(CustomerData.timestamp) <= dt)
+            utc_start, _ = _get_utc_range_for_local_date(df)
+            _, utc_end = _get_utc_range_for_local_date(dt)
+            q = q.filter(CustomerData.timestamp >= utc_start, CustomerData.timestamp <= utc_end)
         except ValueError:
             pass
     elif date_from:
         try:
             df = datetime.strptime(date_from, '%Y-%m-%d').date()
-            q = q.filter(db.func.date(CustomerData.timestamp) >= df)
+            utc_start, _ = _get_utc_range_for_local_date(df)
+            q = q.filter(CustomerData.timestamp >= utc_start)
         except ValueError:
             pass
     elif date_str:
         try:
             d = datetime.strptime(date_str, '%Y-%m-%d').date()
-            q = q.filter(db.func.date(CustomerData.timestamp) == d)
+            utc_start, utc_end = _get_utc_range_for_local_date(d)
+            q = q.filter(CustomerData.timestamp >= utc_start, CustomerData.timestamp <= utc_end)
         except ValueError:
             pass
+            
     if camera_id and camera_id != 'all':
         q = q.filter(CustomerData.camera_id == camera_id)
 
-    rows = q.order_by(CustomerData.timestamp.desc()).limit(2000).all()
+    # --- SQL aggregation: demographics ---
+    from sqlalchemy import func as sqlfunc
+    agg_q = db.session.query(
+        sqlfunc.coalesce(sqlfunc.sum(CustomerData.male_count), 0).label('total_male'),
+        sqlfunc.coalesce(sqlfunc.sum(CustomerData.female_count), 0).label('total_female'),
+        sqlfunc.coalesce(sqlfunc.sum(CustomerData.age_18_30), 0).label('age_18_30'),
+        sqlfunc.coalesce(sqlfunc.sum(CustomerData.age_30_50), 0).label('age_30_50'),
+        sqlfunc.coalesce(sqlfunc.sum(CustomerData.age_50_plus), 0).label('age_50_plus'),
+    ).filter(CustomerData.user_id.in_(user_ids))
 
-    # Demographics
-    total_male = sum(getattr(r, 'male_count', 0) or 0 for r in rows)
-    total_female = sum(getattr(r, 'female_count', 0) or 0 for r in rows)
-    age_18_30 = sum(getattr(r, 'age_18_30', 0) or 0 for r in rows)
-    age_30_50 = sum(getattr(r, 'age_30_50', 0) or 0 for r in rows)
-    age_50_plus = sum(getattr(r, 'age_50_plus', 0) or 0 for r in rows)
+    if date_from and date_to:
+        try:
+            df2 = datetime.strptime(date_from, '%Y-%m-%d').date()
+            dt2 = datetime.strptime(date_to, '%Y-%m-%d').date()
+            s2, _ = _get_utc_range_for_local_date(df2)
+            _, e2 = _get_utc_range_for_local_date(dt2)
+            agg_q = agg_q.filter(CustomerData.timestamp >= s2, CustomerData.timestamp <= e2)
+        except ValueError:
+            pass
+    elif date_from:
+        try:
+            df2 = datetime.strptime(date_from, '%Y-%m-%d').date()
+            s2, _ = _get_utc_range_for_local_date(df2)
+            agg_q = agg_q.filter(CustomerData.timestamp >= s2)
+        except ValueError:
+            pass
+    elif date_str:
+        try:
+            d2 = datetime.strptime(date_str, '%Y-%m-%d').date()
+            s2, e2 = _get_utc_range_for_local_date(d2)
+            agg_q = agg_q.filter(CustomerData.timestamp >= s2, CustomerData.timestamp <= e2)
+        except ValueError:
+            pass
+    if camera_id and camera_id != 'all':
+        agg_q = agg_q.filter(CustomerData.camera_id == camera_id)
+
+    agg_row = agg_q.first()
+    total_male = int(agg_row.total_male or 0)
+    total_female = int(agg_row.total_female or 0)
+    age_18_30 = int(agg_row.age_18_30 or 0)
+    age_30_50 = int(agg_row.age_30_50 or 0)
+    age_50_plus = int(agg_row.age_50_plus or 0)
 
     demographics = {
         'ageGroupsChart': [
@@ -91,37 +143,62 @@ def get_customers():
         ],
     }
 
-    # Saatlik akış (saat bazında toplam)
-    by_hour = defaultdict(lambda: {'entering': 0, 'exiting': 0})
-    for r in rows:
-        h = r.timestamp.strftime('%H:00') if r.timestamp else '00:00'
-        by_hour[h]['entering'] += getattr(r, 'entered', 0) or 0
-        by_hour[h]['exiting'] += getattr(r, 'exited', 0) or 0
+    # --- SQL aggregation: saatlik akis (GROUP BY hour) ---
+    from sqlalchemy import extract, cast, Integer
+    hourly_agg = db.session.query(
+        extract('hour', CustomerData.timestamp).label('hour'),
+        sqlfunc.coalesce(sqlfunc.sum(CustomerData.entered), 0).label('entering'),
+        sqlfunc.coalesce(sqlfunc.sum(CustomerData.exited), 0).label('exiting'),
+    ).filter(CustomerData.user_id.in_(user_ids))
+
+    if date_from and date_to:
+        try:
+            df3 = datetime.strptime(date_from, '%Y-%m-%d').date()
+            dt3 = datetime.strptime(date_to, '%Y-%m-%d').date()
+            s3, _ = _get_utc_range_for_local_date(df3)
+            _, e3 = _get_utc_range_for_local_date(dt3)
+            hourly_agg = hourly_agg.filter(CustomerData.timestamp >= s3, CustomerData.timestamp <= e3)
+        except ValueError:
+            pass
+    elif date_from:
+        try:
+            df3 = datetime.strptime(date_from, '%Y-%m-%d').date()
+            s3, _ = _get_utc_range_for_local_date(df3)
+            hourly_agg = hourly_agg.filter(CustomerData.timestamp >= s3)
+        except ValueError:
+            pass
+    elif date_str:
+        try:
+            d3 = datetime.strptime(date_str, '%Y-%m-%d').date()
+            s3, e3 = _get_utc_range_for_local_date(d3)
+            hourly_agg = hourly_agg.filter(CustomerData.timestamp >= s3, CustomerData.timestamp <= e3)
+        except ValueError:
+            pass
+    if camera_id and camera_id != 'all':
+        hourly_agg = hourly_agg.filter(CustomerData.camera_id == camera_id)
+
+    hourly_agg = hourly_agg.group_by(extract('hour', CustomerData.timestamp)).order_by(extract('hour', CustomerData.timestamp))
+    hourly_rows = hourly_agg.all()
 
     hourly_customer_flow = [
-        {'hour': h, 'entering': v['entering'], 'exiting': v['exiting']}
-        for h in sorted(by_hour.keys())
-        for v in [by_hour[h]]
+        {'hour': f'{int(r.hour):02d}:00', 'entering': int(r.entering), 'exiting': int(r.exiting)}
+        for r in hourly_rows
     ]
 
-    all_cameras = []
-    if not camera_id or camera_id == 'all':
-        cam_q = CustomerData.query.filter(CustomerData.user_id.in_(user_ids))
-        all_cameras = list({r.camera_id for r in cam_q if r.camera_id})
+    # Camera list (distinct, fast)
+    cam_rows = db.session.query(CustomerData.camera_id).filter(
+        CustomerData.user_id.in_(user_ids),
+        CustomerData.camera_id.isnot(None)
+    ).distinct().all()
+    all_cameras = [r.camera_id for r in cam_rows if r.camera_id]
 
+    # Only return minimal row data needed by frontend (limit 500 for display)
+    rows = q.order_by(CustomerData.timestamp.desc()).limit(500).all()
     data = [
         {
             'id': r.id,
             'timestamp': r.timestamp.isoformat() if r.timestamp else None,
             'location': r.location,
-            'customers_inside': r.customers_inside,
-            'male_count': r.male_count,
-            'female_count': r.female_count,
-            'age_18_30': r.age_18_30,
-            'age_30_50': r.age_30_50,
-            'age_50_plus': r.age_50_plus,
-            'zone_visited': r.zone_visited,
-            'purchase_amount': r.purchase_amount,
             'entered': getattr(r, 'entered', 0),
             'exited': getattr(r, 'exited', 0),
         }
@@ -199,6 +276,17 @@ def post_customer():
     )
     db.session.add(r)
     db.session.commit()
+
+    # Anomali tespiti: veri geldikten sonra arka planda kontrol et
+    try:
+        from routes.notifications import check_anomalies_for_user
+        from models import User
+        user = User.query.get(int(target_user_id))
+        user_name = (user.full_name or user.username) if user else ''
+        check_anomalies_for_user(int(target_user_id), user_name)
+    except Exception as e:
+        print(f"[Anomaly Check] Hata: {e}")
+
     return {'id': r.id, 'message': 'Kaydedildi'}, 201
 
 
@@ -215,7 +303,8 @@ def get_flow_data():
     if date_from:
         try:
             d = datetime.strptime(date_from, '%Y-%m-%d').date()
-            q = q.filter(db.func.date(CustomerData.timestamp) == d)
+            utc_start, utc_end = _get_utc_range_for_local_date(d)
+            q = q.filter(CustomerData.timestamp >= utc_start, CustomerData.timestamp <= utc_end)
         except ValueError:
             pass
     if camera_id and camera_id != 'all':
@@ -230,8 +319,10 @@ def get_flow_data():
     for r in rows:
         if not r.timestamp:
             continue
-        date_str = r.timestamp.strftime('%Y-%m-%d')
-        hour_str = r.timestamp.strftime('%H:00')
+        # Veritabanındaki timestamp zaten yerel saati temsil eder (naive)
+        local_ts = r.timestamp
+        date_str = local_ts.strftime('%Y-%m-%d')
+        hour_str = local_ts.strftime('%H:00')
         key = (date_str, hour_str)
         by_date_hour[key]['entered'] += getattr(r, 'entered', 0) or 0
         by_date_hour[key]['exited'] += getattr(r, 'exited', 0) or 0
@@ -374,6 +465,14 @@ def edit_customer_hourly():
         # Mevcut kayıt(lar) var — mevcut toplamları hesapla, sonra güncelle
         existing_entered = sum(getattr(r, 'entered', 0) or 0 for r in rows)
         existing_exited = sum(getattr(r, 'exited', 0) or 0 for r in rows)
+        # Demografik verileri koru (toplam)
+        existing_male = sum(getattr(r, 'male_count', 0) or 0 for r in rows)
+        existing_female = sum(getattr(r, 'female_count', 0) or 0 for r in rows)
+        existing_age_18_30 = sum(getattr(r, 'age_18_30', 0) or 0 for r in rows)
+        existing_age_30_50 = sum(getattr(r, 'age_30_50', 0) or 0 for r in rows)
+        existing_age_50_plus = sum(getattr(r, 'age_50_plus', 0) or 0 for r in rows)
+        existing_location = rows[0].location
+        existing_camera_id = rows[0].camera_id
 
         new_entered = int(data['entered']) if has_entered else existing_entered
         new_exited = int(data['exited']) if has_exited else existing_exited
@@ -387,17 +486,18 @@ def edit_customer_hourly():
             new_row = CustomerData(
                 user_id=target_user_id,
                 timestamp=start_dt,
-                location=None,
+                location=existing_location,
                 customers_inside=0,
-                male_count=0,
-                female_count=0,
-                age_18_30=0,
-                age_30_50=0,
-                age_50_plus=0,
+                male_count=existing_male,
+                female_count=existing_female,
+                age_18_30=existing_age_18_30,
+                age_30_50=existing_age_30_50,
+                age_50_plus=existing_age_50_plus,
                 zone_visited=None,
                 purchase_amount=0,
                 is_returning=False,
                 satisfaction_score=None,
+                camera_id=existing_camera_id,
                 entered=new_entered,
                 exited=new_exited,
             )
@@ -433,6 +533,173 @@ def edit_customer_hourly():
 
 
 # --- Queue Analytics ---
+@analytics_bp.route('/queues/hourly-edit', methods=['PUT'])
+@jwt_required()
+def edit_queue_hourly():
+    uids = _user_ids()
+    if not uids:
+        return {'error': 'Kullanıcı bulunamadı'}, 400
+
+    data = request.get_json() or {}
+    date_str = data.get('date')
+    hour_str = data.get('hour')
+    cashier_id = data.get('cashier_id', 'Bilinmeyen')
+
+    if not date_str or not hour_str:
+        return {'error': 'date ve hour alanları zorunlu'}, 400
+
+    has_total = 'totalCustomers' in data
+    has_avg_wait = 'avgWaitTime' in data
+
+    if not has_total and not has_avg_wait:
+        return {'error': 'totalCustomers veya avgWaitTime alanından en az biri gerekli'}, 400
+
+    try:
+        d: date = datetime.strptime(date_str, '%Y-%m-%d').date()
+    except (ValueError, TypeError):
+        return {'error': 'Geçersiz tarih'}, 400
+
+    try:
+        hour = int(str(hour_str).split(':')[0])
+    except (ValueError, TypeError):
+        return {'error': 'Geçersiz saat'}, 400
+
+    start_dt = datetime.combine(d, time(hour=hour))
+    end_dt = start_dt + timedelta(hours=1)
+
+    q = QueueData.query.filter(
+        QueueData.user_id.in_(uids),
+        db.func.coalesce(QueueData.recorded_at, QueueData.created_at) >= start_dt,
+        db.func.coalesce(QueueData.recorded_at, QueueData.created_at) < end_dt
+    )
+    if cashier_id != 'all':
+        q = q.filter(db.func.coalesce(QueueData.cashier_id, 'Bilinmeyen') == cashier_id)
+
+    rows = q.all()
+
+    existing_total = sum(getattr(r, 'total_customers', 1) or 1 for r in rows)
+    existing_waits = [r.wait_time for r in rows if r.wait_time]
+    existing_avg_wait = sum(existing_waits) / len(existing_waits) if existing_waits else 0
+
+    new_total = int(data['totalCustomers']) if has_total else existing_total
+    new_avg_wait = float(data['avgWaitTime']) if has_avg_wait else existing_avg_wait
+
+    for r in rows:
+        db.session.delete(r)
+
+    if new_total > 0 or new_avg_wait > 0:
+        target_user_id = int(uids[0])
+        new_row = QueueData(
+            user_id=target_user_id,
+            recorded_at=start_dt,
+            total_customers=max(1, new_total),
+            wait_time=new_avg_wait,
+            cashier_id=cashier_id if cashier_id != 'all' else 'Bilinmeyen',
+        )
+        db.session.add(new_row)
+
+    db.session.commit()
+    return {'message': 'Saatlik kuyruk toplamı güncellendi', 'date': date_str, 'hour': hour_str}
+
+
+@analytics_bp.route('/heatmaps/hourly-edit', methods=['PUT'])
+@jwt_required()
+def edit_heatmap_hourly():
+    uids = _user_ids()
+    if not uids:
+        return {'error': 'Kullanıcı bulunamadı'}, 400
+
+    data = request.get_json() or {}
+    date_str = data.get('date')
+    hour_str = data.get('hour')
+    zone = data.get('zone', 'genel')
+
+    if not date_str or not hour_str:
+        return {'error': 'date ve hour alanları zorunlu'}, 400
+
+    has_total = 'totalVisitors' in data
+    has_avg_dwell = 'avgDwellTime' in data
+
+    if not has_total and not has_avg_dwell:
+        return {'error': 'totalVisitors veya avgDwellTime alanından en az biri gerekli'}, 400
+
+    try:
+        d: date = datetime.strptime(date_str, '%Y-%m-%d').date()
+    except (ValueError, TypeError):
+        return {'error': 'Geçersiz tarih'}, 400
+
+    try:
+        hour = int(str(hour_str).split(':')[0])
+    except (ValueError, TypeError):
+        return {'error': 'Geçersiz saat'}, 400
+
+    start_dt = datetime.combine(d, time(hour=hour))
+    end_dt = start_dt + timedelta(hours=1)
+
+    q = HeatmapData.query.filter(
+        HeatmapData.user_id.in_(uids),
+        HeatmapData.recorded_at >= start_dt,
+        HeatmapData.recorded_at < end_dt
+    )
+    if zone:
+        q = q.filter(HeatmapData.zone == zone)
+
+    rows = q.all()
+
+    existing_total = sum(getattr(r, 'visitor_count', 0) or 0 for r in rows)
+    existing_dwells = [r.intensity for r in rows if r.intensity]
+    existing_avg_dwell = sum(existing_dwells) / len(existing_dwells) if existing_dwells else 0
+
+    new_total = int(data['totalVisitors']) if has_total else existing_total
+    new_avg_dwell = float(data['avgDwellTime']) if has_avg_dwell else existing_avg_dwell
+
+    for r in rows:
+        db.session.delete(r)
+
+    if new_total > 0 or new_avg_dwell > 0:
+        target_user_id = int(uids[0])
+        new_row = HeatmapData(
+            user_id=target_user_id,
+            recorded_at=start_dt,
+            date_recorded=d,
+            visitor_count=new_total,
+            intensity=new_avg_dwell,
+            zone=zone
+        )
+        db.session.add(new_row)
+
+    db.session.commit()
+    return {'message': 'Saatlik heatmap güncellendi', 'date': date_str, 'hour': hour_str}
+@analytics_bp.route('/queues/latest-date', methods=['GET'])
+@jwt_required()
+def get_queues_latest_date():
+    """Queue verisi olan en son tarihi döner."""
+    user_ids = _user_ids()
+    row = (
+        db.session.query(func.max(db.func.coalesce(QueueData.recorded_at, QueueData.created_at)))
+        .filter(QueueData.user_id.in_(user_ids))
+        .scalar()
+    )
+    if row:
+        return {'date': row.strftime('%Y-%m-%d')}
+    return {'date': datetime.now(ISTANBUL_TZ).strftime('%Y-%m-%d')}
+
+
+@analytics_bp.route('/heatmaps/latest-date', methods=['GET'])
+@jwt_required()
+def get_heatmaps_latest_date():
+    """Heatmap verisi olan en son tarihi döner."""
+    user_ids = _user_ids()
+    row = (
+        db.session.query(func.max(HeatmapData.recorded_at))
+        .filter(HeatmapData.user_id.in_(user_ids))
+        .scalar()
+    )
+    if row:
+        return {'date': row.strftime('%Y-%m-%d')}
+    return {'date': datetime.now(ISTANBUL_TZ).strftime('%Y-%m-%d')}
+
+
 @analytics_bp.route('/queues', methods=['GET'])
 @jwt_required()
 def get_queues():
@@ -507,9 +774,14 @@ def queues_daily_summary():
             d = datetime.strptime(date_val, '%Y-%m-%d').date()
             if date_to:
                 d_to = datetime.strptime(date_to, '%Y-%m-%d').date()
-                q = q.filter(db.func.date(QueueData.recorded_at) >= d, db.func.date(QueueData.recorded_at) <= d_to)
+                utc_start, _ = _get_utc_range_for_local_date(d)
+                _, utc_end = _get_utc_range_for_local_date(d_to)
+                q = q.filter(db.func.coalesce(QueueData.recorded_at, QueueData.created_at) >= utc_start, 
+                             db.func.coalesce(QueueData.recorded_at, QueueData.created_at) <= utc_end)
             else:
-                q = q.filter(db.func.date(db.func.coalesce(QueueData.recorded_at, QueueData.created_at)) == d)
+                utc_start, utc_end = _get_utc_range_for_local_date(d)
+                q = q.filter(db.func.coalesce(QueueData.recorded_at, QueueData.created_at) >= utc_start, 
+                             db.func.coalesce(QueueData.recorded_at, QueueData.created_at) <= utc_end)
         except ValueError:
             pass
     # Tüm kasalar her zaman listede olsun (kasa filtresine bakılmadan, sadece tarihe göre)
@@ -519,9 +791,14 @@ def queues_daily_summary():
             d = datetime.strptime(date_val, '%Y-%m-%d').date()
             if date_to:
                 d_to = datetime.strptime(date_to, '%Y-%m-%d').date()
-                q_all_cashiers = q_all_cashiers.filter(db.func.date(db.func.coalesce(QueueData.recorded_at, QueueData.created_at)) >= d, db.func.date(db.func.coalesce(QueueData.recorded_at, QueueData.created_at)) <= d_to)
+                utc_start, _ = _get_utc_range_for_local_date(d)
+                _, utc_end = _get_utc_range_for_local_date(d_to)
+                q_all_cashiers = q_all_cashiers.filter(db.func.coalesce(QueueData.recorded_at, QueueData.created_at) >= utc_start, 
+                                                       db.func.coalesce(QueueData.recorded_at, QueueData.created_at) <= utc_end)
             else:
-                q_all_cashiers = q_all_cashiers.filter(db.func.date(db.func.coalesce(QueueData.recorded_at, QueueData.created_at)) == d)
+                utc_start, utc_end = _get_utc_range_for_local_date(d)
+                q_all_cashiers = q_all_cashiers.filter(db.func.coalesce(QueueData.recorded_at, QueueData.created_at) >= utc_start, 
+                                                       db.func.coalesce(QueueData.recorded_at, QueueData.created_at) <= utc_end)
         except ValueError:
             pass
     all_cashiers = sorted(set(r[0] for r in q_all_cashiers.with_entities(QueueData.cashier_id).distinct().all() if r[0]))

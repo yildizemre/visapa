@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -9,6 +9,8 @@ import ServiceHeartbeatIndicator from './ServiceHeartbeatIndicator';
 import WeatherForecastIndicator from './WeatherForecastIndicator';
 import StoreSwitcher from './StoreSwitcher';
 import FloatingChatBot from './shared/FloatingChatBot';
+import NotificationBell from './shared/NotificationBell';
+import CameraViewer from './shared/CameraViewer';
 import {
   Home,
   Users,
@@ -30,6 +32,9 @@ import {
   Database,
   ArrowLeftCircle,
   Video,
+  Sun,
+  CloudRain,
+  Cloud,
 } from 'lucide-react';
 
 interface LayoutProps {
@@ -41,11 +46,116 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [userRole, setUserRole] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
+  const [userLogo, setUserLogo] = useState<string | null>(null);
   const [showStoreSwitcher, setShowStoreSwitcher] = useState(false);
   const [ticketUnreadCount, setTicketUnreadCount] = useState(0);
+  const [weather, setWeather] = useState<{ temp: number; condition: string } | null>(null);
+  const [logoUploading, setLogoUploading] = useState(false);
+  const logoInputRef = useRef<HTMLInputElement>(null);
+  const [cropModal, setCropModal] = useState<{ dataUrl: string } | null>(null);
+  const [cropScale, setCropScale] = useState<number>(1);
+  const [cropX, setCropX] = useState<number>(0);
+  const [cropY, setCropY] = useState<number>(0);
   const navigate = useNavigate();
   const location = useLocation();
   const { t, language } = useLanguage();
+
+  React.useEffect(() => {
+    const fetchTopWeather = () => {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+      const lat = localStorage.getItem('weather_lat') || '41.0082';
+      const lon = localStorage.getItem('weather_lon') || '28.9784';
+      apiFetch(`/api/weather/forecast?lat=${lat}&lon=${lon}`)
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+          if (data) {
+            setWeather({ temp: data.temperature, condition: data.condition });
+          }
+        })
+        .catch(() => {});
+    };
+
+    fetchTopWeather();
+    window.addEventListener('weatherLocationChanged', fetchTopWeather);
+    return () => window.removeEventListener('weatherLocationChanged', fetchTopWeather);
+  }, []);
+
+  // Logo - dosya secildiginde oncelikle modal ac
+  const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) { alert('Dosya 5MB\'den küçük olmalı'); return; }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const dataUrl = ev.target?.result as string;
+      setCropScale(1);
+      setCropX(0);
+      setCropY(0);
+      setCropModal({ dataUrl });
+    };
+    reader.readAsDataURL(file);
+    e.target.value = '';
+  };
+
+  const handleSaveCroppedLogo = () => {
+    if (!cropModal) return;
+    const img = new Image();
+    img.src = cropModal.dataUrl;
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 256;
+      canvas.height = 256;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      // Fill with white background (or transparent if preferred, white is cleaner for circular avatars)
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, 256, 256);
+
+      ctx.save();
+      // Translate to canvas center + crop offsets
+      ctx.translate(128 + cropX, 128 + cropY);
+      ctx.scale(cropScale, cropScale);
+
+      const iw = img.width;
+      const ih = img.height;
+      const scaleToFit = Math.min(256 / iw, 256 / ih);
+      const dw = iw * scaleToFit;
+      const dh = ih * scaleToFit;
+
+      ctx.drawImage(img, -dw / 2, -dh / 2, dw, dh);
+      ctx.restore();
+
+      const croppedDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+      confirmLogoUpload(croppedDataUrl);
+    };
+  };
+
+  const confirmLogoUpload = async (dataUrl: string) => {
+    setCropModal(null);
+    setLogoUploading(true);
+    try {
+      const token = localStorage.getItem('token');
+      const res = await apiFetch('/api/auth/me/logo', {
+        method: 'PUT',
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ logo_base64: dataUrl }),
+      });
+      if (res.ok) {
+        setUserLogo(dataUrl);
+        const stored = localStorage.getItem('user');
+        if (stored) {
+          try { const u = JSON.parse(stored); u.logo_base64 = dataUrl; localStorage.setItem('user', JSON.stringify(u)); } catch { /* ignore */ }
+        }
+      } else {
+        const err = await res.json().catch(() => ({}));
+        alert('Logo yuklenemedi: ' + (err.error || res.status));
+      }
+    } catch (e) {
+      alert('Sunucuya ulaşılamadı: ' + String(e));
+    } finally { setLogoUploading(false); }
+  };
 
   // Kullanıcı adı ve rolünü al (storage event ile de güncelle)
   const loadUserFromStorage = React.useCallback(() => {
@@ -55,6 +165,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
         const user = JSON.parse(userStr);
         setUserName(user.full_name || user.username || '');
         setUserRole(user.role || 'user');
+        setUserLogo(user.logo_base64 || null);
         setShowStoreSwitcher(user.role === 'brand_manager' && (user.managed_stores?.length ?? 0) > 0);
         return;
       } catch {
@@ -376,6 +487,28 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                 </button>
               )}
               {showStoreSwitcher && <StoreSwitcher />}
+              {/* Weather Widget */}
+              {weather && (
+                <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/40 border border-slate-700/30 text-slate-300 text-xs font-semibold shadow-inner">
+                  {weather.condition === 'rainy' ? (
+                    <CloudRain className="w-4 h-4 text-blue-400 animate-pulse" />
+                  ) : weather.condition === 'cloudy' ? (
+                    <Cloud className="w-4 h-4 text-slate-400" />
+                  ) : (
+                    <Sun className="w-4 h-4 text-amber-400" />
+                  )}
+                  <span>{weather.temp}°C</span>
+                </div>
+              )}
+
+              {/* Quick Cameras Access Button */}
+              <div className="relative">
+                <CameraViewer />
+              </div>
+
+              {/* Notification Bell */}
+              <NotificationBell />
+
               {/* Language Toggle */}
               <LanguageToggle />
               
@@ -404,35 +537,144 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                     );
                   })()}
                 </div>
-                <div
-                  className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center"
-                >
-                  <User className="w-4 h-4 lg:w-5 lg:h-5 text-white" />
+                {/* Avatar - click to upload logo */}
+                <div className="relative group cursor-pointer" onClick={() => logoInputRef.current?.click()} title="Logo yükle">
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center overflow-hidden border-2 border-transparent group-hover:border-indigo-400 transition-all">
+                    {userLogo
+                      ? <img src={userLogo} alt="logo" className="w-full h-full object-cover" />
+                      : <User className="w-4 h-4 lg:w-5 lg:h-5 text-white" />}
+                  </div>
+                  {logoUploading && <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-full"><div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" /></div>}
+                  <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-indigo-500 rounded-full border border-slate-900 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-[7px] text-white font-bold">+</span>
+                  </div>
                 </div>
+                <input ref={logoInputRef} type="file" accept="image/*" className="hidden" onChange={handleLogoUpload} />
               </div>
               {/* Mobile user icon */}
-              <div
-                className="md:hidden w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center"
-              >
-                <User className="w-4 h-4 text-white" />
+              <div className="md:hidden relative group cursor-pointer" onClick={() => logoInputRef.current?.click()} title="Logo yükle">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center overflow-hidden border-2 border-transparent group-hover:border-indigo-400 transition-all">
+                  {userLogo
+                    ? <img src={userLogo} alt="logo" className="w-full h-full object-cover" />
+                    : <User className="w-4 h-4 text-white" />}
+                </div>
               </div>
             </div>
           </div>
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto overflow-x-hidden bg-[#0c1222]">
+        <main className="flex-1 min-w-0 overflow-y-auto overflow-x-hidden bg-[#0c1222]">
           <div className="min-h-full pb-4">
             {children}
           </div>
         </main>
       </div>
-      <WeatherForecastIndicator />
       <FloatingChatBot />
       <div className="fixed bottom-2 sm:bottom-4 right-24 z-50 flex flex-row gap-1.5 sm:gap-2 items-center">
+        <WeatherForecastIndicator />
         <ServiceHeartbeatIndicator />
         <HealthStatusIndicator />
       </div>
+
+      {/* Logo Kırpma / Önizleme Modalı */}
+      {cropModal && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/85 backdrop-blur-md">
+          <div className="bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl p-6 w-full max-w-sm mx-4 flex flex-col items-center gap-5">
+            <h3 className="text-base font-bold text-white">Logo Ayarlama Aracın</h3>
+            
+            {/* Circular Preview Area */}
+            <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-indigo-500/50 bg-slate-950 flex items-center justify-center relative shadow-inner">
+              <div 
+                style={{
+                  transform: `translate(${cropX}px, ${cropY}px) scale(${cropScale})`,
+                  transition: 'transform 0.05s ease-out',
+                }}
+                className="w-full h-full flex items-center justify-center pointer-events-none"
+              >
+                <img src={cropModal.dataUrl} alt="preview" className="max-w-full max-h-full object-contain" />
+              </div>
+              
+              {/* Central target reticle */}
+              <div className="absolute inset-0 rounded-full border border-dashed border-white/20 pointer-events-none" />
+            </div>
+
+            <p className="text-xs text-slate-400 text-center px-2">Aşağıdaki kaydırıcıları kullanarak logonuzu daireye ortalayın ve sığdırın.</p>
+            
+            {/* Sliders Container */}
+            <div className="w-full space-y-4 px-1">
+              {/* Zoom Slider */}
+              <div className="w-full space-y-1">
+                <div className="flex justify-between text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
+                  <span>Boyut (Büyüt / Küçült)</span>
+                  <span className="text-indigo-400">{Math.round(cropScale * 100)}%</span>
+                </div>
+                <input 
+                  type="range" 
+                  min="0.4" 
+                  max="3.0" 
+                  step="0.02" 
+                  value={cropScale} 
+                  onChange={(e) => setCropScale(parseFloat(e.target.value))} 
+                  className="w-full accent-indigo-500 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer"
+                />
+              </div>
+
+              {/* Horizontal Slider */}
+              <div className="w-full space-y-1">
+                <div className="flex justify-between text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
+                  <span>Yatay Konum</span>
+                  <span className="text-indigo-400">{cropX}px</span>
+                </div>
+                <input 
+                  type="range" 
+                  min="-100" 
+                  max="100" 
+                  step="1" 
+                  value={cropX} 
+                  onChange={(e) => setCropX(parseInt(e.target.value))} 
+                  className="w-full accent-indigo-500 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer"
+                />
+              </div>
+
+              {/* Vertical Slider */}
+              <div className="w-full space-y-1">
+                <div className="flex justify-between text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
+                  <span>Dikey Konum</span>
+                  <span className="text-indigo-400">{cropY}px</span>
+                </div>
+                <input 
+                  type="range" 
+                  min="-100" 
+                  max="100" 
+                  step="1" 
+                  value={cropY} 
+                  onChange={(e) => setCropY(parseInt(e.target.value))} 
+                  className="w-full accent-indigo-500 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer"
+                />
+              </div>
+            </div>
+
+            <div className="flex gap-3 w-full mt-2">
+              <button
+                type="button"
+                onClick={() => setCropModal(null)}
+                className="flex-1 py-2.5 rounded-xl border border-slate-700 hover:border-slate-600 text-slate-400 hover:text-white text-sm font-bold transition-all"
+              >
+                İptal
+              </button>
+              <button
+                type="button"
+                onClick={handleSaveCroppedLogo}
+                className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:brightness-110 active:brightness-95 text-white text-sm font-bold shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center gap-2"
+              >
+                {logoUploading ? <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> : null}
+                Kaydet
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

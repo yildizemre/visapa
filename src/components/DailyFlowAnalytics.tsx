@@ -6,9 +6,9 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { apiUrl } from '../lib/api';
 import { useStoreChange } from '../hooks/useStoreChange';
 import {
-  Calendar, UserPlus, UserMinus, Clock, AlertCircle, BarChart3,
+  Calendar, UserPlus, Clock, AlertCircle, BarChart3,
   Thermometer, ChevronLeft, ChevronRight, Save, XCircle, RefreshCw,
-  TrendingUp, TrendingDown, Minus, Sun, Cloud, CloudRain
+  TrendingUp, TrendingDown, Minus, Sun, Cloud, CloudRain, Users
 } from 'lucide-react';
 
 
@@ -92,40 +92,13 @@ interface DailyFlowAnalyticsProps {
     onDateChange: (date: Date) => void;
     selectedDate: Date;
     selectedCamera: string;
+    genderDistribution?: { male: number; female: number };
 }
 
-// --- Yardımcı Bileşen: Karşılaştırma Kartı ---
-const ComparisonStatCard: React.FC<{ stat: ComparisonStat }> = ({ stat }) => {
-  const { change, period } = stat;
-  let color = 'text-slate-400';
-  let Icon = Minus;
-
-  if (change !== null) {
-    if (change > 0) {
-      color = 'text-green-400';
-      Icon = TrendingUp;
-    } else if (change < 0) {
-      color = 'text-red-400';
-      Icon = TrendingDown;
-    }
-  }
-
-  const displayChange = change === null ? 'N/A' : `${change > 0 ? '+' : ''}${change}%`;
-
-  return (
-    <div className="flex items-center gap-1 sm:gap-2 text-[9px] sm:text-xs">
-      <span className="text-slate-500 w-12 sm:w-16 md:w-20">{period}:</span>
-      <div className={`flex items-center font-semibold ${color}`}>
-        <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-0.5 sm:mr-1" />
-        <span>{displayChange}</span>
-      </div>
-    </div>
-  );
-};
 
 
 // --- Ana Bileşen ---
-const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, selectedDate, selectedCamera }) => {
+const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, selectedDate, selectedCamera, genderDistribution }) => {
   const { language } = useLanguage();
   const storeRefresh = useStoreChange();
   const [flowData, setFlowData] = useState<FlowData | null>(null);
@@ -138,58 +111,57 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
 
   const [editedData, setEditedData] = useState<EditedData>({});
   const [isSaving, setIsSaving] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
   const hasChanges = Object.keys(editedData).length > 0;
 
-  const fetchDataForDate = async (showLoading = true) => {
-    if (showLoading) setLoading(true);
+  useEffect(() => {
+    const userString = localStorage.getItem('user');
+    if (userString) {
+      try {
+        const user = JSON.parse(userString);
+        setIsAdmin(user && user.role === 'admin');
+      } catch { setIsAdmin(false); }
+    }
+
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    setLoading(true);
     setError(null);
     setEditedData({});
 
     const token = localStorage.getItem('token');
     const dateStr = formatDateForAPI(selectedDate);
-
     const flowUrl = apiUrl(`/api/analytics/customers/flow-data?date_from=${dateStr}&camera_id=${selectedCamera}`);
 
-    try {
-      const [flowResponse, weatherResponse] = await Promise.all([
-        fetch(flowUrl, { headers: { 'Authorization': `Bearer ${token}` } }),
-        fetchWeatherData(selectedDate)
-      ]);
-
-      if (!flowResponse.ok) {
-          const errorJson = await flowResponse.json();
+    Promise.all([
+      fetch(flowUrl, { headers: { 'Authorization': `Bearer ${token}` }, signal }),
+      fetchWeatherData(selectedDate),
+    ])
+      .then(async ([flowResponse, weatherResponse]) => {
+        if (!flowResponse.ok) {
+          const errorJson = await flowResponse.json().catch(() => ({}));
           throw new Error(errorJson.error || 'Akış verisi çekme başarısız oldu.');
-      }
-
-      const flowJson = await flowResponse.json();
-      const data = flowJson.data && typeof flowJson.data === 'object' ? flowJson.data : {};
-      const dataForDate = data[dateStr];
-      const fallbackDateKey = Object.keys(data).length > 0 ? Object.keys(data)[0] : null;
-      const resolved = dataForDate ?? (fallbackDateKey ? data[fallbackDateKey] : null);
-      setFlowData(resolved && resolved.hourly_data ? resolved : null);
-      setWeatherData(weatherResponse);
-      setComparisonStats(flowJson.comparison_stats || null);
-
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Bilinmeyen bir hata oluştu.');
-    } finally {
-      if (showLoading) setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    const userString = localStorage.getItem('user');
-    if (userString) {
-        try {
-            const user = JSON.parse(userString);
-            setIsAdmin(user && user.role === 'admin');
-        } catch (e) {
-            setIsAdmin(false);
         }
-    }
+        const flowJson = await flowResponse.json();
+        const data = flowJson.data && typeof flowJson.data === 'object' ? flowJson.data : {};
+        const dataForDate = data[dateStr];
+        const fallbackDateKey = Object.keys(data).length > 0 ? Object.keys(data)[0] : null;
+        const resolved = dataForDate ?? (fallbackDateKey ? data[fallbackDateKey] : null);
+        setFlowData(resolved && resolved.hourly_data ? resolved : null);
+        setWeatherData(weatherResponse);
+        setComparisonStats(flowJson.comparison_stats || null);
+      })
+      .catch((err) => {
+        if (err.name === 'AbortError') return;
+        setError(err instanceof Error ? err.message : 'Bilinmeyen bir hata oluştu.');
+      })
+      .finally(() => {
+        if (!signal.aborted) setLoading(false);
+      });
 
-    fetchDataForDate();
-  }, [selectedDate, selectedCamera, storeRefresh]);
+    return () => controller.abort();
+  }, [selectedDate, selectedCamera, storeRefresh, refreshKey]);
 
   const displaySummary = useMemo(() => {
     if (!flowData) return { total_entered: 0, total_exited: 0 };
@@ -210,7 +182,7 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
     const originalValue = flowData?.hourly_data[hour]?.[field];
     setEditedData(prev => {
         const newEditedData = { ...prev };
-        let newHourData = { ...(newEditedData[hour] || {}) };
+        const newHourData = { ...(newEditedData[hour] || {}) };
         if (originalValue !== undefined && value === String(originalValue)) {
             delete newHourData[field];
         } else {
@@ -248,7 +220,8 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
       const results = await Promise.all(updatePromises);
       const failedUpdates = results.filter(r => !r.success);
       if (failedUpdates.length > 0) throw new Error(`Şu saatler güncellenemedi: ${failedUpdates.map(f => f.hour).join(', ')}`);
-      await fetchDataForDate(false);
+      setEditedData({});
+      setRefreshKey(k => k + 1);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Kaydetme sırasında bir hata oluştu.');
     } finally {
@@ -278,60 +251,148 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
   }, [flowData]);
 
 
+  const weatherInsight = useMemo(() => {
+    if (!weatherData || !flowData || Object.keys(flowData.hourly_data).length === 0) return null;
+
+    let totalRainVisitors = 0;
+    let totalClearVisitors = 0;
+    let rainHours = 0;
+    let clearHours = 0;
+
+    Object.entries(flowData.hourly_data).forEach(([hour, data]) => {
+      const w = weatherData[hour];
+      if (!w) return;
+      
+      const visitors = data.entered;
+      if (w.description === 'Yağmurlu') {
+        totalRainVisitors += visitors;
+        rainHours++;
+      } else if (w.description === 'Açık') {
+        totalClearVisitors += visitors;
+        clearHours++;
+      }
+    });
+
+    if (rainHours === 0 || clearHours === 0) return null;
+
+    const avgRain = totalRainVisitors / rainHours;
+    const avgClear = totalClearVisitors / clearHours;
+
+    if (avgRain > avgClear * 1.1) {
+      return {
+        title: 'Hava Durumu Korelasyonu',
+        desc: `Bugün yağmurlu saatlerde müşteri girişiniz, güneşli saatlere kıyasla ortalama %${Math.round((avgRain/avgClear - 1)*100)} daha yüksek. Yağışlı havalar mağazanız için fırsat yaratıyor.`,
+        type: 'success',
+        icon: <CloudRain className="w-5 h-5 text-blue-400" />
+      };
+    } else if (avgClear > avgRain * 1.1) {
+      return {
+        title: 'Hava Durumu Korelasyonu',
+        desc: `Güneşli saatlerdeki müşteri yoğunluğu, yağmurlu saatlere göre %${Math.round((avgClear/avgRain - 1)*100)} daha fazla. Dış mekan yaya trafiği satışlarınızı doğrudan etkiliyor.`,
+        type: 'info',
+        icon: <Sun className="w-5 h-5 text-yellow-400" />
+      };
+    }
+
+    return null;
+  }, [weatherData, flowData]);
+
   return (
     <motion.div variants={item} className="space-y-4">
       <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-4 sm:p-5 md:p-6 rounded-2xl border border-slate-700/50">
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 sm:mb-5 md:mb-6 gap-3 sm:gap-4">
-        <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider">Günlük Akış Analizi</h3>
+        <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider">{language === 'tr' ? 'Günlük Akış Analizi' : 'Daily Flow Analysis'}</h3>
         <div className="flex items-center gap-1 sm:gap-2 md:gap-4 bg-slate-800/60 p-1.5 sm:p-2 rounded-xl border border-slate-700/50">
-            <button onClick={handlePreviousDay} className="p-1 sm:p-1.5 md:p-2 rounded-md hover:bg-slate-700" aria-label="Önceki Gün"><ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-slate-300" /></button>
+            <button onClick={handlePreviousDay} className="p-1 sm:p-1.5 md:p-2 rounded-md hover:bg-slate-700" aria-label={language === 'tr' ? 'Önceki Gün' : 'Previous Day'}><ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-slate-300" /></button>
             <div className="relative flex items-center">
-                <label htmlFor="date-picker" className="flex items-center cursor-pointer gap-1 sm:gap-2"><Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" /><span className="text-white font-medium text-center text-xs sm:text-sm w-28 sm:w-36 md:w-auto">{isToday(selectedDate) ? "Bugün" : selectedDate.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })}</span></label>
+                <label htmlFor="date-picker" className="flex items-center cursor-pointer gap-1 sm:gap-2"><Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" /><span className="text-white font-medium text-center text-xs sm:text-sm w-28 sm:w-36 md:w-auto">{isToday(selectedDate) ? (language === 'tr' ? 'Bugün' : 'Today') : selectedDate.toLocaleDateString(language === 'tr' ? 'tr-TR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' })}</span></label>
                 <input type="date" id="date-picker" value={formatDateForAPI(selectedDate)} max={formatDateForAPI(new Date())} onChange={handleDateInputChange} className="opacity-0 absolute inset-0 w-full h-full cursor-pointer" />
             </div>
-            <button onClick={handleNextDay} disabled={isToday(selectedDate)} className="p-1 sm:p-1.5 md:p-2 rounded-md hover:bg-slate-700 disabled:opacity-50" aria-label="Sonraki Gün"><ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-300" /></button>
+            <button onClick={handleNextDay} disabled={isToday(selectedDate)} className="p-1 sm:p-1.5 md:p-2 rounded-md hover:bg-slate-700 disabled:opacity-50" aria-label={language === 'tr' ? 'Sonraki Gün' : 'Next Day'}><ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-300" /></button>
         </div>
       </div>
 
       {loading ? ( <div className="text-center py-10"><RefreshCw className="w-8 h-8 mx-auto animate-spin text-blue-400" /></div> )
-      : error ? ( <div className="text-center py-10 text-red-400 flex flex-col items-center"><AlertCircle className="w-12 h-12 mb-4" /><p className="font-semibold">Hata Oluştu</p><p className="text-sm">{error}</p></div> )
-      : !flowData ? ( <div className="text-center py-10 text-slate-400 flex flex-col items-center"><BarChart3 className="w-12 h-12 mb-4" /><p className="font-semibold">Veri Bulunamadı</p><p className="text-sm">{selectedDate.toLocaleDateString()} için gösterilecek saat aralığında veri yok.</p></div> )
+      : error ? ( <div className="text-center py-10 text-red-400 flex flex-col items-center"><AlertCircle className="w-12 h-12 mb-4" /><p className="font-semibold">{language === 'tr' ? 'Hata Oluştu' : 'Error Occurred'}</p><p className="text-sm">{error}</p></div> )
+      : !flowData ? ( <div className="text-center py-10 text-slate-400 flex flex-col items-center"><BarChart3 className="w-12 h-12 mb-4" /><p className="font-semibold">{language === 'tr' ? 'Veri Bulunamadı' : 'No Data Found'}</p><p className="text-sm">{language === 'tr' ? `${selectedDate.toLocaleDateString('tr-TR')} için gösterilecek saat aralığında veri yok.` : `No hourly data to display for ${selectedDate.toLocaleDateString('en-US')}.`}</p></div> )
       : (
         <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-5 md:mb-6">
-             <div className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-4 sm:p-5 rounded-2xl border border-slate-700/40 flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-500/20 to-green-500/20 border border-emerald-500/30 shrink-0"><UserPlus className="w-5 h-5 text-emerald-400"/></div>
-                <div className="flex-grow">
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Giren Müşteri</p>
-                    <p className="text-2xl font-extrabold text-slate-100">{displaySummary.total_entered}</p>
+          {weatherInsight && (
+            <div className={`mb-4 sm:mb-5 md:mb-6 p-4 rounded-xl border flex items-start gap-4 ${
+              weatherInsight.type === 'success' 
+                ? 'bg-green-900/20 border-green-500/30' 
+                : 'bg-blue-900/20 border-blue-500/30'
+            }`}>
+              <div className="shrink-0 p-2 bg-slate-800/50 rounded-lg">
+                {weatherInsight.icon}
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-white mb-1">{weatherInsight.title}</h4>
+                <p className="text-xs sm:text-sm text-slate-300">{weatherInsight.desc}</p>
+              </div>
+            </div>
+          )}
+
+          <div className="mb-4 sm:mb-5 md:mb-6">
+            <div className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-4 sm:p-5 rounded-2xl border border-slate-700/40 flex flex-col sm:flex-row items-center justify-center gap-6">
+              {/* Sol: İkon + Sayı */}
+              <div className="flex items-center gap-3 shrink-0">
+                <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-500/20 to-green-500/20 border border-emerald-500/30">
+                  <UserPlus className="w-5 h-5 text-emerald-400"/>
                 </div>
-                {comparisonStats?.entered && (
-                    <div className="flex flex-col items-start sm:items-end gap-0.5 sm:gap-1 border-l border-slate-600 pl-2 sm:pl-3 md:pl-4 w-full sm:w-auto">
-                        {comparisonStats.entered.map(stat => <ComparisonStatCard key={stat.period} stat={stat} />)}
-                    </div>
-                )}
-             </div>
-             <div className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-4 sm:p-5 rounded-2xl border border-slate-700/40 flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-rose-500/20 to-red-500/20 border border-rose-500/30 shrink-0"><UserMinus className="w-5 h-5 text-rose-400"/></div>
-                <div className="flex-grow">
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Çıkan Müşteri</p>
-                    <p className="text-2xl font-extrabold text-slate-100">{displaySummary.total_exited}</p>
+                <div>
+                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{language === 'tr' ? 'Giren Müşteri' : 'Entered Customers'}</p>
+                  <p className="text-3xl font-extrabold text-slate-100">{displaySummary.total_entered}</p>
                 </div>
-                {comparisonStats?.exited && (
-                    <div className="flex flex-col items-start sm:items-end gap-0.5 sm:gap-1 border-l border-slate-600 pl-2 sm:pl-3 md:pl-4 w-full sm:w-auto">
-                        {comparisonStats.exited.map(stat => <ComparisonStatCard key={stat.period} stat={stat} />)}
-                    </div>
-                )}
-             </div>
+              </div>
+              {/* Sağ: Karşılaştırma istatistikleri yan yana */}
+              {comparisonStats?.entered && comparisonStats.entered.length > 0 && (
+                <div className="flex-1 flex flex-wrap items-center gap-3 sm:border-l sm:border-slate-600/60 sm:pl-4">
+                  {comparisonStats.entered.map((stat) => {
+                    const isUp = stat.change !== null && stat.change > 0;
+                    const isDown = stat.change !== null && stat.change < 0;
+                    const color = isUp ? 'text-emerald-400' : isDown ? 'text-red-400' : 'text-slate-400';
+                    const bg = isUp ? 'bg-emerald-500/10 border-emerald-500/30' : isDown ? 'bg-red-500/10 border-red-500/30' : 'bg-slate-700/30 border-slate-600/30';
+                    const Icon = isUp ? TrendingUp : isDown ? TrendingDown : Minus;
+                    const displayChange = stat.change === null ? 'N/A' : `${stat.change > 0 ? '+' : ''}${stat.change}%`;
+                    return (
+                      <div key={stat.period} className={`flex flex-col items-center px-3 py-2 rounded-xl border ${bg} min-w-[72px]`}>
+                        <span className="text-[10px] text-slate-500 font-medium mb-1">{stat.period}</span>
+                        <div className={`flex items-center gap-1 font-bold text-sm ${color}`}>
+                          <Icon className="w-3.5 h-3.5" />
+                          <span>{displayChange}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+              {/* Cinsiyet Dağılımı (Gender Distribution) */}
+              {genderDistribution && (
+                <div className="flex items-center gap-3 shrink-0 sm:border-l sm:border-slate-600/60 sm:pl-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-indigo-500/20 to-blue-500/20 border border-indigo-500/30">
+                    <Users className="w-5 h-5 text-indigo-400"/>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{language === 'tr' ? 'Cinsiyet Dağılımı' : 'Gender Distribution'}</p>
+                    <p className="text-xl font-extrabold text-slate-100">
+                      <span className="text-blue-400">{genderDistribution.male} E</span>
+                      <span className="text-slate-500 mx-1">/</span>
+                      <span className="text-pink-400">{genderDistribution.female} K</span>
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
           <div>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 mb-4">
-                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Saatlik Döküm (10:00 - 22:00)</h4>
+                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">{language === 'tr' ? 'Saatlik Döküm (10:00 - 22:00)' : 'Hourly Breakdown (10:00 - 22:00)'}</h4>
                 {isAdmin && hasChanges && (
                     <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-                        <button onClick={handleCancelChanges} className="flex items-center gap-1 text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-md hover:bg-slate-700"><XCircle className="w-3 h-3 sm:w-4 sm:h-4 text-slate-300" /> <span className="hidden sm:inline text-slate-300">İptal</span></button>
-                        <button onClick={handleSaveChanges} disabled={isSaving} className="flex items-center gap-1 text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 px-2 sm:px-3 py-1 rounded-md disabled:opacity-50">{isSaving ? <RefreshCw className="w-3 h-3 sm:w-4 sm:h-4 animate-spin" /> : <Save className="w-3 h-3 sm:w-4 sm:h-4" />} <span className="hidden sm:inline">{isSaving ? 'Kaydediliyor' : 'Kaydet'}</span></button>
+                        <button onClick={handleCancelChanges} className="flex items-center gap-1 text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-md hover:bg-slate-700"><XCircle className="w-3 h-3 sm:w-4 sm:h-4 text-slate-300" /> <span className="hidden sm:inline text-slate-300">{language === 'tr' ? 'İptal' : 'Cancel'}</span></button>
+                        <button onClick={handleSaveChanges} disabled={isSaving} className="flex items-center gap-1 text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 px-2 sm:px-3 py-1 rounded-md disabled:opacity-50">{isSaving ? <RefreshCw className="w-3 h-3 sm:w-4 sm:h-4 animate-spin" /> : <Save className="w-3 h-3 sm:w-4 sm:h-4" />} <span className="hidden sm:inline">{isSaving ? (language === 'tr' ? 'Kaydediliyor' : 'Saving') : (language === 'tr' ? 'Kaydet' : 'Save')}</span></button>
                     </div>
                 )}
               </div>
@@ -339,17 +400,15 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
                 <table className="w-full text-[10px] sm:text-xs md:text-sm min-w-[320px] sm:min-w-0">
                     <thead className="sticky top-0 bg-slate-800/90 backdrop-blur-sm z-10">
                         <tr>
-                            <th className="text-left text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs whitespace-nowrap"><Clock className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2"/>Saat</th>
-                            <th className="text-center text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs whitespace-nowrap"><UserPlus className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2 text-green-400"/>Giren</th>
-                            <th className="text-center text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs whitespace-nowrap"><UserMinus className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2 text-red-400"/>Çıkan</th>
-                            <th className="text-left text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs hidden sm:table-cell whitespace-nowrap"><Thermometer className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2 text-orange-400"/>Hava</th>
+                            <th className="text-left text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs whitespace-nowrap"><Clock className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2"/>{language === 'tr' ? 'Saat' : 'Hour'}</th>
+                            <th className="text-center text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs whitespace-nowrap"><UserPlus className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2 text-green-400"/>{language === 'tr' ? 'Giren' : 'Entered'}</th>
+                            <th className="text-left text-white py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 font-medium text-[9px] sm:text-xs hidden sm:table-cell whitespace-nowrap"><Thermometer className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2 text-orange-400"/>{language === 'tr' ? 'Hava' : 'Weather'}</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-700/50">
                         {filteredHourlyData.map(([hour, data]) => {
                             const editedHourData = editedData[hour] || {};
                             const currentEntering = editedHourData.entered ?? data.entered;
-                            const currentExiting = editedHourData.exited ?? data.exited;
                             const isEdited = !!editedData[hour];
                             const weather = weatherData ? weatherData[hour] : null;
 
@@ -365,11 +424,11 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
 
                             // GÜNCELLEME: Neden devre dışı olduğunu açıklayan dinamik başlık
                             const disabledTitle = selectedCamera === 'all'
-                                ? "Veri düzenlemek için lütfen belirli bir kamera seçin."
+                                ? (language === 'tr' ? "Veri düzenlemek için lütfen belirli bir kamera seçin." : "Please select a specific camera to edit data.")
                                 : !isAdmin
-                                ? "Bu alanı sadece adminler düzenleyebilir."
+                                ? (language === 'tr' ? "Bu alanı sadece adminler düzenleyebilir." : "Only admins can edit this area.")
                                 : !data.editable_id
-                                ? "Bu saatte düzenlenecek veri yok."
+                                ? (language === 'tr' ? "Bu saatte düzenlenecek veri yok." : "No editable data for this hour.")
                                 : "";
 
                             return (
@@ -383,16 +442,6 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
                                             className="w-14 sm:w-16 md:w-20 bg-slate-800 text-green-400 font-semibold text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed text-[9px] sm:text-xs md:text-sm"
                                             disabled={isEditingDisabled} // GÜNCELLEME
                                             title={isEditingDisabled ? disabledTitle : "Giren müşteri sayısını düzenle"} // GÜNCELLEME
-                                        />
-                                    </td>
-                                    <td className="py-1.5 sm:py-2 px-2 sm:px-3 md:px-4 text-center">
-                                        <input
-                                            type="text"
-                                            value={currentExiting}
-                                            onChange={(e) => handleDataChange(hour, 'exited', e.target.value)}
-                                            className="w-14 sm:w-16 md:w-20 bg-slate-800 text-red-400 font-semibold text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed text-[9px] sm:text-xs md:text-sm"
-                                            disabled={isEditingDisabled} // GÜNCELLEME
-                                            title={isEditingDisabled ? disabledTitle : "Çıkan müşteri sayısını düzenle"} // GÜNCELLEME
                                         />
                                     </td>
                                     <td className="py-1.5 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 text-slate-300 text-[9px] sm:text-xs md:text-sm hidden sm:table-cell">

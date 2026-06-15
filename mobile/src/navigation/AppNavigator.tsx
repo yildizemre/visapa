@@ -37,13 +37,15 @@ export const AppNavigator: React.FC = () => {
   React.useEffect(() => {
     checkAuth();
     
-    // Her 2 saniyede bir token kontrolü yap (impersonate için)
+    // Her 2 saniyede bir token kontrolü yap (impersonate için) - ancak ilk yükleme bittiyse
     const interval = setInterval(() => {
-      checkAuth();
+      if (!isLoading) {
+        checkAuth();
+      }
     }, 2000);
     
     return () => clearInterval(interval);
-  }, []);
+  }, [isLoading]);
 
   const handleLogin = () => {
     setIsAuthenticated(true);

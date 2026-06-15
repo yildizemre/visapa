@@ -9,13 +9,11 @@ export function getSelectedStoreId(): string | null {
 }
 
 export function apiUrl(path: string, params?: Record<string, string>): string {
-  const token = getToken();
   const base = API_BASE || window.location.origin;
   const url = new URL(path.startsWith('http') ? path : path.startsWith('/') ? base + path : base + '/' + path);
   if (params) Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
   const storeId = getSelectedStoreId();
   if (storeId && !url.searchParams.has('store_id')) url.searchParams.set('store_id', storeId);
-  if (token) url.searchParams.set('token', token);
   return url.origin === window.location.origin ? url.pathname + url.search : url.href;
 }
 

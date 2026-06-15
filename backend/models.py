@@ -12,6 +12,7 @@ class User(db.Model):
     password_hash = db.Column(db.String(256), nullable=False)
     role = db.Column(db.String(20), default='user')  # admin, user, brand_manager
     full_name = db.Column(db.String(120))
+    logo_base64 = db.Column(db.Text, nullable=True)  # şirket logosu / profil fotoğrafı
     is_active = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -44,6 +45,10 @@ class User(db.Model):
 
 class CustomerData(db.Model):
     __tablename__ = 'customer_data'
+    __table_args__ = (
+        db.Index('ix_customer_user_ts', 'user_id', 'timestamp'),
+        db.Index('ix_customer_ts', 'timestamp'),
+    )
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
@@ -65,6 +70,10 @@ class CustomerData(db.Model):
 
 class QueueData(db.Model):
     __tablename__ = 'queue_data'
+    __table_args__ = (
+        db.Index('ix_queue_user_rec', 'user_id', 'recorded_at'),
+        db.Index('ix_queue_rec', 'recorded_at'),
+    )
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     customer_id = db.Column(db.String(80))
@@ -81,6 +90,10 @@ class QueueData(db.Model):
 
 class HeatmapData(db.Model):
     __tablename__ = 'heatmap_data'
+    __table_args__ = (
+        db.Index('ix_heatmap_user_date', 'user_id', 'date_recorded'),
+        db.Index('ix_heatmap_rec', 'recorded_at'),
+    )
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     zone = db.Column(db.String(120))  # erkek-giyim, kadin-giyim vb. bölge adı
@@ -138,11 +151,15 @@ class ManagedStore(db.Model):
 
 
 class ServiceHeartbeat(db.Model):
-    """Mağaza AI servisinin 'ben ayaktayım' ping'lerini tutar. 5 dk içinde ping gelmezse kırmızı."""
+    """Mağaza AI servisinin 'ben ayaktayım' ping'lerini tutar."""
     __tablename__ = 'service_heartbeat'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     last_ping_at = db.Column(db.DateTime, nullable=False)
+    # Son 1 saatteki ping istatistikleri (heartbeat endpoint her çağrıldığında güncellenir)
+    expected_pings = db.Column(db.Integer, default=0)   # Beklenen ping sayısı (ör: 6 = saatte 6)
+    received_pings = db.Column(db.Integer, default=0)   # Gerçekten gelen ping sayısı
+    window_start = db.Column(db.DateTime, nullable=True) # Mevcut 1 saatlik pencere başlangıcı
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
@@ -274,6 +291,28 @@ class Ticket(db.Model):
             if u:
                 d['user'] = {'id': u.id, 'username': u.username, 'email': u.email, 'full_name': u.full_name}
         return d
+
+
+class Notification(db.Model):
+    """Panel içi bildirim (anomali tespiti, sistem uyarıları vb.)"""
+    __tablename__ = 'notifications'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    type = db.Column(db.String(30), nullable=False)  # anomaly, warning, info, success
+    title = db.Column(db.String(200), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    is_read = db.Column(db.Boolean, default=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'type': self.type,
+            'title': self.title,
+            'message': self.message,
+            'is_read': self.is_read,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+        }
 
 
 class TicketReply(db.Model):

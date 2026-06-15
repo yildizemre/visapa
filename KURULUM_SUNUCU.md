@@ -92,3 +92,44 @@ Sonrasında panel: **https://srv.xfjvcu-vulut.com**
 - Root şifrenizi kimseyle paylaşmayın; mümkünse SSH key kullanın.
 - Kurulumdan sonra admin panel şifresini değiştirmek için sunucuda:  
   `cd /var/www/vislivis && source venv/bin/activate && cd backend && python3 create_admin.py --username admin --password YeniGucluSifre`
+
+---
+
+## 6. Git Pull Sonrası Güncelleme
+
+Yeni kod push'ladıktan sonra sunucuda:
+
+```bash
+ssh -p 25416 root@31.40.199.64
+cd /var/www/vislivis
+git pull
+npm install --silent && npm run build
+systemctl restart vislivis
+```
+
+---
+
+## 7. Telegram Bildirimleri (Anomali Tespiti)
+
+Sunucudaki `.env` dosyasına Telegram bilgilerini ekleyin.  
+**Bu adım sadece 1 kez yapılır, git'e commit edilmez.**
+
+```bash
+ssh -p 25416 root@31.40.199.64
+nano /var/www/vislivis/backend/.env
+```
+
+Açılan dosyaya şu iki satırı ekleyin (yoksa):
+
+```
+TELEGRAM_BOT=7922868902:AAEK-DPfMUsMB-QUCq8mVsU7p08k53FvCRE
+TELEGRAM_ID=-1002352857755
+```
+
+Kaydet (`Ctrl+X` → `Y` → `Enter`) ve servisi yeniden başlatın:
+
+```bash
+systemctl restart vislivis
+```
+
+> **Not:** `.env` dosyası git'e girmez (`.gitignore`'da tanımlı). Sunucuda bir kez ayarladıktan sonra git pull ile silinmez.

@@ -85,7 +85,15 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
           type="date"
           value={startDate}
           max={todayStr}
-          onChange={(e) => onStartDateChange(e.target.value)}
+          onChange={(e) => {
+            const newStart = e.target.value;
+            if (newStart > endDate) {
+              onStartDateChange(endDate);
+              onEndDateChange(newStart);
+            } else {
+              onStartDateChange(newStart);
+            }
+          }}
           className="bg-transparent text-xs sm:text-sm text-slate-200 outline-none w-[105px] sm:w-[120px] [color-scheme:dark]"
         />
         <span className="text-slate-500 mx-0.5">—</span>
@@ -93,7 +101,15 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
           type="date"
           value={endDate}
           max={todayStr}
-          onChange={(e) => onEndDateChange(e.target.value)}
+          onChange={(e) => {
+            const newEnd = e.target.value;
+            if (newEnd < startDate) {
+              onEndDateChange(startDate);
+              onStartDateChange(newEnd);
+            } else {
+              onEndDateChange(newEnd);
+            }
+          }}
           className="bg-transparent text-xs sm:text-sm text-slate-200 outline-none w-[105px] sm:w-[120px] [color-scheme:dark]"
         />
       </div>

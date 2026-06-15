@@ -861,6 +861,81 @@ Manuel rapor oluşturur. 🔒 JWT gerekli.
 
 ---
 
+## 17. Bildirimler (Notifications) — Anomali Tespiti
+
+**Prefix:** `/api/notifications`
+
+Otomatik anomali tespiti sistemi: AI scripti veri gönderdiğinde, saatlik müşteri akışı ve kuyruk süreleri otomatik kontrol edilir. Anomali tespit edildiğinde hem panele bildirim eklenir hem de Telegram'a uyarı gönderilir.
+
+**Anomali Kuralları:**
+- Müşteri trafiği son 7 günün aynı saatindeki ortalamanın %50 altına düşerse
+- Kuyruk bekleme süresi 3 dakikayı (180 sn) aşarsa
+
+### GET `/api/notifications`
+Kullanıcının bildirimlerini listeler. 🔒 JWT gerekli.
+
+**Query Parametreleri:**
+| Parametre | Tip | Zorunlu | Açıklama |
+|-----------|-----|---------|----------|
+| `page` | int | Hayır | Sayfa (varsayılan: 1) |
+| `per_page` | int | Hayır | Sayfa başı kayıt (varsayılan: 20) |
+| `unread` | string | Hayır | `true` ise sadece okunmamışlar |
+
+**Yanıt (200):**
+```json
+{
+  "notifications": [
+    {
+      "id": 1,
+      "type": "anomaly",
+      "title": "Müşteri Trafiği Düşük (14:00)",
+      "message": "Saat 14:00'da 5 müşteri girişi yapıldı. 7 günlük ortalama: 25 (80% düşüş).",
+      "is_read": false,
+      "created_at": "2026-06-14T14:05:00"
+    }
+  ],
+  "total": 5,
+  "unread_count": 2
+}
+```
+
+**Bildirim Tipleri:** `anomaly`, `warning`, `info`, `success`
+
+---
+
+### GET `/api/notifications/unread-count`
+Okunmamış bildirim sayısı (header badge için). 🔒 JWT gerekli.
+
+**Yanıt:**
+```json
+{ "unread_count": 3 }
+```
+
+---
+
+### POST `/api/notifications/mark-read`
+Bildirimleri okundu olarak işaretler. 🔒 JWT gerekli.
+
+**Body:**
+```json
+{ "ids": [1, 2, 3] }
+```
+> `ids` boş veya gönderilmezse tüm okunmamışlar işaretlenir.
+
+---
+
+### POST `/api/notifications/check-anomalies`
+Manuel anomali kontrolü tetikler. 🔒 JWT gerekli.
+
+**Yanıt:**
+```json
+{ "message": "Anomali kontrolü tamamlandı" }
+```
+
+> **Not:** Anomali kontrolü normalde `POST /api/analytics/customers` ile veri gönderildiğinde otomatik tetiklenir. Bu endpoint sadece manuel test içindir.
+
+---
+
 ## Roller ve Yetkiler
 
 | Rol | Açıklama | Yetkiler |

@@ -27,7 +27,9 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# SQLite DB - asla commit etme
+# SQLite DB
 backend/*.db
-backend/instance/*.db
 *.db
+!backend/instance/vislivis.db
+# server_db klasörü (geçici, push'a dahil etme)
+server_db/
