@@ -370,35 +370,34 @@ const Settings = () => {
               {siteName && <span className="text-slate-400 text-[10px] sm:text-xs md:text-sm">{t('settings.setup')}: {siteName}</span>}
             </div>
             <p className="text-slate-400 text-[10px] sm:text-xs md:text-sm -mt-1 sm:-mt-2 mb-2 sm:mb-3 md:mb-4">{t('settings.cameraSetupDesc')}</p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs sm:text-sm text-left min-w-[360px] sm:min-w-0">
-                <thead className="text-xs text-slate-400 uppercase bg-slate-700/50">
-                  <tr>
-                    <th className="px-2 sm:px-4 py-2 sm:py-3 whitespace-nowrap">{t('settings.cameraName')}</th>
-                    <th className="px-2 sm:px-4 py-2 sm:py-3 hidden sm:table-cell whitespace-nowrap">{t('settings.type')}</th>
-                    <th className="px-2 sm:px-4 py-2 sm:py-3 hidden md:table-cell whitespace-nowrap">{t('settings.rtspAddress')}</th>
-                    <th className="px-2 sm:px-4 py-2 sm:py-3 text-right whitespace-nowrap">{t('settings.action')}</th>
-                  </tr>
-                </thead>
-                <tbody className="text-slate-300">
-                  {cameras.length === 0 && <tr><td colSpan={4} className="px-4 py-8 text-center text-slate-500">{t('settings.noCameras')}</td></tr>}
-                  {cameras.map((camera) => (
-                    <tr key={camera.id} className="border-b border-slate-700 hover:bg-slate-700/30">
-                      <td className="px-2 sm:px-4 py-2 sm:py-3 font-medium text-white">{camera.name}</td>
-                      <td className="px-2 sm:px-4 py-2 sm:py-3 hidden sm:table-cell">{camera.type}</td>
-                      <td className="px-2 sm:px-4 py-2 sm:py-3 font-mono text-xs hidden md:table-cell break-all">{camera.rtsp}</td>
-                      <td className="px-2 sm:px-4 py-2 sm:py-3 text-right">
-                        <button 
-                          onClick={() => setSelectedCamera(camera)}
-                          className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700"
-                        >
-                          <Eye className="w-3 h-3 sm:w-4 sm:h-4" /> <span className="hidden sm:inline">{t('settings.view')}</span>
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="space-y-2">
+              {cameras.length === 0 && (
+                <div className="px-4 py-8 text-center text-slate-500 text-sm">{t('settings.noCameras')}</div>
+              )}
+              {cameras.map((camera) => (
+                <div key={camera.id} className="flex items-center gap-3 p-3 bg-slate-800/40 border border-slate-700/40 rounded-xl hover:bg-slate-700/40 transition-colors">
+                  {/* Thumbnail kutusu - sol taraf */}
+                  <button
+                    onClick={() => setSelectedCamera(camera)}
+                    className="flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden bg-slate-700/60 border border-slate-600/50 hover:border-blue-500/60 transition-all hover:scale-105 relative group"
+                    title="Kamera görüntüsü"
+                  >
+                    {camera.imageUrl ? (
+                      <img src={camera.imageUrl} alt={camera.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <Eye className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all rounded-xl" />
+                  </button>
+                  {/* Kamera bilgileri */}
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-white truncate">{camera.name}</p>
+                    <p className="text-xs text-slate-400 mt-0.5">{camera.type}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </motion.div>
         );
