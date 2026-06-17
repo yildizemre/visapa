@@ -1,0 +1,44 @@
+============================================================
+  Queue — API LOGLARI
+  Kamera  : cam4
+  Tarih   : 2026-06-16
+  Açıldı  : 2026-06-16 00:00:01
+============================================================
+
+[2026-06-16 10:00:02] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 01:00:00 | Tamamlanan=0 | Aktif=0
+[2026-06-16 10:00:03] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 02:00:00 | Tamamlanan=0 | Aktif=0
+[2026-06-16 10:00:03] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 03:00:00 | Tamamlanan=0 | Aktif=0
+[2026-06-16 10:00:03] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 04:00:00 | Tamamlanan=0 | Aktif=0
+[2026-06-16 10:00:03] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 05:00:00 | Tamamlanan=0 | Aktif=0
+[2026-06-16 10:00:03] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 06:00:00 | Tamamlanan=0 | Aktif=0
+[2026-06-16 10:00:03] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 07:00:00 | Tamamlanan=0 | Aktif=0
+[2026-06-16 10:00:03] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 08:00:00 | Tamamlanan=0 | Aktif=0
+[2026-06-16 10:00:03] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 09:00:00 | Tamamlanan=0 | Aktif=0
+[2026-06-16 11:00:00] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 10:00:00 | Tamamlanan=0 | Aktif=16
+[2026-06-16 12:00:00] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 11:00:00 | Tamamlanan=0 | Aktif=41
+[2026-06-16 13:00:00] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 12:00:00 | Tamamlanan=0 | Aktif=117
+[2026-06-16 14:00:00] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 13:00:00 | Tamamlanan=0 | Aktif=194
+[2026-06-16 14:26:36] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/queues | cam=cam4 alan=1 id=148385 sure=371s
+[2026-06-16 14:26:37] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/queues | id=1765 | cam=cam4 alan=1 sure=371s
+[2026-06-16 14:36:34] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/queues | cam=cam4 alan=1 id=149819 sure=410s
+[2026-06-16 14:36:34] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/queues | id=1766 | cam=cam4 alan=1 sure=410s
+[2026-06-16 15:00:00] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 14:00:00 | Tamamlanan=2 | Aktif=279
+[2026-06-16 15:00:03] [API] [API-HOURLY-ASYNC] cashier=Kasa-Alan-1 cnt=2
+[2026-06-16 15:13:15] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/queues | cam=cam4 alan=1 id=153248 sure=726s
+[2026-06-16 15:13:15] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/queues | id=1767 | cam=cam4 alan=1 sure=726s
+[2026-06-16 16:00:00] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 15:00:00 | Tamamlanan=1 | Aktif=369
+[2026-06-16 16:00:03] [API] [API-HOURLY-ASYNC] cashier=Kasa-Alan-1 cnt=1
+[2026-06-16 16:23:41] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/queues | cam=cam4 alan=1 id=158885 sure=309s
+[2026-06-16 16:23:41] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/queues | id=1768 | cam=cam4 alan=1 sure=309s
+[2026-06-16 17:00:00] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 16:00:00 | Tamamlanan=1 | Aktif=420
+[2026-06-16 17:00:03] [API] [API-HOURLY-ASYNC] cashier=Kasa-Alan-1 cnt=1
+[2026-06-16 18:00:00] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 17:00:00 | Tamamlanan=0 | Aktif=495
+[2026-06-16 18:59:19] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/queues | cam=cam4 alan=1 id=171239 sure=344s
+[2026-06-16 18:59:19] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/queues | id=1769 | cam=cam4 alan=1 sure=344s
+[2026-06-16 19:00:00] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 18:00:00 | Tamamlanan=1 | Aktif=619
+[2026-06-16 19:00:01] [API] [API-HOURLY-ASYNC] cashier=Kasa-Alan-1 cnt=1
+[2026-06-16 20:00:00] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 19:00:00 | Tamamlanan=0 | Aktif=740
+[2026-06-16 20:00:18] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/queues | cam=cam4 alan=1 id=175245 sure=303s
+[2026-06-16 20:00:18] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/queues | id=1770 | cam=cam4 alan=1 sure=303s
+[2026-06-16 21:00:00] [API] [SAAT-RAPOR] Kamera=cam4 | Saat=2026-06-16 20:00:00 | Tamamlanan=1 | Aktif=750
+[2026-06-16 21:00:03] [API] [API-HOURLY-ASYNC] cashier=Kasa-Alan-1 cnt=1

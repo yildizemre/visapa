@@ -1,0 +1,150 @@
+============================================================
+  Counter — API LOGLARI
+  Kamera  : cam7
+  Tarih   : 2026-06-16
+  Açıldı  : 2026-06-16 00:00:00
+============================================================
+
+[2026-06-16 00:07:44] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 00:07:45] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 01:07:45] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 01:07:46] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 02:07:46] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 02:07:47] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 03:07:47] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 03:07:48] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 04:07:48] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 04:07:49] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 05:07:49] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 05:07:50] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 06:07:50] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 06:07:51] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 07:07:51] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 07:07:52] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 08:07:52] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 08:07:53] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 09:07:53] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 09:07:54] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 10:07:54] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 10:07:55] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 11:00:00] [API] ************************************************************
+[2026-06-16 11:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam7 ***
+[2026-06-16 11:00:00] [API] *** Periyot : 2026-06-16T10:00+03:00 ***
+[2026-06-16 11:00:00] [API] *** Giren   : 14  |  Cikan: 19 ***
+[2026-06-16 11:00:00] [API] *** Toplam Entered_IDs: 14  |  Exited_IDs: 19 ***
+[2026-06-16 11:00:00] [API] ************************************************************
+[2026-06-16 11:00:00] [API] [RAPOR] Giren=14 Cikan=19 Saat=2026-06-16T10:00+03:00 cam=cam7 | Entered_IDs=14 Exited_IDs=19
+[2026-06-16 11:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/customers | cam=cam7 saat=2026-06-16T10:00+03:00 giren=14 cikan=19
+[2026-06-16 11:00:00] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/customers | id=787 | cam=cam7 saat=2026-06-16T10:00+03:00 giren=14 cikan=19
+[2026-06-16 11:07:55] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 11:07:56] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 12:00:00] [API] ************************************************************
+[2026-06-16 12:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam7 ***
+[2026-06-16 12:00:00] [API] *** Periyot : 2026-06-16T11:00+03:00 ***
+[2026-06-16 12:00:00] [API] *** Giren   : 28  |  Cikan: 24 ***
+[2026-06-16 12:00:00] [API] *** Toplam Entered_IDs: 28  |  Exited_IDs: 24 ***
+[2026-06-16 12:00:00] [API] ************************************************************
+[2026-06-16 12:00:00] [API] [RAPOR] Giren=28 Cikan=24 Saat=2026-06-16T11:00+03:00 cam=cam7 | Entered_IDs=28 Exited_IDs=24
+[2026-06-16 12:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/customers | cam=cam7 saat=2026-06-16T11:00+03:00 giren=28 cikan=24
+[2026-06-16 12:00:02] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/customers | id=791 | cam=cam7 saat=2026-06-16T11:00+03:00 giren=28 cikan=24
+[2026-06-16 12:07:56] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 12:07:56] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 13:00:00] [API] ************************************************************
+[2026-06-16 13:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam7 ***
+[2026-06-16 13:00:00] [API] *** Periyot : 2026-06-16T12:00+03:00 ***
+[2026-06-16 13:00:00] [API] *** Giren   : 33  |  Cikan: 29 ***
+[2026-06-16 13:00:00] [API] *** Toplam Entered_IDs: 33  |  Exited_IDs: 29 ***
+[2026-06-16 13:00:00] [API] ************************************************************
+[2026-06-16 13:00:00] [API] [RAPOR] Giren=33 Cikan=29 Saat=2026-06-16T12:00+03:00 cam=cam7 | Entered_IDs=33 Exited_IDs=29
+[2026-06-16 13:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/customers | cam=cam7 saat=2026-06-16T12:00+03:00 giren=33 cikan=29
+[2026-06-16 13:00:00] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/customers | id=794 | cam=cam7 saat=2026-06-16T12:00+03:00 giren=33 cikan=29
+[2026-06-16 13:07:57] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 13:07:57] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 14:00:00] [API] ************************************************************
+[2026-06-16 14:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam7 ***
+[2026-06-16 14:00:00] [API] *** Periyot : 2026-06-16T13:00+03:00 ***
+[2026-06-16 14:00:00] [API] *** Giren   : 29  |  Cikan: 31 ***
+[2026-06-16 14:00:00] [API] *** Toplam Entered_IDs: 29  |  Exited_IDs: 31 ***
+[2026-06-16 14:00:00] [API] ************************************************************
+[2026-06-16 14:00:00] [API] [RAPOR] Giren=29 Cikan=31 Saat=2026-06-16T13:00+03:00 cam=cam7 | Entered_IDs=29 Exited_IDs=31
+[2026-06-16 14:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/customers | cam=cam7 saat=2026-06-16T13:00+03:00 giren=29 cikan=31
+[2026-06-16 14:00:00] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/customers | id=798 | cam=cam7 saat=2026-06-16T13:00+03:00 giren=29 cikan=31
+[2026-06-16 14:07:57] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 14:07:58] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 15:00:00] [API] ************************************************************
+[2026-06-16 15:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam7 ***
+[2026-06-16 15:00:00] [API] *** Periyot : 2026-06-16T14:00+03:00 ***
+[2026-06-16 15:00:00] [API] *** Giren   : 21  |  Cikan: 24 ***
+[2026-06-16 15:00:00] [API] *** Toplam Entered_IDs: 21  |  Exited_IDs: 24 ***
+[2026-06-16 15:00:00] [API] ************************************************************
+[2026-06-16 15:00:00] [API] [RAPOR] Giren=21 Cikan=24 Saat=2026-06-16T14:00+03:00 cam=cam7 | Entered_IDs=21 Exited_IDs=24
+[2026-06-16 15:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/customers | cam=cam7 saat=2026-06-16T14:00+03:00 giren=21 cikan=24
+[2026-06-16 15:00:02] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/customers | id=802 | cam=cam7 saat=2026-06-16T14:00+03:00 giren=21 cikan=24
+[2026-06-16 15:07:58] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 15:07:59] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 16:00:00] [API] ************************************************************
+[2026-06-16 16:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam7 ***
+[2026-06-16 16:00:00] [API] *** Periyot : 2026-06-16T15:00+03:00 ***
+[2026-06-16 16:00:00] [API] *** Giren   : 28  |  Cikan: 38 ***
+[2026-06-16 16:00:00] [API] *** Toplam Entered_IDs: 28  |  Exited_IDs: 38 ***
+[2026-06-16 16:00:00] [API] ************************************************************
+[2026-06-16 16:00:00] [API] [RAPOR] Giren=28 Cikan=38 Saat=2026-06-16T15:00+03:00 cam=cam7 | Entered_IDs=28 Exited_IDs=38
+[2026-06-16 16:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/customers | cam=cam7 saat=2026-06-16T15:00+03:00 giren=28 cikan=38
+[2026-06-16 16:00:00] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/customers | id=807 | cam=cam7 saat=2026-06-16T15:00+03:00 giren=28 cikan=38
+[2026-06-16 16:07:59] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 16:08:00] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 17:00:00] [API] ************************************************************
+[2026-06-16 17:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam7 ***
+[2026-06-16 17:00:00] [API] *** Periyot : 2026-06-16T16:00+03:00 ***
+[2026-06-16 17:00:00] [API] *** Giren   : 19  |  Cikan: 21 ***
+[2026-06-16 17:00:00] [API] *** Toplam Entered_IDs: 19  |  Exited_IDs: 21 ***
+[2026-06-16 17:00:00] [API] ************************************************************
+[2026-06-16 17:00:00] [API] [RAPOR] Giren=19 Cikan=21 Saat=2026-06-16T16:00+03:00 cam=cam7 | Entered_IDs=19 Exited_IDs=21
+[2026-06-16 17:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/customers | cam=cam7 saat=2026-06-16T16:00+03:00 giren=19 cikan=21
+[2026-06-16 17:00:00] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/customers | id=810 | cam=cam7 saat=2026-06-16T16:00+03:00 giren=19 cikan=21
+[2026-06-16 17:08:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 17:08:01] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 18:00:00] [API] ************************************************************
+[2026-06-16 18:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam7 ***
+[2026-06-16 18:00:00] [API] *** Periyot : 2026-06-16T17:00+03:00 ***
+[2026-06-16 18:00:00] [API] *** Giren   : 22  |  Cikan: 34 ***
+[2026-06-16 18:00:00] [API] *** Toplam Entered_IDs: 22  |  Exited_IDs: 34 ***
+[2026-06-16 18:00:00] [API] ************************************************************
+[2026-06-16 18:00:00] [API] [RAPOR] Giren=22 Cikan=34 Saat=2026-06-16T17:00+03:00 cam=cam7 | Entered_IDs=22 Exited_IDs=34
+[2026-06-16 18:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/customers | cam=cam7 saat=2026-06-16T17:00+03:00 giren=22 cikan=34
+[2026-06-16 18:00:01] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/customers | id=817 | cam=cam7 saat=2026-06-16T17:00+03:00 giren=22 cikan=34
+[2026-06-16 18:08:01] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 18:08:02] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 19:00:00] [API] ************************************************************
+[2026-06-16 19:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam7 ***
+[2026-06-16 19:00:00] [API] *** Periyot : 2026-06-16T18:00+03:00 ***
+[2026-06-16 19:00:00] [API] *** Giren   : 15  |  Cikan: 25 ***
+[2026-06-16 19:00:00] [API] *** Toplam Entered_IDs: 15  |  Exited_IDs: 25 ***
+[2026-06-16 19:00:00] [API] ************************************************************
+[2026-06-16 19:00:00] [API] [RAPOR] Giren=15 Cikan=25 Saat=2026-06-16T18:00+03:00 cam=cam7 | Entered_IDs=15 Exited_IDs=25
+[2026-06-16 19:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/customers | cam=cam7 saat=2026-06-16T18:00+03:00 giren=15 cikan=25
+[2026-06-16 19:00:00] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/customers | id=821 | cam=cam7 saat=2026-06-16T18:00+03:00 giren=15 cikan=25
+[2026-06-16 19:08:02] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 19:08:03] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 20:00:00] [API] ************************************************************
+[2026-06-16 20:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam7 ***
+[2026-06-16 20:00:00] [API] *** Periyot : 2026-06-16T19:00+03:00 ***
+[2026-06-16 20:00:00] [API] *** Giren   : 17  |  Cikan: 32 ***
+[2026-06-16 20:00:00] [API] *** Toplam Entered_IDs: 17  |  Exited_IDs: 32 ***
+[2026-06-16 20:00:00] [API] ************************************************************
+[2026-06-16 20:00:00] [API] [RAPOR] Giren=17 Cikan=32 Saat=2026-06-16T19:00+03:00 cam=cam7 | Entered_IDs=17 Exited_IDs=32
+[2026-06-16 20:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/customers | cam=cam7 saat=2026-06-16T19:00+03:00 giren=17 cikan=32
+[2026-06-16 20:00:02] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/customers | id=822 | cam=cam7 saat=2026-06-16T19:00+03:00 giren=17 cikan=32
+[2026-06-16 20:08:03] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 20:08:04] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 21:00:00] [API] ************************************************************
+[2026-06-16 21:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam7 ***
+[2026-06-16 21:00:00] [API] *** Periyot : 2026-06-16T20:00+03:00 ***
+[2026-06-16 21:00:00] [API] *** Giren   : 2  |  Cikan: 11 ***
+[2026-06-16 21:00:00] [API] *** Toplam Entered_IDs: 2  |  Exited_IDs: 11 ***
+[2026-06-16 21:00:00] [API] ************************************************************
+[2026-06-16 21:00:00] [API] [RAPOR] Giren=2 Cikan=11 Saat=2026-06-16T20:00+03:00 cam=cam7 | Entered_IDs=2 Exited_IDs=11
+[2026-06-16 21:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/customers | cam=cam7 saat=2026-06-16T20:00+03:00 giren=2 cikan=11
+[2026-06-16 21:00:01] [API] [API-OK] Gönderildi → https://ai.vislivis.com/api/analytics/customers | id=823 | cam=cam7 saat=2026-06-16T20:00+03:00 giren=2 cikan=11
+[2026-06-16 21:08:04] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 21:08:05] [API] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk

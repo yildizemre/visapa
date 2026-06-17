@@ -317,7 +317,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                   {isActive && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-9 bg-gradient-to-b from-blue-400 to-indigo-500 rounded-r-full"
+                      className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-9 bg-gradient-to-b from-blue-400 to-blue-600 rounded-r-full"
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -393,11 +393,11 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                 whileTap={{ scale: 0.98 }}
                 className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-200 text-left ${
                   isActive
-                    ? 'bg-gradient-to-r from-indigo-500/15 to-purple-500/10 border border-indigo-500/25 text-indigo-300 shadow-sm shadow-indigo-500/5'
+                    ? 'bg-gradient-to-r from-blue-500/15 to-blue-600/10 border border-blue-500/25 text-blue-300 shadow-sm shadow-indigo-500/5'
                     : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200 border border-transparent'
                 }`}
               >
-                <Icon className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-indigo-400' : ''}`} />
+                <Icon className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-blue-400' : ''}`} />
                 <span className="font-medium text-sm leading-snug">
                   {item.label}
                   {'badge' in item && typeof item.badge === 'number' && item.badge > 0 && (
@@ -509,13 +509,13 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                 </div>
                 {/* Avatar - click to upload logo */}
                 <div className="relative group cursor-pointer" onClick={() => logoInputRef.current?.click()} title="Logo yükle">
-                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center overflow-hidden border-2 border-transparent group-hover:border-indigo-400 transition-all">
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center overflow-hidden border-2 border-transparent group-hover:border-blue-400 transition-all">
                     {userLogo
                       ? <img src={userLogo} alt="logo" className="w-full h-full object-cover" />
                       : <User className="w-4 h-4 lg:w-5 lg:h-5 text-white" />}
                   </div>
                   {logoUploading && <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-full"><div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" /></div>}
-                  <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-indigo-500 rounded-full border border-slate-900 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-blue-500 rounded-full border border-slate-900 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="text-[7px] text-white font-bold">+</span>
                   </div>
                 </div>
@@ -523,7 +523,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
               </div>
               {/* Mobile user icon */}
               <div className="md:hidden relative group cursor-pointer" onClick={() => logoInputRef.current?.click()} title="Logo yükle">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center overflow-hidden border-2 border-transparent group-hover:border-indigo-400 transition-all">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center overflow-hidden border-2 border-transparent group-hover:border-blue-400 transition-all">
                   {userLogo
                     ? <img src={userLogo} alt="logo" className="w-full h-full object-cover" />
                     : <User className="w-4 h-4 text-white" />}
@@ -577,7 +577,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
               <div className="w-full space-y-1">
                 <div className="flex justify-between text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
                   <span>Boyut (Büyüt / Küçült)</span>
-                  <span className="text-indigo-400">{Math.round(cropScale * 100)}%</span>
+                  <span className="text-blue-400">{Math.round(cropScale * 100)}%</span>
                 </div>
                 <input 
                   type="range" 
@@ -586,7 +586,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                   step="0.02" 
                   value={cropScale} 
                   onChange={(e) => setCropScale(parseFloat(e.target.value))} 
-                  className="w-full accent-indigo-500 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer"
+                  className="w-full accent-blue-500 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer"
                 />
               </div>
 
@@ -594,7 +594,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
               <div className="w-full space-y-1">
                 <div className="flex justify-between text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
                   <span>Yatay Konum</span>
-                  <span className="text-indigo-400">{cropX}px</span>
+                  <span className="text-blue-400">{cropX}px</span>
                 </div>
                 <input 
                   type="range" 
@@ -603,7 +603,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                   step="1" 
                   value={cropX} 
                   onChange={(e) => setCropX(parseInt(e.target.value))} 
-                  className="w-full accent-indigo-500 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer"
+                  className="w-full accent-blue-500 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer"
                 />
               </div>
 
@@ -611,7 +611,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
               <div className="w-full space-y-1">
                 <div className="flex justify-between text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
                   <span>Dikey Konum</span>
-                  <span className="text-indigo-400">{cropY}px</span>
+                  <span className="text-blue-400">{cropY}px</span>
                 </div>
                 <input 
                   type="range" 
@@ -620,7 +620,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                   step="1" 
                   value={cropY} 
                   onChange={(e) => setCropY(parseInt(e.target.value))} 
-                  className="w-full accent-indigo-500 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer"
+                  className="w-full accent-blue-500 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer"
                 />
               </div>
             </div>
@@ -636,7 +636,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
               <button
                 type="button"
                 onClick={handleSaveCroppedLogo}
-                className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:brightness-110 active:brightness-95 text-white text-sm font-bold shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center gap-2"
+                className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:brightness-110 active:brightness-95 text-white text-sm font-bold shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2"
               >
                 {logoUploading ? <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> : null}
                 Kaydet

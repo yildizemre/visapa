@@ -237,7 +237,7 @@ const Heatmaps = () => {
   const hasChanges = Object.keys(editedData).length > 0;
   const isEditingDisabled = selectedZone !== 'all';
 
-  const chartColors = { primary: '#6366f1', secondary: '#f43f5e', accent: '#3b82f6', purple: '#8b5cf6' };
+  const chartColors = { primary: '#3b82f6', secondary: '#f43f5e', accent: '#3b82f6', purple: '#3b82f6' };
 
   const tooltipStyle = {
     backgroundColor: 'rgba(15, 23, 42, 0.95)',
@@ -433,7 +433,7 @@ const Heatmaps = () => {
         <InsightsPanel module="heatmap" />
 
         <div className="flex justify-center w-full my-4">
-          <div className="relative flex bg-slate-800/50 p-1.5 rounded-2xl border border-slate-700/50 w-full max-w-lg shadow-xl shadow-indigo-500/5">
+          <div className="relative flex bg-slate-800/50 p-1.5 rounded-2xl border border-slate-700/50 w-full max-w-lg shadow-xl shadow-blue-500/5">
             <button
               onClick={() => {
                 setViewMode('charts');
@@ -448,7 +448,7 @@ const Heatmaps = () => {
               {viewMode === 'charts' && (
                 <motion.div
                   layoutId="activeHeatmapTab"
-                  className="absolute inset-0 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-600/20 -z-10"
+                  className="absolute inset-0 bg-blue-600 rounded-xl shadow-lg shadow-blue-600/20 -z-10"
                   transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />
               )}
@@ -469,7 +469,7 @@ const Heatmaps = () => {
               {viewMode === 'floorplan' && (
                 <motion.div
                   layoutId="activeHeatmapTab"
-                  className="absolute inset-0 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-600/20 -z-10"
+                  className="absolute inset-0 bg-blue-600 rounded-xl shadow-lg shadow-blue-600/20 -z-10"
                   transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />
               )}
@@ -480,9 +480,9 @@ const Heatmaps = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
-            <div className="bg-gradient-to-br from-blue-600/10 to-indigo-600/10 p-5 sm:p-6 rounded-2xl border border-blue-500/20 flex flex-col justify-between">
+            <div className="bg-gradient-to-br from-blue-600/10 to-blue-700/10 p-5 sm:p-6 rounded-2xl border border-blue-500/20 flex flex-col justify-between">
                 <div className="flex items-center space-x-4 mb-4">
-                    <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/20"><Users className="w-5 h-5 text-white" /></div>
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-500/20"><Users className="w-5 h-5 text-white" /></div>
                     <div>
                         <p className="text-xs font-semibold text-blue-300/70 uppercase tracking-wider">{t('heatmap.visitorChange')}</p>
                         <h3 className="text-3xl font-extrabold text-white">{(dailyData?.overallStats.totalVisitors ?? 0).toLocaleString()}</h3>
@@ -532,7 +532,7 @@ const Heatmaps = () => {
                     <th scope="col" className="px-2 sm:px-3 md:px-4 lg:px-6 py-2.5 sm:py-3 md:py-3.5 text-[9px] sm:text-xs text-blue-400 uppercase font-bold tracking-widest text-center whitespace-nowrap">{t('heatmap.visitorCount')}</th>
                     <th scope="col" className="px-2 sm:px-3 md:px-4 lg:px-6 py-2.5 sm:py-3 md:py-3.5 text-[9px] sm:text-xs text-orange-400 uppercase font-bold tracking-widest text-center whitespace-nowrap">{t('heatmap.avgDwellSec')}</th>
                     <th scope="col" className="px-2 sm:px-3 md:px-4 lg:px-6 py-2.5 sm:py-3 md:py-3.5 text-[9px] sm:text-xs text-emerald-400 uppercase font-bold tracking-widest text-center hidden md:table-cell whitespace-nowrap">{t('heatmap.visitorChangeCol')}</th>
-                    <th scope="col" className="px-2 sm:px-3 md:px-4 lg:px-6 py-2.5 sm:py-3 md:py-3.5 text-[9px] sm:text-xs text-purple-400 uppercase font-bold tracking-widest text-center hidden lg:table-cell whitespace-nowrap">{t('heatmap.dwellChange')}</th>
+                    <th scope="col" className="px-2 sm:px-3 md:px-4 lg:px-6 py-2.5 sm:py-3 md:py-3.5 text-[9px] sm:text-xs text-blue-400 uppercase font-bold tracking-widest text-center hidden lg:table-cell whitespace-nowrap">{t('heatmap.dwellChange')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -543,7 +543,7 @@ const Heatmaps = () => {
                     const currentDwellTime = editedDwellTime !== undefined ? editedDwellTime : hourData.avgDwellTime;
 
                     return (
-                      <tr key={hourData.hour} className={`border-b border-slate-700/30 hover:bg-white/[0.02] transition-colors ${isEdited ? 'bg-indigo-900/20' : ''}`}>
+                      <tr key={hourData.hour} className={`border-b border-slate-700/30 hover:bg-white/[0.02] transition-colors ${isEdited ? 'bg-blue-900/15' : ''}`}>
                         <td className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4 font-medium text-white whitespace-nowrap text-[10px] sm:text-xs md:text-sm">{`${hourData.hour}:00-${hourData.hour}:59`}</td>
                         <td className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4 text-center">
                           <input type="number" value={editedData[hourData.hour]?.totalVisitors !== undefined ? editedData[hourData.hour]?.totalVisitors : hourData.totalVisitors} onChange={e => handleDataChange(hourData.hour, 'totalVisitors', e.target.value)} className="w-16 sm:w-20 md:w-24 bg-slate-800 text-blue-400 font-semibold text-center rounded-md border border-slate-600 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-slate-800/50 disabled:cursor-not-allowed text-[10px] sm:text-xs"
@@ -586,24 +586,24 @@ const Heatmaps = () => {
               {/* 2D Floor Plan Container */}
               <div className="relative w-full aspect-[16/10] min-h-[300px] md:min-h-[450px] bg-slate-950 rounded-2xl overflow-hidden border border-slate-700/50 shadow-inner flex items-center justify-center">
                 {/* Blueprint Background Grid / High-tech look */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
                 
                 {/* Tech Blueprint elements (mock store walls & registers to make it look premium out-of-the-box) */}
-                <div className="absolute inset-x-[10%] inset-y-[15%] border-2 border-dashed border-indigo-500/10 rounded-xl pointer-events-none flex items-center justify-center">
+                <div className="absolute inset-x-[10%] inset-y-[15%] border-2 border-dashed border-blue-500/10 rounded-xl pointer-events-none flex items-center justify-center">
                   <span className="text-[10px] uppercase font-bold tracking-widest text-slate-700/60 select-none">MAĞAZA ALANI (Blueprint)</span>
                 </div>
 
                 {/* Mock registers at the bottom-left */}
-                <div className="absolute bottom-[18%] left-[15%] w-16 h-12 border border-indigo-500/20 bg-slate-900/50 rounded flex items-center justify-center pointer-events-none">
+                <div className="absolute bottom-[18%] left-[15%] w-16 h-12 border border-blue-500/20 bg-slate-900/50 rounded flex items-center justify-center pointer-events-none">
                   <span className="text-[9px] text-slate-500">KASA 1</span>
                 </div>
-                <div className="absolute bottom-[18%] left-[28%] w-16 h-12 border border-indigo-500/20 bg-slate-900/50 rounded flex items-center justify-center pointer-events-none">
+                <div className="absolute bottom-[18%] left-[28%] w-16 h-12 border border-blue-500/20 bg-slate-900/50 rounded flex items-center justify-center pointer-events-none">
                   <span className="text-[9px] text-slate-500">KASA 2</span>
                 </div>
 
                 {/* Mock entrance at the bottom middle */}
-                <div className="absolute bottom-[5%] left-[45%] right-[45%] h-4 border-t-2 border-dashed border-indigo-400/40 flex items-center justify-center pointer-events-none">
-                  <span className="text-[8px] tracking-widest text-indigo-400/50 font-bold">GİRİŞ</span>
+                <div className="absolute bottom-[5%] left-[45%] right-[45%] h-4 border-t-2 border-dashed border-blue-400/40 flex items-center justify-center pointer-events-none">
+                  <span className="text-[8px] tracking-widest text-blue-400/50 font-bold">GİRİŞ</span>
                 </div>
 
                 {/* Heatmap overlay dots */}

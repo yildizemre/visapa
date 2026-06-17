@@ -1,0 +1,1039 @@
+============================================================
+  Counter — OLAY LOGLARI
+  Kamera  : cam7
+  Tarih   : 2026-06-16
+  Açıldı  : 2026-06-16 00:00:00
+============================================================
+
+[2026-06-16 10:00:13] [EVT] ✅ CIKIS SAYILDI: ID=72564 (1->2) | Toplam Çıkan: 1
+[2026-06-16 10:00:13] [EVT] ID 72564 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_72564_2026-06-16_10-00-13-585.jpg
+[2026-06-16 10:04:19] [EVT] ✅ CIKIS SAYILDI: ID=72594 (1->2) | Toplam Çıkan: 2
+[2026-06-16 10:04:19] [EVT] ID 72594 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_72594_2026-06-16_10-04-19-333.jpg
+[2026-06-16 10:04:28] [EVT] ✅ GIRIS SAYILDI: ID=72597 (2->1) | Toplam Giren: 1
+[2026-06-16 10:04:28] [EVT] ID 72597 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_72597_2026-06-16_10-04-28-209.jpg (58148 bytes)
+[2026-06-16 10:04:34] [EVT] ✅ CIKIS SAYILDI: ID=72595 (1->2) | Toplam Çıkan: 3
+[2026-06-16 10:04:34] [EVT] ID 72595 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_72595_2026-06-16_10-04-34-838.jpg
+[2026-06-16 10:05:56] [EVT] ✅ CIKIS SAYILDI: ID=72635 (1->2) | Toplam Çıkan: 4
+[2026-06-16 10:05:56] [EVT] ID 72635 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_72635_2026-06-16_10-05-56-894.jpg
+[2026-06-16 10:08:52] [EVT] ✅ GIRIS SAYILDI: ID=72707 (2->1) | Toplam Giren: 2
+[2026-06-16 10:08:52] [EVT] ID 72707 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_72707_2026-06-16_10-08-52-939.jpg (56632 bytes)
+[2026-06-16 10:09:20] [EVT] ✅ CIKIS SAYILDI: ID=72720 (1->2) | Toplam Çıkan: 5
+[2026-06-16 10:09:20] [EVT] ID 72720 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_72720_2026-06-16_10-09-20-920.jpg
+[2026-06-16 10:10:13] [EVT] ✅ GIRIS SAYILDI: ID=72737 (2->1) | Toplam Giren: 3
+[2026-06-16 10:10:13] [EVT] ID 72737 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_72737_2026-06-16_10-10-13-605.jpg (56580 bytes)
+[2026-06-16 10:10:17] [EVT] ✅ GIRIS SAYILDI: ID=72748 (2->1) | Toplam Giren: 4
+[2026-06-16 10:10:17] [EVT] ID 72748 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_72748_2026-06-16_10-10-17-331.jpg (56778 bytes)
+[2026-06-16 10:12:59] [EVT] ✅ CIKIS SAYILDI: ID=72800 (1->2) | Toplam Çıkan: 6
+[2026-06-16 10:12:59] [EVT] ID 72800 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_72800_2026-06-16_10-12-59-425.jpg
+[2026-06-16 10:13:34] [EVT] ✅ CIKIS SAYILDI: ID=72807 (1->2) | Toplam Çıkan: 7
+[2026-06-16 10:13:34] [EVT] ID 72807 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_72807_2026-06-16_10-13-34-969.jpg
+[2026-06-16 10:15:29] [EVT] ✅ GIRIS SAYILDI: ID=72833 (2->1) | Toplam Giren: 5
+[2026-06-16 10:15:29] [EVT] ID 72833 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_72833_2026-06-16_10-15-29-411.jpg (56879 bytes)
+[2026-06-16 10:19:43] [EVT] ✅ GIRIS SAYILDI: ID=72879 (2->1) | Toplam Giren: 6
+[2026-06-16 10:19:43] [EVT] ID 72879 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_72879_2026-06-16_10-19-43-315.jpg (58117 bytes)
+[2026-06-16 10:20:57] [EVT] ✅ CIKIS SAYILDI: ID=72903 (1->2) | Toplam Çıkan: 8
+[2026-06-16 10:20:57] [EVT] ID 72903 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_72903_2026-06-16_10-20-57-327.jpg
+[2026-06-16 10:25:30] [EVT] ✅ GIRIS SAYILDI: ID=73005 (2->1) | Toplam Giren: 7
+[2026-06-16 10:25:30] [EVT] ID 73005 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73005_2026-06-16_10-25-30-202.jpg (57444 bytes)
+[2026-06-16 10:25:35] [EVT] ✅ CIKIS SAYILDI: ID=73010 (1->2) | Toplam Çıkan: 9
+[2026-06-16 10:25:35] [EVT] ID 73010 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73010_2026-06-16_10-25-35-213.jpg
+[2026-06-16 10:27:31] [EVT] ✅ CIKIS SAYILDI: ID=73031 (1->2) | Toplam Çıkan: 10
+[2026-06-16 10:27:31] [EVT] ID 73031 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73031_2026-06-16_10-27-31-006.jpg
+[2026-06-16 10:28:41] [EVT] ✅ GIRIS SAYILDI: ID=73055 (2->1) | Toplam Giren: 8
+[2026-06-16 10:28:41] [EVT] ID 73055 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73055_2026-06-16_10-28-41-120.jpg (56836 bytes)
+[2026-06-16 10:30:27] [EVT] ✅ CIKIS SAYILDI: ID=73102 (1->2) | Toplam Çıkan: 11
+[2026-06-16 10:30:27] [EVT] ID 73102 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73102_2026-06-16_10-30-27-724.jpg
+[2026-06-16 10:33:16] [EVT] ✅ GIRIS SAYILDI: ID=73137 (2->1) | Toplam Giren: 9
+[2026-06-16 10:33:16] [EVT] ID 73137 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73137_2026-06-16_10-33-16-756.jpg (57148 bytes)
+[2026-06-16 10:34:50] [EVT] ✅ CIKIS SAYILDI: ID=73158 (1->2) | Toplam Çıkan: 12
+[2026-06-16 10:34:50] [EVT] ID 73158 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73158_2026-06-16_10-34-50-956.jpg
+[2026-06-16 10:35:19] [EVT] ✅ GIRIS SAYILDI: ID=73167 (2->1) | Toplam Giren: 10
+[2026-06-16 10:35:19] [EVT] ID 73167 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73167_2026-06-16_10-35-19-256.jpg (56581 bytes)
+[2026-06-16 10:42:18] [EVT] ✅ GIRIS SAYILDI: ID=73285 (2->1) | Toplam Giren: 11
+[2026-06-16 10:42:18] [EVT] ID 73285 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73285_2026-06-16_10-42-18-195.jpg (57865 bytes)
+[2026-06-16 10:43:26] [EVT] ✅ CIKIS SAYILDI: ID=73322 (1->2) | Toplam Çıkan: 13
+[2026-06-16 10:43:26] [EVT] ID 73322 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73322_2026-06-16_10-43-26-990.jpg
+[2026-06-16 10:44:44] [EVT] ✅ CIKIS SAYILDI: ID=73328 (1->2) | Toplam Çıkan: 14
+[2026-06-16 10:44:44] [EVT] ID 73328 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73328_2026-06-16_10-44-44-712.jpg
+[2026-06-16 10:45:56] [EVT] ✅ CIKIS SAYILDI: ID=73349 (1->2) | Toplam Çıkan: 15
+[2026-06-16 10:45:56] [EVT] ID 73349 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73349_2026-06-16_10-45-56-224.jpg
+[2026-06-16 10:47:50] [EVT] ✅ CIKIS SAYILDI: ID=73362 (1->2) | Toplam Çıkan: 16
+[2026-06-16 10:47:50] [EVT] ID 73362 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73362_2026-06-16_10-47-50-473.jpg
+[2026-06-16 10:48:58] [EVT] ✅ CIKIS SAYILDI: ID=73372 (1->2) | Toplam Çıkan: 17
+[2026-06-16 10:48:58] [EVT] ID 73372 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73372_2026-06-16_10-48-58-810.jpg
+[2026-06-16 10:55:15] [EVT] ✅ GIRIS SAYILDI: ID=73437 (2->1) | Toplam Giren: 12
+[2026-06-16 10:55:15] [EVT] ID 73437 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73437_2026-06-16_10-55-15-714.jpg (56445 bytes)
+[2026-06-16 10:55:17] [EVT] ✅ GIRIS SAYILDI: ID=73452 (2->1) | Toplam Giren: 13
+[2026-06-16 10:55:17] [EVT] ID 73452 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73452_2026-06-16_10-55-17-612.jpg (57838 bytes)
+[2026-06-16 10:55:59] [EVT] ✅ GIRIS SAYILDI: ID=73476 (2->1) | Toplam Giren: 14
+[2026-06-16 10:55:59] [EVT] ID 73476 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73476_2026-06-16_10-55-59-628.jpg (57656 bytes)
+[2026-06-16 10:57:11] [EVT] ✅ CIKIS SAYILDI: ID=73483 (1->2) | Toplam Çıkan: 18
+[2026-06-16 10:57:11] [EVT] ID 73483 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73483_2026-06-16_10-57-11-835.jpg
+[2026-06-16 10:57:30] [EVT] ✅ CIKIS SAYILDI: ID=73492 (1->2) | Toplam Çıkan: 19
+[2026-06-16 10:57:30] [EVT] ID 73492 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73492_2026-06-16_10-57-30-397.jpg
+[2026-06-16 11:02:18] [EVT] ✅ CIKIS SAYILDI: ID=73509 (1->2) | Toplam Çıkan: 1
+[2026-06-16 11:02:18] [EVT] ID 73509 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73509_2026-06-16_11-02-18-264.jpg
+[2026-06-16 11:03:19] [EVT] ✅ CIKIS SAYILDI: ID=73616 (1->2) | Toplam Çıkan: 2
+[2026-06-16 11:03:19] [EVT] ID 73616 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73616_2026-06-16_11-03-19-633.jpg
+[2026-06-16 11:03:34] [EVT] ✅ GIRIS SAYILDI: ID=73635 (2->1) | Toplam Giren: 1
+[2026-06-16 11:03:34] [EVT] ID 73635 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73635_2026-06-16_11-03-34-732.jpg (57007 bytes)
+[2026-06-16 11:05:56] [EVT] ✅ CIKIS SAYILDI: ID=73701 (1->2) | Toplam Çıkan: 3
+[2026-06-16 11:05:56] [EVT] ID 73701 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73701_2026-06-16_11-05-56-152.jpg
+[2026-06-16 11:07:12] [EVT] ✅ GIRIS SAYILDI: ID=73720 (2->1) | Toplam Giren: 2
+[2026-06-16 11:07:12] [EVT] ID 73720 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73720_2026-06-16_11-07-12-417.jpg (56830 bytes)
+[2026-06-16 11:07:13] [EVT] ✅ GIRIS SAYILDI: ID=73721 (2->1) | Toplam Giren: 3
+[2026-06-16 11:07:13] [EVT] ID 73721 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73721_2026-06-16_11-07-13-361.jpg (57240 bytes)
+[2026-06-16 11:08:32] [EVT] ✅ GIRIS SAYILDI: ID=73760 (2->1) | Toplam Giren: 4
+[2026-06-16 11:08:33] [EVT] ID 73760 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73760_2026-06-16_11-08-32-995.jpg (57347 bytes)
+[2026-06-16 11:08:40] [EVT] ✅ CIKIS SAYILDI: ID=73769 (1->2) | Toplam Çıkan: 4
+[2026-06-16 11:08:40] [EVT] ID 73769 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73769_2026-06-16_11-08-40-508.jpg
+[2026-06-16 11:08:43] [EVT] ✅ GIRIS SAYILDI: ID=73770 (2->1) | Toplam Giren: 5
+[2026-06-16 11:08:43] [EVT] ID 73770 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73770_2026-06-16_11-08-43-499.jpg (56928 bytes)
+[2026-06-16 11:09:13] [EVT] ✅ CIKIS SAYILDI: ID=73783 (1->2) | Toplam Çıkan: 5
+[2026-06-16 11:09:13] [EVT] ID 73783 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73783_2026-06-16_11-09-13-357.jpg
+[2026-06-16 11:09:14] [EVT] ✅ CIKIS SAYILDI: ID=73780 (1->2) | Toplam Çıkan: 6
+[2026-06-16 11:09:14] [EVT] ID 73780 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73780_2026-06-16_11-09-14-836.jpg
+[2026-06-16 11:10:07] [EVT] ✅ GIRIS SAYILDI: ID=73790 (2->1) | Toplam Giren: 6
+[2026-06-16 11:10:07] [EVT] ID 73790 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73790_2026-06-16_11-10-07-323.jpg (58003 bytes)
+[2026-06-16 11:12:02] [EVT] ✅ GIRIS SAYILDI: ID=73816 (2->1) | Toplam Giren: 7
+[2026-06-16 11:12:02] [EVT] ID 73816 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73816_2026-06-16_11-12-02-557.jpg (57812 bytes)
+[2026-06-16 11:12:10] [EVT] ✅ GIRIS SAYILDI: ID=73817 (2->1) | Toplam Giren: 8
+[2026-06-16 11:12:10] [EVT] ID 73817 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73817_2026-06-16_11-12-10-507.jpg (57286 bytes)
+[2026-06-16 11:14:23] [EVT] ✅ GIRIS SAYILDI: ID=73844 (2->1) | Toplam Giren: 9
+[2026-06-16 11:14:23] [EVT] ID 73844 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73844_2026-06-16_11-14-23-758.jpg (56739 bytes)
+[2026-06-16 11:14:25] [EVT] ✅ GIRIS SAYILDI: ID=73845 (2->1) | Toplam Giren: 10
+[2026-06-16 11:14:25] [EVT] ID 73845 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73845_2026-06-16_11-14-25-111.jpg (57484 bytes)
+[2026-06-16 11:15:33] [EVT] ✅ CIKIS SAYILDI: ID=73857 (1->2) | Toplam Çıkan: 7
+[2026-06-16 11:15:33] [EVT] ID 73857 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73857_2026-06-16_11-15-33-010.jpg
+[2026-06-16 11:16:49] [EVT] ✅ GIRIS SAYILDI: ID=73865 (2->1) | Toplam Giren: 11
+[2026-06-16 11:16:49] [EVT] ID 73865 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_73865_2026-06-16_11-16-49-092.jpg (56926 bytes)
+[2026-06-16 11:22:50] [EVT] ✅ CIKIS SAYILDI: ID=73944 (1->2) | Toplam Çıkan: 8
+[2026-06-16 11:22:50] [EVT] ID 73944 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73944_2026-06-16_11-22-50-838.jpg
+[2026-06-16 11:22:51] [EVT] ✅ CIKIS SAYILDI: ID=73946 (1->2) | Toplam Çıkan: 9
+[2026-06-16 11:22:51] [EVT] ID 73946 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73946_2026-06-16_11-22-51-427.jpg
+[2026-06-16 11:24:03] [EVT] ✅ CIKIS SAYILDI: ID=73965 (1->2) | Toplam Çıkan: 10
+[2026-06-16 11:24:03] [EVT] ID 73965 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73965_2026-06-16_11-24-03-593.jpg
+[2026-06-16 11:24:08] [EVT] ✅ CIKIS SAYILDI: ID=73973 (1->2) | Toplam Çıkan: 11
+[2026-06-16 11:24:08] [EVT] ID 73973 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_73973_2026-06-16_11-24-08-690.jpg
+[2026-06-16 11:26:49] [EVT] ✅ GIRIS SAYILDI: ID=74027 (2->1) | Toplam Giren: 12
+[2026-06-16 11:26:49] [EVT] ID 74027 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74027_2026-06-16_11-26-49-332.jpg (57017 bytes)
+[2026-06-16 11:27:14] [EVT] ✅ GIRIS SAYILDI: ID=74037 (2->1) | Toplam Giren: 13
+[2026-06-16 11:27:14] [EVT] ID 74037 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74037_2026-06-16_11-27-14-081.jpg (56777 bytes)
+[2026-06-16 11:28:45] [EVT] ✅ CIKIS SAYILDI: ID=74084 (1->2) | Toplam Çıkan: 12
+[2026-06-16 11:28:45] [EVT] ID 74084 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74084_2026-06-16_11-28-45-895.jpg
+[2026-06-16 11:28:49] [EVT] ✅ CIKIS SAYILDI: ID=74085 (1->2) | Toplam Çıkan: 13
+[2026-06-16 11:28:49] [EVT] ID 74085 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74085_2026-06-16_11-28-49-247.jpg
+[2026-06-16 11:28:50] [EVT] ✅ CIKIS SAYILDI: ID=74082 (1->2) | Toplam Çıkan: 14
+[2026-06-16 11:28:50] [EVT] ID 74082 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74082_2026-06-16_11-28-50-989.jpg
+[2026-06-16 11:29:10] [EVT] ✅ CIKIS SAYILDI: ID=74105 (1->2) | Toplam Çıkan: 15
+[2026-06-16 11:29:10] [EVT] ID 74105 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74105_2026-06-16_11-29-10-206.jpg
+[2026-06-16 11:29:50] [EVT] ✅ GIRIS SAYILDI: ID=74130 (2->1) | Toplam Giren: 14
+[2026-06-16 11:29:50] [EVT] ID 74130 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74130_2026-06-16_11-29-50-588.jpg (57480 bytes)
+[2026-06-16 11:29:51] [EVT] ✅ GIRIS SAYILDI: ID=74131 (2->1) | Toplam Giren: 15
+[2026-06-16 11:29:51] [EVT] ID 74131 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74131_2026-06-16_11-29-51-703.jpg (58284 bytes)
+[2026-06-16 11:31:39] [EVT] ✅ CIKIS SAYILDI: ID=74152 (1->2) | Toplam Çıkan: 16
+[2026-06-16 11:31:39] [EVT] ID 74152 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74152_2026-06-16_11-31-39-310.jpg
+[2026-06-16 11:33:17] [EVT] ✅ GIRIS SAYILDI: ID=74186 (2->1) | Toplam Giren: 16
+[2026-06-16 11:33:17] [EVT] ID 74186 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74186_2026-06-16_11-33-17-382.jpg (57062 bytes)
+[2026-06-16 11:33:18] [EVT] ✅ CIKIS SAYILDI: ID=74196 (1->2) | Toplam Çıkan: 17
+[2026-06-16 11:33:18] [EVT] ID 74196 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74196_2026-06-16_11-33-18-797.jpg
+[2026-06-16 11:33:19] [EVT] ✅ GIRIS SAYILDI: ID=74196 (2->1) | Toplam Giren: 17
+[2026-06-16 11:33:19] [EVT] ID 74196 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74196_2026-06-16_11-33-19-067.jpg (58065 bytes)
+[2026-06-16 11:35:44] [EVT] ✅ GIRIS SAYILDI: ID=74254 (2->1) | Toplam Giren: 18
+[2026-06-16 11:35:44] [EVT] ID 74254 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74254_2026-06-16_11-35-44-132.jpg (56988 bytes)
+[2026-06-16 11:36:14] [EVT] ✅ CIKIS SAYILDI: ID=74262 (1->2) | Toplam Çıkan: 18
+[2026-06-16 11:36:14] [EVT] ID 74262 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74262_2026-06-16_11-36-14-374.jpg
+[2026-06-16 11:38:05] [EVT] ✅ CIKIS SAYILDI: ID=74285 (1->2) | Toplam Çıkan: 19
+[2026-06-16 11:38:05] [EVT] ID 74285 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74285_2026-06-16_11-38-05-423.jpg
+[2026-06-16 11:38:06] [EVT] ✅ CIKIS SAYILDI: ID=74283 (1->2) | Toplam Çıkan: 20
+[2026-06-16 11:38:07] [EVT] ID 74283 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74283_2026-06-16_11-38-07-003.jpg
+[2026-06-16 11:38:18] [EVT] ✅ GIRIS SAYILDI: ID=74289 (2->1) | Toplam Giren: 19
+[2026-06-16 11:38:18] [EVT] ID 74289 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74289_2026-06-16_11-38-18-557.jpg (56596 bytes)
+[2026-06-16 11:39:07] [EVT] ✅ GIRIS SAYILDI: ID=74303 (2->1) | Toplam Giren: 20
+[2026-06-16 11:39:07] [EVT] ID 74303 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74303_2026-06-16_11-39-07-439.jpg (56670 bytes)
+[2026-06-16 11:39:42] [EVT] ✅ GIRIS SAYILDI: ID=74322 (2->1) | Toplam Giren: 21
+[2026-06-16 11:39:42] [EVT] ID 74322 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74322_2026-06-16_11-39-42-522.jpg (56744 bytes)
+[2026-06-16 11:40:57] [EVT] ✅ GIRIS SAYILDI: ID=74336 (2->1) | Toplam Giren: 22
+[2026-06-16 11:40:57] [EVT] ID 74336 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74336_2026-06-16_11-40-57-760.jpg (56712 bytes)
+[2026-06-16 11:42:04] [EVT] ✅ CIKIS SAYILDI: ID=74348 (1->2) | Toplam Çıkan: 21
+[2026-06-16 11:42:04] [EVT] ID 74348 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74348_2026-06-16_11-42-04-200.jpg
+[2026-06-16 11:42:55] [EVT] ✅ GIRIS SAYILDI: ID=74358 (2->1) | Toplam Giren: 23
+[2026-06-16 11:42:55] [EVT] ID 74358 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74358_2026-06-16_11-42-55-806.jpg (57102 bytes)
+[2026-06-16 11:46:01] [EVT] ✅ CIKIS SAYILDI: ID=74395 (1->2) | Toplam Çıkan: 22
+[2026-06-16 11:46:01] [EVT] ID 74395 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74395_2026-06-16_11-46-01-467.jpg
+[2026-06-16 11:47:19] [EVT] ✅ GIRIS SAYILDI: ID=74408 (2->1) | Toplam Giren: 24
+[2026-06-16 11:47:19] [EVT] ID 74408 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74408_2026-06-16_11-47-19-645.jpg (56769 bytes)
+[2026-06-16 11:49:34] [EVT] ✅ GIRIS SAYILDI: ID=74473 (2->1) | Toplam Giren: 25
+[2026-06-16 11:49:34] [EVT] ID 74473 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74473_2026-06-16_11-49-34-749.jpg (56688 bytes)
+[2026-06-16 11:50:44] [EVT] ✅ CIKIS SAYILDI: ID=74495 (1->2) | Toplam Çıkan: 23
+[2026-06-16 11:50:44] [EVT] ID 74495 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74495_2026-06-16_11-50-44-577.jpg
+[2026-06-16 11:51:37] [EVT] ✅ GIRIS SAYILDI: ID=74513 (2->1) | Toplam Giren: 26
+[2026-06-16 11:51:37] [EVT] ID 74513 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74513_2026-06-16_11-51-37-977.jpg (56705 bytes)
+[2026-06-16 11:51:38] [EVT] ✅ GIRIS SAYILDI: ID=74515 (2->1) | Toplam Giren: 27
+[2026-06-16 11:51:38] [EVT] ID 74515 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74515_2026-06-16_11-51-38-808.jpg (57711 bytes)
+[2026-06-16 11:53:59] [EVT] ✅ CIKIS SAYILDI: ID=74544 (1->2) | Toplam Çıkan: 24
+[2026-06-16 11:53:59] [EVT] ID 74544 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74544_2026-06-16_11-53-59-728.jpg
+[2026-06-16 11:59:22] [EVT] ✅ GIRIS SAYILDI: ID=74649 (2->1) | Toplam Giren: 28
+[2026-06-16 11:59:22] [EVT] ID 74649 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74649_2026-06-16_11-59-22-575.jpg (56839 bytes)
+[2026-06-16 12:00:50] [EVT] ✅ GIRIS SAYILDI: ID=74685 (2->1) | Toplam Giren: 1
+[2026-06-16 12:00:50] [EVT] ID 74685 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74685_2026-06-16_12-00-50-563.jpg (56862 bytes)
+[2026-06-16 12:00:57] [EVT] ✅ CIKIS SAYILDI: ID=74693 (1->2) | Toplam Çıkan: 1
+[2026-06-16 12:00:57] [EVT] ID 74693 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74693_2026-06-16_12-00-57-597.jpg
+[2026-06-16 12:02:06] [EVT] ✅ CIKIS SAYILDI: ID=74734 (1->2) | Toplam Çıkan: 2
+[2026-06-16 12:02:06] [EVT] ID 74734 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74734_2026-06-16_12-02-06-626.jpg
+[2026-06-16 12:02:46] [EVT] ✅ CIKIS SAYILDI: ID=74766 (1->2) | Toplam Çıkan: 3
+[2026-06-16 12:02:46] [EVT] ID 74766 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74766_2026-06-16_12-02-46-085.jpg
+[2026-06-16 12:03:44] [EVT] ✅ GIRIS SAYILDI: ID=74770 (2->1) | Toplam Giren: 2
+[2026-06-16 12:03:44] [EVT] ID 74770 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74770_2026-06-16_12-03-44-268.jpg (56703 bytes)
+[2026-06-16 12:03:47] [EVT] ✅ GIRIS SAYILDI: ID=74772 (2->1) | Toplam Giren: 3
+[2026-06-16 12:03:47] [EVT] ID 74772 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74772_2026-06-16_12-03-47-619.jpg (59517 bytes)
+[2026-06-16 12:04:29] [EVT] ✅ CIKIS SAYILDI: ID=74790 (1->2) | Toplam Çıkan: 4
+[2026-06-16 12:04:29] [EVT] ID 74790 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74790_2026-06-16_12-04-29-921.jpg
+[2026-06-16 12:04:44] [EVT] ✅ CIKIS SAYILDI: ID=74795 (1->2) | Toplam Çıkan: 5
+[2026-06-16 12:04:44] [EVT] ID 74795 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74795_2026-06-16_12-04-44-243.jpg
+[2026-06-16 12:04:54] [EVT] ✅ GIRIS SAYILDI: ID=74805 (2->1) | Toplam Giren: 4
+[2026-06-16 12:04:54] [EVT] ID 74805 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74805_2026-06-16_12-04-54-584.jpg (57776 bytes)
+[2026-06-16 12:04:57] [EVT] ✅ GIRIS SAYILDI: ID=74806 (2->1) | Toplam Giren: 5
+[2026-06-16 12:04:57] [EVT] ID 74806 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74806_2026-06-16_12-04-57-590.jpg (56446 bytes)
+[2026-06-16 12:06:11] [EVT] ✅ GIRIS SAYILDI: ID=74836 (2->1) | Toplam Giren: 6
+[2026-06-16 12:06:11] [EVT] ID 74836 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74836_2026-06-16_12-06-11-408.jpg (56206 bytes)
+[2026-06-16 12:06:16] [EVT] ✅ GIRIS SAYILDI: ID=74841 (2->1) | Toplam Giren: 7
+[2026-06-16 12:06:16] [EVT] ID 74841 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74841_2026-06-16_12-06-16-961.jpg (56268 bytes)
+[2026-06-16 12:06:21] [EVT] ✅ GIRIS SAYILDI: ID=74850 (2->1) | Toplam Giren: 8
+[2026-06-16 12:06:21] [EVT] ID 74850 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74850_2026-06-16_12-06-21-044.jpg (57550 bytes)
+[2026-06-16 12:07:00] [EVT] ✅ GIRIS SAYILDI: ID=74859 (2->1) | Toplam Giren: 9
+[2026-06-16 12:07:00] [EVT] ID 74859 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_74859_2026-06-16_12-07-00-013.jpg (57523 bytes)
+[2026-06-16 12:08:50] [EVT] ✅ CIKIS SAYILDI: ID=74926 (1->2) | Toplam Çıkan: 6
+[2026-06-16 12:08:50] [EVT] ID 74926 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74926_2026-06-16_12-08-50-304.jpg
+[2026-06-16 12:09:24] [EVT] ✅ CIKIS SAYILDI: ID=74936 (1->2) | Toplam Çıkan: 7
+[2026-06-16 12:09:24] [EVT] ID 74936 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74936_2026-06-16_12-09-24-234.jpg
+[2026-06-16 12:11:55] [EVT] ✅ CIKIS SAYILDI: ID=74980 (1->2) | Toplam Çıkan: 8
+[2026-06-16 12:11:56] [EVT] ID 74980 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74980_2026-06-16_12-11-55-998.jpg
+[2026-06-16 12:12:07] [EVT] ✅ CIKIS SAYILDI: ID=74986 (1->2) | Toplam Çıkan: 9
+[2026-06-16 12:12:07] [EVT] ID 74986 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_74986_2026-06-16_12-12-07-880.jpg
+[2026-06-16 12:13:43] [EVT] ✅ GIRIS SAYILDI: ID=75027 (2->1) | Toplam Giren: 10
+[2026-06-16 12:13:43] [EVT] ID 75027 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75027_2026-06-16_12-13-43-554.jpg (57426 bytes)
+[2026-06-16 12:13:48] [EVT] ✅ CIKIS SAYILDI: ID=75036 (1->2) | Toplam Çıkan: 10
+[2026-06-16 12:13:48] [EVT] ID 75036 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75036_2026-06-16_12-13-48-354.jpg
+[2026-06-16 12:14:44] [EVT] ✅ CIKIS SAYILDI: ID=75050 (1->2) | Toplam Çıkan: 11
+[2026-06-16 12:14:44] [EVT] ID 75050 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75050_2026-06-16_12-14-44-780.jpg
+[2026-06-16 12:16:45] [EVT] ✅ CIKIS SAYILDI: ID=75171 (1->2) | Toplam Çıkan: 12
+[2026-06-16 12:16:45] [EVT] ID 75171 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75171_2026-06-16_12-16-45-043.jpg
+[2026-06-16 12:20:01] [EVT] ✅ GIRIS SAYILDI: ID=75208 (2->1) | Toplam Giren: 11
+[2026-06-16 12:20:01] [EVT] ID 75208 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75208_2026-06-16_12-20-01-464.jpg (57608 bytes)
+[2026-06-16 12:21:21] [EVT] ✅ CIKIS SAYILDI: ID=75276 (1->2) | Toplam Çıkan: 13
+[2026-06-16 12:21:21] [EVT] ID 75276 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75276_2026-06-16_12-21-21-912.jpg
+[2026-06-16 12:22:27] [EVT] ✅ GIRIS SAYILDI: ID=75292 (2->1) | Toplam Giren: 12
+[2026-06-16 12:22:27] [EVT] ID 75292 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75292_2026-06-16_12-22-27-677.jpg (56743 bytes)
+[2026-06-16 12:22:27] [EVT] ✅ GIRIS SAYILDI: ID=75298 (2->1) | Toplam Giren: 13
+[2026-06-16 12:22:27] [EVT] ID 75298 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75298_2026-06-16_12-22-27-954.jpg (57441 bytes)
+[2026-06-16 12:22:37] [EVT] ✅ GIRIS SAYILDI: ID=75300 (2->1) | Toplam Giren: 14
+[2026-06-16 12:22:37] [EVT] ID 75300 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75300_2026-06-16_12-22-37-605.jpg (56675 bytes)
+[2026-06-16 12:23:49] [EVT] ✅ CIKIS SAYILDI: ID=75328 (1->2) | Toplam Çıkan: 14
+[2026-06-16 12:23:49] [EVT] ID 75328 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75328_2026-06-16_12-23-49-953.jpg
+[2026-06-16 12:24:49] [EVT] ✅ CIKIS SAYILDI: ID=75356 (1->2) | Toplam Çıkan: 15
+[2026-06-16 12:24:49] [EVT] ID 75356 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75356_2026-06-16_12-24-49-907.jpg
+[2026-06-16 12:24:57] [EVT] ✅ CIKIS SAYILDI: ID=75361 (1->2) | Toplam Çıkan: 16
+[2026-06-16 12:24:57] [EVT] ID 75361 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75361_2026-06-16_12-24-57-110.jpg
+[2026-06-16 12:25:05] [EVT] ✅ GIRIS SAYILDI: ID=75362 (2->1) | Toplam Giren: 15
+[2026-06-16 12:25:05] [EVT] ID 75362 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75362_2026-06-16_12-25-05-864.jpg (57247 bytes)
+[2026-06-16 12:26:15] [EVT] ✅ GIRIS SAYILDI: ID=75391 (2->1) | Toplam Giren: 16
+[2026-06-16 12:26:15] [EVT] ID 75391 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75391_2026-06-16_12-26-15-569.jpg (56578 bytes)
+[2026-06-16 12:27:12] [EVT] ✅ CIKIS SAYILDI: ID=75407 (1->2) | Toplam Çıkan: 17
+[2026-06-16 12:27:12] [EVT] ID 75407 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75407_2026-06-16_12-27-12-598.jpg
+[2026-06-16 12:27:37] [EVT] ✅ GIRIS SAYILDI: ID=75417 (2->1) | Toplam Giren: 17
+[2026-06-16 12:27:37] [EVT] ID 75417 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75417_2026-06-16_12-27-37-628.jpg (56364 bytes)
+[2026-06-16 12:27:53] [EVT] ✅ GIRIS SAYILDI: ID=75412 (2->1) | Toplam Giren: 18
+[2026-06-16 12:27:53] [EVT] ID 75412 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75412_2026-06-16_12-27-53-786.jpg (57700 bytes)
+[2026-06-16 12:27:55] [EVT] ✅ CIKIS SAYILDI: ID=75429 (1->2) | Toplam Çıkan: 18
+[2026-06-16 12:27:55] [EVT] ID 75429 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75429_2026-06-16_12-27-55-408.jpg
+[2026-06-16 12:28:02] [EVT] ✅ CIKIS SAYILDI: ID=75412 (1->2) | Toplam Çıkan: 19
+[2026-06-16 12:28:02] [EVT] ID 75412 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75412_2026-06-16_12-28-02-388.jpg
+[2026-06-16 12:29:36] [EVT] ✅ GIRIS SAYILDI: ID=75465 (2->1) | Toplam Giren: 19
+[2026-06-16 12:29:36] [EVT] ID 75465 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75465_2026-06-16_12-29-36-138.jpg (57424 bytes)
+[2026-06-16 12:31:20] [EVT] ✅ CIKIS SAYILDI: ID=75514 (1->2) | Toplam Çıkan: 20
+[2026-06-16 12:31:20] [EVT] ID 75514 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75514_2026-06-16_12-31-20-438.jpg
+[2026-06-16 12:31:43] [EVT] ✅ CIKIS SAYILDI: ID=75516 (1->2) | Toplam Çıkan: 21
+[2026-06-16 12:31:43] [EVT] ID 75516 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75516_2026-06-16_12-31-43-701.jpg
+[2026-06-16 12:32:00] [EVT] ✅ GIRIS SAYILDI: ID=75532 (2->1) | Toplam Giren: 20
+[2026-06-16 12:32:00] [EVT] ID 75532 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75532_2026-06-16_12-32-00-157.jpg (56255 bytes)
+[2026-06-16 12:36:10] [EVT] ✅ CIKIS SAYILDI: ID=75689 (1->2) | Toplam Çıkan: 22
+[2026-06-16 12:36:10] [EVT] ID 75689 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75689_2026-06-16_12-36-10-479.jpg
+[2026-06-16 12:37:40] [EVT] ✅ GIRIS SAYILDI: ID=75707 (2->1) | Toplam Giren: 21
+[2026-06-16 12:37:40] [EVT] ID 75707 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75707_2026-06-16_12-37-40-306.jpg (56979 bytes)
+[2026-06-16 12:39:28] [EVT] ✅ CIKIS SAYILDI: ID=75729 (1->2) | Toplam Çıkan: 23
+[2026-06-16 12:39:28] [EVT] ID 75729 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75729_2026-06-16_12-39-28-693.jpg
+[2026-06-16 12:41:40] [EVT] ✅ GIRIS SAYILDI: ID=75779 (2->1) | Toplam Giren: 22
+[2026-06-16 12:41:40] [EVT] ID 75779 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75779_2026-06-16_12-41-40-378.jpg (57636 bytes)
+[2026-06-16 12:41:53] [EVT] ✅ GIRIS SAYILDI: ID=75794 (2->1) | Toplam Giren: 23
+[2026-06-16 12:41:53] [EVT] ID 75794 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75794_2026-06-16_12-41-53-315.jpg (57696 bytes)
+[2026-06-16 12:43:29] [EVT] ✅ CIKIS SAYILDI: ID=75802 (1->2) | Toplam Çıkan: 24
+[2026-06-16 12:43:29] [EVT] ID 75802 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75802_2026-06-16_12-43-29-450.jpg
+[2026-06-16 12:45:30] [EVT] ✅ GIRIS SAYILDI: ID=75842 (2->1) | Toplam Giren: 24
+[2026-06-16 12:45:30] [EVT] ID 75842 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75842_2026-06-16_12-45-30-364.jpg (57479 bytes)
+[2026-06-16 12:47:46] [EVT] ✅ GIRIS SAYILDI: ID=75874 (2->1) | Toplam Giren: 25
+[2026-06-16 12:47:46] [EVT] ID 75874 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75874_2026-06-16_12-47-46-146.jpg (58060 bytes)
+[2026-06-16 12:50:49] [EVT] ✅ CIKIS SAYILDI: ID=75902 (1->2) | Toplam Çıkan: 25
+[2026-06-16 12:50:49] [EVT] ID 75902 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75902_2026-06-16_12-50-49-509.jpg
+[2026-06-16 12:51:08] [EVT] ✅ GIRIS SAYILDI: ID=75910 (2->1) | Toplam Giren: 26
+[2026-06-16 12:51:08] [EVT] ID 75910 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75910_2026-06-16_12-51-08-124.jpg (56959 bytes)
+[2026-06-16 12:51:54] [EVT] ✅ GIRIS SAYILDI: ID=75929 (2->1) | Toplam Giren: 27
+[2026-06-16 12:51:54] [EVT] ID 75929 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75929_2026-06-16_12-51-54-280.jpg (57191 bytes)
+[2026-06-16 12:53:03] [EVT] ✅ GIRIS SAYILDI: ID=75946 (2->1) | Toplam Giren: 28
+[2026-06-16 12:53:03] [EVT] ID 75946 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75946_2026-06-16_12-53-03-767.jpg (57435 bytes)
+[2026-06-16 12:53:05] [EVT] ✅ CIKIS SAYILDI: ID=75946 (1->2) | Toplam Çıkan: 26
+[2026-06-16 12:53:05] [EVT] ID 75946 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_75946_2026-06-16_12-53-05-101.jpg
+[2026-06-16 12:53:34] [EVT] ✅ GIRIS SAYILDI: ID=75952 (2->1) | Toplam Giren: 29
+[2026-06-16 12:53:34] [EVT] ID 75952 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75952_2026-06-16_12-53-34-316.jpg (56698 bytes)
+[2026-06-16 12:53:34] [EVT] ✅ GIRIS SAYILDI: ID=75953 (2->1) | Toplam Giren: 30
+[2026-06-16 12:53:34] [EVT] ID 75953 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75953_2026-06-16_12-53-34-330.jpg (57140 bytes)
+[2026-06-16 12:53:38] [EVT] ✅ GIRIS SAYILDI: ID=75957 (2->1) | Toplam Giren: 31
+[2026-06-16 12:53:38] [EVT] ID 75957 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_75957_2026-06-16_12-53-38-792.jpg (60423 bytes)
+[2026-06-16 12:55:55] [EVT] ✅ CIKIS SAYILDI: ID=76033 (1->2) | Toplam Çıkan: 27
+[2026-06-16 12:55:55] [EVT] ID 76033 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76033_2026-06-16_12-55-55-085.jpg
+[2026-06-16 12:57:11] [EVT] ✅ CIKIS SAYILDI: ID=76075 (1->2) | Toplam Çıkan: 28
+[2026-06-16 12:57:11] [EVT] ID 76075 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76075_2026-06-16_12-57-11-297.jpg
+[2026-06-16 12:57:20] [EVT] ✅ GIRIS SAYILDI: ID=76083 (2->1) | Toplam Giren: 32
+[2026-06-16 12:57:20] [EVT] ID 76083 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76083_2026-06-16_12-57-20-057.jpg (56098 bytes)
+[2026-06-16 12:57:24] [EVT] ✅ GIRIS SAYILDI: ID=76085 (2->1) | Toplam Giren: 33
+[2026-06-16 12:57:24] [EVT] ID 76085 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76085_2026-06-16_12-57-24-624.jpg (56127 bytes)
+[2026-06-16 12:57:44] [EVT] ✅ CIKIS SAYILDI: ID=76107 (1->2) | Toplam Çıkan: 29
+[2026-06-16 12:57:44] [EVT] ID 76107 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76107_2026-06-16_12-57-44-430.jpg
+[2026-06-16 13:01:36] [EVT] ✅ CIKIS SAYILDI: ID=76182 (1->2) | Toplam Çıkan: 1
+[2026-06-16 13:01:36] [EVT] ID 76182 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76182_2026-06-16_13-01-36-743.jpg
+[2026-06-16 13:03:48] [EVT] ✅ CIKIS SAYILDI: ID=76198 (1->2) | Toplam Çıkan: 2
+[2026-06-16 13:03:48] [EVT] ID 76198 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76198_2026-06-16_13-03-48-566.jpg
+[2026-06-16 13:05:21] [EVT] ✅ GIRIS SAYILDI: ID=76236 (2->1) | Toplam Giren: 1
+[2026-06-16 13:05:21] [EVT] ID 76236 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76236_2026-06-16_13-05-21-822.jpg (57007 bytes)
+[2026-06-16 13:10:02] [EVT] ✅ GIRIS SAYILDI: ID=76284 (2->1) | Toplam Giren: 2
+[2026-06-16 13:10:02] [EVT] ID 76284 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76284_2026-06-16_13-10-02-448.jpg (56757 bytes)
+[2026-06-16 13:11:00] [EVT] ✅ GIRIS SAYILDI: ID=76308 (2->1) | Toplam Giren: 3
+[2026-06-16 13:11:00] [EVT] ID 76308 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76308_2026-06-16_13-11-00-635.jpg (56302 bytes)
+[2026-06-16 13:11:08] [EVT] ✅ CIKIS SAYILDI: ID=76315 (1->2) | Toplam Çıkan: 3
+[2026-06-16 13:11:08] [EVT] ID 76315 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76315_2026-06-16_13-11-08-754.jpg
+[2026-06-16 13:13:04] [EVT] ✅ CIKIS SAYILDI: ID=76388 (1->2) | Toplam Çıkan: 4
+[2026-06-16 13:13:04] [EVT] ID 76388 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76388_2026-06-16_13-13-04-203.jpg
+[2026-06-16 13:15:34] [EVT] ✅ GIRIS SAYILDI: ID=76467 (2->1) | Toplam Giren: 4
+[2026-06-16 13:15:34] [EVT] ID 76467 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76467_2026-06-16_13-15-34-467.jpg (56382 bytes)
+[2026-06-16 13:15:35] [EVT] ✅ GIRIS SAYILDI: ID=76469 (2->1) | Toplam Giren: 5
+[2026-06-16 13:15:35] [EVT] ID 76469 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76469_2026-06-16_13-15-35-677.jpg (57248 bytes)
+[2026-06-16 13:15:36] [EVT] ✅ GIRIS SAYILDI: ID=76474 (2->1) | Toplam Giren: 6
+[2026-06-16 13:15:36] [EVT] ID 76474 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76474_2026-06-16_13-15-36-833.jpg (57799 bytes)
+[2026-06-16 13:15:38] [EVT] ✅ GIRIS SAYILDI: ID=76476 (2->1) | Toplam Giren: 7
+[2026-06-16 13:15:38] [EVT] ID 76476 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76476_2026-06-16_13-15-38-357.jpg (58235 bytes)
+[2026-06-16 13:16:02] [EVT] ✅ GIRIS SAYILDI: ID=76497 (2->1) | Toplam Giren: 8
+[2026-06-16 13:16:02] [EVT] ID 76497 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76497_2026-06-16_13-16-02-753.jpg (56736 bytes)
+[2026-06-16 13:16:03] [EVT] ✅ GIRIS SAYILDI: ID=76499 (2->1) | Toplam Giren: 9
+[2026-06-16 13:16:03] [EVT] ID 76499 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76499_2026-06-16_13-16-03-703.jpg (57714 bytes)
+[2026-06-16 13:16:04] [EVT] ✅ CIKIS SAYILDI: ID=76499 (1->2) | Toplam Çıkan: 5
+[2026-06-16 13:16:04] [EVT] ID 76499 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76499_2026-06-16_13-16-04-443.jpg
+[2026-06-16 13:17:32] [EVT] ✅ GIRIS SAYILDI: ID=76557 (2->1) | Toplam Giren: 10
+[2026-06-16 13:17:32] [EVT] ID 76557 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76557_2026-06-16_13-17-32-141.jpg (56842 bytes)
+[2026-06-16 13:17:52] [EVT] ✅ CIKIS SAYILDI: ID=76578 (1->2) | Toplam Çıkan: 6
+[2026-06-16 13:17:52] [EVT] ID 76578 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76578_2026-06-16_13-17-52-025.jpg
+[2026-06-16 13:18:06] [EVT] ✅ CIKIS SAYILDI: ID=76591 (1->2) | Toplam Çıkan: 7
+[2026-06-16 13:18:06] [EVT] ID 76591 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76591_2026-06-16_13-18-06-329.jpg
+[2026-06-16 13:18:28] [EVT] ✅ CIKIS SAYILDI: ID=76596 (1->2) | Toplam Çıkan: 8
+[2026-06-16 13:18:28] [EVT] ID 76596 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76596_2026-06-16_13-18-28-534.jpg
+[2026-06-16 13:18:31] [EVT] ✅ GIRIS SAYILDI: ID=76596 (2->1) | Toplam Giren: 11
+[2026-06-16 13:18:31] [EVT] ID 76596 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76596_2026-06-16_13-18-31-225.jpg (60362 bytes)
+[2026-06-16 13:18:55] [EVT] ✅ GIRIS SAYILDI: ID=76643 (2->1) | Toplam Giren: 12
+[2026-06-16 13:18:55] [EVT] ID 76643 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76643_2026-06-16_13-18-55-867.jpg (56689 bytes)
+[2026-06-16 13:19:37] [EVT] ✅ CIKIS SAYILDI: ID=76679 (1->2) | Toplam Çıkan: 9
+[2026-06-16 13:19:37] [EVT] ID 76679 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76679_2026-06-16_13-19-37-230.jpg
+[2026-06-16 13:21:20] [EVT] ✅ GIRIS SAYILDI: ID=76734 (2->1) | Toplam Giren: 13
+[2026-06-16 13:21:20] [EVT] ID 76734 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76734_2026-06-16_13-21-20-684.jpg (55867 bytes)
+[2026-06-16 13:21:22] [EVT] ✅ GIRIS SAYILDI: ID=76735 (2->1) | Toplam Giren: 14
+[2026-06-16 13:21:22] [EVT] ID 76735 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76735_2026-06-16_13-21-22-091.jpg (57546 bytes)
+[2026-06-16 13:21:23] [EVT] ✅ GIRIS SAYILDI: ID=76733 (2->1) | Toplam Giren: 15
+[2026-06-16 13:21:23] [EVT] ID 76733 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76733_2026-06-16_13-21-23-647.jpg (58278 bytes)
+[2026-06-16 13:21:53] [EVT] ✅ CIKIS SAYILDI: ID=76754 (1->2) | Toplam Çıkan: 10
+[2026-06-16 13:21:53] [EVT] ✅ CIKIS SAYILDI: ID=76755 (1->2) | Toplam Çıkan: 11
+[2026-06-16 13:21:53] [EVT] ID 76754 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76754_2026-06-16_13-21-53-010.jpg
+[2026-06-16 13:21:53] [EVT] ID 76755 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_76755_2026-06-16_13-21-53-014.jpg
+[2026-06-16 13:28:58] [EVT] ✅ GIRIS SAYILDI: ID=76948 (2->1) | Toplam Giren: 16
+[2026-06-16 13:28:58] [EVT] ID 76948 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_76948_2026-06-16_13-28-58-790.jpg (57087 bytes)
+[2026-06-16 13:34:43] [EVT] ✅ GIRIS SAYILDI: ID=77017 (2->1) | Toplam Giren: 17
+[2026-06-16 13:34:43] [EVT] ID 77017 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77017_2026-06-16_13-34-43-637.jpg (57548 bytes)
+[2026-06-16 13:34:45] [EVT] ✅ GIRIS SAYILDI: ID=77020 (2->1) | Toplam Giren: 18
+[2026-06-16 13:34:45] [EVT] ID 77020 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77020_2026-06-16_13-34-45-117.jpg (58378 bytes)
+[2026-06-16 13:39:38] [EVT] ✅ CIKIS SAYILDI: ID=77102 (1->2) | Toplam Çıkan: 12
+[2026-06-16 13:39:38] [EVT] ID 77102 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77102_2026-06-16_13-39-38-816.jpg
+[2026-06-16 13:40:53] [EVT] ✅ CIKIS SAYILDI: ID=77129 (1->2) | Toplam Çıkan: 13
+[2026-06-16 13:40:53] [EVT] ID 77129 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77129_2026-06-16_13-40-53-968.jpg
+[2026-06-16 13:41:30] [EVT] ✅ CIKIS SAYILDI: ID=77140 (1->2) | Toplam Çıkan: 14
+[2026-06-16 13:41:30] [EVT] ID 77140 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77140_2026-06-16_13-41-30-608.jpg
+[2026-06-16 13:42:29] [EVT] ✅ GIRIS SAYILDI: ID=77158 (2->1) | Toplam Giren: 19
+[2026-06-16 13:42:29] [EVT] ID 77158 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77158_2026-06-16_13-42-29-677.jpg (56508 bytes)
+[2026-06-16 13:42:30] [EVT] ✅ GIRIS SAYILDI: ID=77159 (2->1) | Toplam Giren: 20
+[2026-06-16 13:42:30] [EVT] ID 77159 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77159_2026-06-16_13-42-30-180.jpg (57265 bytes)
+[2026-06-16 13:42:40] [EVT] ✅ CIKIS SAYILDI: ID=77164 (1->2) | Toplam Çıkan: 15
+[2026-06-16 13:42:40] [EVT] ID 77164 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77164_2026-06-16_13-42-40-099.jpg
+[2026-06-16 13:42:55] [EVT] ✅ CIKIS SAYILDI: ID=77181 (1->2) | Toplam Çıkan: 16
+[2026-06-16 13:42:55] [EVT] ✅ CIKIS SAYILDI: ID=77179 (1->2) | Toplam Çıkan: 17
+[2026-06-16 13:42:55] [EVT] ID 77181 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77181_2026-06-16_13-42-55-609.jpg
+[2026-06-16 13:42:55] [EVT] ID 77179 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77179_2026-06-16_13-42-55-620.jpg
+[2026-06-16 13:47:03] [EVT] ✅ GIRIS SAYILDI: ID=77285 (2->1) | Toplam Giren: 21
+[2026-06-16 13:47:03] [EVT] ID 77285 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77285_2026-06-16_13-47-03-946.jpg (56458 bytes)
+[2026-06-16 13:47:05] [EVT] ✅ GIRIS SAYILDI: ID=77289 (2->1) | Toplam Giren: 22
+[2026-06-16 13:47:05] [EVT] ID 77289 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77289_2026-06-16_13-47-05-069.jpg (58204 bytes)
+[2026-06-16 13:47:06] [EVT] ✅ GIRIS SAYILDI: ID=77288 (2->1) | Toplam Giren: 23
+[2026-06-16 13:47:06] [EVT] ID 77288 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77288_2026-06-16_13-47-06-835.jpg (57046 bytes)
+[2026-06-16 13:47:18] [EVT] ✅ CIKIS SAYILDI: ID=77299 (1->2) | Toplam Çıkan: 18
+[2026-06-16 13:47:18] [EVT] ID 77299 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77299_2026-06-16_13-47-18-859.jpg
+[2026-06-16 13:48:06] [EVT] ✅ CIKIS SAYILDI: ID=77335 (1->2) | Toplam Çıkan: 19
+[2026-06-16 13:48:06] [EVT] ID 77335 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77335_2026-06-16_13-48-06-015.jpg
+[2026-06-16 13:49:15] [EVT] ✅ GIRIS SAYILDI: ID=77376 (2->1) | Toplam Giren: 24
+[2026-06-16 13:49:15] [EVT] ID 77376 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77376_2026-06-16_13-49-15-223.jpg (56476 bytes)
+[2026-06-16 13:50:23] [EVT] ✅ CIKIS SAYILDI: ID=77442 (1->2) | Toplam Çıkan: 20
+[2026-06-16 13:50:23] [EVT] ID 77442 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77442_2026-06-16_13-50-23-666.jpg
+[2026-06-16 13:50:41] [EVT] ✅ CIKIS SAYILDI: ID=77457 (1->2) | Toplam Çıkan: 21
+[2026-06-16 13:50:41] [EVT] ID 77457 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77457_2026-06-16_13-50-41-837.jpg
+[2026-06-16 13:51:11] [EVT] ✅ GIRIS SAYILDI: ID=77502 (2->1) | Toplam Giren: 25
+[2026-06-16 13:51:11] [EVT] ID 77502 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77502_2026-06-16_13-51-11-832.jpg (56444 bytes)
+[2026-06-16 13:51:34] [EVT] ✅ CIKIS SAYILDI: ID=77456 (1->2) | Toplam Çıkan: 22
+[2026-06-16 13:51:34] [EVT] ID 77456 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77456_2026-06-16_13-51-34-879.jpg
+[2026-06-16 13:52:46] [EVT] ✅ CIKIS SAYILDI: ID=77574 (1->2) | Toplam Çıkan: 23
+[2026-06-16 13:52:46] [EVT] ID 77574 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77574_2026-06-16_13-52-46-440.jpg
+[2026-06-16 13:52:48] [EVT] ✅ CIKIS SAYILDI: ID=77576 (1->2) | Toplam Çıkan: 24
+[2026-06-16 13:52:48] [EVT] ID 77576 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77576_2026-06-16_13-52-48-730.jpg
+[2026-06-16 13:53:56] [EVT] ✅ GIRIS SAYILDI: ID=77596 (2->1) | Toplam Giren: 26
+[2026-06-16 13:53:56] [EVT] ID 77596 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77596_2026-06-16_13-53-56-933.jpg (56969 bytes)
+[2026-06-16 13:54:00] [EVT] ✅ GIRIS SAYILDI: ID=77599 (2->1) | Toplam Giren: 27
+[2026-06-16 13:54:00] [EVT] ID 77599 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77599_2026-06-16_13-54-00-540.jpg (58303 bytes)
+[2026-06-16 13:54:03] [EVT] ✅ GIRIS SAYILDI: ID=77602 (2->1) | Toplam Giren: 28
+[2026-06-16 13:54:03] [EVT] ID 77602 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77602_2026-06-16_13-54-03-683.jpg (59318 bytes)
+[2026-06-16 13:56:08] [EVT] ✅ CIKIS SAYILDI: ID=77653 (1->2) | Toplam Çıkan: 25
+[2026-06-16 13:56:08] [EVT] ID 77653 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77653_2026-06-16_13-56-08-992.jpg
+[2026-06-16 13:56:54] [EVT] ✅ CIKIS SAYILDI: ID=77663 (1->2) | Toplam Çıkan: 26
+[2026-06-16 13:56:54] [EVT] ID 77663 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77663_2026-06-16_13-56-54-793.jpg
+[2026-06-16 13:57:05] [EVT] ✅ CIKIS SAYILDI: ID=77678 (1->2) | Toplam Çıkan: 27
+[2026-06-16 13:57:05] [EVT] ID 77678 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77678_2026-06-16_13-57-05-864.jpg
+[2026-06-16 13:58:02] [EVT] ✅ CIKIS SAYILDI: ID=77689 (1->2) | Toplam Çıkan: 28
+[2026-06-16 13:58:02] [EVT] ID 77689 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77689_2026-06-16_13-58-02-602.jpg
+[2026-06-16 13:58:04] [EVT] ✅ CIKIS SAYILDI: ID=77692 (1->2) | Toplam Çıkan: 29
+[2026-06-16 13:58:04] [EVT] ID 77692 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77692_2026-06-16_13-58-04-968.jpg
+[2026-06-16 13:59:24] [EVT] ✅ CIKIS SAYILDI: ID=77744 (1->2) | Toplam Çıkan: 30
+[2026-06-16 13:59:24] [EVT] ID 77744 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77744_2026-06-16_13-59-24-542.jpg
+[2026-06-16 13:59:43] [EVT] ✅ CIKIS SAYILDI: ID=77759 (1->2) | Toplam Çıkan: 31
+[2026-06-16 13:59:43] [EVT] ID 77759 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77759_2026-06-16_13-59-43-264.jpg
+[2026-06-16 13:59:45] [EVT] ✅ GIRIS SAYILDI: ID=77761 (2->1) | Toplam Giren: 29
+[2026-06-16 13:59:45] [EVT] ID 77761 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77761_2026-06-16_13-59-45-805.jpg (56296 bytes)
+[2026-06-16 14:00:55] [EVT] ✅ CIKIS SAYILDI: ID=77791 (1->2) | Toplam Çıkan: 1
+[2026-06-16 14:00:55] [EVT] ID 77791 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77791_2026-06-16_14-00-55-312.jpg
+[2026-06-16 14:01:14] [EVT] ✅ CIKIS SAYILDI: ID=77807 (1->2) | Toplam Çıkan: 2
+[2026-06-16 14:01:14] [EVT] ID 77807 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77807_2026-06-16_14-01-14-127.jpg
+[2026-06-16 14:02:13] [EVT] ✅ GIRIS SAYILDI: ID=77824 (2->1) | Toplam Giren: 1
+[2026-06-16 14:02:13] [EVT] ID 77824 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77824_2026-06-16_14-02-13-496.jpg (56280 bytes)
+[2026-06-16 14:03:17] [EVT] ✅ GIRIS SAYILDI: ID=77838 (2->1) | Toplam Giren: 2
+[2026-06-16 14:03:17] [EVT] ID 77838 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77838_2026-06-16_14-03-17-294.jpg (57899 bytes)
+[2026-06-16 14:04:32] [EVT] ✅ CIKIS SAYILDI: ID=77852 (1->2) | Toplam Çıkan: 3
+[2026-06-16 14:04:32] [EVT] ID 77852 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77852_2026-06-16_14-04-32-341.jpg
+[2026-06-16 14:05:07] [EVT] ✅ CIKIS SAYILDI: ID=77863 (1->2) | Toplam Çıkan: 4
+[2026-06-16 14:05:07] [EVT] ID 77863 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_77863_2026-06-16_14-05-07-474.jpg
+[2026-06-16 14:06:22] [EVT] ✅ GIRIS SAYILDI: ID=77889 (2->1) | Toplam Giren: 3
+[2026-06-16 14:06:22] [EVT] ID 77889 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77889_2026-06-16_14-06-22-173.jpg (56535 bytes)
+[2026-06-16 14:08:31] [EVT] ✅ GIRIS SAYILDI: ID=77916 (2->1) | Toplam Giren: 4
+[2026-06-16 14:08:31] [EVT] ID 77916 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77916_2026-06-16_14-08-31-500.jpg (56216 bytes)
+[2026-06-16 14:08:38] [EVT] ✅ GIRIS SAYILDI: ID=77919 (2->1) | Toplam Giren: 5
+[2026-06-16 14:08:38] [EVT] ID 77919 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77919_2026-06-16_14-08-38-512.jpg (58224 bytes)
+[2026-06-16 14:08:39] [EVT] ✅ GIRIS SAYILDI: ID=77917 (2->1) | Toplam Giren: 6
+[2026-06-16 14:08:39] [EVT] ID 77917 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_77917_2026-06-16_14-08-39-908.jpg (56823 bytes)
+[2026-06-16 14:13:57] [EVT] ✅ CIKIS SAYILDI: ID=78023 (1->2) | Toplam Çıkan: 5
+[2026-06-16 14:13:57] [EVT] ID 78023 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78023_2026-06-16_14-13-57-205.jpg
+[2026-06-16 14:13:58] [EVT] ✅ CIKIS SAYILDI: ID=78020 (1->2) | Toplam Çıkan: 6
+[2026-06-16 14:13:58] [EVT] ID 78020 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78020_2026-06-16_14-13-58-517.jpg
+[2026-06-16 14:14:06] [EVT] ✅ CIKIS SAYILDI: ID=78025 (1->2) | Toplam Çıkan: 7
+[2026-06-16 14:14:06] [EVT] ID 78025 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78025_2026-06-16_14-14-06-090.jpg
+[2026-06-16 14:14:07] [EVT] ✅ CIKIS SAYILDI: ID=78029 (1->2) | Toplam Çıkan: 8
+[2026-06-16 14:14:07] [EVT] ID 78029 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78029_2026-06-16_14-14-07-229.jpg
+[2026-06-16 14:16:21] [EVT] ✅ CIKIS SAYILDI: ID=78060 (1->2) | Toplam Çıkan: 9
+[2026-06-16 14:16:21] [EVT] ID 78060 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78060_2026-06-16_14-16-21-643.jpg
+[2026-06-16 14:20:40] [EVT] ✅ CIKIS SAYILDI: ID=78164 (1->2) | Toplam Çıkan: 10
+[2026-06-16 14:20:40] [EVT] ID 78164 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78164_2026-06-16_14-20-40-134.jpg
+[2026-06-16 14:21:38] [EVT] ✅ GIRIS SAYILDI: ID=78205 (2->1) | Toplam Giren: 7
+[2026-06-16 14:21:38] [EVT] ID 78205 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_78205_2026-06-16_14-21-38-208.jpg (56121 bytes)
+[2026-06-16 14:21:41] [EVT] ✅ GIRIS SAYILDI: ID=78209 (2->1) | Toplam Giren: 8
+[2026-06-16 14:21:41] [EVT] ID 78209 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_78209_2026-06-16_14-21-41-255.jpg (58004 bytes)
+[2026-06-16 14:23:22] [EVT] ✅ CIKIS SAYILDI: ID=78310 (1->2) | Toplam Çıkan: 11
+[2026-06-16 14:23:22] [EVT] ID 78310 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78310_2026-06-16_14-23-22-554.jpg
+[2026-06-16 14:23:25] [EVT] ✅ CIKIS SAYILDI: ID=78301 (1->2) | Toplam Çıkan: 12
+[2026-06-16 14:23:25] [EVT] ID 78301 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78301_2026-06-16_14-23-25-701.jpg
+[2026-06-16 14:23:45] [EVT] ✅ CIKIS SAYILDI: ID=78322 (1->2) | Toplam Çıkan: 13
+[2026-06-16 14:23:45] [EVT] ID 78322 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78322_2026-06-16_14-23-45-344.jpg
+[2026-06-16 14:25:38] [EVT] ✅ GIRIS SAYILDI: ID=78475 (2->1) | Toplam Giren: 9
+[2026-06-16 14:25:38] [EVT] ID 78475 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_78475_2026-06-16_14-25-38-800.jpg (57057 bytes)
+[2026-06-16 14:27:35] [EVT] ✅ GIRIS SAYILDI: ID=78568 (2->1) | Toplam Giren: 10
+[2026-06-16 14:27:35] [EVT] ID 78568 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_78568_2026-06-16_14-27-35-902.jpg (57017 bytes)
+[2026-06-16 14:29:31] [EVT] ✅ CIKIS SAYILDI: ID=78631 (1->2) | Toplam Çıkan: 14
+[2026-06-16 14:29:31] [EVT] ID 78631 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78631_2026-06-16_14-29-31-544.jpg
+[2026-06-16 14:30:19] [EVT] ✅ GIRIS SAYILDI: ID=78665 (2->1) | Toplam Giren: 11
+[2026-06-16 14:30:19] [EVT] ID 78665 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_78665_2026-06-16_14-30-19-164.jpg (56730 bytes)
+[2026-06-16 14:31:03] [EVT] ✅ CIKIS SAYILDI: ID=78698 (1->2) | Toplam Çıkan: 15
+[2026-06-16 14:31:03] [EVT] ID 78698 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78698_2026-06-16_14-31-03-908.jpg
+[2026-06-16 14:33:19] [EVT] ✅ CIKIS SAYILDI: ID=78761 (1->2) | Toplam Çıkan: 16
+[2026-06-16 14:33:19] [EVT] ID 78761 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78761_2026-06-16_14-33-19-457.jpg
+[2026-06-16 14:33:35] [EVT] ✅ CIKIS SAYILDI: ID=78763 (1->2) | Toplam Çıkan: 17
+[2026-06-16 14:33:35] [EVT] ID 78763 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_78763_2026-06-16_14-33-35-709.jpg
+[2026-06-16 14:38:31] [EVT] ✅ GIRIS SAYILDI: ID=78899 (2->1) | Toplam Giren: 12
+[2026-06-16 14:38:31] [EVT] ID 78899 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_78899_2026-06-16_14-38-31-041.jpg (56579 bytes)
+[2026-06-16 14:40:18] [EVT] ✅ GIRIS SAYILDI: ID=78931 (2->1) | Toplam Giren: 13
+[2026-06-16 14:40:18] [EVT] ID 78931 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_78931_2026-06-16_14-40-18-130.jpg (56382 bytes)
+[2026-06-16 14:41:03] [EVT] ✅ GIRIS SAYILDI: ID=78964 (2->1) | Toplam Giren: 14
+[2026-06-16 14:41:03] [EVT] ID 78964 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_78964_2026-06-16_14-41-03-524.jpg (56508 bytes)
+[2026-06-16 14:43:12] [EVT] ✅ CIKIS SAYILDI: ID=79003 (1->2) | Toplam Çıkan: 18
+[2026-06-16 14:43:12] [EVT] ID 79003 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79003_2026-06-16_14-43-12-648.jpg
+[2026-06-16 14:45:11] [EVT] ✅ CIKIS SAYILDI: ID=79057 (1->2) | Toplam Çıkan: 19
+[2026-06-16 14:45:11] [EVT] ID 79057 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79057_2026-06-16_14-45-11-060.jpg
+[2026-06-16 14:45:43] [EVT] ✅ GIRIS SAYILDI: ID=79084 (2->1) | Toplam Giren: 15
+[2026-06-16 14:45:43] [EVT] ID 79084 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79084_2026-06-16_14-45-43-105.jpg (56477 bytes)
+[2026-06-16 14:46:40] [EVT] ✅ CIKIS SAYILDI: ID=79102 (1->2) | Toplam Çıkan: 20
+[2026-06-16 14:46:40] [EVT] ID 79102 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79102_2026-06-16_14-46-40-329.jpg
+[2026-06-16 14:47:41] [EVT] ✅ CIKIS SAYILDI: ID=79133 (1->2) | Toplam Çıkan: 21
+[2026-06-16 14:47:41] [EVT] ID 79133 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79133_2026-06-16_14-47-41-374.jpg
+[2026-06-16 14:51:12] [EVT] ✅ GIRIS SAYILDI: ID=79261 (2->1) | Toplam Giren: 16
+[2026-06-16 14:51:12] [EVT] ID 79261 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79261_2026-06-16_14-51-12-412.jpg (56480 bytes)
+[2026-06-16 14:52:05] [EVT] ✅ GIRIS SAYILDI: ID=79272 (2->1) | Toplam Giren: 17
+[2026-06-16 14:52:05] [EVT] ID 79272 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79272_2026-06-16_14-52-05-962.jpg (56665 bytes)
+[2026-06-16 14:53:28] [EVT] ✅ GIRIS SAYILDI: ID=79299 (2->1) | Toplam Giren: 18
+[2026-06-16 14:53:28] [EVT] ID 79299 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79299_2026-06-16_14-53-28-496.jpg (56456 bytes)
+[2026-06-16 14:53:45] [EVT] ✅ CIKIS SAYILDI: ID=79312 (1->2) | Toplam Çıkan: 22
+[2026-06-16 14:53:45] [EVT] ID 79312 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79312_2026-06-16_14-53-45-026.jpg
+[2026-06-16 14:53:46] [EVT] ✅ GIRIS SAYILDI: ID=79312 (2->1) | Toplam Giren: 19
+[2026-06-16 14:53:46] [EVT] ID 79312 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79312_2026-06-16_14-53-46-207.jpg (56746 bytes)
+[2026-06-16 14:54:07] [EVT] ✅ CIKIS SAYILDI: ID=79327 (1->2) | Toplam Çıkan: 23
+[2026-06-16 14:54:07] [EVT] ID 79327 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79327_2026-06-16_14-54-07-436.jpg
+[2026-06-16 14:55:08] [EVT] ✅ GIRIS SAYILDI: ID=79358 (2->1) | Toplam Giren: 20
+[2026-06-16 14:55:08] [EVT] ID 79358 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79358_2026-06-16_14-55-08-826.jpg (56803 bytes)
+[2026-06-16 14:55:10] [EVT] ✅ GIRIS SAYILDI: ID=79355 (2->1) | Toplam Giren: 21
+[2026-06-16 14:55:10] [EVT] ID 79355 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79355_2026-06-16_14-55-10-790.jpg (57379 bytes)
+[2026-06-16 14:57:23] [EVT] ✅ CIKIS SAYILDI: ID=79406 (1->2) | Toplam Çıkan: 24
+[2026-06-16 14:57:23] [EVT] ID 79406 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79406_2026-06-16_14-57-23-777.jpg
+[2026-06-16 15:00:14] [EVT] ✅ CIKIS SAYILDI: ID=79456 (1->2) | Toplam Çıkan: 1
+[2026-06-16 15:00:14] [EVT] ID 79456 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79456_2026-06-16_15-00-14-410.jpg
+[2026-06-16 15:00:16] [EVT] ✅ CIKIS SAYILDI: ID=79458 (1->2) | Toplam Çıkan: 2
+[2026-06-16 15:00:16] [EVT] ID 79458 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79458_2026-06-16_15-00-16-700.jpg
+[2026-06-16 15:00:16] [EVT] ✅ CIKIS SAYILDI: ID=79460 (1->2) | Toplam Çıkan: 3
+[2026-06-16 15:00:16] [EVT] ID 79460 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79460_2026-06-16_15-00-16-710.jpg
+[2026-06-16 15:01:39] [EVT] ✅ CIKIS SAYILDI: ID=79491 (1->2) | Toplam Çıkan: 4
+[2026-06-16 15:01:39] [EVT] ID 79491 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79491_2026-06-16_15-01-39-437.jpg
+[2026-06-16 15:01:47] [EVT] ✅ CIKIS SAYILDI: ID=79498 (1->2) | Toplam Çıkan: 5
+[2026-06-16 15:01:47] [EVT] ID 79498 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79498_2026-06-16_15-01-47-413.jpg
+[2026-06-16 15:07:59] [EVT] ✅ GIRIS SAYILDI: ID=79674 (2->1) | Toplam Giren: 1
+[2026-06-16 15:07:59] [EVT] ID 79674 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79674_2026-06-16_15-07-59-407.jpg (56014 bytes)
+[2026-06-16 15:08:00] [EVT] ✅ GIRIS SAYILDI: ID=79676 (2->1) | Toplam Giren: 2
+[2026-06-16 15:08:00] [EVT] ID 79676 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79676_2026-06-16_15-08-00-601.jpg (57762 bytes)
+[2026-06-16 15:08:17] [EVT] ✅ CIKIS SAYILDI: ID=79690 (1->2) | Toplam Çıkan: 6
+[2026-06-16 15:08:17] [EVT] ID 79690 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79690_2026-06-16_15-08-17-921.jpg
+[2026-06-16 15:09:40] [EVT] ✅ GIRIS SAYILDI: ID=79720 (2->1) | Toplam Giren: 3
+[2026-06-16 15:09:40] [EVT] ID 79720 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79720_2026-06-16_15-09-40-050.jpg (56433 bytes)
+[2026-06-16 15:09:43] [EVT] ✅ CIKIS SAYILDI: ID=79723 (1->2) | Toplam Çıkan: 7
+[2026-06-16 15:09:43] [EVT] ID 79723 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79723_2026-06-16_15-09-43-524.jpg
+[2026-06-16 15:09:44] [EVT] ✅ GIRIS SAYILDI: ID=79723 (2->1) | Toplam Giren: 4
+[2026-06-16 15:09:44] [EVT] ID 79723 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79723_2026-06-16_15-09-44-607.jpg (58399 bytes)
+[2026-06-16 15:13:26] [EVT] ✅ GIRIS SAYILDI: ID=79814 (2->1) | Toplam Giren: 5
+[2026-06-16 15:13:26] [EVT] ID 79814 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79814_2026-06-16_15-13-26-016.jpg (56735 bytes)
+[2026-06-16 15:14:02] [EVT] ✅ GIRIS SAYILDI: ID=79833 (2->1) | Toplam Giren: 6
+[2026-06-16 15:14:02] [EVT] ID 79833 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79833_2026-06-16_15-14-02-034.jpg (56478 bytes)
+[2026-06-16 15:14:15] [EVT] ✅ GIRIS SAYILDI: ID=79847 (2->1) | Toplam Giren: 7
+[2026-06-16 15:14:15] [EVT] ID 79847 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_79847_2026-06-16_15-14-15-532.jpg (56899 bytes)
+[2026-06-16 15:15:14] [EVT] ✅ CIKIS SAYILDI: ID=79884 (1->2) | Toplam Çıkan: 8
+[2026-06-16 15:15:14] [EVT] ID 79884 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79884_2026-06-16_15-15-14-401.jpg
+[2026-06-16 15:16:20] [EVT] ✅ CIKIS SAYILDI: ID=79934 (1->2) | Toplam Çıkan: 9
+[2026-06-16 15:16:20] [EVT] ID 79934 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79934_2026-06-16_15-16-20-622.jpg
+[2026-06-16 15:19:20] [EVT] ✅ CIKIS SAYILDI: ID=79994 (1->2) | Toplam Çıkan: 10
+[2026-06-16 15:19:20] [EVT] ID 79994 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_79994_2026-06-16_15-19-20-146.jpg
+[2026-06-16 15:19:28] [EVT] ✅ CIKIS SAYILDI: ID=80012 (1->2) | Toplam Çıkan: 11
+[2026-06-16 15:19:28] [EVT] ID 80012 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80012_2026-06-16_15-19-28-842.jpg
+[2026-06-16 15:19:29] [EVT] ✅ CIKIS SAYILDI: ID=80004 (1->2) | Toplam Çıkan: 12
+[2026-06-16 15:19:29] [EVT] ID 80004 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80004_2026-06-16_15-19-29-988.jpg
+[2026-06-16 15:19:46] [EVT] ✅ GIRIS SAYILDI: ID=80004 (2->1) | Toplam Giren: 8
+[2026-06-16 15:19:46] [EVT] ID 80004 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80004_2026-06-16_15-19-46-885.jpg (58843 bytes)
+[2026-06-16 15:21:12] [EVT] ✅ CIKIS SAYILDI: ID=80051 (1->2) | Toplam Çıkan: 13
+[2026-06-16 15:21:12] [EVT] ID 80051 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80051_2026-06-16_15-21-12-877.jpg
+[2026-06-16 15:23:10] [EVT] ✅ CIKIS SAYILDI: ID=80113 (1->2) | Toplam Çıkan: 14
+[2026-06-16 15:23:10] [EVT] ID 80113 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80113_2026-06-16_15-23-10-026.jpg
+[2026-06-16 15:27:10] [EVT] ✅ CIKIS SAYILDI: ID=80202 (1->2) | Toplam Çıkan: 15
+[2026-06-16 15:27:10] [EVT] ID 80202 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80202_2026-06-16_15-27-10-879.jpg
+[2026-06-16 15:27:49] [EVT] ✅ CIKIS SAYILDI: ID=80211 (1->2) | Toplam Çıkan: 16
+[2026-06-16 15:27:49] [EVT] ID 80211 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80211_2026-06-16_15-27-49-681.jpg
+[2026-06-16 15:28:23] [EVT] ✅ CIKIS SAYILDI: ID=80228 (1->2) | Toplam Çıkan: 17
+[2026-06-16 15:28:23] [EVT] ID 80228 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80228_2026-06-16_15-28-23-506.jpg
+[2026-06-16 15:28:58] [EVT] ✅ GIRIS SAYILDI: ID=80250 (2->1) | Toplam Giren: 9
+[2026-06-16 15:28:58] [EVT] ID 80250 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80250_2026-06-16_15-28-58-574.jpg (56516 bytes)
+[2026-06-16 15:29:48] [EVT] ✅ GIRIS SAYILDI: ID=80314 (2->1) | Toplam Giren: 10
+[2026-06-16 15:29:48] [EVT] ID 80314 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80314_2026-06-16_15-29-48-261.jpg (56854 bytes)
+[2026-06-16 15:29:50] [EVT] ✅ GIRIS SAYILDI: ID=80329 (2->1) | Toplam Giren: 11
+[2026-06-16 15:29:50] [EVT] ID 80329 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80329_2026-06-16_15-29-50-833.jpg (56694 bytes)
+[2026-06-16 15:29:52] [EVT] ✅ CIKIS SAYILDI: ID=80327 (1->2) | Toplam Çıkan: 18
+[2026-06-16 15:29:52] [EVT] ID 80327 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80327_2026-06-16_15-29-52-195.jpg
+[2026-06-16 15:31:17] [EVT] ✅ CIKIS SAYILDI: ID=80373 (1->2) | Toplam Çıkan: 19
+[2026-06-16 15:31:17] [EVT] ID 80373 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80373_2026-06-16_15-31-17-242.jpg
+[2026-06-16 15:32:20] [EVT] ✅ CIKIS SAYILDI: ID=80396 (1->2) | Toplam Çıkan: 20
+[2026-06-16 15:32:20] [EVT] ID 80396 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80396_2026-06-16_15-32-20-989.jpg
+[2026-06-16 15:32:30] [EVT] ✅ CIKIS SAYILDI: ID=80402 (1->2) | Toplam Çıkan: 21
+[2026-06-16 15:32:30] [EVT] ID 80402 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80402_2026-06-16_15-32-30-238.jpg
+[2026-06-16 15:32:33] [EVT] ✅ GIRIS SAYILDI: ID=80401 (2->1) | Toplam Giren: 12
+[2026-06-16 15:32:33] [EVT] ID 80401 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80401_2026-06-16_15-32-33-347.jpg (56500 bytes)
+[2026-06-16 15:35:09] [EVT] ✅ GIRIS SAYILDI: ID=80461 (2->1) | Toplam Giren: 13
+[2026-06-16 15:35:09] [EVT] ID 80461 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80461_2026-06-16_15-35-09-097.jpg (56344 bytes)
+[2026-06-16 15:36:06] [EVT] ✅ GIRIS SAYILDI: ID=80497 (2->1) | Toplam Giren: 14
+[2026-06-16 15:36:06] [EVT] ID 80497 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80497_2026-06-16_15-36-06-321.jpg (58650 bytes)
+[2026-06-16 15:36:50] [EVT] ✅ CIKIS SAYILDI: ID=80524 (1->2) | Toplam Çıkan: 22
+[2026-06-16 15:36:50] [EVT] ID 80524 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80524_2026-06-16_15-36-50-497.jpg
+[2026-06-16 15:37:16] [EVT] ✅ CIKIS SAYILDI: ID=80540 (1->2) | Toplam Çıkan: 23
+[2026-06-16 15:37:16] [EVT] ID 80540 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80540_2026-06-16_15-37-16-162.jpg
+[2026-06-16 15:37:20] [EVT] ✅ CIKIS SAYILDI: ID=80543 (1->2) | Toplam Çıkan: 24
+[2026-06-16 15:37:20] [EVT] ID 80543 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80543_2026-06-16_15-37-20-698.jpg
+[2026-06-16 15:37:22] [EVT] ✅ CIKIS SAYILDI: ID=80547 (1->2) | Toplam Çıkan: 25
+[2026-06-16 15:37:22] [EVT] ID 80547 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80547_2026-06-16_15-37-22-669.jpg
+[2026-06-16 15:37:35] [EVT] ✅ GIRIS SAYILDI: ID=80555 (2->1) | Toplam Giren: 15
+[2026-06-16 15:37:35] [EVT] ID 80555 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80555_2026-06-16_15-37-35-714.jpg (57350 bytes)
+[2026-06-16 15:37:36] [EVT] ✅ GIRIS SAYILDI: ID=80557 (2->1) | Toplam Giren: 16
+[2026-06-16 15:37:36] [EVT] ID 80557 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80557_2026-06-16_15-37-36-275.jpg (58109 bytes)
+[2026-06-16 15:37:37] [EVT] ✅ GIRIS SAYILDI: ID=80541 (2->1) | Toplam Giren: 17
+[2026-06-16 15:37:37] [EVT] ID 80541 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80541_2026-06-16_15-37-37-766.jpg (59298 bytes)
+[2026-06-16 15:37:48] [EVT] ✅ GIRIS SAYILDI: ID=80581 (2->1) | Toplam Giren: 18
+[2026-06-16 15:37:48] [EVT] ID 80581 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80581_2026-06-16_15-37-48-686.jpg (58122 bytes)
+[2026-06-16 15:39:08] [EVT] ✅ GIRIS SAYILDI: ID=80689 (2->1) | Toplam Giren: 19
+[2026-06-16 15:39:08] [EVT] ID 80689 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80689_2026-06-16_15-39-08-995.jpg (57061 bytes)
+[2026-06-16 15:40:49] [EVT] ✅ GIRIS SAYILDI: ID=80733 (2->1) | Toplam Giren: 20
+[2026-06-16 15:40:49] [EVT] ID 80733 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80733_2026-06-16_15-40-49-959.jpg (56571 bytes)
+[2026-06-16 15:41:10] [EVT] ✅ GIRIS SAYILDI: ID=80749 (2->1) | Toplam Giren: 21
+[2026-06-16 15:41:10] [EVT] ID 80749 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80749_2026-06-16_15-41-10-585.jpg (56526 bytes)
+[2026-06-16 15:41:56] [EVT] ✅ GIRIS SAYILDI: ID=80803 (2->1) | Toplam Giren: 22
+[2026-06-16 15:41:56] [EVT] ID 80803 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80803_2026-06-16_15-41-56-387.jpg (58069 bytes)
+[2026-06-16 15:41:57] [EVT] ✅ GIRIS SAYILDI: ID=80792 (2->1) | Toplam Giren: 23
+[2026-06-16 15:41:57] [EVT] ID 80792 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80792_2026-06-16_15-41-57-812.jpg (60067 bytes)
+[2026-06-16 15:42:09] [EVT] ✅ GIRIS SAYILDI: ID=80811 (2->1) | Toplam Giren: 24
+[2026-06-16 15:42:09] [EVT] ID 80811 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80811_2026-06-16_15-42-09-366.jpg (58829 bytes)
+[2026-06-16 15:42:29] [EVT] ✅ CIKIS SAYILDI: ID=80855 (1->2) | Toplam Çıkan: 26
+[2026-06-16 15:42:29] [EVT] ID 80855 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80855_2026-06-16_15-42-29-433.jpg
+[2026-06-16 15:42:52] [EVT] ✅ CIKIS SAYILDI: ID=80865 (1->2) | Toplam Çıkan: 27
+[2026-06-16 15:42:52] [EVT] ID 80865 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80865_2026-06-16_15-42-52-010.jpg
+[2026-06-16 15:44:15] [EVT] ✅ GIRIS SAYILDI: ID=80903 (2->1) | Toplam Giren: 25
+[2026-06-16 15:44:15] [EVT] ID 80903 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_80903_2026-06-16_15-44-15-399.jpg (58802 bytes)
+[2026-06-16 15:44:17] [EVT] ✅ CIKIS SAYILDI: ID=80927 (1->2) | Toplam Çıkan: 28
+[2026-06-16 15:44:17] [EVT] ID 80927 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80927_2026-06-16_15-44-17-457.jpg
+[2026-06-16 15:44:29] [EVT] ✅ CIKIS SAYILDI: ID=80903 (1->2) | Toplam Çıkan: 29
+[2026-06-16 15:44:29] [EVT] ID 80903 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80903_2026-06-16_15-44-29-688.jpg
+[2026-06-16 15:44:30] [EVT] ✅ CIKIS SAYILDI: ID=80926 (1->2) | Toplam Çıkan: 30
+[2026-06-16 15:44:30] [EVT] ID 80926 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80926_2026-06-16_15-44-30-155.jpg
+[2026-06-16 15:44:59] [EVT] ✅ CIKIS SAYILDI: ID=80953 (1->2) | Toplam Çıkan: 31
+[2026-06-16 15:44:59] [EVT] ID 80953 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80953_2026-06-16_15-44-59-274.jpg
+[2026-06-16 15:45:01] [EVT] ✅ CIKIS SAYILDI: ID=80959 (1->2) | Toplam Çıkan: 32
+[2026-06-16 15:45:01] [EVT] ID 80959 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80959_2026-06-16_15-45-01-146.jpg
+[2026-06-16 15:45:03] [EVT] ✅ CIKIS SAYILDI: ID=80961 (1->2) | Toplam Çıkan: 33
+[2026-06-16 15:45:03] [EVT] ID 80961 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_80961_2026-06-16_15-45-03-440.jpg
+[2026-06-16 15:46:56] [EVT] ✅ CIKIS SAYILDI: ID=81117 (1->2) | Toplam Çıkan: 34
+[2026-06-16 15:46:56] [EVT] ID 81117 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_81117_2026-06-16_15-46-56-071.jpg
+[2026-06-16 15:48:51] [EVT] ✅ CIKIS SAYILDI: ID=81204 (1->2) | Toplam Çıkan: 35
+[2026-06-16 15:48:51] [EVT] ID 81204 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_81204_2026-06-16_15-48-51-973.jpg
+[2026-06-16 15:49:43] [EVT] ✅ CIKIS SAYILDI: ID=81225 (1->2) | Toplam Çıkan: 36
+[2026-06-16 15:49:43] [EVT] ID 81225 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_81225_2026-06-16_15-49-43-295.jpg
+[2026-06-16 15:54:06] [EVT] ✅ GIRIS SAYILDI: ID=81335 (2->1) | Toplam Giren: 26
+[2026-06-16 15:54:06] [EVT] ID 81335 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81335_2026-06-16_15-54-06-481.jpg (56494 bytes)
+[2026-06-16 15:56:00] [EVT] ✅ GIRIS SAYILDI: ID=81423 (2->1) | Toplam Giren: 27
+[2026-06-16 15:56:00] [EVT] ID 81423 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81423_2026-06-16_15-56-00-732.jpg (56744 bytes)
+[2026-06-16 15:56:11] [EVT] ✅ GIRIS SAYILDI: ID=81429 (2->1) | Toplam Giren: 28
+[2026-06-16 15:56:11] [EVT] ID 81429 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81429_2026-06-16_15-56-11-294.jpg (55920 bytes)
+[2026-06-16 15:58:10] [EVT] ✅ CIKIS SAYILDI: ID=81476 (1->2) | Toplam Çıkan: 37
+[2026-06-16 15:58:10] [EVT] ID 81476 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_81476_2026-06-16_15-58-10-219.jpg
+[2026-06-16 15:58:36] [EVT] ✅ CIKIS SAYILDI: ID=81501 (1->2) | Toplam Çıkan: 38
+[2026-06-16 15:58:36] [EVT] ID 81501 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_81501_2026-06-16_15-58-36-324.jpg
+[2026-06-16 16:01:09] [EVT] ✅ CIKIS SAYILDI: ID=81583 (1->2) | Toplam Çıkan: 1
+[2026-06-16 16:01:09] [EVT] ID 81583 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_81583_2026-06-16_16-01-09-008.jpg
+[2026-06-16 16:01:14] [EVT] ✅ GIRIS SAYILDI: ID=81586 (2->1) | Toplam Giren: 1
+[2026-06-16 16:01:14] [EVT] ID 81586 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81586_2026-06-16_16-01-14-875.jpg (56189 bytes)
+[2026-06-16 16:03:53] [EVT] ✅ GIRIS SAYILDI: ID=81684 (2->1) | Toplam Giren: 2
+[2026-06-16 16:03:53] [EVT] ID 81684 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81684_2026-06-16_16-03-53-609.jpg (56520 bytes)
+[2026-06-16 16:03:56] [EVT] ✅ GIRIS SAYILDI: ID=81683 (2->1) | Toplam Giren: 3
+[2026-06-16 16:03:56] [EVT] ID 81683 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81683_2026-06-16_16-03-56-244.jpg (59692 bytes)
+[2026-06-16 16:07:07] [EVT] ✅ GIRIS SAYILDI: ID=81735 (2->1) | Toplam Giren: 4
+[2026-06-16 16:07:07] [EVT] ID 81735 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81735_2026-06-16_16-07-07-212.jpg (56950 bytes)
+[2026-06-16 16:09:28] [EVT] ✅ CIKIS SAYILDI: ID=81819 (1->2) | Toplam Çıkan: 2
+[2026-06-16 16:09:28] [EVT] ID 81819 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_81819_2026-06-16_16-09-28-494.jpg
+[2026-06-16 16:09:30] [EVT] ✅ GIRIS SAYILDI: ID=81817 (2->1) | Toplam Giren: 5
+[2026-06-16 16:09:30] [EVT] ID 81817 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81817_2026-06-16_16-09-30-521.jpg (56148 bytes)
+[2026-06-16 16:10:19] [EVT] ✅ GIRIS SAYILDI: ID=81833 (2->1) | Toplam Giren: 6
+[2026-06-16 16:10:19] [EVT] ID 81833 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81833_2026-06-16_16-10-19-436.jpg (57124 bytes)
+[2026-06-16 16:10:19] [EVT] ✅ GIRIS SAYILDI: ID=81831 (2->1) | Toplam Giren: 7
+[2026-06-16 16:10:19] [EVT] ID 81831 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81831_2026-06-16_16-10-19-741.jpg (57806 bytes)
+[2026-06-16 16:12:17] [EVT] ✅ CIKIS SAYILDI: ID=81857 (1->2) | Toplam Çıkan: 3
+[2026-06-16 16:12:17] [EVT] ID 81857 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_81857_2026-06-16_16-12-17-020.jpg
+[2026-06-16 16:14:36] [EVT] ✅ GIRIS SAYILDI: ID=81891 (2->1) | Toplam Giren: 8
+[2026-06-16 16:14:36] [EVT] ID 81891 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81891_2026-06-16_16-14-36-351.jpg (56686 bytes)
+[2026-06-16 16:17:20] [EVT] ✅ CIKIS SAYILDI: ID=81948 (1->2) | Toplam Çıkan: 4
+[2026-06-16 16:17:20] [EVT] ID 81948 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_81948_2026-06-16_16-17-20-501.jpg
+[2026-06-16 16:18:16] [EVT] ✅ GIRIS SAYILDI: ID=81976 (2->1) | Toplam Giren: 9
+[2026-06-16 16:18:16] [EVT] ID 81976 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_81976_2026-06-16_16-18-16-164.jpg (56441 bytes)
+[2026-06-16 16:19:51] [EVT] ✅ CIKIS SAYILDI: ID=82026 (1->2) | Toplam Çıkan: 5
+[2026-06-16 16:19:51] [EVT] ID 82026 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82026_2026-06-16_16-19-51-579.jpg
+[2026-06-16 16:22:30] [EVT] ✅ CIKIS SAYILDI: ID=82108 (1->2) | Toplam Çıkan: 6
+[2026-06-16 16:22:30] [EVT] ID 82108 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82108_2026-06-16_16-22-30-238.jpg
+[2026-06-16 16:22:30] [EVT] ✅ CIKIS SAYILDI: ID=82105 (1->2) | Toplam Çıkan: 7
+[2026-06-16 16:22:30] [EVT] ID 82105 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82105_2026-06-16_16-22-30-865.jpg
+[2026-06-16 16:22:44] [EVT] ✅ GIRIS SAYILDI: ID=82120 (2->1) | Toplam Giren: 10
+[2026-06-16 16:22:44] [EVT] ID 82120 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82120_2026-06-16_16-22-44-113.jpg (56955 bytes)
+[2026-06-16 16:23:29] [EVT] ✅ GIRIS SAYILDI: ID=82135 (2->1) | Toplam Giren: 11
+[2026-06-16 16:23:29] [EVT] ID 82135 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82135_2026-06-16_16-23-29-353.jpg (56987 bytes)
+[2026-06-16 16:24:47] [EVT] ✅ GIRIS SAYILDI: ID=82145 (2->1) | Toplam Giren: 12
+[2026-06-16 16:24:47] [EVT] ID 82145 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82145_2026-06-16_16-24-47-108.jpg (59215 bytes)
+[2026-06-16 16:24:50] [EVT] ✅ CIKIS SAYILDI: ID=82167 (1->2) | Toplam Çıkan: 8
+[2026-06-16 16:24:50] [EVT] ID 82167 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82167_2026-06-16_16-24-50-803.jpg
+[2026-06-16 16:24:54] [EVT] ✅ CIKIS SAYILDI: ID=82166 (1->2) | Toplam Çıkan: 9
+[2026-06-16 16:24:54] [EVT] ID 82166 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82166_2026-06-16_16-24-54-158.jpg
+[2026-06-16 16:28:47] [EVT] ✅ CIKIS SAYILDI: ID=82271 (1->2) | Toplam Çıkan: 10
+[2026-06-16 16:28:47] [EVT] ID 82271 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82271_2026-06-16_16-28-47-993.jpg
+[2026-06-16 16:32:05] [EVT] ✅ CIKIS SAYILDI: ID=82318 (1->2) | Toplam Çıkan: 11
+[2026-06-16 16:32:05] [EVT] ID 82318 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82318_2026-06-16_16-32-05-020.jpg
+[2026-06-16 16:33:42] [EVT] ✅ GIRIS SAYILDI: ID=82363 (2->1) | Toplam Giren: 13
+[2026-06-16 16:33:42] [EVT] ID 82363 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82363_2026-06-16_16-33-42-823.jpg (56829 bytes)
+[2026-06-16 16:36:24] [EVT] ✅ CIKIS SAYILDI: ID=82474 (1->2) | Toplam Çıkan: 12
+[2026-06-16 16:36:24] [EVT] ID 82474 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82474_2026-06-16_16-36-24-883.jpg
+[2026-06-16 16:37:48] [EVT] ✅ CIKIS SAYILDI: ID=82499 (1->2) | Toplam Çıkan: 13
+[2026-06-16 16:37:48] [EVT] ID 82499 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82499_2026-06-16_16-37-48-602.jpg
+[2026-06-16 16:38:19] [EVT] ✅ CIKIS SAYILDI: ID=82513 (1->2) | Toplam Çıkan: 14
+[2026-06-16 16:38:19] [EVT] ID 82513 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82513_2026-06-16_16-38-19-357.jpg
+[2026-06-16 16:38:39] [EVT] ✅ GIRIS SAYILDI: ID=82524 (2->1) | Toplam Giren: 14
+[2026-06-16 16:38:39] [EVT] ID 82524 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82524_2026-06-16_16-38-39-146.jpg (56188 bytes)
+[2026-06-16 16:39:33] [EVT] ✅ GIRIS SAYILDI: ID=82547 (2->1) | Toplam Giren: 15
+[2026-06-16 16:39:33] [EVT] ID 82547 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82547_2026-06-16_16-39-33-533.jpg (56792 bytes)
+[2026-06-16 16:40:45] [EVT] ✅ GIRIS SAYILDI: ID=82593 (2->1) | Toplam Giren: 16
+[2026-06-16 16:40:45] [EVT] ID 82593 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82593_2026-06-16_16-40-45-452.jpg (57314 bytes)
+[2026-06-16 16:41:00] [EVT] ✅ CIKIS SAYILDI: ID=82602 (1->2) | Toplam Çıkan: 15
+[2026-06-16 16:41:00] [EVT] ID 82602 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82602_2026-06-16_16-41-00-190.jpg
+[2026-06-16 16:42:44] [EVT] ✅ CIKIS SAYILDI: ID=82633 (1->2) | Toplam Çıkan: 16
+[2026-06-16 16:42:44] [EVT] ID 82633 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82633_2026-06-16_16-42-44-785.jpg
+[2026-06-16 16:42:48] [EVT] ✅ GIRIS SAYILDI: ID=82637 (2->1) | Toplam Giren: 17
+[2026-06-16 16:42:48] [EVT] ID 82637 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82637_2026-06-16_16-42-48-616.jpg (56035 bytes)
+[2026-06-16 16:43:13] [EVT] ✅ CIKIS SAYILDI: ID=82665 (1->2) | Toplam Çıkan: 17
+[2026-06-16 16:43:13] [EVT] ID 82665 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82665_2026-06-16_16-43-13-827.jpg
+[2026-06-16 16:45:33] [EVT] ✅ GIRIS SAYILDI: ID=82698 (2->1) | Toplam Giren: 18
+[2026-06-16 16:45:33] [EVT] ID 82698 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82698_2026-06-16_16-45-33-351.jpg (56661 bytes)
+[2026-06-16 16:56:17] [EVT] ✅ GIRIS SAYILDI: ID=82862 (2->1) | Toplam Giren: 19
+[2026-06-16 16:56:17] [EVT] ID 82862 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82862_2026-06-16_16-56-17-901.jpg (57676 bytes)
+[2026-06-16 16:58:37] [EVT] ✅ CIKIS SAYILDI: ID=82898 (1->2) | Toplam Çıkan: 18
+[2026-06-16 16:58:37] [EVT] ID 82898 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82898_2026-06-16_16-58-37-242.jpg
+[2026-06-16 16:58:56] [EVT] ✅ CIKIS SAYILDI: ID=82914 (1->2) | Toplam Çıkan: 19
+[2026-06-16 16:58:56] [EVT] ID 82914 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82914_2026-06-16_16-58-56-977.jpg
+[2026-06-16 16:59:12] [EVT] ✅ CIKIS SAYILDI: ID=82916 (1->2) | Toplam Çıkan: 20
+[2026-06-16 16:59:12] [EVT] ID 82916 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82916_2026-06-16_16-59-12-680.jpg
+[2026-06-16 16:59:31] [EVT] ✅ CIKIS SAYILDI: ID=82923 (1->2) | Toplam Çıkan: 21
+[2026-06-16 16:59:31] [EVT] ID 82923 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82923_2026-06-16_16-59-31-765.jpg
+[2026-06-16 17:01:22] [EVT] ✅ GIRIS SAYILDI: ID=82962 (2->1) | Toplam Giren: 1
+[2026-06-16 17:01:22] [EVT] ID 82962 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82962_2026-06-16_17-01-22-623.jpg (56427 bytes)
+[2026-06-16 17:03:16] [EVT] ✅ CIKIS SAYILDI: ID=82983 (1->2) | Toplam Çıkan: 1
+[2026-06-16 17:03:16] [EVT] ID 82983 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82983_2026-06-16_17-03-16-981.jpg
+[2026-06-16 17:03:23] [EVT] ✅ CIKIS SAYILDI: ID=82985 (1->2) | Toplam Çıkan: 2
+[2026-06-16 17:03:23] [EVT] ID 82985 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_82985_2026-06-16_17-03-23-701.jpg
+[2026-06-16 17:03:57] [EVT] ✅ GIRIS SAYILDI: ID=82990 (2->1) | Toplam Giren: 2
+[2026-06-16 17:03:57] [EVT] ID 82990 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82990_2026-06-16_17-03-57-295.jpg (56309 bytes)
+[2026-06-16 17:04:30] [EVT] ✅ GIRIS SAYILDI: ID=82999 (2->1) | Toplam Giren: 3
+[2026-06-16 17:04:30] [EVT] ID 82999 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_82999_2026-06-16_17-04-30-846.jpg (56315 bytes)
+[2026-06-16 17:04:39] [EVT] ✅ GIRIS SAYILDI: ID=83011 (2->1) | Toplam Giren: 4
+[2026-06-16 17:04:39] [EVT] ID 83011 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_83011_2026-06-16_17-04-39-060.jpg (56832 bytes)
+[2026-06-16 17:05:10] [EVT] ✅ CIKIS SAYILDI: ID=83012 (1->2) | Toplam Çıkan: 3
+[2026-06-16 17:05:10] [EVT] ID 83012 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83012_2026-06-16_17-05-10-937.jpg
+[2026-06-16 17:05:21] [EVT] ✅ CIKIS SAYILDI: ID=83013 (1->2) | Toplam Çıkan: 4
+[2026-06-16 17:05:21] [EVT] ID 83013 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83013_2026-06-16_17-05-21-941.jpg
+[2026-06-16 17:06:41] [EVT] ✅ CIKIS SAYILDI: ID=83082 (1->2) | Toplam Çıkan: 5
+[2026-06-16 17:06:41] [EVT] ID 83082 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83082_2026-06-16_17-06-41-278.jpg
+[2026-06-16 17:06:56] [EVT] ✅ CIKIS SAYILDI: ID=83105 (1->2) | Toplam Çıkan: 6
+[2026-06-16 17:06:56] [EVT] ID 83105 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83105_2026-06-16_17-06-56-485.jpg
+[2026-06-16 17:08:26] [EVT] ✅ CIKIS SAYILDI: ID=83177 (1->2) | Toplam Çıkan: 7
+[2026-06-16 17:08:26] [EVT] ID 83177 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83177_2026-06-16_17-08-26-954.jpg
+[2026-06-16 17:13:20] [EVT] ✅ CIKIS SAYILDI: ID=83258 (1->2) | Toplam Çıkan: 8
+[2026-06-16 17:13:20] [EVT] ID 83258 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83258_2026-06-16_17-13-20-756.jpg
+[2026-06-16 17:13:56] [EVT] ✅ CIKIS SAYILDI: ID=83260 (1->2) | Toplam Çıkan: 9
+[2026-06-16 17:13:56] [EVT] ID 83260 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83260_2026-06-16_17-13-56-508.jpg
+[2026-06-16 17:14:24] [EVT] ✅ GIRIS SAYILDI: ID=83270 (2->1) | Toplam Giren: 5
+[2026-06-16 17:14:24] [EVT] ID 83270 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_83270_2026-06-16_17-14-24-233.jpg (56651 bytes)
+[2026-06-16 17:17:47] [EVT] ✅ CIKIS SAYILDI: ID=83390 (1->2) | Toplam Çıkan: 10
+[2026-06-16 17:17:47] [EVT] ID 83390 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83390_2026-06-16_17-17-47-727.jpg
+[2026-06-16 17:19:04] [EVT] ✅ CIKIS SAYILDI: ID=83451 (1->2) | Toplam Çıkan: 11
+[2026-06-16 17:19:04] [EVT] ID 83451 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83451_2026-06-16_17-19-04-731.jpg
+[2026-06-16 17:19:07] [EVT] ✅ GIRIS SAYILDI: ID=83445 (2->1) | Toplam Giren: 6
+[2026-06-16 17:19:07] [EVT] ID 83445 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_83445_2026-06-16_17-19-07-522.jpg (56327 bytes)
+[2026-06-16 17:19:08] [EVT] ✅ GIRIS SAYILDI: ID=83459 (2->1) | Toplam Giren: 7
+[2026-06-16 17:19:08] [EVT] ID 83459 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_83459_2026-06-16_17-19-08-732.jpg (56988 bytes)
+[2026-06-16 17:19:41] [EVT] ✅ GIRIS SAYILDI: ID=83488 (2->1) | Toplam Giren: 8
+[2026-06-16 17:19:41] [EVT] ID 83488 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_83488_2026-06-16_17-19-41-542.jpg (56468 bytes)
+[2026-06-16 17:22:19] [EVT] ✅ CIKIS SAYILDI: ID=83535 (1->2) | Toplam Çıkan: 12
+[2026-06-16 17:22:19] [EVT] ID 83535 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83535_2026-06-16_17-22-19-258.jpg
+[2026-06-16 17:22:25] [EVT] ✅ CIKIS SAYILDI: ID=83539 (1->2) | Toplam Çıkan: 13
+[2026-06-16 17:22:25] [EVT] ID 83539 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83539_2026-06-16_17-22-25-290.jpg
+[2026-06-16 17:25:29] [EVT] ✅ GIRIS SAYILDI: ID=83583 (2->1) | Toplam Giren: 9
+[2026-06-16 17:25:29] [EVT] ID 83583 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_83583_2026-06-16_17-25-29-697.jpg (56814 bytes)
+[2026-06-16 17:26:25] [EVT] ✅ CIKIS SAYILDI: ID=83594 (1->2) | Toplam Çıkan: 14
+[2026-06-16 17:26:25] [EVT] ID 83594 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83594_2026-06-16_17-26-25-514.jpg
+[2026-06-16 17:26:27] [EVT] ✅ CIKIS SAYILDI: ID=83593 (1->2) | Toplam Çıkan: 15
+[2026-06-16 17:26:27] [EVT] ID 83593 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83593_2026-06-16_17-26-27-449.jpg
+[2026-06-16 17:26:53] [EVT] ✅ CIKIS SAYILDI: ID=83602 (1->2) | Toplam Çıkan: 16
+[2026-06-16 17:26:53] [EVT] ID 83602 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83602_2026-06-16_17-26-53-949.jpg
+[2026-06-16 17:30:35] [EVT] ✅ GIRIS SAYILDI: ID=83690 (2->1) | Toplam Giren: 10
+[2026-06-16 17:30:35] [EVT] ID 83690 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_83690_2026-06-16_17-30-35-979.jpg (56747 bytes)
+[2026-06-16 17:31:40] [EVT] ✅ GIRIS SAYILDI: ID=83725 (2->1) | Toplam Giren: 11
+[2026-06-16 17:31:40] [EVT] ID 83725 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_83725_2026-06-16_17-31-40-666.jpg (56443 bytes)
+[2026-06-16 17:31:40] [EVT] ✅ GIRIS SAYILDI: ID=83721 (2->1) | Toplam Giren: 12
+[2026-06-16 17:31:41] [EVT] ID 83721 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_83721_2026-06-16_17-31-41-002.jpg (56648 bytes)
+[2026-06-16 17:32:46] [EVT] ✅ CIKIS SAYILDI: ID=83744 (1->2) | Toplam Çıkan: 17
+[2026-06-16 17:32:46] [EVT] ID 83744 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83744_2026-06-16_17-32-46-023.jpg
+[2026-06-16 17:33:30] [EVT] ✅ CIKIS SAYILDI: ID=83763 (1->2) | Toplam Çıkan: 18
+[2026-06-16 17:33:30] [EVT] ID 83763 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83763_2026-06-16_17-33-30-467.jpg
+[2026-06-16 17:34:11] [EVT] ✅ CIKIS SAYILDI: ID=83770 (1->2) | Toplam Çıkan: 19
+[2026-06-16 17:34:11] [EVT] ID 83770 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83770_2026-06-16_17-34-11-267.jpg
+[2026-06-16 17:35:29] [EVT] ✅ GIRIS SAYILDI: ID=83822 (2->1) | Toplam Giren: 13
+[2026-06-16 17:35:29] [EVT] ID 83822 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_83822_2026-06-16_17-35-29-740.jpg (56206 bytes)
+[2026-06-16 17:37:06] [EVT] ✅ CIKIS SAYILDI: ID=83909 (1->2) | Toplam Çıkan: 20
+[2026-06-16 17:37:06] [EVT] ID 83909 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_83909_2026-06-16_17-37-06-522.jpg
+[2026-06-16 17:39:11] [EVT] ✅ CIKIS SAYILDI: ID=84020 (1->2) | Toplam Çıkan: 21
+[2026-06-16 17:39:11] [EVT] ID 84020 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84020_2026-06-16_17-39-11-745.jpg
+[2026-06-16 17:40:42] [EVT] ✅ CIKIS SAYILDI: ID=84090 (1->2) | Toplam Çıkan: 22
+[2026-06-16 17:40:42] [EVT] ID 84090 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84090_2026-06-16_17-40-42-915.jpg
+[2026-06-16 17:41:09] [EVT] ✅ CIKIS SAYILDI: ID=84114 (1->2) | Toplam Çıkan: 23
+[2026-06-16 17:41:09] [EVT] ID 84114 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84114_2026-06-16_17-41-09-839.jpg
+[2026-06-16 17:42:13] [EVT] ✅ GIRIS SAYILDI: ID=84122 (2->1) | Toplam Giren: 14
+[2026-06-16 17:42:13] [EVT] ID 84122 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84122_2026-06-16_17-42-13-660.jpg (56496 bytes)
+[2026-06-16 17:43:13] [EVT] ✅ GIRIS SAYILDI: ID=84157 (2->1) | Toplam Giren: 15
+[2026-06-16 17:43:13] [EVT] ID 84157 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84157_2026-06-16_17-43-13-361.jpg (56206 bytes)
+[2026-06-16 17:43:15] [EVT] ✅ GIRIS SAYILDI: ID=84159 (2->1) | Toplam Giren: 16
+[2026-06-16 17:43:15] [EVT] ID 84159 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84159_2026-06-16_17-43-15-976.jpg (57328 bytes)
+[2026-06-16 17:43:16] [EVT] ✅ CIKIS SAYILDI: ID=84159 (1->2) | Toplam Çıkan: 24
+[2026-06-16 17:43:16] [EVT] ID 84159 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84159_2026-06-16_17-43-16-369.jpg
+[2026-06-16 17:43:29] [EVT] ✅ CIKIS SAYILDI: ID=84175 (1->2) | Toplam Çıkan: 25
+[2026-06-16 17:43:29] [EVT] ID 84175 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84175_2026-06-16_17-43-29-252.jpg
+[2026-06-16 17:43:29] [EVT] ✅ CIKIS SAYILDI: ID=84182 (1->2) | Toplam Çıkan: 26
+[2026-06-16 17:43:29] [EVT] ID 84182 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84182_2026-06-16_17-43-29-572.jpg
+[2026-06-16 17:43:30] [EVT] ✅ CIKIS SAYILDI: ID=84177 (1->2) | Toplam Çıkan: 27
+[2026-06-16 17:43:30] [EVT] ID 84177 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84177_2026-06-16_17-43-30-348.jpg
+[2026-06-16 17:43:34] [EVT] ✅ GIRIS SAYILDI: ID=84185 (2->1) | Toplam Giren: 17
+[2026-06-16 17:43:34] [EVT] ID 84185 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84185_2026-06-16_17-43-34-519.jpg (55911 bytes)
+[2026-06-16 17:43:38] [EVT] ✅ CIKIS SAYILDI: ID=84185 (1->2) | Toplam Çıkan: 28
+[2026-06-16 17:43:38] [EVT] ID 84185 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84185_2026-06-16_17-43-38-344.jpg
+[2026-06-16 17:44:58] [EVT] ✅ CIKIS SAYILDI: ID=84207 (1->2) | Toplam Çıkan: 29
+[2026-06-16 17:44:58] [EVT] ID 84207 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84207_2026-06-16_17-44-58-129.jpg
+[2026-06-16 17:45:47] [EVT] ✅ CIKIS SAYILDI: ID=84223 (1->2) | Toplam Çıkan: 30
+[2026-06-16 17:45:47] [EVT] ID 84223 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84223_2026-06-16_17-45-47-137.jpg
+[2026-06-16 17:47:41] [EVT] ✅ CIKIS SAYILDI: ID=84340 (1->2) | Toplam Çıkan: 31
+[2026-06-16 17:47:41] [EVT] ID 84340 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84340_2026-06-16_17-47-41-597.jpg
+[2026-06-16 17:49:35] [EVT] ✅ GIRIS SAYILDI: ID=84412 (2->1) | Toplam Giren: 18
+[2026-06-16 17:49:35] [EVT] ID 84412 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84412_2026-06-16_17-49-35-273.jpg (57082 bytes)
+[2026-06-16 17:50:28] [EVT] ✅ GIRIS SAYILDI: ID=84430 (2->1) | Toplam Giren: 19
+[2026-06-16 17:50:28] [EVT] ID 84430 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84430_2026-06-16_17-50-28-939.jpg (56870 bytes)
+[2026-06-16 17:52:37] [EVT] ✅ GIRIS SAYILDI: ID=84524 (2->1) | Toplam Giren: 20
+[2026-06-16 17:52:37] [EVT] ID 84524 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84524_2026-06-16_17-52-37-897.jpg (56067 bytes)
+[2026-06-16 17:52:39] [EVT] ✅ GIRIS SAYILDI: ID=84523 (2->1) | Toplam Giren: 21
+[2026-06-16 17:52:39] [EVT] ID 84523 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84523_2026-06-16_17-52-39-097.jpg (56926 bytes)
+[2026-06-16 17:53:05] [EVT] ✅ GIRIS SAYILDI: ID=84532 (2->1) | Toplam Giren: 22
+[2026-06-16 17:53:05] [EVT] ID 84532 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84532_2026-06-16_17-53-05-982.jpg (56110 bytes)
+[2026-06-16 17:54:17] [EVT] ✅ CIKIS SAYILDI: ID=84556 (1->2) | Toplam Çıkan: 32
+[2026-06-16 17:54:17] [EVT] ID 84556 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84556_2026-06-16_17-54-17-352.jpg
+[2026-06-16 17:57:58] [EVT] ✅ CIKIS SAYILDI: ID=84661 (1->2) | Toplam Çıkan: 33
+[2026-06-16 17:57:58] [EVT] ID 84661 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84661_2026-06-16_17-57-58-855.jpg
+[2026-06-16 17:58:31] [EVT] ✅ CIKIS SAYILDI: ID=84677 (1->2) | Toplam Çıkan: 34
+[2026-06-16 17:58:31] [EVT] ID 84677 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84677_2026-06-16_17-58-31-360.jpg
+[2026-06-16 18:00:50] [EVT] ✅ GIRIS SAYILDI: ID=84721 (2->1) | Toplam Giren: 1
+[2026-06-16 18:00:50] [EVT] ID 84721 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84721_2026-06-16_18-00-50-252.jpg (57095 bytes)
+[2026-06-16 18:03:00] [EVT] ✅ CIKIS SAYILDI: ID=84755 (1->2) | Toplam Çıkan: 1
+[2026-06-16 18:03:00] [EVT] ID 84755 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84755_2026-06-16_18-03-00-145.jpg
+[2026-06-16 18:04:35] [EVT] ✅ CIKIS SAYILDI: ID=84799 (1->2) | Toplam Çıkan: 2
+[2026-06-16 18:04:35] [EVT] ID 84799 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84799_2026-06-16_18-04-35-252.jpg
+[2026-06-16 18:05:51] [EVT] ✅ CIKIS SAYILDI: ID=84834 (1->2) | Toplam Çıkan: 3
+[2026-06-16 18:05:51] [EVT] ID 84834 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84834_2026-06-16_18-05-51-865.jpg
+[2026-06-16 18:09:48] [EVT] ✅ CIKIS SAYILDI: ID=84895 (1->2) | Toplam Çıkan: 4
+[2026-06-16 18:09:48] [EVT] ID 84895 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84895_2026-06-16_18-09-48-229.jpg
+[2026-06-16 18:10:47] [EVT] ✅ GIRIS SAYILDI: ID=84909 (2->1) | Toplam Giren: 2
+[2026-06-16 18:10:47] [EVT] ID 84909 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84909_2026-06-16_18-10-47-368.jpg (56236 bytes)
+[2026-06-16 18:11:16] [EVT] ✅ CIKIS SAYILDI: ID=84914 (1->2) | Toplam Çıkan: 5
+[2026-06-16 18:11:16] [EVT] ID 84914 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_84914_2026-06-16_18-11-16-185.jpg
+[2026-06-16 18:13:05] [EVT] ✅ GIRIS SAYILDI: ID=84946 (2->1) | Toplam Giren: 3
+[2026-06-16 18:13:05] [EVT] ID 84946 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_84946_2026-06-16_18-13-05-132.jpg (56893 bytes)
+[2026-06-16 18:16:05] [EVT] ✅ GIRIS SAYILDI: ID=85028 (2->1) | Toplam Giren: 4
+[2026-06-16 18:16:05] [EVT] ID 85028 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_85028_2026-06-16_18-16-05-191.jpg (56110 bytes)
+[2026-06-16 18:17:20] [EVT] ✅ GIRIS SAYILDI: ID=85053 (2->1) | Toplam Giren: 5
+[2026-06-16 18:17:20] [EVT] ID 85053 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_85053_2026-06-16_18-17-20-166.jpg (57425 bytes)
+[2026-06-16 18:17:48] [EVT] ✅ CIKIS SAYILDI: ID=85056 (1->2) | Toplam Çıkan: 6
+[2026-06-16 18:17:48] [EVT] ID 85056 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85056_2026-06-16_18-17-48-848.jpg
+[2026-06-16 18:19:35] [EVT] ✅ CIKIS SAYILDI: ID=85116 (1->2) | Toplam Çıkan: 7
+[2026-06-16 18:19:35] [EVT] ID 85116 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85116_2026-06-16_18-19-35-363.jpg
+[2026-06-16 18:22:09] [EVT] ✅ GIRIS SAYILDI: ID=85188 (2->1) | Toplam Giren: 6
+[2026-06-16 18:22:09] [EVT] ID 85188 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_85188_2026-06-16_18-22-09-248.jpg (56633 bytes)
+[2026-06-16 18:22:57] [EVT] ✅ CIKIS SAYILDI: ID=85203 (1->2) | Toplam Çıkan: 8
+[2026-06-16 18:22:57] [EVT] ID 85203 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85203_2026-06-16_18-22-57-667.jpg
+[2026-06-16 18:23:39] [EVT] ✅ GIRIS SAYILDI: ID=85210 (2->1) | Toplam Giren: 7
+[2026-06-16 18:23:39] [EVT] ID 85210 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_85210_2026-06-16_18-23-39-304.jpg (56251 bytes)
+[2026-06-16 18:24:30] [EVT] ✅ CIKIS SAYILDI: ID=85232 (1->2) | Toplam Çıkan: 9
+[2026-06-16 18:24:31] [EVT] ID 85232 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85232_2026-06-16_18-24-31-000.jpg
+[2026-06-16 18:25:34] [EVT] ✅ GIRIS SAYILDI: ID=85245 (2->1) | Toplam Giren: 8
+[2026-06-16 18:25:34] [EVT] ID 85245 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_85245_2026-06-16_18-25-34-687.jpg (56439 bytes)
+[2026-06-16 18:26:05] [EVT] ✅ CIKIS SAYILDI: ID=85277 (1->2) | Toplam Çıkan: 10
+[2026-06-16 18:26:05] [EVT] ID 85277 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85277_2026-06-16_18-26-05-871.jpg
+[2026-06-16 18:26:08] [EVT] ✅ CIKIS SAYILDI: ID=85282 (1->2) | Toplam Çıkan: 11
+[2026-06-16 18:26:08] [EVT] ID 85282 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85282_2026-06-16_18-26-08-892.jpg
+[2026-06-16 18:26:21] [EVT] ✅ GIRIS SAYILDI: ID=85285 (2->1) | Toplam Giren: 9
+[2026-06-16 18:26:21] [EVT] ID 85285 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_85285_2026-06-16_18-26-21-842.jpg (56902 bytes)
+[2026-06-16 18:27:14] [EVT] ✅ CIKIS SAYILDI: ID=85322 (1->2) | Toplam Çıkan: 12
+[2026-06-16 18:27:14] [EVT] ID 85322 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85322_2026-06-16_18-27-14-032.jpg
+[2026-06-16 18:29:24] [EVT] ✅ GIRIS SAYILDI: ID=85385 (2->1) | Toplam Giren: 10
+[2026-06-16 18:29:24] [EVT] ID 85385 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_85385_2026-06-16_18-29-24-744.jpg (56930 bytes)
+[2026-06-16 18:29:35] [EVT] ✅ CIKIS SAYILDI: ID=85391 (1->2) | Toplam Çıkan: 13
+[2026-06-16 18:29:35] [EVT] ID 85391 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85391_2026-06-16_18-29-35-703.jpg
+[2026-06-16 18:30:27] [EVT] ✅ CIKIS SAYILDI: ID=85414 (1->2) | Toplam Çıkan: 14
+[2026-06-16 18:30:27] [EVT] ID 85414 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85414_2026-06-16_18-30-27-704.jpg
+[2026-06-16 18:32:04] [EVT] ✅ GIRIS SAYILDI: ID=85438 (2->1) | Toplam Giren: 11
+[2026-06-16 18:32:04] [EVT] ID 85438 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_85438_2026-06-16_18-32-04-797.jpg (56279 bytes)
+[2026-06-16 18:33:03] [EVT] ✅ CIKIS SAYILDI: ID=85465 (1->2) | Toplam Çıkan: 15
+[2026-06-16 18:33:03] [EVT] ID 85465 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85465_2026-06-16_18-33-03-108.jpg
+[2026-06-16 18:33:11] [EVT] ✅ CIKIS SAYILDI: ID=85470 (1->2) | Toplam Çıkan: 16
+[2026-06-16 18:33:11] [EVT] ID 85470 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85470_2026-06-16_18-33-11-427.jpg
+[2026-06-16 18:33:24] [EVT] ✅ CIKIS SAYILDI: ID=85473 (1->2) | Toplam Çıkan: 17
+[2026-06-16 18:33:25] [EVT] ID 85473 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85473_2026-06-16_18-33-25-001.jpg
+[2026-06-16 18:36:29] [EVT] ✅ CIKIS SAYILDI: ID=85564 (1->2) | Toplam Çıkan: 18
+[2026-06-16 18:36:29] [EVT] ID 85564 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85564_2026-06-16_18-36-29-504.jpg
+[2026-06-16 18:37:46] [EVT] ✅ CIKIS SAYILDI: ID=85636 (1->2) | Toplam Çıkan: 19
+[2026-06-16 18:37:46] [EVT] ID 85636 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85636_2026-06-16_18-37-46-859.jpg
+[2026-06-16 18:40:38] [EVT] ✅ CIKIS SAYILDI: ID=85696 (1->2) | Toplam Çıkan: 20
+[2026-06-16 18:40:38] [EVT] ID 85696 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85696_2026-06-16_18-40-38-916.jpg
+[2026-06-16 18:41:15] [EVT] ✅ CIKIS SAYILDI: ID=85702 (1->2) | Toplam Çıkan: 21
+[2026-06-16 18:41:15] [EVT] ID 85702 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85702_2026-06-16_18-41-15-397.jpg
+[2026-06-16 18:44:12] [EVT] ✅ GIRIS SAYILDI: ID=85736 (2->1) | Toplam Giren: 12
+[2026-06-16 18:44:12] [EVT] ID 85736 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_85736_2026-06-16_18-44-12-066.jpg (57490 bytes)
+[2026-06-16 18:46:28] [EVT] ✅ CIKIS SAYILDI: ID=85778 (1->2) | Toplam Çıkan: 22
+[2026-06-16 18:46:28] [EVT] ID 85778 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85778_2026-06-16_18-46-28-737.jpg
+[2026-06-16 18:48:08] [EVT] ✅ CIKIS SAYILDI: ID=85826 (1->2) | Toplam Çıkan: 23
+[2026-06-16 18:48:08] [EVT] ID 85826 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85826_2026-06-16_18-48-08-247.jpg
+[2026-06-16 18:48:12] [EVT] ✅ GIRIS SAYILDI: ID=85834 (2->1) | Toplam Giren: 13
+[2026-06-16 18:48:12] [EVT] ID 85834 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_85834_2026-06-16_18-48-12-798.jpg (55594 bytes)
+[2026-06-16 18:51:36] [EVT] ✅ GIRIS SAYILDI: ID=85918 (2->1) | Toplam Giren: 14
+[2026-06-16 18:51:36] [EVT] ID 85918 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_85918_2026-06-16_18-51-36-243.jpg (56868 bytes)
+[2026-06-16 18:52:39] [EVT] ✅ CIKIS SAYILDI: ID=85928 (1->2) | Toplam Çıkan: 24
+[2026-06-16 18:52:39] [EVT] ID 85928 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85928_2026-06-16_18-52-39-016.jpg
+[2026-06-16 18:53:13] [EVT] ✅ CIKIS SAYILDI: ID=85941 (1->2) | Toplam Çıkan: 25
+[2026-06-16 18:53:13] [EVT] ID 85941 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_85941_2026-06-16_18-53-13-861.jpg
+[2026-06-16 18:58:38] [EVT] ✅ GIRIS SAYILDI: ID=86159 (2->1) | Toplam Giren: 15
+[2026-06-16 18:58:38] [EVT] ID 86159 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_86159_2026-06-16_18-58-38-552.jpg (56129 bytes)
+[2026-06-16 19:03:32] [EVT] ✅ CIKIS SAYILDI: ID=86254 (1->2) | Toplam Çıkan: 1
+[2026-06-16 19:03:32] [EVT] ID 86254 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86254_2026-06-16_19-03-32-219.jpg
+[2026-06-16 19:04:58] [EVT] ✅ GIRIS SAYILDI: ID=86287 (2->1) | Toplam Giren: 1
+[2026-06-16 19:04:58] [EVT] ID 86287 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_86287_2026-06-16_19-04-58-732.jpg (56837 bytes)
+[2026-06-16 19:04:59] [EVT] ✅ GIRIS SAYILDI: ID=86288 (2->1) | Toplam Giren: 2
+[2026-06-16 19:04:59] [EVT] ID 86288 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_86288_2026-06-16_19-04-59-263.jpg (57321 bytes)
+[2026-06-16 19:05:00] [EVT] ✅ GIRIS SAYILDI: ID=86285 (2->1) | Toplam Giren: 3
+[2026-06-16 19:05:00] [EVT] ID 86285 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_86285_2026-06-16_19-05-00-811.jpg (58877 bytes)
+[2026-06-16 19:05:47] [EVT] ✅ CIKIS SAYILDI: ID=86338 (1->2) | Toplam Çıkan: 2
+[2026-06-16 19:05:47] [EVT] ID 86338 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86338_2026-06-16_19-05-47-601.jpg
+[2026-06-16 19:06:19] [EVT] ✅ GIRIS SAYILDI: ID=86347 (2->1) | Toplam Giren: 4
+[2026-06-16 19:06:19] [EVT] ID 86347 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_86347_2026-06-16_19-06-19-836.jpg (57227 bytes)
+[2026-06-16 19:06:20] [EVT] ✅ CIKIS SAYILDI: ID=86347 (1->2) | Toplam Çıkan: 3
+[2026-06-16 19:06:20] [EVT] ID 86347 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86347_2026-06-16_19-06-20-420.jpg
+[2026-06-16 19:10:11] [EVT] ✅ CIKIS SAYILDI: ID=86483 (1->2) | Toplam Çıkan: 4
+[2026-06-16 19:10:11] [EVT] ID 86483 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86483_2026-06-16_19-10-11-685.jpg
+[2026-06-16 19:10:50] [EVT] ✅ GIRIS SAYILDI: ID=86496 (2->1) | Toplam Giren: 5
+[2026-06-16 19:10:50] [EVT] ID 86496 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_86496_2026-06-16_19-10-50-610.jpg (56944 bytes)
+[2026-06-16 19:11:09] [EVT] ✅ GIRIS SAYILDI: ID=86515 (2->1) | Toplam Giren: 6
+[2026-06-16 19:11:09] [EVT] ID 86515 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_86515_2026-06-16_19-11-09-901.jpg (57342 bytes)
+[2026-06-16 19:12:32] [EVT] ✅ CIKIS SAYILDI: ID=86553 (1->2) | Toplam Çıkan: 5
+[2026-06-16 19:12:32] [EVT] ID 86553 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86553_2026-06-16_19-12-32-615.jpg
+[2026-06-16 19:14:02] [EVT] ✅ CIKIS SAYILDI: ID=86571 (1->2) | Toplam Çıkan: 6
+[2026-06-16 19:14:02] [EVT] ID 86571 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86571_2026-06-16_19-14-02-701.jpg
+[2026-06-16 19:14:23] [EVT] ✅ GIRIS SAYILDI: ID=86584 (2->1) | Toplam Giren: 7
+[2026-06-16 19:14:23] [EVT] ID 86584 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_86584_2026-06-16_19-14-23-132.jpg (57106 bytes)
+[2026-06-16 19:15:35] [EVT] ✅ CIKIS SAYILDI: ID=86615 (1->2) | Toplam Çıkan: 7
+[2026-06-16 19:15:35] [EVT] ID 86615 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86615_2026-06-16_19-15-35-280.jpg
+[2026-06-16 19:16:13] [EVT] ✅ GIRIS SAYILDI: ID=86629 (2->1) | Toplam Giren: 8
+[2026-06-16 19:16:13] [EVT] ID 86629 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_86629_2026-06-16_19-16-13-083.jpg (56026 bytes)
+[2026-06-16 19:20:10] [EVT] ✅ CIKIS SAYILDI: ID=86691 (1->2) | Toplam Çıkan: 8
+[2026-06-16 19:20:10] [EVT] ID 86691 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86691_2026-06-16_19-20-10-815.jpg
+[2026-06-16 19:23:09] [EVT] ✅ CIKIS SAYILDI: ID=86738 (1->2) | Toplam Çıkan: 9
+[2026-06-16 19:23:09] [EVT] ID 86738 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86738_2026-06-16_19-23-09-830.jpg
+[2026-06-16 19:23:55] [EVT] ✅ CIKIS SAYILDI: ID=86853 (1->2) | Toplam Çıkan: 10
+[2026-06-16 19:23:55] [EVT] ID 86853 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86853_2026-06-16_19-23-55-798.jpg
+[2026-06-16 19:24:57] [EVT] ✅ GIRIS SAYILDI: ID=86882 (2->1) | Toplam Giren: 9
+[2026-06-16 19:24:57] [EVT] ID 86882 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_86882_2026-06-16_19-24-57-501.jpg (56999 bytes)
+[2026-06-16 19:26:57] [EVT] ✅ CIKIS SAYILDI: ID=86942 (1->2) | Toplam Çıkan: 11
+[2026-06-16 19:26:57] [EVT] ID 86942 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86942_2026-06-16_19-26-57-745.jpg
+[2026-06-16 19:29:24] [EVT] ✅ CIKIS SAYILDI: ID=86995 (1->2) | Toplam Çıkan: 12
+[2026-06-16 19:29:24] [EVT] ID 86995 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86995_2026-06-16_19-29-24-219.jpg
+[2026-06-16 19:29:27] [EVT] ✅ CIKIS SAYILDI: ID=87003 (1->2) | Toplam Çıkan: 13
+[2026-06-16 19:29:27] [EVT] ID 87003 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87003_2026-06-16_19-29-27-099.jpg
+[2026-06-16 19:29:28] [EVT] ✅ CIKIS SAYILDI: ID=86973 (1->2) | Toplam Çıkan: 14
+[2026-06-16 19:29:28] [EVT] ID 86973 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86973_2026-06-16_19-29-28-812.jpg
+[2026-06-16 19:29:30] [EVT] ✅ CIKIS SAYILDI: ID=86999 (1->2) | Toplam Çıkan: 15
+[2026-06-16 19:29:30] [EVT] ID 86999 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_86999_2026-06-16_19-29-30-836.jpg
+[2026-06-16 19:29:44] [EVT] ✅ GIRIS SAYILDI: ID=87020 (2->1) | Toplam Giren: 10
+[2026-06-16 19:29:44] [EVT] ID 87020 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_87020_2026-06-16_19-29-44-109.jpg (55551 bytes)
+[2026-06-16 19:30:32] [EVT] ✅ CIKIS SAYILDI: ID=87049 (1->2) | Toplam Çıkan: 16
+[2026-06-16 19:30:32] [EVT] ID 87049 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87049_2026-06-16_19-30-32-453.jpg
+[2026-06-16 19:31:51] [EVT] ✅ CIKIS SAYILDI: ID=87096 (1->2) | Toplam Çıkan: 17
+[2026-06-16 19:31:51] [EVT] ID 87096 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87096_2026-06-16_19-31-51-687.jpg
+[2026-06-16 19:32:12] [EVT] ✅ GIRIS SAYILDI: ID=87111 (2->1) | Toplam Giren: 11
+[2026-06-16 19:32:12] [EVT] ID 87111 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_87111_2026-06-16_19-32-12-377.jpg (56045 bytes)
+[2026-06-16 19:37:19] [EVT] ✅ CIKIS SAYILDI: ID=87246 (1->2) | Toplam Çıkan: 18
+[2026-06-16 19:37:19] [EVT] ID 87246 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87246_2026-06-16_19-37-19-781.jpg
+[2026-06-16 19:38:45] [EVT] ✅ CIKIS SAYILDI: ID=87294 (1->2) | Toplam Çıkan: 19
+[2026-06-16 19:38:45] [EVT] ID 87294 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87294_2026-06-16_19-38-45-160.jpg
+[2026-06-16 19:39:08] [EVT] ✅ GIRIS SAYILDI: ID=87300 (2->1) | Toplam Giren: 12
+[2026-06-16 19:39:08] [EVT] ID 87300 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_87300_2026-06-16_19-39-08-725.jpg (56136 bytes)
+[2026-06-16 19:40:31] [EVT] ✅ CIKIS SAYILDI: ID=87312 (1->2) | Toplam Çıkan: 20
+[2026-06-16 19:40:31] [EVT] ID 87312 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87312_2026-06-16_19-40-31-553.jpg
+[2026-06-16 19:42:06] [EVT] ✅ CIKIS SAYILDI: ID=87330 (1->2) | Toplam Çıkan: 21
+[2026-06-16 19:42:06] [EVT] ID 87330 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87330_2026-06-16_19-42-06-395.jpg
+[2026-06-16 19:50:01] [EVT] ✅ CIKIS SAYILDI: ID=87555 (1->2) | Toplam Çıkan: 22
+[2026-06-16 19:50:01] [EVT] ID 87555 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87555_2026-06-16_19-50-01-384.jpg
+[2026-06-16 19:50:23] [EVT] ✅ CIKIS SAYILDI: ID=87597 (1->2) | Toplam Çıkan: 23
+[2026-06-16 19:50:23] [EVT] ID 87597 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87597_2026-06-16_19-50-23-234.jpg
+[2026-06-16 19:52:29] [EVT] ✅ GIRIS SAYILDI: ID=87675 (2->1) | Toplam Giren: 13
+[2026-06-16 19:52:29] [EVT] ID 87675 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_87675_2026-06-16_19-52-29-795.jpg (56128 bytes)
+[2026-06-16 19:52:57] [EVT] ✅ CIKIS SAYILDI: ID=87690 (1->2) | Toplam Çıkan: 24
+[2026-06-16 19:52:57] [EVT] ID 87690 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87690_2026-06-16_19-52-57-336.jpg
+[2026-06-16 19:52:57] [EVT] ✅ CIKIS SAYILDI: ID=87685 (1->2) | Toplam Çıkan: 25
+[2026-06-16 19:52:57] [EVT] ID 87685 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87685_2026-06-16_19-52-57-903.jpg
+[2026-06-16 19:52:59] [EVT] ✅ CIKIS SAYILDI: ID=87682 (1->2) | Toplam Çıkan: 26
+[2026-06-16 19:52:59] [EVT] ID 87682 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87682_2026-06-16_19-52-59-858.jpg
+[2026-06-16 19:53:24] [EVT] ✅ CIKIS SAYILDI: ID=87706 (1->2) | Toplam Çıkan: 27
+[2026-06-16 19:53:24] [EVT] ID 87706 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87706_2026-06-16_19-53-24-583.jpg
+[2026-06-16 19:53:25] [EVT] ✅ CIKIS SAYILDI: ID=87704 (1->2) | Toplam Çıkan: 28
+[2026-06-16 19:53:25] [EVT] ID 87704 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87704_2026-06-16_19-53-25-591.jpg
+[2026-06-16 19:54:39] [EVT] ✅ GIRIS SAYILDI: ID=87737 (2->1) | Toplam Giren: 14
+[2026-06-16 19:54:39] [EVT] ID 87737 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_87737_2026-06-16_19-54-39-053.jpg (56033 bytes)
+[2026-06-16 19:55:07] [EVT] ✅ GIRIS SAYILDI: ID=87746 (2->1) | Toplam Giren: 15
+[2026-06-16 19:55:07] [EVT] ID 87746 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_87746_2026-06-16_19-55-07-627.jpg (56776 bytes)
+[2026-06-16 19:55:23] [EVT] ✅ GIRIS SAYILDI: ID=87767 (2->1) | Toplam Giren: 16
+[2026-06-16 19:55:23] [EVT] ID 87767 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_87767_2026-06-16_19-55-23-018.jpg (56095 bytes)
+[2026-06-16 19:57:30] [EVT] ✅ GIRIS SAYILDI: ID=87770 (2->1) | Toplam Giren: 17
+[2026-06-16 19:57:30] [EVT] ID 87770 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_87770_2026-06-16_19-57-30-655.jpg (58316 bytes)
+[2026-06-16 19:57:31] [EVT] ✅ CIKIS SAYILDI: ID=87770 (1->2) | Toplam Çıkan: 29
+[2026-06-16 19:57:31] [EVT] ID 87770 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87770_2026-06-16_19-57-31-842.jpg
+[2026-06-16 19:59:21] [EVT] ✅ CIKIS SAYILDI: ID=87800 (1->2) | Toplam Çıkan: 30
+[2026-06-16 19:59:21] [EVT] ID 87800 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87800_2026-06-16_19-59-21-562.jpg
+[2026-06-16 19:59:40] [EVT] ✅ CIKIS SAYILDI: ID=87805 (1->2) | Toplam Çıkan: 31
+[2026-06-16 19:59:40] [EVT] ID 87805 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87805_2026-06-16_19-59-40-533.jpg
+[2026-06-16 19:59:55] [EVT] ✅ CIKIS SAYILDI: ID=87810 (1->2) | Toplam Çıkan: 32
+[2026-06-16 19:59:55] [EVT] ID 87810 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87810_2026-06-16_19-59-55-409.jpg
+[2026-06-16 20:00:05] [EVT] ✅ GIRIS SAYILDI: ID=87812 (2->1) | Toplam Giren: 1
+[2026-06-16 20:00:05] [EVT] ID 87812 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_87812_2026-06-16_20-00-05-265.jpg (56899 bytes)
+[2026-06-16 20:00:21] [EVT] ✅ CIKIS SAYILDI: ID=87817 (1->2) | Toplam Çıkan: 1
+[2026-06-16 20:00:21] [EVT] ID 87817 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87817_2026-06-16_20-00-21-120.jpg
+[2026-06-16 20:02:12] [EVT] ✅ CIKIS SAYILDI: ID=87917 (1->2) | Toplam Çıkan: 2
+[2026-06-16 20:02:12] [EVT] ID 87917 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87917_2026-06-16_20-02-12-767.jpg
+[2026-06-16 20:03:47] [EVT] ✅ CIKIS SAYILDI: ID=87929 (1->2) | Toplam Çıkan: 3
+[2026-06-16 20:03:47] [EVT] ID 87929 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87929_2026-06-16_20-03-47-006.jpg
+[2026-06-16 20:04:22] [EVT] ✅ CIKIS SAYILDI: ID=87941 (1->2) | Toplam Çıkan: 4
+[2026-06-16 20:04:22] [EVT] ID 87941 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87941_2026-06-16_20-04-22-667.jpg
+[2026-06-16 20:04:56] [EVT] ✅ CIKIS SAYILDI: ID=87988 (1->2) | Toplam Çıkan: 5
+[2026-06-16 20:04:56] [EVT] ID 87988 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_87988_2026-06-16_20-04-56-319.jpg
+[2026-06-16 20:05:17] [EVT] ✅ CIKIS SAYILDI: ID=88005 (1->2) | Toplam Çıkan: 6
+[2026-06-16 20:05:17] [EVT] ID 88005 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_88005_2026-06-16_20-05-17-527.jpg
+[2026-06-16 20:06:06] [EVT] ✅ CIKIS SAYILDI: ID=88022 (1->2) | Toplam Çıkan: 7
+[2026-06-16 20:06:06] [EVT] ID 88022 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_88022_2026-06-16_20-06-06-319.jpg
+[2026-06-16 20:06:09] [EVT] ✅ CIKIS SAYILDI: ID=88024 (1->2) | Toplam Çıkan: 8
+[2026-06-16 20:06:09] [EVT] ID 88024 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_88024_2026-06-16_20-06-09-181.jpg
+[2026-06-16 20:06:18] [EVT] ✅ CIKIS SAYILDI: ID=88036 (1->2) | Toplam Çıkan: 9
+[2026-06-16 20:06:18] [EVT] ID 88036 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_88036_2026-06-16_20-06-18-506.jpg
+[2026-06-16 20:13:06] [EVT] ✅ CIKIS SAYILDI: ID=88229 (1->2) | Toplam Çıkan: 10
+[2026-06-16 20:13:06] [EVT] ID 88229 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_88229_2026-06-16_20-13-06-235.jpg
+[2026-06-16 20:14:01] [EVT] ✅ GIRIS SAYILDI: ID=88237 (2->1) | Toplam Giren: 2
+[2026-06-16 20:14:02] [EVT] ID 88237 giris foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/giren_id_88237_2026-06-16_20-14-02-001.jpg (56679 bytes)
+[2026-06-16 20:14:34] [EVT] ✅ CIKIS SAYILDI: ID=88243 (1->2) | Toplam Çıkan: 11
+[2026-06-16 20:14:34] [EVT] ID 88243 cikis foto kaydedildi: /home/cx1/x/Counter/logs/2026-06-16/cam7/screenshots/exits/cikan_id_88243_2026-06-16_20-14-34-783.jpg

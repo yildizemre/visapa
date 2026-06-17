@@ -1,0 +1,172 @@
+============================================================
+  Density — API LOGLARI
+  Kamera  : cam8
+  Tarih   : 2026-06-16
+  Açıldı  : 2026-06-16 00:00:02
+============================================================
+
+[2026-06-16 11:00:00] [API] ************************************************************
+[2026-06-16 11:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam8 ***
+[2026-06-16 11:00:00] [API] *** Saat    : 2026-06-16 10:00:00 ***
+[2026-06-16 11:00:00] [API] *** Zoneler : Zone1:giren=5,ort=93.7s | Zone2:giren=9,ort=95.9s ***
+[2026-06-16 11:00:00] [API] ************************************************************
+[2026-06-16 11:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 11:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 11:00:01] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 11:00:01] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=9 dwell=95.9s cam=cam8
+[2026-06-16 11:00:01] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 11:00:01] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=5 dwell=93.7s cam=cam8
+[2026-06-16 11:00:01] [API] [API-OK] Gönderildi | id=4209 | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=9
+[2026-06-16 11:00:01] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=9 dwell=95.9s status=OK
+[2026-06-16 11:00:03] [API] [API-OK] Gönderildi | id=4213 | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=5
+[2026-06-16 11:00:03] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=5 dwell=93.7s status=OK
+[2026-06-16 12:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 12:00:00] [API] ************************************************************
+[2026-06-16 12:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam8 ***
+[2026-06-16 12:00:00] [API] *** Saat    : 2026-06-16 11:00:00 ***
+[2026-06-16 12:00:00] [API] *** Zoneler : Zone1:giren=3,ort=123.2s | Zone2:giren=10,ort=137.8s ***
+[2026-06-16 12:00:00] [API] ************************************************************
+[2026-06-16 12:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 12:00:01] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 12:00:01] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=3 dwell=123.2s cam=cam8
+[2026-06-16 12:00:01] [API] [API-OK] Gönderildi | id=4219 | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=3
+[2026-06-16 12:00:01] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=3 dwell=123.2s status=OK
+[2026-06-16 12:00:02] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 12:00:02] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=10 dwell=137.8s cam=cam8
+[2026-06-16 12:00:03] [API] [API-OK] Gönderildi | id=4227 | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=10
+[2026-06-16 12:00:03] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=10 dwell=137.8s status=OK
+[2026-06-16 13:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 13:00:00] [API] ************************************************************
+[2026-06-16 13:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 13:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam8 ***
+[2026-06-16 13:00:00] [API] *** Saat    : 2026-06-16 12:00:00 ***
+[2026-06-16 13:00:00] [API] *** Zoneler : Zone1:giren=0,ort=0.0s | Zone2:giren=6,ort=419.5s ***
+[2026-06-16 13:00:00] [API] ************************************************************
+[2026-06-16 13:00:00] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 13:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s cam=cam8
+[2026-06-16 13:00:01] [API] [API-OK] Gönderildi | id=4230 | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0
+[2026-06-16 13:00:01] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s status=OK
+[2026-06-16 13:00:01] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 13:00:01] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=6 dwell=419.5s cam=cam8
+[2026-06-16 13:00:01] [API] [API-OK] Gönderildi | id=4233 | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=6
+[2026-06-16 13:00:01] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=6 dwell=419.5s status=OK
+[2026-06-16 14:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 14:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 14:00:00] [API] ************************************************************
+[2026-06-16 14:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam8 ***
+[2026-06-16 14:00:00] [API] *** Saat    : 2026-06-16 13:00:00 ***
+[2026-06-16 14:00:00] [API] *** Zoneler : Zone1:giren=0,ort=0.0s | Zone2:giren=15,ort=287.7s ***
+[2026-06-16 14:00:00] [API] ************************************************************
+[2026-06-16 14:00:00] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 14:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s cam=cam8
+[2026-06-16 14:00:01] [API] [API-OK] Gönderildi | id=4240 | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0
+[2026-06-16 14:00:01] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s status=OK
+[2026-06-16 14:00:01] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 14:00:01] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=15 dwell=287.7s cam=cam8
+[2026-06-16 14:00:01] [API] [API-OK] Gönderildi | id=4244 | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=15
+[2026-06-16 14:00:01] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=15 dwell=287.7s status=OK
+[2026-06-16 15:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 15:00:00] [API] ************************************************************
+[2026-06-16 15:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam8 ***
+[2026-06-16 15:00:00] [API] *** Saat    : 2026-06-16 14:00:00 ***
+[2026-06-16 15:00:00] [API] *** Zoneler : Zone1:giren=1,ort=66.5s | Zone2:giren=5,ort=508.9s ***
+[2026-06-16 15:00:00] [API] ************************************************************
+[2026-06-16 15:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 15:00:00] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 15:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=1 dwell=66.5s cam=cam8
+[2026-06-16 15:00:01] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 15:00:01] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=5 dwell=508.9s cam=cam8
+[2026-06-16 15:00:02] [API] [API-OK] Gönderildi | id=4253 | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=1
+[2026-06-16 15:00:02] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=1 dwell=66.5s status=OK
+[2026-06-16 15:00:02] [API] [API-OK] Gönderildi | id=4256 | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=5
+[2026-06-16 15:00:02] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=5 dwell=508.9s status=OK
+[2026-06-16 16:00:00] [API] ************************************************************
+[2026-06-16 16:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam8 ***
+[2026-06-16 16:00:00] [API] *** Saat    : 2026-06-16 15:00:00 ***
+[2026-06-16 16:00:00] [API] *** Zoneler : Zone1:giren=1,ort=163.6s | Zone2:giren=1,ort=1601.7s ***
+[2026-06-16 16:00:00] [API] ************************************************************
+[2026-06-16 16:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 16:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 16:00:00] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 16:00:00] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=1 dwell=163.6s cam=cam8
+[2026-06-16 16:00:01] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 16:00:01] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=1 dwell=1601.7s cam=cam8
+[2026-06-16 16:00:03] [API] [API-OK] Gönderildi | id=4265 | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=1
+[2026-06-16 16:00:03] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=1 dwell=163.6s status=OK
+[2026-06-16 16:00:03] [API] [API-OK] Gönderildi | id=4269 | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=1
+[2026-06-16 16:00:03] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=1 dwell=1601.7s status=OK
+[2026-06-16 17:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 17:00:00] [API] ************************************************************
+[2026-06-16 17:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam8 ***
+[2026-06-16 17:00:00] [API] *** Saat    : 2026-06-16 16:00:00 ***
+[2026-06-16 17:00:00] [API] *** Zoneler : Zone1:giren=0,ort=0.0s | Zone2:giren=0,ort=0.0s ***
+[2026-06-16 17:00:00] [API] ************************************************************
+[2026-06-16 17:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 17:00:01] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 17:00:01] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s cam=cam8
+[2026-06-16 17:00:02] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 17:00:02] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=0 dwell=0.0s cam=cam8
+[2026-06-16 17:00:02] [API] [API-OK] Gönderildi | id=4278 | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0
+[2026-06-16 17:00:02] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s status=OK
+[2026-06-16 17:00:03] [API] [API-OK] Gönderildi | id=4283 | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=0
+[2026-06-16 17:00:03] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=0 dwell=0.0s status=OK
+[2026-06-16 18:00:00] [API] ************************************************************
+[2026-06-16 18:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam8 ***
+[2026-06-16 18:00:00] [API] *** Saat    : 2026-06-16 17:00:00 ***
+[2026-06-16 18:00:00] [API] *** Zoneler : Zone1:giren=0,ort=0.0s | Zone2:giren=3,ort=3499.1s ***
+[2026-06-16 18:00:00] [API] ************************************************************
+[2026-06-16 18:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 18:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 18:00:01] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 18:00:01] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=3 dwell=3499.1s cam=cam8
+[2026-06-16 18:00:02] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 18:00:02] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s cam=cam8
+[2026-06-16 18:00:02] [API] [API-OK] Gönderildi | id=4291 | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=3
+[2026-06-16 18:00:02] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=3 dwell=3499.1s status=OK
+[2026-06-16 18:00:02] [API] [API-OK] Gönderildi | id=4293 | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0
+[2026-06-16 18:00:02] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s status=OK
+[2026-06-16 19:00:00] [API] ************************************************************
+[2026-06-16 19:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam8 ***
+[2026-06-16 19:00:00] [API] *** Saat    : 2026-06-16 18:00:00 ***
+[2026-06-16 19:00:00] [API] *** Zoneler : Zone1:giren=0,ort=0.0s | Zone2:giren=9,ort=314.3s ***
+[2026-06-16 19:00:00] [API] ************************************************************
+[2026-06-16 19:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 19:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 19:00:03] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 19:00:03] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=9 dwell=314.3s cam=cam8
+[2026-06-16 19:00:03] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 19:00:03] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s cam=cam8
+[2026-06-16 19:00:03] [API] [API-OK] Gönderildi | id=4303 | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0
+[2026-06-16 19:00:03] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s status=OK
+[2026-06-16 19:00:03] [API] [API-OK] Gönderildi | id=4304 | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=9
+[2026-06-16 19:00:03] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=9 dwell=314.3s status=OK
+[2026-06-16 20:00:00] [API] ************************************************************
+[2026-06-16 20:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam8 ***
+[2026-06-16 20:00:00] [API] *** Saat    : 2026-06-16 19:00:00 ***
+[2026-06-16 20:00:00] [API] *** Zoneler : Zone1:giren=0,ort=0.0s | Zone2:giren=1,ort=1736.3s ***
+[2026-06-16 20:00:00] [API] ************************************************************
+[2026-06-16 20:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 20:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 20:00:02] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 20:00:02] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s cam=cam8
+[2026-06-16 20:00:02] [API] [API-OK] Gönderildi | id=4315 | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0
+[2026-06-16 20:00:02] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=0 dwell=0.0s status=OK
+[2026-06-16 20:00:03] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 20:00:03] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=1 dwell=1736.3s cam=cam8
+[2026-06-16 20:00:03] [API] [API-OK] Gönderildi | id=4316 | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=1
+[2026-06-16 20:00:03] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=1 dwell=1736.3s status=OK
+[2026-06-16 21:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 21:00:00] [API] ************************************************************
+[2026-06-16 21:00:00] [API] [API-LOGIN] POST https://ai.vislivis.com/api/auth/login | user=emilio.lara@vislivis.com.tr
+[2026-06-16 21:00:00] [API] *** SAATLIK API RAPORU --- Kamera: cam8 ***
+[2026-06-16 21:00:00] [API] *** Saat    : 2026-06-16 20:00:00 ***
+[2026-06-16 21:00:00] [API] *** Zoneler : Zone1:giren=1,ort=61.0s | Zone2:giren=0,ort=0.0s ***
+[2026-06-16 21:00:00] [API] ************************************************************
+[2026-06-16 21:00:01] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 21:00:01] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=0 dwell=0.0s cam=cam8
+[2026-06-16 21:00:02] [API] [API-LOGIN] OK | token alındı
+[2026-06-16 21:00:02] [API] [API-SEND] POST https://ai.vislivis.com/api/analytics/heatmaps | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=1 dwell=61.0s cam=cam8
+[2026-06-16 21:00:02] [API] [API-OK] Gönderildi | id=4313 | zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=0
+[2026-06-16 21:00:02] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-2 visitors=0 dwell=0.0s status=OK
+[2026-06-16 21:00:02] [API] [API-OK] Gönderildi | id=4315 | zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=1
+[2026-06-16 21:00:02] [API] [API-HOURLY] zone=Giyim-1-Erkek-Reyon-Alan-1 visitors=1 dwell=61.0s status=OK

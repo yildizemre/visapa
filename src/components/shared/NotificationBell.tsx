@@ -16,7 +16,9 @@ const NotificationBell: React.FC = () => {
   const [notifications, setNotifications] = useState<NotificationItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [panelPos, setPanelPos] = useState<{ top: number; right: number }>({ top: 0, right: 0 });
   const panelRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const fetchUnreadCount = async () => {
     try {
@@ -85,13 +87,27 @@ const NotificationBell: React.FC = () => {
   // Close on outside click
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
+      if (
+        panelRef.current && !panelRef.current.contains(e.target as Node) &&
+        buttonRef.current && !buttonRef.current.contains(e.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
     if (isOpen) document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
   }, [isOpen]);
+
+  const handleOpen = () => {
+    if (!isOpen && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setPanelPos({
+        top: rect.bottom + 8,
+        right: window.innerWidth - rect.right,
+      });
+    }
+    setIsOpen(prev => !prev);
+  };
 
   const getIcon = (type: string) => {
     switch (type) {
@@ -113,9 +129,10 @@ const NotificationBell: React.FC = () => {
   };
 
   return (
-    <div className="relative" ref={panelRef}>
+    <div className="relative">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        ref={buttonRef}
+        onClick={handleOpen}
         className="relative p-2 rounded-xl bg-slate-800/40 border border-slate-700/30 hover:bg-slate-700/50 transition-colors"
       >
         <Bell className="w-4 h-4 text-slate-300" />
@@ -127,7 +144,11 @@ const NotificationBell: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-2xl shadow-black/50 z-[100] overflow-hidden">
+        <div
+          ref={panelRef}
+          className="fixed w-80 sm:w-96 bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden"
+          style={{ top: panelPos.top, right: panelPos.right, zIndex: 9999 }}
+        >
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-slate-700/30">
             <h3 className="text-sm font-semibold text-white">Bildirimler</h3>

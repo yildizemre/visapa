@@ -197,7 +197,7 @@ const ExportPDFButton: React.FC<ExportPDFButtonProps> = ({ elementId, filename, 
     <button
       onClick={handleExport}
       disabled={isExporting}
-      className={`flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 hover:text-white text-sm font-semibold transition-all shadow-lg shadow-indigo-500/5 disabled:opacity-50 ${className}`}
+      className={`flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-300 hover:text-white text-sm font-semibold transition-all shadow-lg shadow-blue-500/5 disabled:opacity-50 ${className}`}
     >
       <Download className={`w-4 h-4 ${isExporting ? 'animate-bounce' : ''}`} />
       {isExporting ? 'İndiriliyor...' : 'PDF Raporu İndir'}

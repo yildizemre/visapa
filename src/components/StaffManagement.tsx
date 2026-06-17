@@ -85,7 +85,7 @@ const StaffManagement = () => {
     accent: '#f43f5e',
     emerald: '#10b981',
     amber: '#f59e0b',
-    purple: '#8b5cf6',
+    purple: '#3b82f6',
     teal: '#06b6d4',
     pink: '#ec4899',
   };
@@ -168,7 +168,7 @@ const StaffManagement = () => {
                   key={m}
                   onClick={() => setViewMode(m)}
                   className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
-                    viewMode === m ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
+                    viewMode === m ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   {m === 'daily' ? 'Günlük' : m === 'weekly' ? 'Haftalık' : 'Aylık'}
@@ -204,9 +204,9 @@ const StaffManagement = () => {
         {/* KPI Cards */}
         <motion.div variants={item} className="grid grid-cols-2 lg:grid-cols-5 gap-2 sm:gap-3 lg:gap-4">
           {[
-            { label: 'Toplam Personel', value: overallStats.total, icon: <Users className="w-5 h-5 text-blue-400" />, gradient: 'from-blue-500/15 to-indigo-500/15', border: 'border-blue-500/25' },
+            { label: 'Toplam Personel', value: overallStats.total, icon: <Users className="w-5 h-5 text-blue-400" />, gradient: 'from-blue-500/15 to-blue-600/15', border: 'border-blue-500/25' },
             { label: 'Aktif', value: overallStats.active, icon: <UserCheck className="w-5 h-5 text-emerald-400" />, gradient: 'from-emerald-500/15 to-green-500/15', border: 'border-emerald-500/25' },
-            { label: 'Ort. Verimlilik', value: `%${overallStats.avgEff.toFixed(0)}`, icon: <TrendingUp className="w-5 h-5 text-violet-400" />, gradient: 'from-violet-500/15 to-purple-500/15', border: 'border-violet-500/25' },
+            { label: 'Ort. Verimlilik', value: `%${overallStats.avgEff.toFixed(0)}`, icon: <TrendingUp className="w-5 h-5 text-blue-400" />, gradient: 'from-blue-500/15 to-blue-600/15', border: 'border-blue-500/25' },
             { label: 'Verimli Saat', value: `${overallStats.totalProd.toFixed(1)}h`, icon: <Activity className="w-5 h-5 text-amber-400" />, gradient: 'from-amber-500/15 to-orange-500/15', border: 'border-amber-500/25' },
             { label: 'Mola Süresi', value: `${overallStats.totalBreak.toFixed(1)}h`, icon: <Coffee className="w-5 h-5 text-rose-400" />, gradient: 'from-rose-500/15 to-pink-500/15', border: 'border-rose-500/25' },
           ].map((kpi) => (
@@ -227,7 +227,7 @@ const StaffManagement = () => {
               placeholder="Personel ara..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-slate-800/60 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 text-sm"
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-800/60 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm"
             />
           </div>
           <CustomDropdown
@@ -244,7 +244,7 @@ const StaffManagement = () => {
 
         {/* Kişi Detay - eğer bir kişi seçiliyse */}
         {personDetail && (
-          <motion.div variants={item} className="bg-gradient-to-br from-indigo-900/30 to-slate-900/60 p-5 sm:p-6 rounded-2xl border border-indigo-500/20">
+          <motion.div variants={item} className="bg-gradient-to-br from-blue-900/20 to-slate-900/60 p-5 sm:p-6 rounded-2xl border border-blue-500/20">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
               <div>
                 <h3 className="text-lg font-bold text-white">{personDetail.name}</h3>
@@ -259,7 +259,7 @@ const StaffManagement = () => {
                 { label: 'Verimlilik', value: `%${personDetail.efficiency}`, color: personDetail.efficiency >= 90 ? 'text-emerald-400' : personDetail.efficiency >= 70 ? 'text-amber-400' : 'text-rose-400' },
                 { label: 'Verimli Saat', value: `${personDetail.productiveHours}h`, color: 'text-blue-400' },
                 { label: 'Mola Süresi', value: `${personDetail.breakHours}h`, color: 'text-orange-400' },
-                { label: 'Mola Sayısı', value: personDetail.breakCount, color: 'text-purple-400' },
+                { label: 'Mola Sayısı', value: personDetail.breakCount, color: 'text-blue-400' },
               ].map((d) => (
                 <div key={d.label} className="bg-slate-800/40 rounded-xl p-3 text-center">
                   <p className={`text-xl font-bold ${d.color}`}>{d.value}</p>
@@ -285,7 +285,7 @@ const StaffManagement = () => {
                   <th className="text-center px-3 sm:px-4 py-3 text-blue-400 font-semibold uppercase tracking-wider text-[10px] sm:text-xs">Verimlilik</th>
                   <th className="text-center px-3 sm:px-4 py-3 text-emerald-400 font-semibold uppercase tracking-wider text-[10px] sm:text-xs hidden md:table-cell">Verimli Saat</th>
                   <th className="text-center px-3 sm:px-4 py-3 text-orange-400 font-semibold uppercase tracking-wider text-[10px] sm:text-xs hidden md:table-cell">Mola</th>
-                  <th className="text-center px-3 sm:px-4 py-3 text-purple-400 font-semibold uppercase tracking-wider text-[10px] sm:text-xs hidden lg:table-cell">Mola Sayısı</th>
+                  <th className="text-center px-3 sm:px-4 py-3 text-blue-400 font-semibold uppercase tracking-wider text-[10px] sm:text-xs hidden lg:table-cell">Mola Sayısı</th>
                 </tr>
               </thead>
               <tbody>
@@ -294,7 +294,7 @@ const StaffManagement = () => {
                     key={staff.id}
                     onClick={() => setSelectedPerson(staff.id === selectedPerson ? null : staff.id)}
                     className={`border-b border-slate-700/20 cursor-pointer transition-colors ${
-                      selectedPerson === staff.id ? 'bg-indigo-900/20' : 'hover:bg-white/[0.02]'
+                      selectedPerson === staff.id ? 'bg-blue-900/15' : 'hover:bg-white/[0.02]'
                     }`}
                   >
                     <td className="px-3 sm:px-4 py-3 text-white font-medium">{staff.name}<span className="block sm:hidden text-[10px] text-slate-500">{staff.zone}</span></td>
@@ -340,7 +340,7 @@ const StaffManagement = () => {
           {/* Haftalık Verimlilik Trendi */}
           <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50">
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5 flex items-center gap-2">
-              <BarChart3 className="w-4 h-4 text-indigo-400" /> Haftalık Verimlilik Trendi
+              <BarChart3 className="w-4 h-4 text-blue-400" /> Haftalık Verimlilik Trendi
             </h3>
             <ResponsiveContainer width="100%" height={260}>
               <AreaChart data={MOCK_DAILY_TREND}>
@@ -362,7 +362,7 @@ const StaffManagement = () => {
           {/* Verimlilik Dağılım Pie */}
           <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50">
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5 flex items-center gap-2">
-              <Timer className="w-4 h-4 text-indigo-400" /> Verimlilik Dağılımı
+              <Timer className="w-4 h-4 text-blue-400" /> Verimlilik Dağılımı
             </h3>
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <ResponsiveContainer width="100%" height={180}>
@@ -390,7 +390,7 @@ const StaffManagement = () => {
           {/* Verimli Saat vs Mola */}
           <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50">
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5 flex items-center gap-2">
-              <Clock className="w-4 h-4 text-indigo-400" /> Verimli Saat vs Mola
+              <Clock className="w-4 h-4 text-blue-400" /> Verimli Saat vs Mola
             </h3>
             <ResponsiveContainer width="100%" height={260}>
               <BarChart data={MOCK_DAILY_TREND} barCategoryGap="20%">
@@ -408,7 +408,7 @@ const StaffManagement = () => {
           {/* Alan Bazlı Performans */}
           <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50">
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5 flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-indigo-400" /> Alan Bazlı Verimlilik
+              <MapPin className="w-4 h-4 text-blue-400" /> Alan Bazlı Verimlilik
             </h3>
             <ResponsiveContainer width="100%" height={260}>
               <BarChart data={MOCK_ZONE_SUMMARY} layout="vertical" barCategoryGap="15%">

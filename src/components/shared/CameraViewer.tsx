@@ -60,7 +60,7 @@ const CameraViewer: React.FC<CameraViewerProps> = ({ className = '' }) => {
       {/* Floating Camera Button */}
       <button
         onClick={() => setShowPanel(!showPanel)}
-        className={`flex items-center gap-2 px-3 py-2 rounded-xl bg-gradient-to-r from-indigo-600/80 to-purple-600/80 hover:from-indigo-500 hover:to-purple-500 text-white text-sm font-medium shadow-lg shadow-indigo-500/20 transition-all ${className}`}
+        className={`flex items-center gap-2 px-3 py-2 rounded-xl bg-gradient-to-r from-blue-600/80 to-blue-700/80 hover:from-blue-500 hover:to-blue-600 text-white text-sm font-medium shadow-lg shadow-blue-500/20 transition-all ${className}`}
       >
         <Camera className="w-4 h-4" />
         <span className="hidden sm:inline">Kameralar</span>
@@ -78,7 +78,7 @@ const CameraViewer: React.FC<CameraViewerProps> = ({ className = '' }) => {
             <div className="p-4 border-b border-slate-700/50">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Video className="w-4 h-4 text-indigo-400" />
+                  <Video className="w-4 h-4 text-blue-400" />
                   <h3 className="text-sm font-bold text-white">Kamera Listesi</h3>
                 </div>
                 <button
@@ -96,14 +96,14 @@ const CameraViewer: React.FC<CameraViewerProps> = ({ className = '' }) => {
                   onClick={() => handleViewCamera(cam)}
                   className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800/80 transition-colors text-left group"
                 >
-                  <div className="p-2 rounded-lg bg-slate-800/80 border border-slate-700/50 group-hover:border-indigo-500/30">
-                    <Camera className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-400" />
+                  <div className="p-2 rounded-lg bg-slate-800/80 border border-slate-700/50 group-hover:border-blue-500/30">
+                    <Camera className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-400" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-slate-200 truncate">{cam.name}</p>
                     <p className="text-xs text-slate-500">{cam.type}</p>
                   </div>
-                  <Eye className="w-4 h-4 text-slate-500 group-hover:text-indigo-400" />
+                  <Eye className="w-4 h-4 text-slate-500 group-hover:text-blue-400" />
                 </button>
               ))}
             </div>
@@ -127,8 +127,8 @@ const CameraViewer: React.FC<CameraViewerProps> = ({ className = '' }) => {
             >
               <div className="flex items-center justify-between p-4 border-b border-slate-700/50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30">
-                    <Camera className="w-5 h-5 text-indigo-400" />
+                  <div className="p-2 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 border border-blue-500/30">
+                    <Camera className="w-5 h-5 text-blue-400" />
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-white">{selectedCamera.name}</h3>
@@ -145,7 +145,7 @@ const CameraViewer: React.FC<CameraViewerProps> = ({ className = '' }) => {
               <div className="p-4">
                 {loading ? (
                   <div className="w-full h-80 bg-slate-800/50 rounded-xl flex items-center justify-center">
-                    <div className="animate-spin w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full" />
+                    <div className="animate-spin w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full" />
                   </div>
                 ) : selectedCamera.imageUrl ? (
                   <img

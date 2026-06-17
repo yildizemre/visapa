@@ -176,7 +176,7 @@ const Chat: React.FC = () => {
             >
               <div className="p-4 border-b border-slate-700/30 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <History className="w-4 h-4 text-indigo-400" />
+                  <History className="w-4 h-4 text-blue-400" />
                   <span className="text-sm font-semibold text-slate-200">{t('chat.conversations')}</span>
                 </div>
                 <button
@@ -190,7 +190,7 @@ const Chat: React.FC = () => {
               <div className="flex-1 overflow-y-auto p-3 space-y-1">
                 {loadingList ? (
                   <div className="flex justify-center py-8">
-                    <div className="animate-spin w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full" />
+                    <div className="animate-spin w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full" />
                   </div>
                 ) : conversations.length === 0 ? (
                   <div className="text-slate-500 text-sm py-8 text-center">Henüz sohbet yok</div>
@@ -203,11 +203,11 @@ const Chat: React.FC = () => {
                       whileHover={{ scale: 1.01 }}
                       className={`w-full text-left rounded-xl px-4 py-3 flex items-center gap-3 group transition-all ${
                         currentConversationId === c.id
-                          ? 'bg-indigo-500/15 border border-indigo-500/30 text-white'
+                          ? 'bg-blue-500/15 border border-blue-500/30 text-white'
                           : 'text-slate-300 hover:bg-slate-700/40 border border-transparent'
                       }`}
                     >
-                      <MessageCircle className={`w-4 h-4 flex-shrink-0 ${currentConversationId === c.id ? 'text-indigo-400' : 'text-slate-500'}`} />
+                      <MessageCircle className={`w-4 h-4 flex-shrink-0 ${currentConversationId === c.id ? 'text-blue-400' : 'text-slate-500'}`} />
                       <div className="flex-1 min-w-0">
                         <span className="block truncate text-sm font-medium">{c.title || 'Sohbet'}</span>
                         <span className="text-[10px] text-slate-500">{formatDate(c.updated_at ?? c.created_at)}</span>
@@ -232,7 +232,7 @@ const Chat: React.FC = () => {
           {/* Header */}
           <div className="flex items-center justify-between gap-3 mb-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/25">
+              <div className="p-2 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-500/25">
                 <Bot className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -256,7 +256,7 @@ const Chat: React.FC = () => {
                 onClick={handleNewChat}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white py-2 px-4 text-sm font-medium shadow-lg shadow-indigo-500/20 transition-all"
+                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white py-2 px-4 text-sm font-medium shadow-lg shadow-blue-500/20 transition-all"
               >
                 <PlusCircle className="w-4 h-4" />
                 <span className="hidden sm:inline">{t('chat.newChat')}</span>
@@ -269,12 +269,12 @@ const Chat: React.FC = () => {
             <div className="flex-1 overflow-y-auto p-5 space-y-5">
               {loadingHistory ? (
                 <div className="flex justify-center py-12">
-                  <div className="animate-spin w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full" />
+                  <div className="animate-spin w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full" />
                 </div>
               ) : messages.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
-                  <div className="p-4 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 mb-5">
-                    <Sparkles className="w-10 h-10 text-indigo-400" />
+                  <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/20 mb-5">
+                    <Sparkles className="w-10 h-10 text-blue-400" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-200 mb-2">Merhaba! Nasıl yardımcı olabilirim?</h3>
                   <p className="text-sm text-slate-400 mb-8 max-w-md">{t('chat.placeholder')}</p>
@@ -283,9 +283,9 @@ const Chat: React.FC = () => {
                       <button
                         key={idx}
                         onClick={() => { setInput(prompt.text); }}
-                        className="flex items-center gap-2.5 px-4 py-3 rounded-xl border border-slate-700/40 bg-slate-800/40 hover:bg-slate-700/60 hover:border-indigo-500/30 text-slate-300 hover:text-white text-sm text-left transition-all group"
+                        className="flex items-center gap-2.5 px-4 py-3 rounded-xl border border-slate-700/40 bg-slate-800/40 hover:bg-slate-700/60 hover:border-blue-500/30 text-slate-300 hover:text-white text-sm text-left transition-all group"
                       >
-                        <span className="text-indigo-400 group-hover:text-indigo-300">{prompt.icon}</span>
+                        <span className="text-blue-400 group-hover:text-blue-300">{prompt.icon}</span>
                         <span className="truncate">{prompt.text}</span>
                       </button>
                     ))}
@@ -301,14 +301,14 @@ const Chat: React.FC = () => {
                     className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     {msg.role === 'assistant' && (
-                      <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 flex items-center justify-center">
-                        <Bot className="w-4.5 h-4.5 text-indigo-400" />
+                      <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 border border-blue-500/30 flex items-center justify-center">
+                        <Bot className="w-4.5 h-4.5 text-blue-400" />
                       </div>
                     )}
                     <div
                       className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                         msg.role === 'user'
-                          ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/10'
+                          ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-md shadow-blue-500/10'
                           : 'bg-slate-800/60 text-slate-200 border border-slate-700/40'
                       }`}
                     >
@@ -328,14 +328,14 @@ const Chat: React.FC = () => {
                   animate={{ opacity: 1 }}
                   className="flex gap-3 justify-start"
                 >
-                  <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 flex items-center justify-center">
-                    <Bot className="w-4.5 h-4.5 text-indigo-400 animate-pulse" />
+                  <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 border border-blue-500/30 flex items-center justify-center">
+                    <Bot className="w-4.5 h-4.5 text-blue-400 animate-pulse" />
                   </div>
                   <div className="bg-slate-800/60 border border-slate-700/40 rounded-2xl px-4 py-3">
                     <div className="flex gap-1.5">
-                      <div className="w-2 h-2 rounded-full bg-indigo-400/60 animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <div className="w-2 h-2 rounded-full bg-indigo-400/60 animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <div className="w-2 h-2 rounded-full bg-indigo-400/60 animate-bounce" style={{ animationDelay: '300ms' }} />
+                      <div className="w-2 h-2 rounded-full bg-blue-400/60 animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <div className="w-2 h-2 rounded-full bg-blue-400/60 animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <div className="w-2 h-2 rounded-full bg-blue-400/60 animate-bounce" style={{ animationDelay: '300ms' }} />
                     </div>
                   </div>
                 </motion.div>
@@ -352,7 +352,7 @@ const Chat: React.FC = () => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSend()}
                   placeholder={t('chat.inputPlaceholder')}
-                  className="flex-1 rounded-xl bg-slate-800/60 border border-slate-700/40 text-white placeholder-slate-500 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500/40 transition-all"
+                  className="flex-1 rounded-xl bg-slate-800/60 border border-slate-700/40 text-white placeholder-slate-500 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/40 transition-all"
                   disabled={loading}
                 />
                 <motion.button
@@ -361,7 +361,7 @@ const Chat: React.FC = () => {
                   disabled={loading || !input.trim()}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 disabled:opacity-40 disabled:cursor-not-allowed px-5 py-3 flex items-center gap-2 text-white text-sm font-medium shadow-lg shadow-indigo-500/20 transition-all"
+                  className="rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 disabled:opacity-40 disabled:cursor-not-allowed px-5 py-3 flex items-center gap-2 text-white text-sm font-medium shadow-lg shadow-blue-500/20 transition-all"
                 >
                   <Send className="w-4 h-4" />
                   <span className="hidden sm:inline">{loading ? t('chat.sending') : t('chat.send')}</span>

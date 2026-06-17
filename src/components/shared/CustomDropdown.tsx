@@ -48,7 +48,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/50 hover:bg-slate-800 hover:border-slate-600 focus:outline-none focus:ring-1 focus:ring-indigo-500/30 text-white text-sm font-medium transition-all shadow-md"
+        className="w-full flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/50 hover:bg-slate-800 hover:border-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500/30 text-white text-sm font-medium transition-all shadow-md"
       >
         <div className="flex items-center gap-2 min-w-0">
           {Icon && <Icon className="w-4 h-4 text-slate-400 shrink-0" />}
@@ -86,7 +86,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
                         onEyeClick && option.value !== 'all' ? 'pl-9' : 'pl-3'
                       } ${
                         isSelected
-                          ? 'bg-indigo-600 text-white'
+                          ? 'bg-blue-600 text-white'
                           : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                       }`}
                     >
