@@ -1,0 +1,13 @@
+============================================================
+  Queue — OLAY LOGLARI
+  Kamera  : cam4
+  Tarih   : 2026-06-16
+  Açıldı  : 2026-06-16 00:00:01
+============================================================
+
+[2026-06-16 14:26:36] [EVT] [FINALIZED] Kamera=cam4 | Alan=1 | Zone=Alan 1 | ID=148385 | Giris=2026-06-16 14:19:58 | Cikis=2026-06-16 14:26:21 | Sure=371s
+[2026-06-16 14:36:34] [EVT] [FINALIZED] Kamera=cam4 | Alan=1 | Zone=Alan 1 | ID=149819 | Giris=2026-06-16 14:29:08 | Cikis=2026-06-16 14:36:19 | Sure=410s
+[2026-06-16 15:13:15] [EVT] [FINALIZED] Kamera=cam4 | Alan=1 | Zone=Alan 1 | ID=153248 | Giris=2026-06-16 15:00:52 | Cikis=2026-06-16 15:12:59 | Sure=726s
+[2026-06-16 16:23:41] [EVT] [FINALIZED] Kamera=cam4 | Alan=1 | Zone=Alan 1 | ID=158885 | Giris=2026-06-16 16:18:02 | Cikis=2026-06-16 16:23:25 | Sure=309s
+[2026-06-16 18:59:19] [EVT] [FINALIZED] Kamera=cam4 | Alan=1 | Zone=Alan 1 | ID=171239 | Giris=2026-06-16 18:53:01 | Cikis=2026-06-16 18:59:03 | Sure=344s
+[2026-06-16 20:00:18] [EVT] [FINALIZED] Kamera=cam4 | Alan=1 | Zone=Alan 1 | ID=175245 | Giris=2026-06-16 19:54:25 | Cikis=2026-06-16 20:00:03 | Sure=303s

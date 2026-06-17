@@ -167,15 +167,15 @@ const Dashboard = () => {
     secondary: '#3b82f6',
     accent: '#f43f5e',
     danger: '#e11d48',
-    purple: '#8b5cf6',
+    purple: '#3b82f6',
     pink: '#ec4899',
     orange: '#f97316',
     teal: '#06b6d4',
     emerald: '#10b981',
     blue: '#3b82f6',
-    indigo: '#6366f1',
+    indigo: '#3b82f6',
     // Yaş grupları - stabil palet (dashboard ana renkleriyle uyumlu)
-    age1830: '#6366f1',   // indigo
+    age1830: '#3b82f6',   // blue
     age3050: '#3b82f6',   // blue
     age50plus: '#06b6d4', // cyan
   };
@@ -363,14 +363,14 @@ const Dashboard = () => {
         <motion.div variants={item} className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2.5 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/25 animate-pulse">
+              <div className="p-2.5 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-500/25 animate-pulse">
                 <BarChart3 className="w-5 h-5 text-white" />
               </div>
               <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-400 flex items-center gap-2">
                 <span>👋 Hoş geldiniz,</span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 font-black relative group cursor-pointer transition-all duration-300 hover:brightness-110">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-blue-500 font-black relative group cursor-pointer transition-all duration-300 hover:brightness-110">
                   {userName || 'Emilio Lara'}
-                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-indigo-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </span>
               </h1>
             </div>
@@ -411,7 +411,7 @@ const Dashboard = () => {
                     }}
                     className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all border ${
                       isActive
-                        ? 'bg-indigo-600 border-indigo-500 text-white shadow-sm shadow-indigo-500/30'
+                        ? 'bg-blue-600 border-blue-500 text-white shadow-sm shadow-blue-500/30'
                         : 'bg-slate-800/60 border-slate-700/50 text-slate-400 hover:text-white hover:border-slate-600'
                     }`}
                   >
@@ -461,7 +461,7 @@ const Dashboard = () => {
           />
           <KpiCard 
             icon={<CalendarDays className="w-5 h-5 text-white" />}
-            iconGradient="from-violet-500 to-purple-500"
+            iconGradient="from-blue-500 to-blue-600"
             label={language === 'tr' ? 'En Yoğun Gün' : 'Peak Day'}
             value={peakDay ? new Date((peakDay.date as string) + 'T00:00:00').toLocaleDateString('tr-TR', { day: '2-digit', month: 'short' }) : '—'}
             subtitle={peakDay ? `${Number(peakDay.entered ?? 0).toLocaleString()} giriş` : 'Veri yok'}
@@ -481,7 +481,7 @@ const Dashboard = () => {
           return (
             <motion.div variants={item} className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Zirve Gün Fırsatı */}
-              <div className="flex items-start gap-4 p-5 rounded-2xl bg-gradient-to-br from-blue-500/15 to-indigo-500/10 border border-blue-500/30">
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-gradient-to-br from-blue-500/15 to-blue-600/10 border border-blue-500/30">
                 <div className="p-2.5 rounded-xl bg-blue-500/20 shrink-0">
                   <TrendingUp className="w-5 h-5 text-blue-400" />
                 </div>
@@ -516,9 +516,9 @@ const Dashboard = () => {
                 </div>
               </div>
               {/* Ürün/Kampanya Önerisi */}
-              <div className="flex items-start gap-4 p-5 rounded-2xl bg-gradient-to-br from-violet-500/15 to-purple-500/10 border border-violet-500/30">
-                <div className="p-2.5 rounded-xl bg-violet-500/20 shrink-0">
-                  <Users className="w-5 h-5 text-violet-400" />
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-gradient-to-br from-blue-500/15 to-blue-600/10 border border-blue-500/30">
+                <div className="p-2.5 rounded-xl bg-blue-500/20 shrink-0">
+                  <Users className="w-5 h-5 text-blue-400" />
                 </div>
                 <div className="min-w-0">
                   <p className="text-sm font-bold text-slate-200 mb-1">Kampanya Stratejisi</p>
@@ -546,7 +546,7 @@ const Dashboard = () => {
             return (
               <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 rounded-2xl border border-slate-700/50 flex flex-col justify-between min-h-[220px]">
                 <div className="flex items-center gap-2 mb-3">
-                  <BarChart3 className="w-4 h-4 text-indigo-400 animate-pulse" />
+                  <BarChart3 className="w-4 h-4 text-blue-400 animate-pulse" />
                   <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">Bölge Dağılımı</h3>
                 </div>
                 {zoneData.length > 0 && totalZone > 0 ? (
@@ -600,10 +600,10 @@ const Dashboard = () => {
                           <span>{medal}</span>
                           {new Date((row.date as string) + 'T00:00:00').toLocaleDateString('tr-TR', { day: '2-digit', month: 'short', weekday: 'short' })}
                         </span>
-                        <span className="text-xs font-bold text-indigo-400">{entered.toLocaleString()}</span>
+                        <span className="text-xs font-bold text-blue-400">{entered.toLocaleString()}</span>
                       </div>
                       <div className="h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
-                        <div className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-700" style={{ width: `${barW}%` }} />
+                        <div className="h-full rounded-full bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-700" style={{ width: `${barW}%` }} />
                       </div>
                     </div>
                   );

@@ -109,9 +109,9 @@ const CameraHealth = () => {
             <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
             <span className="text-sm font-bold text-amber-300">{stats.warning} Uyarı</span>
           </div>
-          <div className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-violet-500/15 border border-violet-500/30">
-            <Activity className="w-4 h-4 text-violet-400" />
-            <span className="text-sm font-bold text-violet-300">%{stats.avgUptime.toFixed(1)} Uptime</span>
+          <div className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-blue-500/15 border border-blue-500/30">
+            <Activity className="w-4 h-4 text-blue-400" />
+            <span className="text-sm font-bold text-blue-300">%{stats.avgUptime.toFixed(1)} Uptime</span>
           </div>
         </motion.div>
 
@@ -255,7 +255,7 @@ const CameraHealth = () => {
 
         {/* Info Banner */}
         <motion.div variants={item}>
-          <div className="flex items-start gap-3 rounded-2xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 p-4 sm:p-5">
+          <div className="flex items-start gap-3 rounded-2xl bg-gradient-to-r from-blue-500/10 to-blue-600/10 border border-blue-500/20 p-4 sm:p-5">
             <MonitorSmartphone className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
             <div>
               <p className="text-sm font-semibold text-blue-300">Demo Veriler</p>

@@ -1,0 +1,1774 @@
+============================================================
+  Counter — SİSTEM LOGLARI
+  Kamera  : cam1
+  Tarih   : 2026-06-16
+  Açıldı  : 2026-06-16 00:00:00
+============================================================
+
+[2026-06-16 00:00:00] [SYS] Yeni güne geçildi (mesai dışı)
+[2026-06-16 00:07:27] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 00:07:27)
+[2026-06-16 00:07:41] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 00:17:27] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 00:17:27)
+[2026-06-16 00:27:27] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 00:27:27)
+[2026-06-16 00:37:27] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 00:37:27)
+[2026-06-16 00:47:27] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 00:47:27)
+[2026-06-16 00:57:27] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 00:57:27)
+[2026-06-16 01:07:28] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 01:07:28)
+[2026-06-16 01:07:42] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 01:17:28] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 01:17:28)
+[2026-06-16 01:27:28] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 01:27:28)
+[2026-06-16 01:37:28] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 01:37:28)
+[2026-06-16 01:47:28] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 01:47:28)
+[2026-06-16 01:57:28] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 01:57:28)
+[2026-06-16 02:07:28] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 02:07:28)
+[2026-06-16 02:07:42] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 02:17:28] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 02:17:28)
+[2026-06-16 02:27:29] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 02:27:29)
+[2026-06-16 02:37:29] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 02:37:29)
+[2026-06-16 02:47:29] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 02:47:29)
+[2026-06-16 02:57:29] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 02:57:29)
+[2026-06-16 03:07:29] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 03:07:29)
+[2026-06-16 03:07:44] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 03:17:29] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 03:17:29)
+[2026-06-16 03:27:29] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 03:27:29)
+[2026-06-16 03:37:29] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 03:37:29)
+[2026-06-16 03:47:30] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 03:47:30)
+[2026-06-16 03:57:30] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 03:57:30)
+[2026-06-16 04:07:30] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 04:07:30)
+[2026-06-16 04:07:44] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 04:17:30] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 04:17:30)
+[2026-06-16 04:27:30] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 04:27:30)
+[2026-06-16 04:37:30] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 04:37:30)
+[2026-06-16 04:47:30] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 04:47:30)
+[2026-06-16 04:57:31] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 04:57:31)
+[2026-06-16 05:07:31] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 05:07:31)
+[2026-06-16 05:07:45] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 05:17:31] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 05:17:31)
+[2026-06-16 05:27:31] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 05:27:31)
+[2026-06-16 05:37:31] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 05:37:31)
+[2026-06-16 05:47:31] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 05:47:31)
+[2026-06-16 05:57:31] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 05:57:31)
+[2026-06-16 06:07:32] [SYS] [HEARTBEAT] [counter|cam1] Login OK — token 23 saat cache'lendi
+[2026-06-16 06:07:32] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 06:07:32)
+[2026-06-16 06:07:46] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 06:17:32] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 06:17:32)
+[2026-06-16 06:27:33] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 06:27:33)
+[2026-06-16 06:37:33] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 06:37:33)
+[2026-06-16 06:47:33] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 06:47:33)
+[2026-06-16 06:57:33] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 06:57:33)
+[2026-06-16 07:07:33] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 07:07:33)
+[2026-06-16 07:07:47] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 07:17:33] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 07:17:33)
+[2026-06-16 07:27:33] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 07:27:33)
+[2026-06-16 07:37:33] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 07:37:33)
+[2026-06-16 07:47:34] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 07:47:34)
+[2026-06-16 07:57:34] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 07:57:34)
+[2026-06-16 08:07:34] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 08:07:34)
+[2026-06-16 08:07:48] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 08:17:34] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 08:17:34)
+[2026-06-16 08:27:34] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 08:27:34)
+[2026-06-16 08:37:34] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 08:37:34)
+[2026-06-16 08:47:34] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 08:47:34)
+[2026-06-16 08:57:34] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 08:57:34)
+[2026-06-16 09:07:35] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 09:07:35)
+[2026-06-16 09:07:49] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 09:17:35] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 09:17:35)
+[2026-06-16 09:27:35] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 09:27:35)
+[2026-06-16 09:37:35] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 09:37:35)
+[2026-06-16 09:47:35] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 09:47:35)
+[2026-06-16 09:57:35] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 09:57:35)
+[2026-06-16 10:00:00] [DBG] [BUFFER-10DK] cur=0 add=2170262 proc=2170262 islenen=2075
+[2026-06-16 10:00:00] [DBG] [BUFFER-SAAT] cur=0 add=2170262 proc=2170262
+[2026-06-16 10:00:01] [DBG] [DRAIN] 7 eski frame atlandı (lag önlendi)
+[2026-06-16 10:00:02] [SYS] [PERF] FPS: 0.0 | YOLO: 185ms | Total: 110ms | Buffer: 0/0 | Drop: 0 | Frames: 55
+[2026-06-16 10:00:02] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:00:32] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 145ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:01:02] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 191ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:01:32] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 333ms | Buffer: 2/4 | Drop: 0 | Frames: 111
+[2026-06-16 10:02:02] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 255ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:02:32] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 10:03:02] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 177ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:03:32] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:04:03] [SYS] [PERF] FPS: 3.6 | YOLO: 186ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 10:04:33] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 150ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 10:05:02] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:05:03] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 264ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:05:33] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 192ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:06:03] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 170ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 10:06:33] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 153ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 10:07:03] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 209ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 10:07:33] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 10:07:35] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 10:07:35)
+[2026-06-16 10:07:50] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 10:08:03] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 299ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:08:33] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 224ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:09:03] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 10:09:33] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 168ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 10:10:00] [DBG] [BUFFER-10DK] cur=0 add=2173289 proc=2173289 islenen=2150
+[2026-06-16 10:10:02] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:10:03] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 183ms | Buffer: 0/0 | Drop: 0 | Frames: 104
+[2026-06-16 10:10:34] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 10:11:04] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 168ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 10:11:34] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 246ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 10:12:04] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:12:34] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 113ms | Buffer: 0/0 | Drop: 0 | Frames: 110
+[2026-06-16 10:13:04] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 174ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:13:34] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:14:04] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 156ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:14:35] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 136ms | Buffer: 0/0 | Drop: 0 | Frames: 110
+[2026-06-16 10:15:02] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:15:05] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 139ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 10:15:35] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 165ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:16:05] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:16:35] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:17:05] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 261ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 10:17:36] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 242ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 10:17:36] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 10:17:36)
+[2026-06-16 10:18:06] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 218ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:18:36] [SYS] [PERF] FPS: 3.8 | YOLO: 171ms | Total: 121ms | Buffer: 1/2 | Drop: 0 | Frames: 114
+[2026-06-16 10:19:06] [SYS] [PERF] FPS: 3.8 | YOLO: 173ms | Total: 108ms | Buffer: 0/0 | Drop: 0 | Frames: 113
+[2026-06-16 10:19:36] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 161ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 10:20:00] [DBG] [BUFFER-10DK] cur=0 add=2176312 proc=2176312 islenen=2186
+[2026-06-16 10:20:02] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:20:06] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 212ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:20:36] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:21:06] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 217ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:21:36] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 246ms | Buffer: 2/4 | Drop: 0 | Frames: 112
+[2026-06-16 10:22:06] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 288ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:22:36] [SYS] [PERF] FPS: 3.8 | YOLO: 173ms | Total: 167ms | Buffer: 0/0 | Drop: 0 | Frames: 113
+[2026-06-16 10:23:07] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 176ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 10:23:37] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 204ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 10:24:07] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 222ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 10:24:37] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 324ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 10:25:02] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:25:07] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 241ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 10:25:37] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 320ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 10:26:07] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 10:26:38] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 10:27:08] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 136ms | Buffer: 0/0 | Drop: 0 | Frames: 108
+[2026-06-16 10:27:36] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 10:27:36)
+[2026-06-16 10:27:38] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 10:28:08] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 10:28:38] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 268ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 10:29:08] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 227ms | Buffer: 2/4 | Drop: 0 | Frames: 105
+[2026-06-16 10:29:39] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 179ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 10:30:00] [DBG] [BUFFER-10DK] cur=0 add=2179342 proc=2179342 islenen=2139
+[2026-06-16 10:30:02] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:30:09] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 230ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 10:30:39] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 276ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 10:31:09] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 228ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 10:31:39] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 240ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 10:32:09] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 172ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 10:32:40] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 156ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:33:10] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 198ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:33:40] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 250ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 10:34:10] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 226ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:34:40] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 114ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 10:35:02] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:35:10] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 233ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 10:35:40] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 10:36:10] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:36:41] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 124ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 10:37:11] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 147ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 10:37:36] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 10:37:36)
+[2026-06-16 10:37:41] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:38:11] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:38:41] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 196ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 10:39:11] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 160ms | Buffer: 0/0 | Drop: 0 | Frames: 108
+[2026-06-16 10:39:42] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 243ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:40:00] [DBG] [BUFFER-10DK] cur=0 add=2182380 proc=2182380 islenen=2175
+[2026-06-16 10:40:03] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:40:12] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 171ms | Buffer: 0/0 | Drop: 0 | Frames: 109
+[2026-06-16 10:40:42] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 118ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 10:41:12] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 242ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 10:41:42] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 224ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:42:12] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 181ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:42:43] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 255ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 10:43:13] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 181ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 10:43:43] [SYS] [PERF] FPS: 3.6 | YOLO: 186ms | Total: 232ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 10:44:13] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 10:44:43] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 251ms | Buffer: 2/4 | Drop: 0 | Frames: 112
+[2026-06-16 10:45:03] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:45:13] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 240ms | Buffer: 2/4 | Drop: 0 | Frames: 111
+[2026-06-16 10:45:43] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:46:13] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 269ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:46:44] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 221ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:47:14] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 10:47:36] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 10:47:36)
+[2026-06-16 10:47:44] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 10:48:14] [SYS] [PERF] FPS: 3.8 | YOLO: 169ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 10:48:44] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:49:14] [SYS] [PERF] FPS: 3.6 | YOLO: 189ms | Total: 285ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 10:49:44] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 166ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 10:50:00] [DBG] [BUFFER-10DK] cur=0 add=2185410 proc=2185410 islenen=2184
+[2026-06-16 10:50:03] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:50:14] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 132ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 10:50:45] [SYS] [PERF] FPS: 3.8 | YOLO: 169ms | Total: 131ms | Buffer: 1/2 | Drop: 0 | Frames: 114
+[2026-06-16 10:51:15] [SYS] [PERF] FPS: 3.8 | YOLO: 171ms | Total: 199ms | Buffer: 1/2 | Drop: 0 | Frames: 114
+[2026-06-16 10:51:45] [SYS] [PERF] FPS: 3.8 | YOLO: 168ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 115
+[2026-06-16 10:52:15] [SYS] [PERF] FPS: 3.8 | YOLO: 172ms | Total: 228ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 10:52:45] [SYS] [PERF] FPS: 3.8 | YOLO: 172ms | Total: 244ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 10:53:15] [SYS] [PERF] FPS: 3.7 | YOLO: 181ms | Total: 258ms | Buffer: 2/4 | Drop: 0 | Frames: 111
+[2026-06-16 10:53:45] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:54:15] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 252ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 10:54:45] [SYS] [PERF] FPS: 3.4 | YOLO: 199ms | Total: 250ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 10:55:03] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 10:55:15] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 212ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 10:55:45] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 166ms | Buffer: 0/0 | Drop: 0 | Frames: 110
+[2026-06-16 10:56:16] [SYS] [PERF] FPS: 3.7 | YOLO: 180ms | Total: 235ms | Buffer: 2/4 | Drop: 0 | Frames: 111
+[2026-06-16 10:56:46] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 304ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 10:57:16] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 237ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 10:57:36] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 10:57:36)
+[2026-06-16 10:57:46] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 241ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 10:58:16] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 10:58:47] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 225ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 10:59:17] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 279ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 10:59:47] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:00:00] [DBG] Yeni periyot başladı (aralık=2dk) | Entered/Exited setleri temizlendi (28/22 → 0)
+[2026-06-16 11:00:00] [DBG] Sonraki rapor: 12:00
+[2026-06-16 11:00:00] [DBG] [BUFFER-SAAT] cur=0 add=2188446 proc=2188446
+[2026-06-16 11:00:01] [DBG] [BUFFER-10DK] cur=0 add=2188451 proc=2188451 islenen=2177
+[2026-06-16 11:00:03] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:00:17] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 244ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:00:47] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:01:18] [SYS] [PERF] FPS: 3.7 | YOLO: 180ms | Total: 119ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 11:01:48] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 264ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:02:18] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 167ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 11:02:48] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 238ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:03:18] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 11:03:48] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 211ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:04:10] [DBG] ⏭ CIKIS ATILDI: ID=73648 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:04:18] [DBG] ⏭ GIRIS ATILDI: ID=73648 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:04:18] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:04:49] [SYS] [PERF] FPS: 3.4 | YOLO: 199ms | Total: 177ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:05:03] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:05:04] [DBG] ⏭ CIKIS ATILDI: ID=73672 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:05:05] [DBG] ⏭ GIRIS ATILDI: ID=73672 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:05:19] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 11:05:49] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 144ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:06:11] [DBG] ⏭ CIKIS ATILDI: ID=73695 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:06:12] [DBG] ⏭ GIRIS ATILDI: ID=73695 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:06:19] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 187ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 11:06:49] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 228ms | Buffer: 2/4 | Drop: 0 | Frames: 105
+[2026-06-16 11:07:19] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 264ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:07:36] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 11:07:36)
+[2026-06-16 11:07:50] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 130ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:07:51] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 11:08:20] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 203ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 11:08:50] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 169ms | Buffer: 0/0 | Drop: 0 | Frames: 103
+[2026-06-16 11:09:20] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 175ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:09:50] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 11:10:01] [DBG] [BUFFER-10DK] cur=0 add=2191513 proc=2191513 islenen=2107
+[2026-06-16 11:10:03] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:10:20] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 230ms | Buffer: 2/4 | Drop: 0 | Frames: 105
+[2026-06-16 11:10:50] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 176ms | Buffer: 0/0 | Drop: 0 | Frames: 108
+[2026-06-16 11:11:20] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 219ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 11:11:50] [SYS] [PERF] FPS: 3.6 | YOLO: 188ms | Total: 238ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 11:12:20] [SYS] [PERF] FPS: 3.6 | YOLO: 186ms | Total: 170ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:12:50] [SYS] [PERF] FPS: 3.7 | YOLO: 182ms | Total: 191ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 11:13:21] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 242ms | Buffer: 2/4 | Drop: 0 | Frames: 111
+[2026-06-16 11:13:51] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 11:14:21] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 11:14:51] [SYS] [PERF] FPS: 3.7 | YOLO: 180ms | Total: 276ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 11:15:04] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:15:21] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 11:15:51] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 256ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 11:16:21] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 11:16:52] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 11:17:22] [SYS] [PERF] FPS: 3.7 | YOLO: 180ms | Total: 233ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 11:17:36] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 11:17:36)
+[2026-06-16 11:17:52] [SYS] [PERF] FPS: 3.8 | YOLO: 167ms | Total: 307ms | Buffer: 1/2 | Drop: 0 | Frames: 116
+[2026-06-16 11:18:22] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 122ms | Buffer: 0/0 | Drop: 0 | Frames: 111
+[2026-06-16 11:18:52] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 174ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 11:19:22] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 238ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:19:52] [SYS] [PERF] FPS: 3.7 | YOLO: 181ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 11:20:01] [DBG] [BUFFER-10DK] cur=0 add=2194575 proc=2194575 islenen=2188
+[2026-06-16 11:20:04] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:20:22] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 306ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:20:53] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 179ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 11:21:23] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 224ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 11:21:53] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 198ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 11:22:23] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 225ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 11:22:53] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 158ms | Buffer: 0/0 | Drop: 0 | Frames: 112
+[2026-06-16 11:23:23] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 204ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 11:23:54] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 254ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 11:24:24] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 309ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:24:54] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 240ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 11:25:04] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:25:24] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 172ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 11:25:54] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 228ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:26:25] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 11:26:55] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 264ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 11:27:25] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 272ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:27:37] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 11:27:37)
+[2026-06-16 11:27:55] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 208ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:28:25] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 11:28:55] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 11:29:25] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 241ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:29:55] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 174ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 11:30:01] [DBG] [BUFFER-10DK] cur=0 add=2197637 proc=2197637 islenen=2132
+[2026-06-16 11:30:04] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:30:25] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 221ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 11:30:25] [DBG] ⏭ GIRIS ATILDI: ID=74103 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:30:29] [DBG] ⏭ CIKIS ATILDI: ID=74103 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:30:40] [DBG] ⏭ GIRIS ATILDI: ID=74103 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:30:55] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:31:26] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 253ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 11:31:56] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 286ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 11:32:26] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 142ms | Buffer: 0/0 | Drop: 0 | Frames: 107
+[2026-06-16 11:32:56] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 161ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 11:33:26] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:33:57] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 232ms | Buffer: 2/4 | Drop: 0 | Frames: 105
+[2026-06-16 11:34:27] [SYS] [PERF] FPS: 3.4 | YOLO: 199ms | Total: 199ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 11:34:57] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 218ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 11:35:04] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:35:27] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 211ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:35:57] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 11:36:27] [SYS] [PERF] FPS: 3.5 | YOLO: 193ms | Total: 183ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 11:36:58] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 11:37:28] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:37:37] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 11:37:37)
+[2026-06-16 11:37:58] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 181ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 11:38:28] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 149ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:38:58] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 148ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:39:29] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 157ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 11:39:53] [DBG] ⏭ CIKIS ATILDI: ID=74315 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:39:59] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 181ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:40:01] [DBG] [BUFFER-10DK] cur=0 add=2200700 proc=2200700 islenen=2097
+[2026-06-16 11:40:05] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:40:06] [DBG] ⏭ GIRIS ATILDI: ID=74315 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:40:29] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 245ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 11:40:59] [SYS] [PERF] FPS: 3.6 | YOLO: 189ms | Total: 166ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 11:41:29] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 145ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:41:59] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 231ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:42:29] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 156ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:42:59] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 141ms | Buffer: 0/0 | Drop: 0 | Frames: 110
+[2026-06-16 11:43:30] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:43:48] [DBG] ⏭ GIRIS ATILDI: ID=74364 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:43:49] [DBG] ⏭ CIKIS ATILDI: ID=74361 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:43:49] [DBG] ⏭ CIKIS ATILDI: ID=74364 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:44:00] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 155ms | Buffer: 0/0 | Drop: 0 | Frames: 106
+[2026-06-16 11:44:12] [DBG] ⏭ GIRIS ATILDI: ID=74364 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:44:15] [DBG] ⏭ CIKIS ATILDI: ID=74364 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:44:17] [DBG] ⏭ GIRIS ATILDI: ID=74364 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:44:30] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 167ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 11:44:38] [DBG] ⏭ GIRIS ATILDI: ID=74375 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:44:49] [DBG] ⏭ CIKIS ATILDI: ID=74375 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:45:00] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 183ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:45:00] [DBG] ⏭ GIRIS ATILDI: ID=74375 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:45:05] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:45:30] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:46:01] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 227ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:46:31] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:47:01] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 297ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 11:47:26] [DBG] ⏭ CIKIS ATILDI: ID=74364 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:47:27] [DBG] ⏭ GIRIS ATILDI: ID=74364 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:47:31] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 263ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 11:47:37] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 11:47:37)
+[2026-06-16 11:47:49] [DBG] ⏭ CIKIS ATILDI: ID=74364 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:47:50] [DBG] ⏭ GIRIS ATILDI: ID=74364 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:47:51] [DBG] ⏭ CIKIS ATILDI: ID=74364 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:48:01] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 243ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:48:31] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 140ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 11:49:01] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 221ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:49:32] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:50:01] [DBG] [BUFFER-10DK] cur=0 add=2203730 proc=2203730 islenen=2109
+[2026-06-16 11:50:02] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 195ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 11:50:05] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:50:32] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 222ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:51:02] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:51:32] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 258ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 11:51:40] [DBG] ⏭ CIKIS ATILDI: ID=74511 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 11:51:46] [DBG] ⏭ GIRIS ATILDI: ID=74511 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 11:52:02] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 125ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 11:52:32] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 160ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 11:53:02] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 183ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:53:32] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 136ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 11:54:02] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 245ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 11:54:32] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 224ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:55:02] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 279ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 11:55:05] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 11:55:32] [SYS] [PERF] FPS: 3.6 | YOLO: 177ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 11:56:02] [SYS] [PERF] FPS: 3.6 | YOLO: 175ms | Total: 150ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 11:56:33] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 262ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 11:57:03] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 11:57:33] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 256ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:57:37] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 11:57:37)
+[2026-06-16 11:58:03] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 157ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 11:58:33] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 170ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 11:59:03] [SYS] [PERF] FPS: 3.6 | YOLO: 177ms | Total: 137ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 11:59:33] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 141ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 12:00:00] [DBG] Yeni periyot başladı (aralık=2dk) | Entered/Exited setleri temizlendi (40/31 → 0)
+[2026-06-16 12:00:00] [DBG] Sonraki rapor: 13:00
+[2026-06-16 12:00:00] [DBG] [BUFFER-SAAT] cur=0 add=2206759 proc=2206759
+[2026-06-16 12:00:01] [DBG] [BUFFER-10DK] cur=0 add=2206767 proc=2206767 islenen=2159
+[2026-06-16 12:00:04] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 150ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 12:00:05] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:00:34] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 12:01:04] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 218ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 12:01:34] [SYS] [PERF] FPS: 3.4 | YOLO: 188ms | Total: 172ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 12:02:04] [SYS] [PERF] FPS: 3.3 | YOLO: 203ms | Total: 169ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 12:02:34] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 231ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:03:05] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 222ms | Buffer: 2/4 | Drop: 0 | Frames: 101
+[2026-06-16 12:03:35] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 140ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 12:04:05] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 253ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 12:04:35] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 181ms | Buffer: 0/0 | Drop: 0 | Frames: 104
+[2026-06-16 12:05:05] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 249ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 12:05:06] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:05:35] [SYS] [PERF] FPS: 3.4 | YOLO: 199ms | Total: 148ms | Buffer: 0/0 | Drop: 0 | Frames: 101
+[2026-06-16 12:05:47] [DBG] ⏭ CIKIS ATILDI: ID=74826 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 12:06:02] [DBG] ⏭ GIRIS ATILDI: ID=74826 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 12:06:05] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 142ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:06:35] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 130ms | Buffer: 0/0 | Drop: 0 | Frames: 103
+[2026-06-16 12:07:05] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 108ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 12:07:35] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 208ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 12:07:37] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 12:07:37)
+[2026-06-16 12:07:52] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 12:08:05] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 155ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 12:08:35] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 273ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:09:05] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 12:09:36] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 169ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:10:02] [DBG] [BUFFER-10DK] cur=0 add=2209831 proc=2209831 islenen=2063
+[2026-06-16 12:10:06] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 135ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 12:10:06] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:10:36] [SYS] [PERF] FPS: 3.3 | YOLO: 195ms | Total: 250ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 12:10:54] [DBG] ⏭ GIRIS ATILDI: ID=74943 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 12:11:06] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 12:11:36] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 257ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 12:12:06] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 218ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 12:12:36] [SYS] [PERF] FPS: 3.3 | YOLO: 200ms | Total: 226ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 12:13:06] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 272ms | Buffer: 2/4 | Drop: 0 | Frames: 99
+[2026-06-16 12:13:36] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 226ms | Buffer: 1/2 | Drop: 0 | Frames: 99
+[2026-06-16 12:14:07] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 218ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:14:37] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 237ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 12:15:06] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:15:07] [SYS] [PERF] FPS: 3.3 | YOLO: 197ms | Total: 204ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 12:15:37] [SYS] [PERF] FPS: 3.3 | YOLO: 204ms | Total: 256ms | Buffer: 2/4 | Drop: 0 | Frames: 99
+[2026-06-16 12:16:07] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 285ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 12:16:37] [SYS] [PERF] FPS: 3.3 | YOLO: 201ms | Total: 184ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 12:17:07] [SYS] [PERF] FPS: 3.3 | YOLO: 198ms | Total: 294ms | Buffer: 2/4 | Drop: 0 | Frames: 101
+[2026-06-16 12:17:37] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 12:17:37)
+[2026-06-16 12:17:37] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 147ms | Buffer: 0/0 | Drop: 0 | Frames: 103
+[2026-06-16 12:18:07] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 176ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 12:18:38] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 170ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 12:19:08] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 12:19:38] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 244ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 12:20:02] [DBG] [BUFFER-10DK] cur=0 add=2212900 proc=2212900 islenen=2044
+[2026-06-16 12:20:06] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:20:08] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 232ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 12:20:38] [SYS] [PERF] FPS: 3.2 | YOLO: 211ms | Total: 246ms | Buffer: 1/2 | Drop: 0 | Frames: 97
+[2026-06-16 12:21:08] [SYS] [PERF] FPS: 3.3 | YOLO: 209ms | Total: 257ms | Buffer: 1/2 | Drop: 0 | Frames: 99
+[2026-06-16 12:21:38] [SYS] [PERF] FPS: 3.2 | YOLO: 212ms | Total: 282ms | Buffer: 2/4 | Drop: 0 | Frames: 98
+[2026-06-16 12:22:09] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 233ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 12:22:39] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:23:09] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 266ms | Buffer: 2/4 | Drop: 0 | Frames: 109
+[2026-06-16 12:23:39] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 12:24:09] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 239ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 12:24:39] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 252ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 12:25:06] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:25:10] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 233ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 12:25:40] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 134ms | Buffer: 0/0 | Drop: 0 | Frames: 107
+[2026-06-16 12:26:10] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 229ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 12:26:40] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 129ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 12:27:10] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 140ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 12:27:37] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 12:27:37)
+[2026-06-16 12:27:40] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 129ms | Buffer: 0/0 | Drop: 0 | Frames: 108
+[2026-06-16 12:28:10] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 252ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 12:28:41] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 257ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 12:29:11] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 302ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 12:29:41] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 12:30:02] [DBG] [BUFFER-10DK] cur=0 add=2215966 proc=2215966 islenen=2121
+[2026-06-16 12:30:06] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:30:11] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 185ms | Buffer: 0/0 | Drop: 0 | Frames: 110
+[2026-06-16 12:30:41] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 242ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 12:31:11] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 238ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 12:31:41] [SYS] [PERF] FPS: 3.4 | YOLO: 199ms | Total: 220ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 12:32:12] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 244ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 12:32:42] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 211ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 12:33:12] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 121ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 12:33:42] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 100ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 12:34:12] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 208ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 12:34:42] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 196ms | Buffer: 0/0 | Drop: 0 | Frames: 109
+[2026-06-16 12:35:07] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:35:13] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 243ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 12:35:43] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 232ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 12:36:13] [SYS] [PERF] FPS: 3.7 | YOLO: 180ms | Total: 228ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 12:36:43] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 143ms | Buffer: 0/0 | Drop: 0 | Frames: 111
+[2026-06-16 12:37:13] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 212ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 12:37:37] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 12:37:37)
+[2026-06-16 12:37:43] [SYS] [PERF] FPS: 3.6 | YOLO: 189ms | Total: 136ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 12:38:13] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 182ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 12:38:43] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 130ms | Buffer: 0/0 | Drop: 0 | Frames: 111
+[2026-06-16 12:39:13] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 12:39:43] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 222ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:40:02] [DBG] [BUFFER-10DK] cur=0 add=2219036 proc=2219036 islenen=2144
+[2026-06-16 12:40:07] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:40:13] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 12:40:43] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 323ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 12:41:13] [SYS] [PERF] FPS: 3.3 | YOLO: 205ms | Total: 234ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 12:41:44] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 196ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:42:14] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 96ms | Buffer: 0/0 | Drop: 0 | Frames: 106
+[2026-06-16 12:42:44] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 155ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 12:43:14] [SYS] [PERF] FPS: 3.6 | YOLO: 175ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 12:43:44] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 243ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 12:44:14] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 220ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 12:44:45] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 180ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 12:45:07] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:45:15] [SYS] [PERF] FPS: 3.3 | YOLO: 203ms | Total: 271ms | Buffer: 2/4 | Drop: 0 | Frames: 99
+[2026-06-16 12:45:45] [SYS] [PERF] FPS: 3.3 | YOLO: 208ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 99
+[2026-06-16 12:45:59] [DBG] ⏭ CIKIS ATILDI: ID=75847 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 12:46:00] [DBG] ⏭ GIRIS ATILDI: ID=75847 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 12:46:01] [DBG] ⏭ CIKIS ATILDI: ID=75847 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 12:46:01] [DBG] ⏭ GIRIS ATILDI: ID=75847 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 12:46:07] [DBG] ⏭ CIKIS ATILDI: ID=75847 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 12:46:07] [DBG] ⏭ GIRIS ATILDI: ID=75847 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 12:46:15] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 192ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 12:46:45] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 263ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:46:58] [DBG] ⏭ GIRIS ATILDI: ID=75862 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 12:47:15] [SYS] [PERF] FPS: 3.3 | YOLO: 205ms | Total: 274ms | Buffer: 2/4 | Drop: 0 | Frames: 100
+[2026-06-16 12:47:38] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 12:47:38)
+[2026-06-16 12:47:45] [SYS] [PERF] FPS: 3.3 | YOLO: 199ms | Total: 308ms | Buffer: 2/4 | Drop: 0 | Frames: 100
+[2026-06-16 12:48:15] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 280ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 12:48:45] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 255ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 12:49:15] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 177ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 12:49:46] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 209ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:50:02] [DBG] [BUFFER-10DK] cur=0 add=2222118 proc=2222118 islenen=2070
+[2026-06-16 12:50:07] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:50:16] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 230ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 12:50:46] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 12:51:16] [SYS] [PERF] FPS: 3.3 | YOLO: 199ms | Total: 213ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 12:51:46] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 224ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 12:52:16] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 12:52:47] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 191ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 12:53:17] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 123ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 12:53:47] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 265ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 12:54:17] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 198ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 12:54:47] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 12:55:07] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 12:55:17] [SYS] [PERF] FPS: 3.4 | YOLO: 183ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 12:55:48] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 12:56:18] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 208ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:56:48] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 217ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 12:57:18] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 190ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 12:57:38] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 12:57:38)
+[2026-06-16 12:57:48] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 172ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 12:58:18] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 229ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:58:49] [SYS] [PERF] FPS: 3.3 | YOLO: 197ms | Total: 301ms | Buffer: 2/4 | Drop: 0 | Frames: 101
+[2026-06-16 12:59:19] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 184ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 12:59:49] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 233ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 13:00:00] [DBG] Yeni periyot başladı (aralık=2dk) | Entered/Exited setleri temizlendi (24/17 → 0)
+[2026-06-16 13:00:00] [DBG] Sonraki rapor: 14:00
+[2026-06-16 13:00:00] [DBG] [BUFFER-SAAT] cur=0 add=2225189 proc=2225189
+[2026-06-16 13:00:03] [DBG] [BUFFER-10DK] cur=0 add=2225201 proc=2225201 islenen=2088
+[2026-06-16 13:00:07] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:00:19] [SYS] [PERF] FPS: 3.5 | YOLO: 180ms | Total: 242ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:00:49] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 246ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 13:01:19] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 13:01:49] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 130ms | Buffer: 0/0 | Drop: 0 | Frames: 110
+[2026-06-16 13:02:20] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 175ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 13:02:50] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 258ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:03:20] [SYS] [PERF] FPS: 3.6 | YOLO: 177ms | Total: 256ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 13:03:50] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 135ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 13:04:20] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:04:31] [DBG] ⏭ GIRIS ATILDI: ID=76209 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 13:04:35] [DBG] ⏭ CIKIS ATILDI: ID=76209 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 13:04:51] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 199ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 13:05:08] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:05:21] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 257ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:05:51] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 249ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:06:21] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 13:06:51] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 213ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 13:07:22] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 152ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:07:38] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 13:07:38)
+[2026-06-16 13:07:52] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 175ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:07:53] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 13:08:22] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 232ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:08:52] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 273ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 13:09:22] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 196ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 13:09:52] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 191ms | Buffer: 0/0 | Drop: 0 | Frames: 106
+[2026-06-16 13:10:03] [DBG] [BUFFER-10DK] cur=0 add=2228248 proc=2228248 islenen=2136
+[2026-06-16 13:10:08] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:10:22] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 13:10:52] [SYS] [PERF] FPS: 3.6 | YOLO: 186ms | Total: 252ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:11:23] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 13:11:53] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 13:12:02] [DBG] ⏭ GIRIS ATILDI: ID=76328 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 13:12:23] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 150ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 13:12:53] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 211ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:13:23] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 192ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 13:13:29] [DBG] ⏭ CIKIS ATILDI: ID=76402 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 13:13:53] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 136ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:14:04] [DBG] ⏭ GIRIS ATILDI: ID=76431 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 13:14:23] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 13:14:53] [SYS] [PERF] FPS: 3.4 | YOLO: 187ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:15:08] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:15:24] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 285ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 13:15:54] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 167ms | Buffer: 0/0 | Drop: 0 | Frames: 101
+[2026-06-16 13:16:24] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 179ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 13:16:54] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 112ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 13:17:24] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 225ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 13:17:38] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 13:17:38)
+[2026-06-16 13:17:54] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 203ms | Buffer: 0/0 | Drop: 0 | Frames: 102
+[2026-06-16 13:18:25] [SYS] [PERF] FPS: 3.3 | YOLO: 204ms | Total: 238ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 13:18:55] [SYS] [PERF] FPS: 3.2 | YOLO: 211ms | Total: 259ms | Buffer: 1/2 | Drop: 0 | Frames: 97
+[2026-06-16 13:19:25] [SYS] [PERF] FPS: 3.2 | YOLO: 210ms | Total: 243ms | Buffer: 1/2 | Drop: 0 | Frames: 98
+[2026-06-16 13:19:55] [SYS] [PERF] FPS: 3.2 | YOLO: 207ms | Total: 287ms | Buffer: 2/4 | Drop: 0 | Frames: 97
+[2026-06-16 13:20:03] [DBG] [BUFFER-10DK] cur=0 add=2231293 proc=2231293 islenen=2040
+[2026-06-16 13:20:08] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:20:25] [SYS] [PERF] FPS: 3.3 | YOLO: 204ms | Total: 307ms | Buffer: 2/4 | Drop: 0 | Frames: 98
+[2026-06-16 13:20:55] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 147ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:21:26] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:21:56] [SYS] [PERF] FPS: 3.3 | YOLO: 201ms | Total: 223ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 13:22:26] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 262ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:22:56] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 134ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 13:23:26] [SYS] [PERF] FPS: 3.3 | YOLO: 204ms | Total: 170ms | Buffer: 1/2 | Drop: 0 | Frames: 99
+[2026-06-16 13:23:56] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 141ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 13:24:27] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 13:24:57] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 179ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 13:25:08] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:25:27] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 226ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:25:36] [DBG] ⏭ CIKIS ATILDI: ID=76888 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 13:25:44] [DBG] ⏭ GIRIS ATILDI: ID=76888 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 13:25:57] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:26:27] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 225ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 13:26:58] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 240ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 13:27:28] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 179ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 13:27:38] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 13:27:38)
+[2026-06-16 13:27:58] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 208ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 13:28:28] [SYS] [PERF] FPS: 3.6 | YOLO: 176ms | Total: 293ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 13:28:58] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 278ms | Buffer: 2/4 | Drop: 0 | Frames: 109
+[2026-06-16 13:29:28] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 13:29:58] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 175ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 13:30:03] [DBG] [BUFFER-10DK] cur=0 add=2234329 proc=2234329 islenen=2102
+[2026-06-16 13:30:08] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:30:28] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 13:30:38] [DBG] ⏭ CIKIS ATILDI: ID=76968 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 13:30:48] [DBG] ⏭ GIRIS ATILDI: ID=76968 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 13:30:59] [SYS] [PERF] FPS: 3.5 | YOLO: 182ms | Total: 170ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:31:29] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 13:31:59] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 13:32:29] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 168ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 13:32:59] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 241ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 13:33:29] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 252ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 13:33:59] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 162ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 13:34:29] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 160ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 13:34:59] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 180ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 13:35:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:35:30] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 156ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 13:36:00] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 145ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 13:36:30] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 161ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 13:37:00] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 218ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 13:37:30] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 137ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 13:37:38] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 13:37:38)
+[2026-06-16 13:38:00] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 181ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 13:38:31] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 13:39:01] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 183ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:39:31] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 181ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 13:40:01] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 13:40:03] [DBG] [BUFFER-10DK] cur=0 add=2237362 proc=2237362 islenen=2142
+[2026-06-16 13:40:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:40:31] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 191ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:41:01] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:41:31] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 209ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 13:42:01] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 118ms | Buffer: 0/0 | Drop: 0 | Frames: 110
+[2026-06-16 13:42:31] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 243ms | Buffer: 2/4 | Drop: 0 | Frames: 109
+[2026-06-16 13:43:02] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 13:43:32] [SYS] [PERF] FPS: 3.5 | YOLO: 193ms | Total: 238ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:44:02] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 263ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 13:44:32] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 277ms | Buffer: 2/4 | Drop: 0 | Frames: 105
+[2026-06-16 13:45:02] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 180ms | Buffer: 0/0 | Drop: 0 | Frames: 108
+[2026-06-16 13:45:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:45:32] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 169ms | Buffer: 0/0 | Drop: 0 | Frames: 110
+[2026-06-16 13:46:02] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 222ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 13:46:32] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 209ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 13:47:03] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 199ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:47:33] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 248ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 13:47:38] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 13:47:38)
+[2026-06-16 13:48:03] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 207ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 13:48:33] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 13:49:03] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 159ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 13:49:33] [SYS] [PERF] FPS: 3.3 | YOLO: 197ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 13:50:03] [DBG] [BUFFER-10DK] cur=0 add=2240394 proc=2240394 islenen=2095
+[2026-06-16 13:50:03] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 171ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:50:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:50:33] [SYS] [PERF] FPS: 3.3 | YOLO: 197ms | Total: 181ms | Buffer: 2/4 | Drop: 0 | Frames: 99
+[2026-06-16 13:51:03] [SYS] [PERF] FPS: 3.2 | YOLO: 206ms | Total: 169ms | Buffer: 1/2 | Drop: 0 | Frames: 96
+[2026-06-16 13:51:34] [SYS] [PERF] FPS: 3.3 | YOLO: 200ms | Total: 192ms | Buffer: 0/0 | Drop: 0 | Frames: 101
+[2026-06-16 13:52:04] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 256ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 13:52:34] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 286ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 13:53:04] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 341ms | Buffer: 2/4 | Drop: 0 | Frames: 107
+[2026-06-16 13:53:34] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 212ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 13:54:04] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 13:54:34] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 223ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:55:04] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 13:55:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 13:55:35] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:56:05] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 157ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:56:35] [SYS] [PERF] FPS: 3.6 | YOLO: 177ms | Total: 198ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 13:57:05] [SYS] [PERF] FPS: 3.4 | YOLO: 199ms | Total: 276ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 13:57:35] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 148ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 13:57:39] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 13:57:39)
+[2026-06-16 13:58:05] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 13:58:35] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 203ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 13:59:06] [SYS] [PERF] FPS: 3.6 | YOLO: 176ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 13:59:36] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:00:00] [DBG] Yeni periyot başladı (aralık=2dk) | Entered/Exited setleri temizlendi (37/29 → 0)
+[2026-06-16 14:00:00] [DBG] Sonraki rapor: 15:00
+[2026-06-16 14:00:00] [DBG] [BUFFER-SAAT] cur=0 add=2243418 proc=2243418
+[2026-06-16 14:00:03] [DBG] [BUFFER-10DK] cur=0 add=2243434 proc=2243434 islenen=2102
+[2026-06-16 14:00:06] [SYS] [PERF] FPS: 3.6 | YOLO: 177ms | Total: 262ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:00:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:00:36] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 14:01:06] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 261ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:01:37] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 213ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:02:07] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 287ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 14:02:37] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 168ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 14:03:07] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 216ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 14:03:37] [SYS] [PERF] FPS: 3.5 | YOLO: 197ms | Total: 158ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:04:07] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 169ms | Buffer: 0/0 | Drop: 0 | Frames: 107
+[2026-06-16 14:04:37] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 14:05:08] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:05:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:05:38] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 14:06:08] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 224ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 14:06:38] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 157ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 14:07:08] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 216ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 14:07:38] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 14:07:39] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 14:07:39)
+[2026-06-16 14:07:54] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 14:08:08] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 181ms | Buffer: 0/0 | Drop: 0 | Frames: 104
+[2026-06-16 14:08:38] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 160ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 14:09:08] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 191ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 14:09:38] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 180ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 14:10:03] [DBG] [BUFFER-10DK] cur=0 add=2246474 proc=2246474 islenen=2122
+[2026-06-16 14:10:09] [SYS] [PERF] FPS: 3.6 | YOLO: 176ms | Total: 264ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 14:10:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:10:39] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 210ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 14:11:09] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:11:39] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 266ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 14:12:09] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 153ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 14:12:39] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 167ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 14:13:09] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 136ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 14:13:39] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 257ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 14:14:10] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 258ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 14:14:40] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 180ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 14:15:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:15:10] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 135ms | Buffer: 0/0 | Drop: 0 | Frames: 111
+[2026-06-16 14:15:40] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 210ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:16:10] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 172ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:16:40] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 14:17:11] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 235ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 14:17:39] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 14:17:39)
+[2026-06-16 14:17:41] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 14:18:11] [SYS] [PERF] FPS: 3.7 | YOLO: 170ms | Total: 284ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 14:18:41] [SYS] [PERF] FPS: 3.6 | YOLO: 176ms | Total: 163ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:19:11] [SYS] [PERF] FPS: 3.8 | YOLO: 168ms | Total: 92ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 14:19:41] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 226ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 14:20:03] [DBG] [BUFFER-10DK] cur=0 add=2249518 proc=2249518 islenen=2177
+[2026-06-16 14:20:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:20:11] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 14:20:42] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 222ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 14:21:12] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 280ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 14:21:42] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 160ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:22:12] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 166ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 14:22:42] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 156ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 14:23:12] [SYS] [PERF] FPS: 3.4 | YOLO: 199ms | Total: 249ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 14:23:42] [SYS] [PERF] FPS: 3.3 | YOLO: 205ms | Total: 263ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 14:24:13] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 271ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 14:24:43] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 285ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 14:25:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:25:13] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 14:25:43] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 14:26:13] [SYS] [PERF] FPS: 3.3 | YOLO: 205ms | Total: 199ms | Buffer: 2/4 | Drop: 0 | Frames: 99
+[2026-06-16 14:26:43] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 156ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 14:27:14] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 14:27:39] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 14:27:39)
+[2026-06-16 14:27:44] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 14:28:14] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:28:44] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 288ms | Buffer: 2/4 | Drop: 0 | Frames: 101
+[2026-06-16 14:29:14] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 184ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 14:29:44] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 203ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 14:30:04] [DBG] [BUFFER-10DK] cur=0 add=2252563 proc=2252563 islenen=2053
+[2026-06-16 14:30:09] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:30:14] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 14:30:44] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 208ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 14:31:15] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 217ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 14:31:45] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 290ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 14:32:15] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 170ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 14:32:45] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 170ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 14:33:15] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 157ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 14:33:45] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 154ms | Buffer: 0/0 | Drop: 0 | Frames: 109
+[2026-06-16 14:34:16] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 14:34:46] [SYS] [PERF] FPS: 3.6 | YOLO: 177ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 14:35:10] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:35:16] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 157ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 14:35:46] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 179ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 14:36:16] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 139ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 14:36:46] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 217ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:37:16] [SYS] [PERF] FPS: 3.8 | YOLO: 173ms | Total: 169ms | Buffer: 0/0 | Drop: 0 | Frames: 113
+[2026-06-16 14:37:39] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 14:37:39)
+[2026-06-16 14:37:47] [SYS] [PERF] FPS: 3.8 | YOLO: 171ms | Total: 182ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 14:38:17] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 14:38:47] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 229ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:39:17] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 180ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:39:47] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 196ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 14:40:04] [DBG] [BUFFER-10DK] cur=0 add=2255593 proc=2255593 islenen=2139
+[2026-06-16 14:40:10] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:40:17] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 14:40:47] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 175ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 14:41:17] [SYS] [PERF] FPS: 3.6 | YOLO: 186ms | Total: 210ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 14:41:48] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 14:42:18] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 132ms | Buffer: 0/0 | Drop: 0 | Frames: 113
+[2026-06-16 14:42:48] [SYS] [PERF] FPS: 3.7 | YOLO: 171ms | Total: 209ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 14:43:18] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 161ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 14:43:48] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 237ms | Buffer: 2/4 | Drop: 0 | Frames: 109
+[2026-06-16 14:44:18] [SYS] [PERF] FPS: 3.6 | YOLO: 175ms | Total: 126ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:44:49] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 259ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:45:10] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:45:19] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 176ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:45:49] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 262ms | Buffer: 2/4 | Drop: 0 | Frames: 105
+[2026-06-16 14:46:19] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 162ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:46:49] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 144ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 14:47:20] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 14:47:39] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 14:47:39)
+[2026-06-16 14:47:50] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 225ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 14:48:20] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 216ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 14:48:50] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 168ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 14:49:20] [SYS] [PERF] FPS: 3.5 | YOLO: 182ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 14:49:50] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 264ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 14:50:04] [DBG] [BUFFER-10DK] cur=0 add=2258637 proc=2258637 islenen=2136
+[2026-06-16 14:50:10] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:50:20] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 139ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 14:50:51] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 217ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:51:21] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 229ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 14:51:51] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 171ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:52:21] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 149ms | Buffer: 0/0 | Drop: 0 | Frames: 111
+[2026-06-16 14:52:51] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 171ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 14:53:21] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 140ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 14:53:51] [SYS] [PERF] FPS: 3.5 | YOLO: 193ms | Total: 175ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 14:54:21] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 218ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 14:54:52] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 238ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 14:55:10] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 14:55:22] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 179ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:55:52] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 267ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 14:56:22] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 14:56:52] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:57:22] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 153ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 14:57:39] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 14:57:39)
+[2026-06-16 14:57:52] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 244ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 14:58:22] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 14:58:53] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 204ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 14:59:23] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 256ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 14:59:53] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 15:00:00] [DBG] Yeni periyot başladı (aralık=2dk) | Entered/Exited setleri temizlendi (15/12 → 0)
+[2026-06-16 15:00:00] [DBG] Sonraki rapor: 16:00
+[2026-06-16 15:00:01] [DBG] [BUFFER-SAAT] cur=0 add=2261655 proc=2261655
+[2026-06-16 15:00:04] [DBG] [BUFFER-10DK] cur=0 add=2261671 proc=2261671 islenen=2108
+[2026-06-16 15:00:10] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:00:23] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 251ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 15:00:53] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 281ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:01:24] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 15:01:54] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:02:24] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 15:02:54] [SYS] [PERF] FPS: 3.4 | YOLO: 199ms | Total: 159ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 15:03:24] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 192ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:03:54] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 15:04:25] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 276ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 15:04:55] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 251ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:05:11] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:05:25] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 225ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 15:05:55] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 212ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:06:25] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:06:55] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:07:25] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 247ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 15:07:39] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 15:07:39)
+[2026-06-16 15:07:55] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 15:07:56] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:08:26] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 213ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:08:56] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 192ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 15:09:26] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 191ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 15:09:56] [SYS] [PERF] FPS: 3.3 | YOLO: 213ms | Total: 257ms | Buffer: 2/4 | Drop: 0 | Frames: 98
+[2026-06-16 15:10:04] [DBG] [BUFFER-10DK] cur=0 add=2264700 proc=2264700 islenen=2054
+[2026-06-16 15:10:05] [DBG] ⏭ CIKIS ATILDI: ID=79716 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 15:10:11] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:10:26] [SYS] [PERF] FPS: 3.2 | YOLO: 207ms | Total: 344ms | Buffer: 2/4 | Drop: 0 | Frames: 97
+[2026-06-16 15:10:57] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 236ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 15:11:27] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 162ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 15:11:57] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 138ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 15:12:27] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 129ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 15:12:57] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 265ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 15:13:27] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 213ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 15:13:57] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 210ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 15:14:28] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 192ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:14:58] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:15:11] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:15:28] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 15:15:58] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 290ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 15:16:28] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 184ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:16:59] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 224ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:17:29] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:17:40] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 15:17:40)
+[2026-06-16 15:17:59] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 172ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:18:29] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 150ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:18:59] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 159ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:19:29] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 171ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:19:59] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 274ms | Buffer: 2/4 | Drop: 0 | Frames: 101
+[2026-06-16 15:20:04] [DBG] [BUFFER-10DK] cur=0 add=2267721 proc=2267721 islenen=2082
+[2026-06-16 15:20:11] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:20:29] [SYS] [PERF] FPS: 3.4 | YOLO: 188ms | Total: 208ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 15:21:00] [SYS] [PERF] FPS: 3.4 | YOLO: 188ms | Total: 256ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:21:30] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 168ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:22:00] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 15:22:30] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 228ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:23:00] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 247ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 15:23:30] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 257ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 15:24:01] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 170ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 15:24:31] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 204ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 15:25:01] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 165ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:25:11] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:25:31] [SYS] [PERF] FPS: 3.3 | YOLO: 196ms | Total: 288ms | Buffer: 2/4 | Drop: 0 | Frames: 101
+[2026-06-16 15:26:01] [SYS] [PERF] FPS: 3.3 | YOLO: 197ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 15:26:32] [SYS] [PERF] FPS: 3.4 | YOLO: 187ms | Total: 184ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:27:02] [SYS] [PERF] FPS: 3.3 | YOLO: 194ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 15:27:32] [SYS] [PERF] FPS: 3.4 | YOLO: 188ms | Total: 191ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 15:27:40] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 15:27:40)
+[2026-06-16 15:28:02] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 154ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 15:28:32] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 145ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:29:02] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:29:32] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 290ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 15:30:03] [SYS] [PERF] FPS: 3.2 | YOLO: 211ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 96
+[2026-06-16 15:30:04] [DBG] [BUFFER-10DK] cur=0 add=2270737 proc=2270737 islenen=2033
+[2026-06-16 15:30:12] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:30:33] [SYS] [PERF] FPS: 3.3 | YOLO: 200ms | Total: 171ms | Buffer: 1/2 | Drop: 0 | Frames: 99
+[2026-06-16 15:31:03] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 131ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 15:31:33] [SYS] [PERF] FPS: 3.3 | YOLO: 204ms | Total: 160ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 15:32:03] [SYS] [PERF] FPS: 3.3 | YOLO: 204ms | Total: 162ms | Buffer: 1/2 | Drop: 0 | Frames: 99
+[2026-06-16 15:32:33] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 209ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:33:03] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 155ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 15:33:33] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 272ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 15:34:03] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 240ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 15:34:33] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 181ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 15:35:04] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 240ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 15:35:12] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:35:34] [SYS] [PERF] FPS: 3.2 | YOLO: 212ms | Total: 248ms | Buffer: 1/2 | Drop: 0 | Frames: 97
+[2026-06-16 15:36:04] [SYS] [PERF] FPS: 3.3 | YOLO: 207ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 98
+[2026-06-16 15:36:34] [SYS] [PERF] FPS: 3.3 | YOLO: 200ms | Total: 161ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 15:37:04] [SYS] [PERF] FPS: 3.2 | YOLO: 208ms | Total: 227ms | Buffer: 1/2 | Drop: 0 | Frames: 98
+[2026-06-16 15:37:35] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 244ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 15:37:40] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 15:37:40)
+[2026-06-16 15:38:05] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:38:35] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 247ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 15:39:05] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 212ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:39:35] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 221ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 15:40:05] [DBG] [BUFFER-10DK] cur=0 add=2273764 proc=2273764 islenen=2049
+[2026-06-16 15:40:05] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 172ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 15:40:12] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:40:36] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 219ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:41:06] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 244ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 15:41:06] [DBG] ⏭ GIRIS ATILDI: ID=80739 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 15:41:36] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 15:42:06] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 271ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 15:42:36] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 159ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 15:43:07] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 140ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 15:43:37] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 15:44:07] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 15:44:37] [SYS] [PERF] FPS: 3.5 | YOLO: 196ms | Total: 182ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:45:07] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 247ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:45:12] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:45:37] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 234ms | Buffer: 2/4 | Drop: 0 | Frames: 105
+[2026-06-16 15:46:07] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 234ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 15:46:37] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 15:47:07] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 286ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 15:47:38] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 204ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 15:47:40] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 15:47:40)
+[2026-06-16 15:48:08] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 15:48:38] [SYS] [PERF] FPS: 3.4 | YOLO: 199ms | Total: 227ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 15:49:08] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 236ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 15:49:38] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 222ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 15:50:05] [DBG] [BUFFER-10DK] cur=0 add=2276796 proc=2276796 islenen=2103
+[2026-06-16 15:50:08] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 331ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:50:12] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:50:28] [DBG] ⏭ CIKIS ATILDI: ID=81258 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 15:50:38] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 182ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:51:09] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 153ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 15:51:39] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 139ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 15:52:09] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 136ms | Buffer: 0/0 | Drop: 0 | Frames: 109
+[2026-06-16 15:52:39] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 15:53:09] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 153ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 15:53:39] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 143ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 15:54:10] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 166ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 15:54:40] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 15:55:10] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 166ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 15:55:13] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 15:55:40] [SYS] [PERF] FPS: 3.5 | YOLO: 181ms | Total: 257ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 15:56:10] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 287ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 15:56:40] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 229ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 15:57:10] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 265ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:57:40] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 15:57:40)
+[2026-06-16 15:57:41] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 268ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 15:58:11] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 15:58:41] [SYS] [PERF] FPS: 3.4 | YOLO: 201ms | Total: 250ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 15:59:11] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 182ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 15:59:41] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 169ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 16:00:00] [DBG] Yeni periyot başladı (aralık=2dk) | Entered/Exited setleri temizlendi (21/19 → 0)
+[2026-06-16 16:00:00] [DBG] Sonraki rapor: 17:00
+[2026-06-16 16:00:01] [DBG] [BUFFER-SAAT] cur=0 add=2279804 proc=2279804
+[2026-06-16 16:00:05] [DBG] [BUFFER-10DK] cur=0 add=2279825 proc=2279825 islenen=2110
+[2026-06-16 16:00:11] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:00:13] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:00:41] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 225ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 16:01:11] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 191ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:01:41] [SYS] [PERF] FPS: 3.4 | YOLO: 203ms | Total: 198ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 16:02:12] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 209ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 16:02:42] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 151ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:03:12] [SYS] [PERF] FPS: 3.5 | YOLO: 196ms | Total: 261ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:03:42] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 329ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 16:04:12] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 210ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:04:42] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 218ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 16:05:12] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 233ms | Buffer: 2/4 | Drop: 0 | Frames: 111
+[2026-06-16 16:05:13] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:05:43] [SYS] [PERF] FPS: 3.7 | YOLO: 170ms | Total: 149ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 16:06:13] [SYS] [PERF] FPS: 3.8 | YOLO: 169ms | Total: 163ms | Buffer: 0/0 | Drop: 0 | Frames: 114
+[2026-06-16 16:06:43] [SYS] [PERF] FPS: 3.8 | YOLO: 170ms | Total: 148ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 16:07:13] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 16:07:40] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 16:07:40)
+[2026-06-16 16:07:43] [SYS] [PERF] FPS: 3.5 | YOLO: 182ms | Total: 248ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 16:07:56] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 16:08:14] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 180ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 16:08:44] [SYS] [PERF] FPS: 3.6 | YOLO: 177ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 16:09:14] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 198ms | Buffer: 0/0 | Drop: 0 | Frames: 112
+[2026-06-16 16:09:44] [SYS] [PERF] FPS: 3.5 | YOLO: 196ms | Total: 268ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:09:47] [DBG] ⏭ CIKIS ATILDI: ID=81811 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 16:09:55] [DBG] ⏭ GIRIS ATILDI: ID=81811 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 16:10:05] [DBG] [BUFFER-10DK] cur=0 add=2282852 proc=2282852 islenen=2139
+[2026-06-16 16:10:13] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:10:14] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 16:10:45] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 16:11:15] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:11:45] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 125ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 16:12:15] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 212ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 16:12:45] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 155ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 16:13:15] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 16:13:45] [SYS] [PERF] FPS: 3.5 | YOLO: 193ms | Total: 176ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:14:16] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 150ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 16:14:46] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 16:15:13] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:15:16] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 138ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 16:15:46] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 227ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:16:16] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 223ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:16:46] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 182ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:17:17] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 261ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 16:17:40] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 16:17:40)
+[2026-06-16 16:17:47] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 168ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 16:18:17] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 144ms | Buffer: 0/0 | Drop: 0 | Frames: 102
+[2026-06-16 16:18:47] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 288ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 16:19:17] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 285ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 16:19:47] [SYS] [PERF] FPS: 3.3 | YOLO: 201ms | Total: 250ms | Buffer: 2/4 | Drop: 0 | Frames: 101
+[2026-06-16 16:20:05] [DBG] [BUFFER-10DK] cur=0 add=2285879 proc=2285879 islenen=2115
+[2026-06-16 16:20:13] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:20:18] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 234ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 16:20:48] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 211ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:21:18] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 172ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 16:21:48] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 177ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:22:18] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 16:22:48] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 289ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 16:23:18] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 233ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:23:48] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 152ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:24:18] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 170ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 16:24:48] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 204ms | Buffer: 0/0 | Drop: 0 | Frames: 106
+[2026-06-16 16:25:14] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:25:19] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 16:25:49] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 133ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 16:26:16] [DBG] ⏭ GIRIS ATILDI: ID=82213 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 16:26:19] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 16:26:49] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 151ms | Buffer: 0/0 | Drop: 0 | Frames: 104
+[2026-06-16 16:27:19] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 132ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 16:27:41] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 16:27:41)
+[2026-06-16 16:27:49] [SYS] [PERF] FPS: 3.8 | YOLO: 172ms | Total: 126ms | Buffer: 1/2 | Drop: 0 | Frames: 113
+[2026-06-16 16:28:19] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 139ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 16:28:49] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 144ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 16:29:19] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 16:29:50] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 16:30:05] [DBG] [BUFFER-10DK] cur=0 add=2288911 proc=2288911 islenen=2126
+[2026-06-16 16:30:14] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:30:20] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 162ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 16:30:50] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 276ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 16:31:20] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 264ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:31:50] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 208ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 16:32:20] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 204ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 16:32:51] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 229ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:33:21] [SYS] [PERF] FPS: 3.4 | YOLO: 188ms | Total: 158ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 16:33:51] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:34:21] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 252ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:34:51] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:35:14] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:35:22] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 147ms | Buffer: 0/0 | Drop: 0 | Frames: 103
+[2026-06-16 16:35:52] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 204ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 16:36:14] [DBG] ⏭ CIKIS ATILDI: ID=82461 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 16:36:22] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 226ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:36:22] [DBG] ⏭ GIRIS ATILDI: ID=82461 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 16:36:52] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 278ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 16:37:22] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 203ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:37:41] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 16:37:41)
+[2026-06-16 16:37:52] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 162ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 16:38:23] [SYS] [PERF] FPS: 3.5 | YOLO: 181ms | Total: 148ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 16:38:53] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 159ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 16:39:23] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 216ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:39:53] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 169ms | Buffer: 0/0 | Drop: 0 | Frames: 106
+[2026-06-16 16:40:06] [DBG] [BUFFER-10DK] cur=0 add=2291938 proc=2291938 islenen=2080
+[2026-06-16 16:40:14] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:40:23] [SYS] [PERF] FPS: 3.3 | YOLO: 197ms | Total: 158ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 16:40:53] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 123ms | Buffer: 0/0 | Drop: 0 | Frames: 103
+[2026-06-16 16:41:24] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 128ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:41:54] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 184ms | Buffer: 0/0 | Drop: 0 | Frames: 107
+[2026-06-16 16:42:24] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:42:54] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 16:43:24] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:43:55] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 179ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 16:44:25] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 173ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 16:44:55] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 281ms | Buffer: 2/4 | Drop: 0 | Frames: 107
+[2026-06-16 16:45:14] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:45:25] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 271ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:45:55] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 326ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 16:46:25] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 162ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 16:46:56] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 16:47:26] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 171ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:47:41] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 16:47:41)
+[2026-06-16 16:47:56] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 219ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:48:26] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 16:48:56] [SYS] [PERF] FPS: 3.4 | YOLO: 199ms | Total: 249ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 16:49:26] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 198ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:49:57] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 137ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 16:50:06] [DBG] [BUFFER-10DK] cur=0 add=2294963 proc=2294963 islenen=2080
+[2026-06-16 16:50:14] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:50:23] [DBG] ⏭ GIRIS ATILDI: ID=82757 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 16:50:27] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 16:50:57] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 248ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:51:15] [DBG] ⏭ CIKIS ATILDI: ID=82757 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 16:51:16] [DBG] ⏭ GIRIS ATILDI: ID=82757 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 16:51:19] [DBG] ⏭ CIKIS ATILDI: ID=82757 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 16:51:25] [DBG] ⏭ GIRIS ATILDI: ID=82757 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 16:51:27] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 172ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 16:51:57] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 326ms | Buffer: 2/4 | Drop: 0 | Frames: 105
+[2026-06-16 16:52:27] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 16:52:57] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 259ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 16:53:28] [SYS] [PERF] FPS: 3.3 | YOLO: 199ms | Total: 267ms | Buffer: 1/2 | Drop: 0 | Frames: 99
+[2026-06-16 16:53:58] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 16:54:28] [SYS] [PERF] FPS: 3.6 | YOLO: 177ms | Total: 257ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 16:54:58] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 196ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 16:55:14] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 16:55:28] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 269ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 16:55:58] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 16:56:29] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 160ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 16:56:59] [SYS] [PERF] FPS: 3.8 | YOLO: 171ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 114
+[2026-06-16 16:57:29] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 254ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 16:57:41] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 16:57:41)
+[2026-06-16 16:57:59] [SYS] [PERF] FPS: 3.6 | YOLO: 177ms | Total: 183ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 16:58:29] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 16:58:59] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 234ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 16:59:30] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 176ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:00:00] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 17:00:00] [DBG] Yeni periyot başladı (aralık=2dk) | Entered/Exited setleri temizlendi (19/16 → 0)
+[2026-06-16 17:00:00] [DBG] Sonraki rapor: 18:00
+[2026-06-16 17:00:01] [DBG] [BUFFER-SAAT] cur=0 add=2297961 proc=2297961
+[2026-06-16 17:00:06] [DBG] [BUFFER-10DK] cur=0 add=2297986 proc=2297986 islenen=2121
+[2026-06-16 17:00:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:00:30] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 242ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 17:01:00] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 208ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 17:01:30] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 183ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 17:02:00] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 246ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 17:02:31] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 264ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 17:03:01] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 171ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 17:03:31] [SYS] [PERF] FPS: 3.6 | YOLO: 176ms | Total: 196ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 17:04:01] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 129ms | Buffer: 0/0 | Drop: 0 | Frames: 109
+[2026-06-16 17:04:31] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 167ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 17:05:01] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 171ms | Buffer: 0/0 | Drop: 0 | Frames: 109
+[2026-06-16 17:05:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:05:31] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 213ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 17:06:01] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 17:06:32] [SYS] [PERF] FPS: 3.6 | YOLO: 189ms | Total: 282ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 17:07:02] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 272ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 17:07:32] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:07:41] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 17:07:41)
+[2026-06-16 17:07:57] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 17:08:02] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 248ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 17:08:33] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 223ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 17:09:03] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 272ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 17:09:33] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 17:10:03] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 17:10:06] [DBG] [BUFFER-10DK] cur=0 add=2301002 proc=2301002 islenen=2161
+[2026-06-16 17:10:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:10:33] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 146ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 17:11:03] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 17:11:34] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 217ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 17:12:04] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 88ms | Buffer: 0/0 | Drop: 0 | Frames: 111
+[2026-06-16 17:12:34] [SYS] [PERF] FPS: 3.8 | YOLO: 169ms | Total: 210ms | Buffer: 1/2 | Drop: 0 | Frames: 115
+[2026-06-16 17:13:04] [SYS] [PERF] FPS: 3.8 | YOLO: 171ms | Total: 158ms | Buffer: 0/0 | Drop: 0 | Frames: 114
+[2026-06-16 17:13:34] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 17:14:04] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 162ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 17:14:34] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 17:15:05] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 220ms | Buffer: 2/4 | Drop: 0 | Frames: 109
+[2026-06-16 17:15:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:15:35] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 282ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 17:16:05] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 184ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:16:35] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 232ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 17:17:05] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 173ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 17:17:36] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 343ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 17:17:41] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 17:17:41)
+[2026-06-16 17:18:06] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 162ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 17:18:36] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 17:19:06] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 154ms | Buffer: 0/0 | Drop: 0 | Frames: 106
+[2026-06-16 17:19:19] [DBG] ⏭ GIRIS ATILDI: ID=83462 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 17:19:36] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 156ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 17:20:06] [DBG] [BUFFER-10DK] cur=0 add=2304030 proc=2304030 islenen=2147
+[2026-06-16 17:20:07] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 17:20:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:20:37] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 224ms | Buffer: 2/4 | Drop: 0 | Frames: 109
+[2026-06-16 17:21:07] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 243ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 17:21:37] [SYS] [PERF] FPS: 3.8 | YOLO: 172ms | Total: 163ms | Buffer: 0/0 | Drop: 0 | Frames: 113
+[2026-06-16 17:22:07] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 17:22:37] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 17:23:07] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 167ms | Buffer: 0/0 | Drop: 0 | Frames: 106
+[2026-06-16 17:23:37] [SYS] [PERF] FPS: 3.5 | YOLO: 193ms | Total: 216ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 17:24:08] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 222ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 17:24:38] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 198ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:25:08] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 246ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 17:25:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:25:38] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 160ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 17:26:08] [SYS] [PERF] FPS: 3.8 | YOLO: 171ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 114
+[2026-06-16 17:26:38] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 172ms | Buffer: 0/0 | Drop: 0 | Frames: 110
+[2026-06-16 17:27:08] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 17:27:39] [SYS] [PERF] FPS: 3.7 | YOLO: 180ms | Total: 237ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 17:27:41] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 17:27:41)
+[2026-06-16 17:28:09] [SYS] [PERF] FPS: 3.6 | YOLO: 186ms | Total: 271ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 17:28:39] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 239ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 17:29:09] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 113ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 17:29:39] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 212ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 17:30:07] [DBG] [BUFFER-10DK] cur=0 add=2307060 proc=2307060 islenen=2185
+[2026-06-16 17:30:09] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 121ms | Buffer: 0/0 | Drop: 0 | Frames: 112
+[2026-06-16 17:30:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:30:39] [SYS] [PERF] FPS: 3.7 | YOLO: 173ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 17:31:10] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 223ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 17:31:40] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 17:32:10] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 165ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 17:32:40] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 124ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 17:33:11] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 249ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 17:33:41] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 294ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 17:34:11] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 17:34:41] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 144ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 17:35:11] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:35:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:35:41] [SYS] [PERF] FPS: 3.5 | YOLO: 195ms | Total: 280ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 17:36:11] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 140ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 17:36:41] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 225ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 17:37:11] [SYS] [PERF] FPS: 3.5 | YOLO: 193ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:37:42] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 17:37:42)
+[2026-06-16 17:37:42] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 295ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 17:38:12] [SYS] [PERF] FPS: 3.3 | YOLO: 200ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 17:38:42] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 231ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 17:39:12] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 192ms | Buffer: 0/0 | Drop: 0 | Frames: 104
+[2026-06-16 17:39:43] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 270ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 17:40:07] [DBG] [BUFFER-10DK] cur=0 add=2310096 proc=2310096 islenen=2127
+[2026-06-16 17:40:13] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 227ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 17:40:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:40:43] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 217ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 17:41:13] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 163ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 17:41:43] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 203ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 17:42:13] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 141ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 17:42:44] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 283ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 17:43:14] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 160ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:43:44] [SYS] [PERF] FPS: 3.3 | YOLO: 203ms | Total: 133ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 17:44:14] [SYS] [PERF] FPS: 3.5 | YOLO: 193ms | Total: 145ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:44:44] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 174ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 17:45:15] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 260ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 17:45:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:45:45] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 153ms | Buffer: 0/0 | Drop: 0 | Frames: 108
+[2026-06-16 17:46:15] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:46:45] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 17:47:15] [SYS] [PERF] FPS: 3.3 | YOLO: 201ms | Total: 265ms | Buffer: 2/4 | Drop: 0 | Frames: 99
+[2026-06-16 17:47:42] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 17:47:42)
+[2026-06-16 17:47:45] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 17:48:15] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 17:48:46] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 251ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 17:49:16] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 234ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 17:49:46] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 262ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 17:50:07] [DBG] [BUFFER-10DK] cur=0 add=2313135 proc=2313135 islenen=2067
+[2026-06-16 17:50:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:50:16] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 17:50:46] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 228ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 17:51:16] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 17:51:46] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:52:17] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 280ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 17:52:47] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:53:17] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 168ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 17:53:47] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 17:54:17] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 152ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 17:54:47] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 222ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 17:55:15] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 17:55:17] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 111ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 17:55:47] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 157ms | Buffer: 0/0 | Drop: 0 | Frames: 110
+[2026-06-16 17:56:17] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 213ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 17:56:48] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 17:57:18] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 173ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 17:57:42] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 17:57:42)
+[2026-06-16 17:57:48] [SYS] [PERF] FPS: 3.8 | YOLO: 170ms | Total: 153ms | Buffer: 1/2 | Drop: 0 | Frames: 114
+[2026-06-16 17:58:18] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 224ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 17:58:48] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 172ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 17:59:18] [SYS] [PERF] FPS: 3.7 | YOLO: 172ms | Total: 252ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 17:59:48] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 18:00:00] [DBG] Yeni periyot başladı (aralık=2dk) | Entered/Exited setleri temizlendi (17/11 → 0)
+[2026-06-16 18:00:00] [DBG] Sonraki rapor: 19:00
+[2026-06-16 18:00:01] [DBG] [BUFFER-SAAT] cur=0 add=2316156 proc=2316156
+[2026-06-16 18:00:07] [DBG] [BUFFER-10DK] cur=0 add=2316186 proc=2316186 islenen=2150
+[2026-06-16 18:00:16] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:00:18] [SYS] [PERF] FPS: 3.6 | YOLO: 177ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 18:00:49] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 166ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 18:01:19] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 159ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 18:01:49] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 227ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 18:02:19] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 175ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 18:02:49] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 223ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 18:03:19] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 18:03:49] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 233ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 18:04:19] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 18:04:50] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 260ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 18:05:16] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:05:20] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 209ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 18:05:50] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 245ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 18:06:07] [DBG] ⏭ GIRIS ATILDI: ID=84831 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 18:06:20] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:06:33] [DBG] ⏭ GIRIS ATILDI: ID=84836 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 18:06:50] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 229ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 18:07:20] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 243ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:07:42] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 18:07:42)
+[2026-06-16 18:07:51] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 249ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:07:58] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 18:08:21] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 18:08:51] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 18:09:21] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 137ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 18:09:51] [SYS] [PERF] FPS: 3.3 | YOLO: 207ms | Total: 262ms | Buffer: 1/2 | Drop: 0 | Frames: 99
+[2026-06-16 18:10:07] [DBG] [BUFFER-10DK] cur=0 add=2319224 proc=2319224 islenen=2116
+[2026-06-16 18:10:16] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:10:21] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 18:10:51] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 223ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:11:21] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 241ms | Buffer: 2/4 | Drop: 0 | Frames: 105
+[2026-06-16 18:11:51] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 250ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 18:12:22] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 168ms | Buffer: 0/0 | Drop: 0 | Frames: 108
+[2026-06-16 18:12:52] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 18:13:22] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 154ms | Buffer: 0/0 | Drop: 0 | Frames: 106
+[2026-06-16 18:13:52] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 255ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 18:14:22] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:14:53] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 212ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 18:15:16] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:15:23] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 169ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 18:15:53] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 221ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 18:16:23] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 172ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 18:16:53] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 167ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 18:17:23] [SYS] [PERF] FPS: 3.5 | YOLO: 193ms | Total: 187ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 18:17:42] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 18:17:42)
+[2026-06-16 18:17:53] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 216ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 18:18:23] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 184ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 18:18:54] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:19:24] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 191ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 18:19:54] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 175ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 18:20:07] [DBG] [BUFFER-10DK] cur=0 add=2322280 proc=2322280 islenen=2124
+[2026-06-16 18:20:16] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:20:24] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:20:54] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 172ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 18:21:24] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 278ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 18:21:55] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 252ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 18:22:25] [SYS] [PERF] FPS: 3.6 | YOLO: 190ms | Total: 211ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 18:22:55] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:23:25] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 295ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:23:56] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 242ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:24:26] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 262ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 18:24:56] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 260ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 18:25:16] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:25:26] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 230ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 18:25:56] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 152ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:26:26] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 177ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 18:26:56] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 173ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:27:26] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 242ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:27:42] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 18:27:42)
+[2026-06-16 18:27:56] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 247ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 18:28:27] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 170ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:28:57] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 170ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:29:27] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:29:57] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 141ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 18:30:07] [DBG] [BUFFER-10DK] cur=0 add=2325344 proc=2325344 islenen=2098
+[2026-06-16 18:30:16] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:30:27] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 273ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:30:57] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:31:27] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 156ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 18:31:57] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 18:32:27] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 222ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 18:32:57] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 277ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 18:33:27] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 18:33:58] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 18:34:28] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 18:34:58] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 275ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 18:35:16] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:35:28] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 267ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:35:47] [DBG] ⏭ CIKIS ATILDI: ID=85534 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 18:35:57] [DBG] ⏭ GIRIS ATILDI: ID=85534 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 18:35:58] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 296ms | Buffer: 2/4 | Drop: 0 | Frames: 99
+[2026-06-16 18:36:18] [DBG] ⏭ CIKIS ATILDI: ID=85534 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 18:36:29] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 300ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 18:36:35] [DBG] ⏭ GIRIS ATILDI: ID=85534 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 18:36:41] [DBG] ⏭ CIKIS ATILDI: ID=85534 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 18:36:59] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 263ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 18:37:01] [DBG] ⏭ GIRIS ATILDI: ID=85534 (2->1) | Bu periyotta zaten sayildi
+[2026-06-16 18:37:29] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 238ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 18:37:42] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 18:37:42)
+[2026-06-16 18:37:59] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 335ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 18:38:29] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 272ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 18:38:59] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 171ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:39:30] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 209ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 18:40:00] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 159ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 18:40:07] [DBG] [BUFFER-10DK] cur=0 add=2328403 proc=2328403 islenen=2101
+[2026-06-16 18:40:16] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:40:30] [SYS] [PERF] FPS: 3.5 | YOLO: 182ms | Total: 143ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 18:41:00] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 227ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 18:41:30] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 237ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:42:00] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 197ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 18:42:30] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 213ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 18:42:42] [DBG] ⏭ CIKIS ATILDI: ID=85722 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 18:43:01] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 260ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:43:31] [SYS] [PERF] FPS: 3.6 | YOLO: 176ms | Total: 142ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 18:44:01] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 158ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:44:31] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 18:45:01] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 301ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 18:45:17] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:45:31] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:46:02] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 222ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 18:46:32] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 236ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:47:02] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 18:47:32] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 233ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 18:47:42] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 18:47:42)
+[2026-06-16 18:48:02] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:48:32] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 219ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 18:49:03] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 199ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:49:33] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 18:50:03] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 18:50:08] [DBG] [BUFFER-10DK] cur=0 add=2331446 proc=2331446 islenen=2093
+[2026-06-16 18:50:17] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:50:33] [SYS] [PERF] FPS: 3.3 | YOLO: 201ms | Total: 261ms | Buffer: 1/2 | Drop: 0 | Frames: 99
+[2026-06-16 18:51:03] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 228ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:51:33] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 177ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 18:52:04] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 246ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:52:34] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 173ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 18:53:04] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 216ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 18:53:34] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 280ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:54:04] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 247ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 18:54:35] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 18:55:05] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 18:55:17] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 18:55:35] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 110ms | Buffer: 0/0 | Drop: 0 | Frames: 104
+[2026-06-16 18:56:05] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 199ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 18:56:35] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 153ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 18:57:05] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 18:57:36] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 251ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 18:57:43] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 18:57:43)
+[2026-06-16 18:58:06] [SYS] [PERF] FPS: 3.3 | YOLO: 201ms | Total: 251ms | Buffer: 2/4 | Drop: 0 | Frames: 100
+[2026-06-16 18:58:36] [SYS] [PERF] FPS: 3.3 | YOLO: 199ms | Total: 209ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 18:59:06] [SYS] [PERF] FPS: 3.3 | YOLO: 197ms | Total: 250ms | Buffer: 2/4 | Drop: 0 | Frames: 101
+[2026-06-16 18:59:36] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 225ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:00:00] [DBG] Yeni periyot başladı (aralık=2dk) | Entered/Exited setleri temizlendi (17/16 → 0)
+[2026-06-16 19:00:00] [DBG] Sonraki rapor: 20:00
+[2026-06-16 19:00:01] [DBG] [BUFFER-SAAT] cur=0 add=2334450 proc=2334450
+[2026-06-16 19:00:06] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 246ms | Buffer: 2/4 | Drop: 0 | Frames: 105
+[2026-06-16 19:00:08] [DBG] [BUFFER-10DK] cur=0 add=2334482 proc=2334482 islenen=2065
+[2026-06-16 19:00:17] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:00:36] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 174ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 19:01:06] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:01:36] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 19:02:07] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:02:37] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 176ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:03:07] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 190ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:03:37] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 231ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:04:07] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 249ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 19:04:37] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 180ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:05:07] [SYS] [PERF] FPS: 3.5 | YOLO: 196ms | Total: 283ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:05:17] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:05:38] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 184ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:06:08] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 148ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 19:06:38] [SYS] [PERF] FPS: 3.3 | YOLO: 203ms | Total: 230ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 19:07:08] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 19:07:38] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 181ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:07:43] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 19:07:43)
+[2026-06-16 19:07:59] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 19:08:08] [SYS] [PERF] FPS: 3.3 | YOLO: 203ms | Total: 203ms | Buffer: 1/2 | Drop: 0 | Frames: 99
+[2026-06-16 19:08:38] [SYS] [PERF] FPS: 3.3 | YOLO: 206ms | Total: 232ms | Buffer: 1/2 | Drop: 0 | Frames: 99
+[2026-06-16 19:09:08] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 159ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:09:39] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:10:08] [DBG] [BUFFER-10DK] cur=0 add=2337526 proc=2337526 islenen=2060
+[2026-06-16 19:10:09] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 216ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:10:17] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:10:39] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:11:09] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:11:39] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 161ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 19:12:09] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 165ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:12:40] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 250ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:13:10] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 240ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 19:13:40] [SYS] [PERF] FPS: 3.6 | YOLO: 188ms | Total: 240ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 19:14:10] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 170ms | Buffer: 2/4 | Drop: 0 | Frames: 109
+[2026-06-16 19:14:40] [SYS] [PERF] FPS: 3.4 | YOLO: 202ms | Total: 110ms | Buffer: 0/0 | Drop: 0 | Frames: 101
+[2026-06-16 19:15:10] [SYS] [PERF] FPS: 3.5 | YOLO: 193ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 19:15:17] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:15:40] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 176ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 19:16:11] [SYS] [PERF] FPS: 3.3 | YOLO: 200ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 19:16:41] [SYS] [PERF] FPS: 3.5 | YOLO: 193ms | Total: 141ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 19:16:48] [DBG] ⏭ CIKIS ATILDI: ID=86623 (1->2) | Bu periyotta zaten sayildi
+[2026-06-16 19:17:11] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 175ms | Buffer: 0/0 | Drop: 0 | Frames: 104
+[2026-06-16 19:17:41] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 192ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 19:17:43] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 19:17:43)
+[2026-06-16 19:18:11] [SYS] [PERF] FPS: 3.3 | YOLO: 205ms | Total: 283ms | Buffer: 2/4 | Drop: 0 | Frames: 100
+[2026-06-16 19:18:41] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 126ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 19:19:11] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 132ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 19:19:41] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 249ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:20:08] [DBG] [BUFFER-10DK] cur=0 add=2340567 proc=2340567 islenen=2083
+[2026-06-16 19:20:11] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 167ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:20:17] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:20:41] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 162ms | Buffer: 0/0 | Drop: 0 | Frames: 102
+[2026-06-16 19:21:12] [SYS] [PERF] FPS: 3.3 | YOLO: 204ms | Total: 210ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 19:21:42] [SYS] [PERF] FPS: 3.4 | YOLO: 201ms | Total: 262ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:22:12] [SYS] [PERF] FPS: 3.3 | YOLO: 205ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 19:22:42] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 174ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:23:12] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 159ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:23:43] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 199ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 19:24:13] [SYS] [PERF] FPS: 3.3 | YOLO: 202ms | Total: 231ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 19:24:43] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 242ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 19:25:13] [SYS] [PERF] FPS: 3.5 | YOLO: 192ms | Total: 167ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 19:25:17] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:25:43] [SYS] [PERF] FPS: 3.5 | YOLO: 191ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 19:26:13] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 223ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 19:26:44] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 237ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 19:27:14] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 292ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 19:27:43] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 19:27:43)
+[2026-06-16 19:27:44] [SYS] [PERF] FPS: 3.3 | YOLO: 204ms | Total: 312ms | Buffer: 2/4 | Drop: 0 | Frames: 100
+[2026-06-16 19:28:14] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 195ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 19:28:44] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 196ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:29:14] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 204ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 19:29:45] [SYS] [PERF] FPS: 3.4 | YOLO: 201ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:30:08] [DBG] [BUFFER-10DK] cur=0 add=2343606 proc=2343606 islenen=2059
+[2026-06-16 19:30:15] [SYS] [PERF] FPS: 3.4 | YOLO: 200ms | Total: 234ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:30:17] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:30:45] [SYS] [PERF] FPS: 3.4 | YOLO: 188ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 19:31:15] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 156ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:31:45] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 171ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:32:15] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 169ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:32:45] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 248ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:33:16] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:33:46] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 249ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:34:16] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 226ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 19:34:46] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 177ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 19:35:16] [SYS] [PERF] FPS: 3.3 | YOLO: 204ms | Total: 207ms | Buffer: 1/2 | Drop: 0 | Frames: 100
+[2026-06-16 19:35:18] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:35:46] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 167ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:36:17] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 19:36:47] [SYS] [PERF] FPS: 3.6 | YOLO: 175ms | Total: 252ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 19:37:17] [SYS] [PERF] FPS: 3.5 | YOLO: 190ms | Total: 307ms | Buffer: 2/4 | Drop: 0 | Frames: 105
+[2026-06-16 19:37:43] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 19:37:43)
+[2026-06-16 19:37:47] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 161ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:38:17] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 255ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 19:38:47] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 189ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 19:39:17] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 132ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 19:39:48] [SYS] [PERF] FPS: 3.7 | YOLO: 174ms | Total: 137ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 19:40:08] [DBG] [BUFFER-10DK] cur=0 add=2346646 proc=2346646 islenen=2109
+[2026-06-16 19:40:18] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:40:18] [SYS] [PERF] FPS: 3.6 | YOLO: 174ms | Total: 138ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 19:40:48] [SYS] [PERF] FPS: 3.7 | YOLO: 175ms | Total: 226ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 19:41:18] [SYS] [PERF] FPS: 3.6 | YOLO: 176ms | Total: 198ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 19:41:48] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 105ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 19:42:19] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 203ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 19:42:49] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 19:43:19] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 212ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 19:43:49] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 210ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 19:44:19] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 249ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:44:49] [SYS] [PERF] FPS: 3.3 | YOLO: 192ms | Total: 261ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 19:45:18] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:45:19] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 184ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 19:45:49] [SYS] [PERF] FPS: 3.4 | YOLO: 188ms | Total: 143ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:46:20] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 151ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:46:50] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 234ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 19:47:20] [SYS] [PERF] FPS: 3.4 | YOLO: 186ms | Total: 235ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 19:47:43] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 19:47:43)
+[2026-06-16 19:47:50] [SYS] [PERF] FPS: 3.4 | YOLO: 195ms | Total: 241ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:48:21] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:48:51] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 218ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:49:21] [SYS] [PERF] FPS: 3.3 | YOLO: 199ms | Total: 248ms | Buffer: 2/4 | Drop: 0 | Frames: 100
+[2026-06-16 19:49:51] [SYS] [PERF] FPS: 3.4 | YOLO: 190ms | Total: 196ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 19:50:08] [DBG] [BUFFER-10DK] cur=0 add=2349695 proc=2349695 islenen=2088
+[2026-06-16 19:50:18] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:50:21] [SYS] [PERF] FPS: 3.3 | YOLO: 193ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 19:50:51] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 184ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:51:22] [SYS] [PERF] FPS: 3.3 | YOLO: 195ms | Total: 227ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 19:51:52] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 162ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:52:22] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:52:52] [SYS] [PERF] FPS: 3.4 | YOLO: 196ms | Total: 204ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 19:53:22] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 249ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 19:53:52] [SYS] [PERF] FPS: 3.3 | YOLO: 201ms | Total: 166ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 19:54:22] [SYS] [PERF] FPS: 3.3 | YOLO: 196ms | Total: 176ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 19:54:53] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 256ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:55:18] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 19:55:23] [SYS] [PERF] FPS: 3.3 | YOLO: 199ms | Total: 318ms | Buffer: 2/4 | Drop: 0 | Frames: 101
+[2026-06-16 19:55:53] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 151ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:56:23] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:56:53] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 19:57:23] [SYS] [PERF] FPS: 3.4 | YOLO: 194ms | Total: 220ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 19:57:43] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 19:57:43)
+[2026-06-16 19:57:53] [SYS] [PERF] FPS: 3.4 | YOLO: 193ms | Total: 168ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:58:23] [SYS] [PERF] FPS: 3.4 | YOLO: 188ms | Total: 183ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 19:58:53] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 19:59:24] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 153ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 19:59:54] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 193ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 20:00:00] [DBG] Yeni periyot başladı (aralık=2dk) | Entered/Exited setleri temizlendi (15/13 → 0)
+[2026-06-16 20:00:00] [DBG] Sonraki rapor: 21:00
+[2026-06-16 20:00:02] [DBG] [BUFFER-SAAT] cur=0 add=2352722 proc=2352722
+[2026-06-16 20:00:09] [DBG] [BUFFER-10DK] cur=0 add=2352759 proc=2352759 islenen=2042
+[2026-06-16 20:00:19] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:00:24] [SYS] [PERF] FPS: 3.4 | YOLO: 198ms | Total: 163ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 20:00:54] [SYS] [PERF] FPS: 3.3 | YOLO: 206ms | Total: 215ms | Buffer: 1/2 | Drop: 0 | Frames: 101
+[2026-06-16 20:01:24] [SYS] [PERF] FPS: 3.5 | YOLO: 194ms | Total: 182ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:01:54] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 160ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:02:24] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 152ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:02:54] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 20:03:25] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 381ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 20:03:55] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:04:25] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 169ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 20:04:55] [SYS] [PERF] FPS: 3.6 | YOLO: 187ms | Total: 228ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:05:19] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:05:25] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 205ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:05:55] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 269ms | Buffer: 2/4 | Drop: 0 | Frames: 110
+[2026-06-16 20:06:25] [SYS] [PERF] FPS: 3.6 | YOLO: 186ms | Total: 213ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:06:56] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 20:07:26] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 124ms | Buffer: 0/0 | Drop: 0 | Frames: 109
+[2026-06-16 20:07:44] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 20:07:44)
+[2026-06-16 20:07:56] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 137ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 20:08:00] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk
+[2026-06-16 20:08:26] [SYS] [PERF] FPS: 3.7 | YOLO: 177ms | Total: 169ms | Buffer: 0/0 | Drop: 0 | Frames: 111
+[2026-06-16 20:08:56] [SYS] [PERF] FPS: 3.7 | YOLO: 180ms | Total: 151ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 20:09:26] [SYS] [PERF] FPS: 3.7 | YOLO: 178ms | Total: 219ms | Buffer: 1/2 | Drop: 0 | Frames: 112
+[2026-06-16 20:09:56] [SYS] [PERF] FPS: 3.7 | YOLO: 179ms | Total: 174ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 20:10:09] [DBG] [BUFFER-10DK] cur=0 add=2355823 proc=2355823 islenen=2158
+[2026-06-16 20:10:19] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:10:27] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 242ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 20:10:57] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 159ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 20:11:27] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 188ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:11:57] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 152ms | Buffer: 1/2 | Drop: 0 | Frames: 111
+[2026-06-16 20:12:27] [SYS] [PERF] FPS: 3.7 | YOLO: 176ms | Total: 174ms | Buffer: 0/0 | Drop: 0 | Frames: 111
+[2026-06-16 20:12:57] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 140ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 20:13:27] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 234ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:13:57] [SYS] [PERF] FPS: 3.6 | YOLO: 185ms | Total: 216ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 20:14:27] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 230ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 20:14:58] [SYS] [PERF] FPS: 3.5 | YOLO: 193ms | Total: 304ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:15:19] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:15:28] [SYS] [PERF] FPS: 3.4 | YOLO: 187ms | Total: 481ms | Buffer: 3/6 | Drop: 0 | Frames: 105
+[2026-06-16 20:15:58] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 230ms | Buffer: 2/4 | Drop: 0 | Frames: 107
+[2026-06-16 20:16:28] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 157ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:16:58] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 148ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 20:17:28] [SYS] [PERF] FPS: 3.6 | YOLO: 174ms | Total: 243ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 20:17:44] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 20:17:44)
+[2026-06-16 20:17:59] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 164ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:18:29] [SYS] [PERF] FPS: 3.6 | YOLO: 180ms | Total: 198ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 20:18:59] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 208ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 20:19:29] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 212ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 20:19:59] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 129ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:20:09] [DBG] [BUFFER-10DK] cur=0 add=2358886 proc=2358886 islenen=2148
+[2026-06-16 20:20:19] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:20:29] [SYS] [PERF] FPS: 3.5 | YOLO: 181ms | Total: 211ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:20:59] [SYS] [PERF] FPS: 3.6 | YOLO: 176ms | Total: 174ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 20:21:29] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 198ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:21:59] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 211ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:22:29] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 241ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 20:22:59] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 156ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:23:29] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 186ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 20:24:00] [SYS] [PERF] FPS: 3.6 | YOLO: 175ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 110
+[2026-06-16 20:24:30] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 173ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:25:00] [SYS] [PERF] FPS: 3.6 | YOLO: 184ms | Total: 212ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:25:19] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:25:30] [SYS] [PERF] FPS: 3.6 | YOLO: 176ms | Total: 141ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:26:00] [SYS] [PERF] FPS: 3.6 | YOLO: 181ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:26:31] [SYS] [PERF] FPS: 3.5 | YOLO: 180ms | Total: 237ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:27:01] [SYS] [PERF] FPS: 3.6 | YOLO: 175ms | Total: 100ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:27:31] [SYS] [PERF] FPS: 3.5 | YOLO: 181ms | Total: 218ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:27:44] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 20:27:44)
+[2026-06-16 20:28:01] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 266ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:28:31] [SYS] [PERF] FPS: 3.5 | YOLO: 182ms | Total: 176ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:29:01] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 146ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 20:29:31] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:30:02] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 172ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:30:09] [DBG] [BUFFER-10DK] cur=0 add=2361947 proc=2361947 islenen=2140
+[2026-06-16 20:30:20] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:30:32] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 209ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:31:02] [SYS] [PERF] FPS: 3.4 | YOLO: 189ms | Total: 279ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 20:31:32] [SYS] [PERF] FPS: 3.5 | YOLO: 188ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:32:02] [SYS] [PERF] FPS: 3.4 | YOLO: 192ms | Total: 201ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 20:32:32] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 146ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 20:33:02] [SYS] [PERF] FPS: 3.5 | YOLO: 182ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:33:33] [SYS] [PERF] FPS: 3.4 | YOLO: 188ms | Total: 343ms | Buffer: 2/4 | Drop: 0 | Frames: 104
+[2026-06-16 20:34:03] [SYS] [PERF] FPS: 3.4 | YOLO: 197ms | Total: 354ms | Buffer: 2/4 | Drop: 0 | Frames: 102
+[2026-06-16 20:34:33] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 291ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 20:35:03] [SYS] [PERF] FPS: 3.4 | YOLO: 188ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 20:35:20] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:35:33] [SYS] [PERF] FPS: 3.4 | YOLO: 186ms | Total: 153ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 20:36:03] [SYS] [PERF] FPS: 3.5 | YOLO: 189ms | Total: 290ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 20:36:34] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 227ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:37:04] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 194ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 20:37:34] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 187ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:37:44] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 20:37:44)
+[2026-06-16 20:38:04] [SYS] [PERF] FPS: 3.5 | YOLO: 182ms | Total: 214ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:38:34] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 169ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 20:39:04] [SYS] [PERF] FPS: 3.4 | YOLO: 188ms | Total: 218ms | Buffer: 1/2 | Drop: 0 | Frames: 102
+[2026-06-16 20:39:34] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 200ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:40:04] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 231ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:40:09] [DBG] [BUFFER-10DK] cur=0 add=2365013 proc=2365013 islenen=2082
+[2026-06-16 20:40:20] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:40:34] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 293ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:41:05] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 135ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:41:35] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 208ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:42:05] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 191ms | Buffer: 1/2 | Drop: 0 | Frames: 103
+[2026-06-16 20:42:35] [SYS] [PERF] FPS: 3.6 | YOLO: 182ms | Total: 231ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:43:05] [SYS] [PERF] FPS: 3.6 | YOLO: 176ms | Total: 196ms | Buffer: 1/2 | Drop: 0 | Frames: 109
+[2026-06-16 20:43:35] [SYS] [PERF] FPS: 3.5 | YOLO: 182ms | Total: 155ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:44:05] [SYS] [PERF] FPS: 3.6 | YOLO: 178ms | Total: 199ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:44:36] [SYS] [PERF] FPS: 3.5 | YOLO: 181ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:45:06] [SYS] [PERF] FPS: 3.5 | YOLO: 182ms | Total: 164ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 20:45:20] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:45:36] [SYS] [PERF] FPS: 3.5 | YOLO: 181ms | Total: 122ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:46:06] [SYS] [PERF] FPS: 3.5 | YOLO: 180ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:46:36] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 169ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:47:07] [SYS] [PERF] FPS: 3.5 | YOLO: 183ms | Total: 216ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:47:37] [SYS] [PERF] FPS: 3.5 | YOLO: 180ms | Total: 323ms | Buffer: 2/4 | Drop: 0 | Frames: 107
+[2026-06-16 20:47:44] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 20:47:44)
+[2026-06-16 20:48:07] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 202ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:48:37] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 283ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:49:07] [SYS] [PERF] FPS: 3.6 | YOLO: 177ms | Total: 274ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:49:37] [SYS] [PERF] FPS: 3.6 | YOLO: 175ms | Total: 196ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:50:07] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 288ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:50:09] [DBG] [BUFFER-10DK] cur=0 add=2368079 proc=2368079 islenen=2116
+[2026-06-16 20:50:20] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:50:38] [SYS] [PERF] FPS: 3.5 | YOLO: 178ms | Total: 235ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:51:08] [SYS] [PERF] FPS: 3.6 | YOLO: 175ms | Total: 178ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:51:38] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 158ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:52:08] [SYS] [PERF] FPS: 3.6 | YOLO: 179ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:52:38] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 146ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 20:53:08] [SYS] [PERF] FPS: 3.4 | YOLO: 191ms | Total: 318ms | Buffer: 2/4 | Drop: 0 | Frames: 103
+[2026-06-16 20:53:39] [SYS] [PERF] FPS: 3.5 | YOLO: 187ms | Total: 206ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:54:09] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 144ms | Buffer: 1/2 | Drop: 0 | Frames: 104
+[2026-06-16 20:54:39] [SYS] [PERF] FPS: 3.5 | YOLO: 182ms | Total: 143ms | Buffer: 0/0 | Drop: 0 | Frames: 105
+[2026-06-16 20:55:09] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 185ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:55:20] [DBG] [GC] Periyodik bellek temizligi yapildi
+[2026-06-16 20:55:39] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 243ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:56:09] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 196ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:56:39] [SYS] [PERF] FPS: 3.5 | YOLO: 182ms | Total: 252ms | Buffer: 2/4 | Drop: 0 | Frames: 106
+[2026-06-16 20:57:10] [SYS] [PERF] FPS: 3.5 | YOLO: 186ms | Total: 144ms | Buffer: 1/2 | Drop: 0 | Frames: 105
+[2026-06-16 20:57:40] [SYS] [PERF] FPS: 3.5 | YOLO: 184ms | Total: 279ms | Buffer: 1/2 | Drop: 0 | Frames: 106
+[2026-06-16 20:57:44] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 20:57:44)
+[2026-06-16 20:58:10] [SYS] [PERF] FPS: 3.5 | YOLO: 179ms | Total: 143ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 20:58:40] [SYS] [PERF] FPS: 3.6 | YOLO: 183ms | Total: 211ms | Buffer: 2/4 | Drop: 0 | Frames: 108
+[2026-06-16 20:59:10] [SYS] [PERF] FPS: 3.6 | YOLO: 173ms | Total: 141ms | Buffer: 1/2 | Drop: 0 | Frames: 108
+[2026-06-16 20:59:40] [SYS] [PERF] FPS: 3.5 | YOLO: 185ms | Total: 244ms | Buffer: 1/2 | Drop: 0 | Frames: 107
+[2026-06-16 21:00:00] [DBG] Yeni periyot başladı (aralık=2dk) | Entered/Exited setleri temizlendi (0/3 → 0)
+[2026-06-16 21:00:00] [SYS] Mesai bitti - sonraki rapor yarın: 2026-06-17 11:00
+[2026-06-16 21:07:44] [SYS] [HEARTBEAT] [counter|cam1] OK — sistem saglıklı (2026-06-16 21:07:44)
+[2026-06-16 21:08:01] [SYS] [API-LOGIN] OK | user=emilio.lara@vislivis.com.tr | cache=50dk

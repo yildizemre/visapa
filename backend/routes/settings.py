@@ -115,6 +115,28 @@ def get_cameras():
     return {'site_name': site.site_name if site else None, 'cameras': items}
 
 
+@settings_bp.route('/cameras/<int:camera_id>', methods=['PATCH'])
+@jwt_required()
+def update_camera(camera_id):
+    """Tek kamera güncelle: isim, tip, konum."""
+    user_id = get_jwt_identity()
+    cam = CameraConfig.query.filter_by(id=camera_id, user_id=user_id).first_or_404()
+    data = request.get_json() or {}
+    if 'name' in data and data['name']:
+        cam.name = data['name'].strip()
+    if 'type' in data and data['type']:
+        cam.camera_type = data['type'].strip()
+    if 'location' in data:
+        cam.rtsp_url = (cam.rtsp_url or '') if data['location'] is None else data['location']
+    db.session.commit()
+    return {
+        'id': cam.id,
+        'name': cam.name,
+        'type': cam.camera_type or 'Kapı',
+        'rtsp': cam.rtsp_url or '',
+    }
+
+
 @settings_bp.route('/setup', methods=['POST'])
 @jwt_required()
 def post_setup():

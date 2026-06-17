@@ -131,16 +131,16 @@ const CustomerAnalytics = () => {
   };
 
   const chartColors = {
-    primary: '#6366f1',
+    primary: '#3b82f6',
     pink: '#ec4899',
-    purple: '#8b5cf6',
+    purple: '#3b82f6',
     accent: '#f43f5e',
     secondary: '#3b82f6',
     danger: '#e11d48',
-    indigo: '#6366f1',
+    indigo: '#3b82f6',
     blue: '#3b82f6',
   };
-  const PIE_COLORS = ['#6366f1', '#3b82f6', '#f43f5e', '#8b5cf6', '#ec4899'];
+  const PIE_COLORS = ['#3b82f6', '#0ea5e9', '#f43f5e', '#06b6d4', '#ec4899'];
 
   const tooltipStyle = {
     backgroundColor: 'rgba(15, 23, 42, 0.95)',
@@ -370,7 +370,7 @@ const CustomerAnalytics = () => {
         <motion.div variants={item} className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
           <div>
             <div className="flex items-center gap-3 mb-1">
-              <div className="p-2 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/25">
+              <div className="p-2 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-500/25">
                 <PieChartIcon className="w-5 h-5 text-white" />
               </div>
               <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight">
@@ -415,9 +415,9 @@ const CustomerAnalytics = () => {
 
         {/* Range modda özet banner */}
         {isRangeMode && (
-          <motion.div variants={item} className="bg-gradient-to-r from-indigo-600/10 to-blue-600/10 border border-indigo-500/20 rounded-2xl px-5 py-3 flex flex-wrap gap-6 items-center">
+          <motion.div variants={item} className="bg-gradient-to-r from-blue-600/10 to-blue-700/10 border border-blue-500/20 rounded-2xl px-5 py-3 flex flex-wrap gap-6 items-center">
             <div>
-              <p className="text-xs text-indigo-300/70 uppercase tracking-wider font-semibold">Toplam Giren</p>
+              <p className="text-xs text-blue-300/70 uppercase tracking-wider font-semibold">Toplam Giren</p>
               <p className="text-2xl font-extrabold text-white">{analyticsData.totalEntered.toLocaleString()}</p>
             </div>
             <div>
@@ -499,7 +499,7 @@ const CustomerAnalytics = () => {
                         className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all border shadow-lg ${
                           compareDate 
                             ? 'bg-gradient-to-r from-emerald-600 to-teal-600 border-emerald-500/30 text-white shadow-emerald-500/10' 
-                            : 'bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 border-indigo-500/20 text-white shadow-indigo-500/15'
+                            : 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 border-blue-500/20 text-white shadow-blue-500/15'
                         }`}
                       >
                         <svg className={`w-4 h-4 ${compareDate ? 'animate-bounce' : 'group-hover:scale-110 transition-transform'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -526,14 +526,14 @@ const CustomerAnalytics = () => {
                                   fetchCustomerData(v, v);
                                 }
                               }}
-                              className="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-300 outline-none focus:ring-1 focus:ring-indigo-500 [color-scheme:dark] cursor-pointer font-bold"
+                              className="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-300 outline-none focus:ring-1 focus:ring-blue-500 [color-scheme:dark] cursor-pointer font-bold"
                             />
                           </div>
                           
                           <span className="text-[10px] text-slate-600 font-black">VS</span>
 
                           <div className="flex items-center gap-1.5 px-2">
-                            <span className="text-[10px] text-indigo-400 font-bold uppercase">{language === 'tr' ? '2. Tarih' : '2nd Date'}</span>
+                            <span className="text-[10px] text-blue-400 font-bold uppercase">{language === 'tr' ? '2. Tarih' : '2nd Date'}</span>
                             <input 
                               type="date" 
                               value={compareDate} 
@@ -544,10 +544,10 @@ const CustomerAnalytics = () => {
                                   fetchCompareCustomerData(v); 
                                 } 
                               }} 
-                              className="bg-slate-800 border border-indigo-500/30 rounded-lg px-2.5 py-1 text-xs text-indigo-300 outline-none focus:ring-1 focus:ring-indigo-500 [color-scheme:dark] cursor-pointer font-bold shadow-sm animate-pulse" 
+                              className="bg-slate-800 border border-blue-500/30 rounded-lg px-2.5 py-1 text-xs text-blue-300 outline-none focus:ring-1 focus:ring-blue-500 [color-scheme:dark] cursor-pointer font-bold shadow-sm animate-pulse" 
                             />
                           </div>
-                          {compareLoading && <RefreshCw className="w-3.5 h-3.5 text-indigo-400 animate-spin mr-1" />}
+                          {compareLoading && <RefreshCw className="w-3.5 h-3.5 text-blue-400 animate-spin mr-1" />}
                         </div>
                       )}
                     </div>
@@ -570,7 +570,7 @@ const CustomerAnalytics = () => {
             </motion.div>
 
             <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-5">
-              <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-indigo-500/25 min-w-0 flex flex-col min-h-[380px]">
+              <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-blue-500/25 min-w-0 flex flex-col min-h-[380px]">
                 <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4 shrink-0">{t('analytics.ageDistribution')}</h3>
                 {(analyticsData.demographics?.ageGroupsChart ?? []).reduce((sum, item) => sum + (item?.value ?? 0), 0) > 0 ? (
                   <div ref={ageChartRef} style={{width:'100%', overflow:'hidden'}}>
@@ -682,7 +682,7 @@ const CustomerAnalytics = () => {
             >
               <div className="flex items-center justify-between p-4 border-b border-slate-800 bg-slate-900/50">
                 <div className="flex items-center gap-2">
-                  <Camera className="w-5 h-5 text-indigo-400" />
+                  <Camera className="w-5 h-5 text-blue-400" />
                   <h3 className="font-bold text-white text-sm sm:text-base">{previewCameraName}</h3>
                 </div>
                 <button
@@ -695,7 +695,7 @@ const CustomerAnalytics = () => {
               <div className="p-4 flex items-center justify-center min-h-[250px] bg-slate-950/40">
                 {previewLoading ? (
                   <div className="flex flex-col items-center gap-3">
-                    <RefreshCw className="w-8 h-8 text-indigo-400 animate-spin" />
+                    <RefreshCw className="w-8 h-8 text-blue-400 animate-spin" />
                     <span className="text-xs text-slate-400">{language === 'tr' ? 'Kameraya bağlanılıyor...' : 'Connecting to camera...'}</span>
                   </div>
                 ) : previewImageUrl ? (

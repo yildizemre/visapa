@@ -156,7 +156,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
       {onApply && (
         <button
           onClick={onApply}
-          className="px-3 sm:px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-medium shadow-sm shadow-indigo-500/20 transition-colors flex-shrink-0"
+          className="px-3 sm:px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-medium shadow-sm shadow-blue-500/20 transition-colors flex-shrink-0"
         >
           Uygula
         </button>

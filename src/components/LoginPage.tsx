@@ -90,8 +90,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               (e.target as HTMLElement).style.display = 'none';
             }}
           />
-          <span className="text-xl font-black bg-gradient-to-r from-white via-slate-100 to-indigo-400 bg-clip-text text-transparent tracking-tight">
-            vislivis<span className="text-indigo-500 font-medium">.</span>
+          <span className="text-xl font-black bg-gradient-to-r from-white via-slate-100 to-blue-400 bg-clip-text text-transparent tracking-tight">
+            vislivis<span className="text-blue-500 font-medium">.</span>
           </span>
         </div>
 
@@ -106,7 +106,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
             >
               {language === 'tr' ? 'Yapay zeka ile' : 'AI-powered'}<br />
-              <span className="bg-gradient-to-r from-blue-500 via-indigo-400 to-indigo-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
                 {language === 'tr' ? 'akıllı mağazacılık' : 'smart retail insights'}
               </span>
             </motion.h2>
@@ -135,9 +135,9 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               return (
                 <div 
                   key={tag} 
-                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900/60 border border-slate-800 text-slate-300 hover:border-indigo-500/30 hover:text-indigo-300 transition-all cursor-default text-xs font-semibold backdrop-blur-md shadow-sm"
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900/60 border border-slate-800 text-slate-300 hover:border-blue-500/30 hover:text-blue-300 transition-all cursor-default text-xs font-semibold backdrop-blur-md shadow-sm"
                 >
-                  <TagIcon className="w-3.5 h-3.5 text-indigo-400" />
+                  <TagIcon className="w-3.5 h-3.5 text-blue-400" />
                   <span>{tag}</span>
                 </div>
               );
@@ -170,7 +170,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             className="h-8 w-auto object-contain"
           />
           <span className="text-lg font-black tracking-tight text-white">
-            vislivis<span className="text-indigo-500 font-medium">.</span>
+            vislivis<span className="text-blue-500 font-medium">.</span>
           </span>
         </div>
 
@@ -180,11 +180,11 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="bg-slate-900/35 border border-slate-800/80 backdrop-blur-2xl p-7 sm:p-9 rounded-3xl shadow-2xl space-y-7 shadow-indigo-950/5"
+            className="bg-slate-900/35 border border-slate-800/80 backdrop-blur-2xl p-7 sm:p-9 rounded-3xl shadow-2xl space-y-7 shadow-blue-950/5"
           >
             {/* HOŞ GELDİNİZ Header */}
             <div className="space-y-2">
-              <span className="text-[10px] font-black text-indigo-400 tracking-[0.2em] uppercase block">
+              <span className="text-[10px] font-black text-blue-400 tracking-[0.2em] uppercase block">
                 {language === 'tr' ? 'HOŞ GELDİNİZ' : 'WELCOME'}
               </span>
               <h1 className="text-3xl font-black text-white tracking-tight leading-none animate-pulse">
@@ -232,7 +232,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                   type="text"
                   value={email}
                   onChange={(e) => { setEmail(e.target.value); setError(null); setErrorHint(null); }}
-                  className="w-full px-4.5 py-4 bg-slate-950/40 border border-slate-800/80 focus:border-indigo-500 rounded-2xl focus:ring-1 focus:ring-indigo-500 outline-none transition-all text-white placeholder-slate-600 text-sm font-semibold shadow-inner"
+                  className="w-full px-4.5 py-4 bg-slate-950/40 border border-slate-800/80 focus:border-blue-500 rounded-2xl focus:ring-1 focus:ring-blue-500 outline-none transition-all text-white placeholder-slate-600 text-sm font-semibold shadow-inner"
                   placeholder={language === 'tr' ? 'Kullanıcı adı veya e-posta' : 'Username or e-mail'}
                   required
                   autoComplete="username"
@@ -249,7 +249,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => { setPassword(e.target.value); setError(null); setErrorHint(null); }}
-                    className="w-full px-4.5 py-4 bg-slate-950/40 border border-slate-800/80 focus:border-indigo-500 rounded-2xl focus:ring-1 focus:ring-indigo-500 outline-none transition-all text-white placeholder-slate-600 text-sm font-semibold pr-12 shadow-inner"
+                    className="w-full px-4.5 py-4 bg-slate-950/40 border border-slate-800/80 focus:border-blue-500 rounded-2xl focus:ring-1 focus:ring-blue-500 outline-none transition-all text-white placeholder-slate-600 text-sm font-semibold pr-12 shadow-inner"
                     placeholder="••••••"
                     required
                     autoComplete="current-password"
@@ -258,7 +258,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-indigo-400 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-blue-400 transition-colors"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -269,7 +269,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 <label className="flex items-center cursor-pointer group">
                   <input 
                     type="checkbox" 
-                    className="rounded-md border-slate-800 bg-slate-950 text-indigo-600 focus:ring-0 focus:ring-offset-0 w-4 h-4 cursor-pointer transition-colors" 
+                    className="rounded-md border-slate-800 bg-slate-950 text-blue-600 focus:ring-0 focus:ring-offset-0 w-4 h-4 cursor-pointer transition-colors" 
                   />
                   <span className="ml-2.5 text-xs text-slate-400 group-hover:text-slate-300 transition-colors font-semibold select-none">
                     {language === 'tr' ? 'Beni Hatırla' : 'Remember Me'}
@@ -281,7 +281,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 whileHover={{ scale: 1.01, filter: 'brightness(1.08)' }}
                 whileTap={{ scale: 0.99 }}
                 type="submit"
-                className="w-full mt-2 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black rounded-2xl shadow-xl shadow-indigo-500/10 transition-all text-sm flex items-center justify-center gap-2 group tracking-wide"
+                className="w-full mt-2 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-black rounded-2xl shadow-xl shadow-blue-500/10 transition-all text-sm flex items-center justify-center gap-2 group tracking-wide"
               >
                 <span>{language === 'tr' ? 'Giriş Yap' : 'Sign In'}</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

@@ -14,6 +14,14 @@ html, body {
 
 #root {
   height: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Tüm flex/grid child'ların taşmasını engelle */
+.flex > *,
+.grid > * {
+  min-width: 0;
 }
 
 /* Recharts grafiklerin mobilde taşmasını önle */

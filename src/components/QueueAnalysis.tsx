@@ -82,7 +82,7 @@ const QueueAnalysis = () => {
   const hasChanges = Object.keys(editedData).length > 0;
   const isEditingDisabled = selectedCashier !== 'all'; 
 
-  const chartColors = { primary: '#3b82f6', secondary: '#f97316', accent: '#f43f5e', danger: '#e11d48', purple: '#8b5cf6', teal: '#06b6d4', emerald: '#10b981', pink: '#ec4899' };
+  const chartColors = { primary: '#3b82f6', secondary: '#f97316', accent: '#f43f5e', danger: '#e11d48', purple: '#3b82f6', teal: '#06b6d4', emerald: '#10b981', pink: '#ec4899' };
 
   const tooltipStyle = {
     backgroundColor: 'rgba(15, 23, 42, 0.95)',
@@ -232,7 +232,7 @@ const QueueAnalysis = () => {
         <motion.div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4">
           <div>
             <div className="flex items-center gap-3 mb-1">
-              <div className="p-2 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 shadow-lg shadow-violet-500/25">
+              <div className="p-2 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-500/25">
                 <Timer className="w-5 h-5 text-white" />
               </div>
               <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight">{t('queue.title')}</h1>
@@ -306,7 +306,7 @@ const QueueAnalysis = () => {
                   const currentAvgWait = editedAvgWaitTime !== undefined ? editedAvgWaitTime : hourData.avgWaitTime;
 
                   return (
-                    <tr key={`${hourData.hour}-${index}`} className={`border-b border-slate-700/30 hover:bg-white/[0.02] transition-colors ${isEdited ? 'bg-indigo-900/20' : ''}`}>
+                    <tr key={`${hourData.hour}-${index}`} className={`border-b border-slate-700/30 hover:bg-white/[0.02] transition-colors ${isEdited ? 'bg-blue-900/15' : ''}`}>
                       <td className="px-3 sm:px-6 py-2 sm:py-4 font-medium text-white whitespace-nowrap">{`${hourData.hour}:00 - ${hourData.hour}:59`}</td>
                       <td className="px-3 sm:px-6 py-2 sm:py-4 text-center">
                         <input 

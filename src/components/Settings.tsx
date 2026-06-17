@@ -11,12 +11,15 @@ import {
   Database,
   Eye,
   X,
-  Mail, // Yeni ikon
-  Trash2, // Yeni ikon
-  KeyRound, // Yeni ikon
-  RefreshCw, // Yeni ikon
-  CheckCircle, // Yeni ikon
-  AlertTriangle // Yeni ikon
+  Mail,
+  Trash2,
+  KeyRound,
+  RefreshCw,
+  CheckCircle,
+  AlertTriangle,
+  MapPin,
+  Save,
+  Edit3
 } from 'lucide-react';
 
 // Arayüzler
@@ -31,6 +34,7 @@ interface CameraInfo {
   type: string;
   rtsp: string;
   imageUrl: string;
+  location?: string;
 }
 
 // GÜNCELLENDİ: Rapor alıcısı için yeni arayüz
@@ -100,10 +104,49 @@ const Settings = () => {
   const [newEmail, setNewEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   
-  // GÜNCELLENDİ: Şifre değiştirme için state'ler
+  // Şifre değiştirme için state'ler
   const [passwordData, setPasswordData] = useState({ currentPassword: '', newPassword: '', confirmPassword: '' });
   const [passwordMessage, setPasswordMessage] = useState({ type: '', text: '' });
   const [isSavingPassword, setIsSavingPassword] = useState(false);
+
+  // Kamera düzenleme için state'ler
+  const [editingCameraId, setEditingCameraId] = useState<number | null>(null);
+  const [cameraEditForm, setCameraEditForm] = useState({ name: '', type: '', location: '' });
+  const [savingCameraId, setSavingCameraId] = useState<number | null>(null);
+  const [cameraEditMsg, setCameraEditMsg] = useState<{ id: number; ok: boolean; text: string } | null>(null);
+
+  const CAMERA_TYPES = ['Kapı', 'Giriş', 'Çıkış', 'Kişi Sayım', 'Isı Haritası', 'Kasa Analizi', 'Vitrin', 'Diğer'];
+
+  const handleCameraEditStart = (cam: CameraInfo) => {
+    setEditingCameraId(cam.id);
+    setCameraEditForm({ name: cam.name, type: cam.type, location: cam.location || '' });
+    setCameraEditMsg(null);
+  };
+
+  const handleCameraEditSave = async (camId: number) => {
+    setSavingCameraId(camId);
+    setCameraEditMsg(null);
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch(apiUrl(`/api/settings/cameras/${camId}`), {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ name: cameraEditForm.name, type: cameraEditForm.type, location: cameraEditForm.location }),
+      });
+      if (res.ok) {
+        const updated = await res.json();
+        setCameras(prev => prev.map(c => c.id === camId ? { ...c, name: updated.name, type: updated.type, location: cameraEditForm.location } : c));
+        setCameraEditMsg({ id: camId, ok: true, text: 'Kaydedildi' });
+        setEditingCameraId(null);
+      } else {
+        setCameraEditMsg({ id: camId, ok: false, text: 'Hata oluştu' });
+      }
+    } catch {
+      setCameraEditMsg({ id: camId, ok: false, text: 'Bağlantı hatası' });
+    } finally {
+      setSavingCameraId(null);
+    }
+  };
 
   // GÜNCELLENDİ: Sekme listesi
   const tabs = [
@@ -370,34 +413,111 @@ const Settings = () => {
               {siteName && <span className="text-slate-400 text-[10px] sm:text-xs md:text-sm">{t('settings.setup')}: {siteName}</span>}
             </div>
             <p className="text-slate-400 text-[10px] sm:text-xs md:text-sm -mt-1 sm:-mt-2 mb-2 sm:mb-3 md:mb-4">{t('settings.cameraSetupDesc')}</p>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {cameras.length === 0 && (
                 <div className="px-4 py-8 text-center text-slate-500 text-sm">{t('settings.noCameras')}</div>
               )}
-              {cameras.map((camera) => (
-                <div key={camera.id} className="flex items-center gap-3 p-3 bg-slate-800/40 border border-slate-700/40 rounded-xl hover:bg-slate-700/40 transition-colors">
-                  {/* Thumbnail kutusu - sol taraf */}
-                  <button
-                    onClick={() => setSelectedCamera(camera)}
-                    className="flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden bg-slate-700/60 border border-slate-600/50 hover:border-blue-500/60 transition-all hover:scale-105 relative group"
-                    title="Kamera görüntüsü"
-                  >
-                    {camera.imageUrl ? (
-                      <img src={camera.imageUrl} alt={camera.name} className="w-full h-full object-cover" />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <Eye className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
+              {cameras.map((camera) => {
+                const isEditing = editingCameraId === camera.id;
+                const isSaving = savingCameraId === camera.id;
+                const msg = cameraEditMsg?.id === camera.id ? cameraEditMsg : null;
+                return (
+                  <div key={camera.id} className="bg-slate-800/40 border border-slate-700/40 rounded-xl overflow-hidden transition-all">
+                    {/* Üst satır: thumbnail + bilgi + düzenle butonu */}
+                    <div className="flex items-center gap-3 p-3">
+                      <button
+                        onClick={() => setSelectedCamera(camera)}
+                        className="flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden bg-slate-700/60 border border-slate-600/50 hover:border-blue-500/60 transition-all hover:scale-105 relative group"
+                        title="Kamera görüntüsü"
+                      >
+                        {camera.imageUrl ? (
+                          <img src={camera.imageUrl} alt={camera.name} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <Eye className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all rounded-xl" />
+                      </button>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-white truncate">{camera.name}</p>
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          <span className="text-xs text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/20">{camera.type}</span>
+                          {camera.location && (
+                            <span className="flex items-center gap-1 text-xs text-slate-400">
+                              <MapPin className="w-3 h-3" />{camera.location}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => isEditing ? setEditingCameraId(null) : handleCameraEditStart(camera)}
+                        className={`flex-shrink-0 p-2 rounded-lg transition-colors ${isEditing ? 'bg-slate-700 text-slate-300 hover:bg-slate-600' : 'bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 border border-blue-500/20'}`}
+                        title={isEditing ? 'İptal' : 'Düzenle'}
+                      >
+                        {isEditing ? <X className="w-4 h-4" /> : <Edit3 className="w-4 h-4" />}
+                      </button>
+                    </div>
+
+                    {/* Düzenleme formu - sadece aktif kamerada görünür */}
+                    {isEditing && (
+                      <div className="border-t border-slate-700/40 p-3 bg-slate-900/30 space-y-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Kamera Adı</label>
+                            <input
+                              type="text"
+                              value={cameraEditForm.name}
+                              onChange={e => setCameraEditForm(f => ({ ...f, name: e.target.value }))}
+                              className="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                              placeholder="Kamera adı"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Kamera Tipi</label>
+                            <select
+                              value={cameraEditForm.type}
+                              onChange={e => setCameraEditForm(f => ({ ...f, type: e.target.value }))}
+                              className="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 [color-scheme:dark]"
+                            >
+                              {CAMERA_TYPES.map(ct => <option key={ct} value={ct}>{ct}</option>)}
+                            </select>
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1">
+                            <MapPin className="w-3 h-3" /> Konum / Yer
+                          </label>
+                          <input
+                            type="text"
+                            value={cameraEditForm.location}
+                            onChange={e => setCameraEditForm(f => ({ ...f, location: e.target.value }))}
+                            className="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Örn: Giriş Kapısı, 1. Kat, Mağaza Girişi..."
+                          />
+                        </div>
+                        <div className="flex items-center justify-between">
+                          {msg && (
+                            <span className={`text-xs flex items-center gap-1 ${msg.ok ? 'text-emerald-400' : 'text-red-400'}`}>
+                              {msg.ok ? <CheckCircle className="w-3.5 h-3.5" /> : <AlertTriangle className="w-3.5 h-3.5" />}
+                              {msg.text}
+                            </span>
+                          )}
+                          {!msg && <span />}
+                          <button
+                            onClick={() => handleCameraEditSave(camera.id)}
+                            disabled={isSaving}
+                            className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 text-white rounded-lg text-sm font-medium transition-colors"
+                          >
+                            {isSaving ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
+                            Kaydet
+                          </button>
+                        </div>
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all rounded-xl" />
-                  </button>
-                  {/* Kamera bilgileri */}
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-white truncate">{camera.name}</p>
-                    <p className="text-xs text-slate-400 mt-0.5">{camera.type}</p>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </motion.div>
         );
@@ -450,7 +570,7 @@ const Settings = () => {
       <div className="p-3 sm:p-4 md:p-5 lg:p-8">
         <motion.div variants={container} initial="hidden" animate="show" className="space-y-5 sm:space-y-6 lg:space-y-8">
           <motion.div variants={item} className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-gradient-to-br from-slate-500 to-slate-600 shadow-lg shadow-slate-500/25">
+            <div className="p-2 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 shadow-lg shadow-blue-500/25">
               <Database className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -470,11 +590,11 @@ const Settings = () => {
                       onClick={() => setActiveTab(tab.id)}
                       className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-left ${
                         activeTab === tab.id
-                          ? 'bg-indigo-500/15 border border-indigo-500/30 text-indigo-300'
+                          ? 'bg-blue-500/15 border border-blue-500/30 text-blue-300'
                           : 'text-slate-300 hover:bg-slate-700/40 hover:text-white border border-transparent'
                       }`}
                     >
-                      <Icon className={`w-5 h-5 flex-shrink-0 ${activeTab === tab.id ? 'text-indigo-400' : 'text-slate-500'}`} />
+                      <Icon className={`w-5 h-5 flex-shrink-0 ${activeTab === tab.id ? 'text-blue-400' : 'text-slate-500'}`} />
                       <span className="font-medium text-sm">{tab.label}</span>
                     </button>
                   );
