@@ -1,7 +1,8 @@
 from flask import Blueprint, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
-from models import db, User, SiteConfig, CameraConfig, ManagedStore
+import json
+from models import db, User, SiteConfig, CameraConfig, CameraZone, ManagedStore
 from user_context import get_settings_user_id, get_resolved_user_ids
 
 settings_bp = Blueprint('settings', __name__)
@@ -171,3 +172,71 @@ def post_setup():
         db.session.add(r)
     db.session.commit()
     return {'message': 'Kurulum kaydedildi', 'site_name': site_name}
+
+
+# --- Kamera Zone (Alan) API ---
+
+@settings_bp.route('/cameras/<int:camera_id>/zones', methods=['GET'])
+@jwt_required()
+def get_camera_zones(camera_id):
+    """Bir kameranın tüm zone'larını listele."""
+    user_id = get_settings_user_id() or get_jwt_identity()
+    cam = CameraConfig.query.filter_by(id=camera_id, user_id=user_id).first_or_404()
+    zones = CameraZone.query.filter_by(camera_id=cam.id, user_id=user_id).order_by(CameraZone.sort_order, CameraZone.id).all()
+    return {'zones': [z.to_dict() for z in zones]}
+
+
+@settings_bp.route('/cameras/<int:camera_id>/zones', methods=['POST'])
+@jwt_required()
+def create_camera_zone(camera_id):
+    """Yeni zone oluştur. Body: {name, points, color}"""
+    user_id = get_jwt_identity()
+    cam = CameraConfig.query.filter_by(id=camera_id, user_id=user_id).first_or_404()
+    data = request.get_json() or {}
+    name = (data.get('name') or '').strip()
+    points = data.get('points', [])
+    color = data.get('color', '#3b82f6')
+    if not name:
+        return {'error': 'Alan adı gerekli'}, 400
+    if not points or len(points) < 3:
+        return {'error': 'En az 3 nokta gerekli'}, 400
+    max_order = db.session.query(db.func.max(CameraZone.sort_order)).filter_by(camera_id=cam.id).scalar() or 0
+    zone = CameraZone(
+        camera_id=cam.id,
+        user_id=user_id,
+        name=name,
+        points=json.dumps(points),
+        color=color,
+        sort_order=max_order + 1,
+    )
+    db.session.add(zone)
+    db.session.commit()
+    return zone.to_dict(), 201
+
+
+@settings_bp.route('/cameras/<int:camera_id>/zones/<int:zone_id>', methods=['PATCH'])
+@jwt_required()
+def update_camera_zone(camera_id, zone_id):
+    """Zone güncelle: name, points, color"""
+    user_id = get_jwt_identity()
+    zone = CameraZone.query.filter_by(id=zone_id, camera_id=camera_id, user_id=user_id).first_or_404()
+    data = request.get_json() or {}
+    if 'name' in data and data['name']:
+        zone.name = data['name'].strip()
+    if 'points' in data and data['points']:
+        zone.points = json.dumps(data['points'])
+    if 'color' in data:
+        zone.color = data['color']
+    db.session.commit()
+    return zone.to_dict()
+
+
+@settings_bp.route('/cameras/<int:camera_id>/zones/<int:zone_id>', methods=['DELETE'])
+@jwt_required()
+def delete_camera_zone(camera_id, zone_id):
+    """Zone sil."""
+    user_id = get_jwt_identity()
+    zone = CameraZone.query.filter_by(id=zone_id, camera_id=camera_id, user_id=user_id).first_or_404()
+    db.session.delete(zone)
+    db.session.commit()
+    return {'message': 'Alan silindi'}

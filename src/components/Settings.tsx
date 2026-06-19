@@ -19,8 +19,10 @@ import {
   AlertTriangle,
   MapPin,
   Save,
-  Edit3
+  Edit3,
+  PenTool
 } from 'lucide-react';
+import CameraZoneEditor from './CameraZoneEditor';
 
 // Arayüzler
 interface CameraModalProps {
@@ -114,6 +116,7 @@ const Settings = () => {
   const [cameraEditForm, setCameraEditForm] = useState({ name: '', type: '', location: '' });
   const [savingCameraId, setSavingCameraId] = useState<number | null>(null);
   const [cameraEditMsg, setCameraEditMsg] = useState<{ id: number; ok: boolean; text: string } | null>(null);
+  const [zoneEditorCamera, setZoneEditorCamera] = useState<CameraInfo | null>(null);
 
   const CAMERA_TYPES = ['Kapı', 'Giriş', 'Çıkış', 'Kişi Sayım', 'Isı Haritası', 'Kasa Analizi', 'Vitrin', 'Diğer'];
 
@@ -451,6 +454,13 @@ const Settings = () => {
                         </div>
                       </div>
                       <button
+                        onClick={() => setZoneEditorCamera(camera)}
+                        className="flex-shrink-0 p-2 rounded-lg transition-colors bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/20"
+                        title="Alan Çiz"
+                      >
+                        <PenTool className="w-4 h-4" />
+                      </button>
+                      <button
                         onClick={() => isEditing ? setEditingCameraId(null) : handleCameraEditStart(camera)}
                         className={`flex-shrink-0 p-2 rounded-lg transition-colors ${isEditing ? 'bg-slate-700 text-slate-300 hover:bg-slate-600' : 'bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 border border-blue-500/20'}`}
                         title={isEditing ? 'İptal' : 'Düzenle'}
@@ -567,6 +577,14 @@ const Settings = () => {
   return (
     <>
       <CameraViewModal camera={selectedCamera} onClose={() => setSelectedCamera(null)} t={t} />
+      {zoneEditorCamera && (
+        <CameraZoneEditor
+          cameraId={zoneEditorCamera.id}
+          cameraName={zoneEditorCamera.name}
+          imageUrl={zoneEditorCamera.imageUrl}
+          onClose={() => setZoneEditorCamera(null)}
+        />
+      )}
       <div className="p-3 sm:p-4 md:p-5 lg:p-8">
         <motion.div variants={container} initial="hidden" animate="show" className="space-y-5 sm:space-y-6 lg:space-y-8">
           <motion.div variants={item} className="flex items-center gap-3">
