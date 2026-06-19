@@ -141,6 +141,30 @@ class CameraConfig(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
+class CameraZone(db.Model):
+    """Kamera üzerinde tanımlı polygon alan (bölge). Noktalar JSON olarak saklanır."""
+    __tablename__ = 'camera_zone'
+    id = db.Column(db.Integer, primary_key=True)
+    camera_id = db.Column(db.Integer, db.ForeignKey('camera_config.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    name = db.Column(db.String(120), nullable=False)
+    points = db.Column(db.Text, nullable=False)  # JSON: [[x1,y1],[x2,y2],...]  (0-1 normalize)
+    color = db.Column(db.String(20), default='#3b82f6')
+    sort_order = db.Column(db.Integer, default=0)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def to_dict(self):
+        import json
+        return {
+            'id': self.id,
+            'camera_id': self.camera_id,
+            'name': self.name,
+            'points': json.loads(self.points) if self.points else [],
+            'color': self.color or '#3b82f6',
+            'sort_order': self.sort_order,
+        }
+
+
 class ManagedStore(db.Model):
     """Marka yöneticisi (çatı kullanıcı) hangi mağazaları yönetebilir."""
     __tablename__ = 'managed_store'
