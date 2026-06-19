@@ -247,7 +247,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
       { icon: FileText, label: t('nav.activityLogs'), path: '/admin/activity-logs' },
       { icon: Database, label: t('nav.dataEditor'), path: '/admin/data-editor' },
     ] : []),
-    ...(userRole === 'admin' ? [{ icon: Video, label: t('nav.cameraHealth'), path: '/camera-health' }] : []),
+    { icon: Video, label: t('nav.cameraHealth'), path: '/camera-health' },
     { icon: Settings, label: t('nav.settings'), path: '/settings' },
   ];
   const menuItems = baseMenuItems;
