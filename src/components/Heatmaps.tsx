@@ -26,7 +26,6 @@ import {
 } from 'recharts';
 import { useContainerWidth } from '../hooks/useContainerWidth';
 import InsightsPanel from './shared/InsightsPanel';
-import CameraViewer from './shared/CameraViewer';
 import DateRangePicker from './shared/DateRangePicker';
 import ExportPDFButton from './shared/ExportPDFButton';
 import CustomDropdown from './shared/CustomDropdown';
@@ -423,9 +422,6 @@ const Heatmaps = () => {
               icon={Filter}
               placeholder={t('heatmap.allZones')}
             />
-            <div className="relative">
-              <CameraViewer />
-            </div>
           </div>
         </div>
 
@@ -474,7 +470,7 @@ const Heatmaps = () => {
                 />
               )}
               <MapPin className="w-4 h-4" />
-              2D Kat Planı Isı Haritası
+              {t('heatmap.floorplan')}
             </button>
           </div>
         </div>
@@ -577,9 +573,9 @@ const Heatmaps = () => {
               <div className="mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                 <div>
                   <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-orange-400" /> Mağaza 2D Kat Planı Yoğunluk Haritası
+                    <MapPin className="w-4 h-4 text-orange-400" /> {t('heatmap.floorplanTitle')}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1">Bölgelerin ziyaretçi yoğunluğuna göre renklendirilmiş canlı dağılımı (Kırmızı: Yoğun, Mavi: Sakin)</p>
+                  <p className="text-xs text-slate-400 mt-1">{t('heatmap.floorplanDesc')}</p>
                 </div>
               </div>
 
