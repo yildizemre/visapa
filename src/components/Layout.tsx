@@ -10,7 +10,6 @@ import WeatherForecastIndicator from './WeatherForecastIndicator';
 import StoreSwitcher from './StoreSwitcher';
 import FloatingChatBot from './shared/FloatingChatBot';
 import NotificationBell from './shared/NotificationBell';
-import CameraViewer from './shared/CameraViewer';
 import {
   Home,
   Users,
@@ -470,11 +469,6 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                 </button>
               )}
               {showStoreSwitcher && <StoreSwitcher />}
-
-              {/* Quick Cameras Access Button */}
-              <div className="relative">
-                <CameraViewer />
-              </div>
 
               {/* Notification Bell */}
               <NotificationBell />

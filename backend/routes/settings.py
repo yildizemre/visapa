@@ -116,6 +116,47 @@ def get_cameras():
     return {'site_name': site.site_name if site else None, 'cameras': items}
 
 
+@settings_bp.route('/cameras', methods=['POST'])
+@jwt_required()
+def add_camera():
+    """Tek kamera ekle. Body: {name, type, rtsp, image_base64}"""
+    user_id = get_jwt_identity()
+    data = request.get_json() or {}
+    img = data.get('image_base64') or data.get('imageBase64') or data.get('imageUrl') or ''
+    if img and img.startswith('data:image'):
+        img = img.split(',', 1)[-1] if ',' in img else img
+    max_order = db.session.query(db.func.max(CameraConfig.sort_order)).filter_by(user_id=user_id).scalar() or 0
+    cam = CameraConfig(
+        user_id=user_id,
+        name=(data.get('name') or 'Kamera').strip(),
+        camera_type=data.get('type') or data.get('camera_type') or 'Kişi Sayım',
+        rtsp_url=data.get('rtsp') or data.get('rtsp_url') or '',
+        image_base64=img or None,
+        sort_order=max_order + 1,
+    )
+    db.session.add(cam)
+    db.session.commit()
+    return {
+        'id': cam.id,
+        'name': cam.name,
+        'type': cam.camera_type,
+        'rtsp': cam.rtsp_url or '',
+        'imageUrl': ('data:image/jpeg;base64,' + cam.image_base64) if cam.image_base64 else '',
+        'message': 'Kamera eklendi',
+    }, 201
+
+
+@settings_bp.route('/cameras/<int:camera_id>', methods=['DELETE'])
+@jwt_required()
+def delete_camera(camera_id):
+    """Tek kamera sil."""
+    user_id = get_jwt_identity()
+    cam = CameraConfig.query.filter_by(id=camera_id, user_id=user_id).first_or_404()
+    db.session.delete(cam)
+    db.session.commit()
+    return {'message': 'Kamera silindi'}
+
+
 @settings_bp.route('/cameras/<int:camera_id>', methods=['PATCH'])
 @jwt_required()
 def update_camera(camera_id):

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
-import { apiUrl } from '../lib/api';
+import { apiUrl, apiFetch } from '../lib/api';
 import { useStoreChange } from '../hooks/useStoreChange';
 import { 
   User, 
@@ -20,7 +20,8 @@ import {
   MapPin,
   Save,
   Edit3,
-  PenTool
+  PenTool,
+  Upload
 } from 'lucide-react';
 import CameraZoneEditor from './CameraZoneEditor';
 
@@ -410,121 +411,160 @@ const Settings = () => {
 
       case 'cameras':
         return (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-3 sm:space-y-4 md:space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3 md:mb-4">
-              <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-white">{t('settings.cameraFlows')}</h3>
-              {siteName && <span className="text-slate-400 text-[10px] sm:text-xs md:text-sm">{t('settings.setup')}: {siteName}</span>}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 md:space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <h3 className="text-base lg:text-lg font-semibold text-white">{t('settings.cameraFlows')}</h3>
+                {siteName && <p className="text-slate-400 text-xs mt-0.5">{t('settings.setup')}: {siteName}</p>}
+              </div>
+              <p className="text-slate-500 text-xs">{t('settings.cameraSetupDesc')}</p>
             </div>
-            <p className="text-slate-400 text-[10px] sm:text-xs md:text-sm -mt-1 sm:-mt-2 mb-2 sm:mb-3 md:mb-4">{t('settings.cameraSetupDesc')}</p>
-            <div className="space-y-3">
-              {cameras.length === 0 && (
-                <div className="px-4 py-8 text-center text-slate-500 text-sm">{t('settings.noCameras')}</div>
-              )}
+
+            {cameras.length === 0 && (
+              <div className="px-4 py-12 text-center text-slate-500 text-sm border border-dashed border-slate-700/50 rounded-2xl">
+                {t('settings.noCameras')}
+              </div>
+            )}
+
+            {/* 4'lü grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {cameras.map((camera) => {
                 const isEditing = editingCameraId === camera.id;
                 const isSaving = savingCameraId === camera.id;
                 const msg = cameraEditMsg?.id === camera.id ? cameraEditMsg : null;
                 return (
-                  <div key={camera.id} className="bg-slate-800/40 border border-slate-700/40 rounded-xl overflow-hidden transition-all">
-                    {/* Üst satır: thumbnail + bilgi + düzenle butonu */}
-                    <div className="flex items-center gap-3 p-3">
-                      <button
-                        onClick={() => setSelectedCamera(camera)}
-                        className="flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden bg-slate-700/60 border border-slate-600/50 hover:border-blue-500/60 transition-all hover:scale-105 relative group"
-                        title="Kamera görüntüsü"
-                      >
-                        {camera.imageUrl ? (
-                          <img src={camera.imageUrl} alt={camera.name} className="w-full h-full object-cover" />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center">
-                            <Eye className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
-                          </div>
-                        )}
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all rounded-xl" />
-                      </button>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-white truncate">{camera.name}</p>
-                        <div className="flex items-center gap-1.5 mt-0.5">
-                          <span className="text-xs text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/20">{camera.type}</span>
+                  <div key={camera.id} className={`bg-slate-800/50 border rounded-2xl overflow-hidden transition-all flex flex-col ${isEditing ? 'border-blue-500/50 shadow-lg shadow-blue-500/10' : 'border-slate-700/40 hover:border-slate-600/60'}`}>
+
+                    {/* Büyük resim alanı */}
+                    <div className="relative w-full aspect-video bg-slate-900/60 overflow-hidden group">
+                      {camera.imageUrl ? (
+                        <img src={camera.imageUrl} alt={camera.name} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center gap-2">
+                          <Camera className="w-8 h-8 text-slate-600" />
+                          <span className="text-xs text-slate-600">Görüntü yok</span>
+                        </div>
+                      )}
+                      {/* Hover overlay - görüntü ve foto yükle butonları */}
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                        <button
+                          onClick={() => setSelectedCamera(camera)}
+                          className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors"
+                          title="Görüntüle"
+                        >
+                          <Eye className="w-4 h-4" />
+                        </button>
+                        <label
+                          className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                          title="Fotoğraf Yükle"
+                        >
+                          <Upload className="w-4 h-4" />
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+                              const reader = new FileReader();
+                              reader.onload = async (ev) => {
+                                const base64 = (ev.target?.result as string)?.split(',')[1] || '';
+                                try {
+                                  const res = await apiFetch(`/api/settings/cameras/${camera.id}`, {
+                                    method: 'PATCH',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ image_base64: base64 }),
+                                  });
+                                  if (res.ok) {
+                                    const updated = await res.json();
+                                    const imgUrl = updated.imageUrl || (base64 ? `data:image/jpeg;base64,${base64}` : '');
+                                    setCameras(prev => prev.map(c => c.id === camera.id ? { ...c, imageUrl: imgUrl } : c));
+                                  }
+                                } catch { /* silent */ }
+                              };
+                              reader.readAsDataURL(file);
+                              e.target.value = '';
+                            }}
+                          />
+                        </label>
+                        <button
+                          onClick={() => setZoneEditorCamera(camera)}
+                          className="p-2 rounded-xl bg-emerald-500/30 hover:bg-emerald-500/50 text-emerald-300 transition-colors"
+                          title="Alan Çiz"
+                        >
+                          <PenTool className="w-4 h-4" />
+                        </button>
+                      </div>
+                      {/* Tip etiketi */}
+                      <div className="absolute top-2 left-2">
+                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-600/80 text-blue-100 backdrop-blur-sm">{camera.type}</span>
+                      </div>
+                    </div>
+
+                    {/* Alt bilgi + butonlar */}
+                    <div className="p-3 flex flex-col gap-2 flex-1">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-semibold text-white truncate">{camera.name}</p>
                           {camera.location && (
-                            <span className="flex items-center gap-1 text-xs text-slate-400">
-                              <MapPin className="w-3 h-3" />{camera.location}
+                            <span className="flex items-center gap-1 text-xs text-slate-400 mt-0.5">
+                              <MapPin className="w-3 h-3 shrink-0" /><span className="truncate">{camera.location}</span>
                             </span>
                           )}
                         </div>
+                        <button
+                          onClick={() => isEditing ? setEditingCameraId(null) : handleCameraEditStart(camera)}
+                          className={`flex-shrink-0 p-1.5 rounded-lg transition-colors ${isEditing ? 'bg-slate-700 text-slate-300' : 'bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 border border-blue-500/20'}`}
+                          title={isEditing ? 'İptal' : 'Düzenle'}
+                        >
+                          {isEditing ? <X className="w-3.5 h-3.5" /> : <Edit3 className="w-3.5 h-3.5" />}
+                        </button>
                       </div>
-                      <button
-                        onClick={() => setZoneEditorCamera(camera)}
-                        className="flex-shrink-0 p-2 rounded-lg transition-colors bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/20"
-                        title="Alan Çiz"
-                      >
-                        <PenTool className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => isEditing ? setEditingCameraId(null) : handleCameraEditStart(camera)}
-                        className={`flex-shrink-0 p-2 rounded-lg transition-colors ${isEditing ? 'bg-slate-700 text-slate-300 hover:bg-slate-600' : 'bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 border border-blue-500/20'}`}
-                        title={isEditing ? 'İptal' : 'Düzenle'}
-                      >
-                        {isEditing ? <X className="w-4 h-4" /> : <Edit3 className="w-4 h-4" />}
-                      </button>
-                    </div>
 
-                    {/* Düzenleme formu - sadece aktif kamerada görünür */}
-                    {isEditing && (
-                      <div className="border-t border-slate-700/40 p-3 bg-slate-900/30 space-y-3">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          <div>
-                            <label className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Kamera Adı</label>
-                            <input
-                              type="text"
-                              value={cameraEditForm.name}
-                              onChange={e => setCameraEditForm(f => ({ ...f, name: e.target.value }))}
-                              className="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
-                              placeholder="Kamera adı"
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Kamera Tipi</label>
-                            <select
-                              value={cameraEditForm.type}
-                              onChange={e => setCameraEditForm(f => ({ ...f, type: e.target.value }))}
-                              className="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 [color-scheme:dark]"
-                            >
-                              {CAMERA_TYPES.map(ct => <option key={ct} value={ct}>{ct}</option>)}
-                            </select>
-                          </div>
-                        </div>
-                        <div>
-                          <label className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1">
-                            <MapPin className="w-3 h-3" /> Konum / Yer
-                          </label>
+                      {/* Düzenleme formu */}
+                      {isEditing && (
+                        <div className="border-t border-slate-700/40 pt-2 space-y-2 mt-1">
+                          <input
+                            type="text"
+                            value={cameraEditForm.name}
+                            onChange={e => setCameraEditForm(f => ({ ...f, name: e.target.value }))}
+                            className="w-full bg-slate-700/60 border border-slate-600 rounded-lg px-2.5 py-1.5 text-white text-xs focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            placeholder="Kamera adı"
+                          />
+                          <select
+                            value={cameraEditForm.type}
+                            onChange={e => setCameraEditForm(f => ({ ...f, type: e.target.value }))}
+                            className="w-full bg-slate-700/60 border border-slate-600 rounded-lg px-2.5 py-1.5 text-white text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 [color-scheme:dark]"
+                          >
+                            {CAMERA_TYPES.map(ct => <option key={ct} value={ct}>{ct}</option>)}
+                          </select>
                           <input
                             type="text"
                             value={cameraEditForm.location}
                             onChange={e => setCameraEditForm(f => ({ ...f, location: e.target.value }))}
-                            className="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Örn: Giriş Kapısı, 1. Kat, Mağaza Girişi..."
+                            className="w-full bg-slate-700/60 border border-slate-600 rounded-lg px-2.5 py-1.5 text-white text-xs focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            placeholder="Konum / Yer"
                           />
+                          <div className="flex items-center justify-between gap-2">
+                            {msg && (
+                              <span className={`text-[10px] flex items-center gap-1 ${msg.ok ? 'text-emerald-400' : 'text-red-400'}`}>
+                                {msg.ok ? <CheckCircle className="w-3 h-3" /> : <AlertTriangle className="w-3 h-3" />}
+                                {msg.text}
+                              </span>
+                            )}
+                            {!msg && <span />}
+                            <button
+                              onClick={() => handleCameraEditSave(camera.id)}
+                              disabled={isSaving}
+                              className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 text-white rounded-lg text-xs font-medium transition-colors"
+                            >
+                              {isSaving ? <RefreshCw className="w-3 h-3 animate-spin" /> : <Save className="w-3 h-3" />}
+                              Kaydet
+                            </button>
+                          </div>
                         </div>
-                        <div className="flex items-center justify-between">
-                          {msg && (
-                            <span className={`text-xs flex items-center gap-1 ${msg.ok ? 'text-emerald-400' : 'text-red-400'}`}>
-                              {msg.ok ? <CheckCircle className="w-3.5 h-3.5" /> : <AlertTriangle className="w-3.5 h-3.5" />}
-                              {msg.text}
-                            </span>
-                          )}
-                          {!msg && <span />}
-                          <button
-                            onClick={() => handleCameraEditSave(camera.id)}
-                            disabled={isSaving}
-                            className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 text-white rounded-lg text-sm font-medium transition-colors"
-                          >
-                            {isSaving ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
-                            Kaydet
-                          </button>
-                        </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 );
               })}

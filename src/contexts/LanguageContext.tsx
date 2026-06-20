@@ -560,6 +560,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         'heatmap.totalVisitor': 'Toplam Ziyaretçi',
         'heatmap.avgDwellShort': 'Ort. Bekleme',
         'heatmap.loading': 'Veriler Yükleniyor...',
+        'heatmap.floorplan': '2D Kat Planı Isı Haritası',
+        'heatmap.floorplanTitle': 'Mağaza 2D Kat Planı Yoğunluk Haritası',
+        'heatmap.floorplanDesc': 'Bölgelerin ziyaretçi yoğunluğuna göre renklendirilmiş canlı dağılımı (Kırmızı: Yoğun, Mavi: Sakin)',
 
         // Report Analytics
         'report.title': 'Yapay Zeka Rapor Analizi (Beta)',
@@ -1169,6 +1172,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         'heatmap.totalVisitor': 'Total Visitors',
         'heatmap.avgDwellShort': 'Avg. Dwell',
         'heatmap.loading': 'Loading data...',
+        'heatmap.floorplan': '2D Floor Plan Heatmap',
+        'heatmap.floorplanTitle': 'Store 2D Floor Plan Intensity Map',
+        'heatmap.floorplanDesc': 'Live distribution of zones colored by visitor intensity (Red: Busy, Blue: Quiet)',
 
         // Report Analytics
         'report.title': 'AI Report Analytics (Beta)',
