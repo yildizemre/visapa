@@ -184,6 +184,8 @@ class ServiceHeartbeat(db.Model):
     expected_pings = db.Column(db.Integer, default=0)   # Beklenen ping sayısı (ör: 6 = saatte 6)
     received_pings = db.Column(db.Integer, default=0)   # Gerçekten gelen ping sayısı
     window_start = db.Column(db.DateTime, nullable=True) # Mevcut 1 saatlik pencere başlangıcı
+    # Modül bazlı son ping zamanları: {"counting": "2024-01-01T10:00:00", "heatmap": ..., "queue": ..., "camera": ...}
+    module_pings = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 

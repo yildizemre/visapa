@@ -1,9 +1,10 @@
 import os
+import json
 import threading
 import requests as http_requests
 from datetime import datetime, timedelta
 
-from flask import Blueprint
+from flask import Blueprint, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 from models import db, User, ServiceHeartbeat
@@ -11,22 +12,31 @@ from auth_utils import admin_required
 
 health_bp = Blueprint('health', __name__)
 
-HEARTBEAT_TIMEOUT_MINUTES = 10
+# Modül bazlı heartbeat: her modül 30 dakikada 1 ping atar.
+# Panel bu süre içinde ping gelmediyse o modülü kapalı sayar.
+MODULE_TIMEOUT_MINUTES = 30
+KNOWN_MODULES = ['counting', 'heatmap', 'queue', 'camera']
 
-# Telegram bildirim ayarları (env var olarak ayarlanmalı: TELEGRAM_BOT, TELEGRAM_ID)
+# Telegram bildirim ayarları
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT', '')
 TELEGRAM_CHAT_ID = os.environ.get('TELEGRAM_ID', '')
 
 
+def _get_telegram_config():
+    """Telegram config'i her seferinde env'den taze oku."""
+    return os.environ.get('TELEGRAM_BOT', ''), os.environ.get('TELEGRAM_ID', '')
+
+
 def send_telegram_alert(message: str):
     """Telegram'a bildirim gönder."""
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+    bot_token, chat_id = _get_telegram_config()
+    if not bot_token or not chat_id:
         print("[Telegram Alert] TELEGRAM_BOT veya TELEGRAM_ID env var ayarlanmamış, bildirim atlanıyor.")
         return
     try:
-        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
         http_requests.post(url, json={
-            'chat_id': TELEGRAM_CHAT_ID,
+            'chat_id': chat_id,
             'text': message,
             'parse_mode': 'HTML'
         }, timeout=10)
@@ -34,215 +44,262 @@ def send_telegram_alert(message: str):
         print(f"[Telegram Alert Error] {e}")
 
 
+def _load_module_pings(rec) -> dict:
+    """ServiceHeartbeat kaydından module_pings dict'ini yükle."""
+    if not rec or not rec.module_pings:
+        return {}
+    try:
+        return json.loads(rec.module_pings)
+    except Exception:
+        return {}
+
+
+def _module_status(module_pings: dict, now: datetime):
+    """
+    Her modül için alive/dead durumunu döndür.
+    Returns: dict {module: {'alive': bool, 'last_ping_at': iso|None}}
+    """
+    cutoff = now - timedelta(minutes=MODULE_TIMEOUT_MINUTES)
+    result = {}
+    for m in KNOWN_MODULES:
+        ts_str = module_pings.get(m)
+        if ts_str:
+            try:
+                ts = datetime.fromisoformat(ts_str)
+                alive = ts >= cutoff
+            except Exception:
+                alive = False
+            result[m] = {'alive': alive, 'last_ping_at': ts_str + 'Z' if not ts_str.endswith('Z') else ts_str}
+        else:
+            result[m] = {'alive': False, 'last_ping_at': None}
+    return result
+
+
+def _overall_status(module_pings: dict, now: datetime):
+    """
+    overall: 'alive' (tümü ok), 'partial' (bazıları ok), 'dead' (hiçbiri ok değil / hiç ping yok)
+    """
+    statuses = _module_status(module_pings, now)
+    alive_count = sum(1 for v in statuses.values() if v['alive'])
+    total = len(KNOWN_MODULES)
+    if alive_count == total:
+        return 'alive'
+    elif alive_count > 0:
+        return 'partial'
+    else:
+        return 'dead'
+
+
 @health_bp.route('/status', methods=['GET'])
 def status():
     return {'status': 'ok', 'service': 'vislivis'}
 
 
-PING_INTERVAL_MINUTES = 10   # Modül her 10 dk'da 1 ping atar
-PINGS_PER_HOUR = 60 // PING_INTERVAL_MINUTES  # = 6
-
 @health_bp.route('/heartbeat', methods=['POST'])
 @jwt_required()
 def heartbeat():
-    """Mağaza AI servisi her 10 dakikada bir çağırır: 'ben ayaktayım'."""
+    """
+    Mağaza AI servisi her modül için 30 dakikada bir çağırır.
+    Body (JSON): {"module": "counting"} — module: counting|heatmap|queue|camera
+    module parametresi yoksa genel ping (geriye dönük uyumluluk).
+    """
     user_id = get_jwt_identity()
     now = datetime.utcnow()
-    window_duration = timedelta(hours=1)
+    data = request.get_json(silent=True) or {}
+    module = data.get('module', '').strip().lower()
 
     rec = ServiceHeartbeat.query.filter_by(user_id=user_id).first()
     if rec:
-        # Pencere süresi dolmuşsa yeni pencere başlat
-        if rec.window_start is None or (now - rec.window_start) >= window_duration:
-            rec.window_start = now
-            rec.received_pings = 1
-            rec.expected_pings = PINGS_PER_HOUR
+        module_pings = _load_module_pings(rec)
+        if module and module in KNOWN_MODULES:
+            module_pings[module] = now.isoformat()
         else:
-            # Aynı penceredeyiz: kaçılan ping sayısını hesapla
-            elapsed_min = (now - rec.last_ping_at).total_seconds() / 60
-            missed = max(0, int(elapsed_min / PING_INTERVAL_MINUTES) - 1)
-            rec.received_pings = min(rec.received_pings + 1, PINGS_PER_HOUR)
-            rec.expected_pings = min(
-                int((now - rec.window_start).total_seconds() / 60 / PING_INTERVAL_MINUTES) + 1,
-                PINGS_PER_HOUR
-            )
-            # missed kullanılmıyor ama ileride log için tutulabilir
-            _ = missed
+            # Geriye dönük uyumluluk: modül belirtilmemişse tüm modülleri güncelle
+            for m in KNOWN_MODULES:
+                module_pings[m] = now.isoformat()
+        rec.module_pings = json.dumps(module_pings)
         rec.last_ping_at = now
     else:
+        module_pings = {}
+        if module and module in KNOWN_MODULES:
+            module_pings[module] = now.isoformat()
+        else:
+            for m in KNOWN_MODULES:
+                module_pings[m] = now.isoformat()
         rec = ServiceHeartbeat(
             user_id=user_id,
             last_ping_at=now,
-            window_start=now,
+            module_pings=json.dumps(module_pings),
             received_pings=1,
-            expected_pings=PINGS_PER_HOUR,
+            expected_pings=len(KNOWN_MODULES),
         )
         db.session.add(rec)
     db.session.commit()
+
+    overall = _overall_status(module_pings, now)
     return {
         'status': 'ok',
-        'last_ping_at': rec.last_ping_at.isoformat() + 'Z',
-        'ratio': f"{rec.received_pings}/{rec.expected_pings}",
+        'module': module or 'all',
+        'overall': overall,
+        'last_ping_at': now.isoformat() + 'Z',
     }
 
 
 @health_bp.route('/heartbeat/status', methods=['GET'])
 @jwt_required()
 def heartbeat_status():
-    """Panel: mağaza servisinin son ping'ine bakar. 5 dk içindeyse yeşil, değilse kırmızı."""
+    """Panel: kendi mağaza servisinin modül bazlı durumu."""
     user_id = get_jwt_identity()
     rec = ServiceHeartbeat.query.filter_by(user_id=user_id).first()
+    now = datetime.utcnow()
 
     if not rec:
         return {
             'is_alive': False,
+            'overall': 'dead',
             'last_ping_at': None,
+            'modules': {m: {'alive': False, 'last_ping_at': None} for m in KNOWN_MODULES},
             'message': 'Henüz heartbeat gelmedi. Mağaza scripti çalışıyor mu?'
         }
 
-    cutoff = datetime.utcnow() - timedelta(minutes=HEARTBEAT_TIMEOUT_MINUTES)
-    is_alive = rec.last_ping_at >= cutoff
+    module_pings = _load_module_pings(rec)
+    modules = _module_status(module_pings, now)
+    overall = _overall_status(module_pings, now)
+    is_alive = overall in ('alive', 'partial')
+
+    if overall == 'alive':
+        message = 'Tüm modüller aktif.'
+    elif overall == 'partial':
+        dead_modules = [m for m, v in modules.items() if not v['alive']]
+        message = f"Bazı modüllerden sinyal gelmiyor: {', '.join(dead_modules)}"
+    else:
+        message = '30 dakikadır hiçbir modülden veri gelmiyor. Sistem çökmüş olabilir.'
 
     return {
         'is_alive': is_alive,
+        'overall': overall,
         'last_ping_at': rec.last_ping_at.isoformat() + 'Z',
-        'message': 'Mağaza servisi ayakta' if is_alive else '5 dakikadır veri gelmiyor. Sistem çökmüş olabilir.'
+        'modules': modules,
+        'message': message,
     }
 
 
-def get_dynamic_ratio(h, cutoff_alive):
-    """
-    ServiceHeartbeat için gerçekçi ve dinamik oran hesaplar.
-    Son 1 saatlik rolling pencereye göre kaç ping geldiğini ve beklendiğini döner.
-    """
-    if not h or not h.last_ping_at:
-        return 0, 6, "0/6"
-        
-    now = datetime.utcnow()
-    
-    # 1. Eğer son sinyal 1 saatten eski ise tamamen sıfırlanmıştır
-    if (now - h.last_ping_at) >= timedelta(hours=1):
-        return 0, 6, "0/6"
-        
-    # 2. Son sinyal 1 saat içindeyse:
-    received = getattr(h, 'received_pings', 0) or 0
-    expected = getattr(h, 'expected_pings', 6) or 6
-    
-    # Eğer son ping'den bu yana normal aralıktan (10 dk) daha fazla süre geçtiyse,
-    # beklenen ping sayısını artırıp oranı dinamik olarak düşürmeliyiz.
-    elapsed_since_last_min = (now - h.last_ping_at).total_seconds() / 60
-    if elapsed_since_last_min > 11:  # 1 dk tolerans
-        missed = int(elapsed_since_last_min / 10)
-        expected = min(expected + missed, 6)
-        
-    # Her zaman received <= expected olmalı
-    received = min(received, expected)
-    if expected == 0:
-        expected = 6
-        
-    return received, expected, f"{received}/{expected}"
+def _build_store_entry(u, h, now):
+    """Tek mağaza için durum dict'i oluştur."""
+    if not h:
+        return {
+            'id': u.id, 'username': u.username, 'email': u.email,
+            'full_name': u.full_name, 'role': u.role,
+            'is_alive': False, 'overall': 'dead',
+            'last_ping_at': None,
+            'modules': {m: {'alive': False, 'last_ping_at': None} for m in KNOWN_MODULES},
+            'received_pings': 0, 'expected_pings': len(KNOWN_MODULES), 'ratio': f"0/{len(KNOWN_MODULES)}",
+        }
+    module_pings = _load_module_pings(h)
+    modules = _module_status(module_pings, now)
+    overall = _overall_status(module_pings, now)
+    alive_count = sum(1 for v in modules.values() if v['alive'])
+    return {
+        'id': u.id, 'username': u.username, 'email': u.email,
+        'full_name': u.full_name, 'role': u.role,
+        'is_alive': overall in ('alive', 'partial'),
+        'overall': overall,
+        'last_ping_at': h.last_ping_at.isoformat() + 'Z',
+        'modules': modules,
+        'received_pings': alive_count,
+        'expected_pings': len(KNOWN_MODULES),
+        'ratio': f"{alive_count}/{len(KNOWN_MODULES)}",
+    }
 
 
 @health_bp.route('/admin/overview', methods=['GET'])
 @admin_required
 def admin_health_overview():
-    """Admin: Tüm kullanıcıları Mağaza AI sağlık durumu ile listeler. Kırmızı (ölü) üstte."""
-    cutoff = datetime.utcnow() - timedelta(minutes=HEARTBEAT_TIMEOUT_MINUTES)
+    """Admin: Tüm kullanıcıları Mağaza AI sağlık durumu ile listeler."""
+    now = datetime.utcnow()
     users = User.query.filter(User.role != 'admin').order_by(User.full_name, User.username).all()
-    heartbeats = {h.user_id: h for h in ServiceHeartbeat.query.filter(ServiceHeartbeat.user_id.in_([u.id for u in users])).all()}
+    heartbeats = {h.user_id: h for h in ServiceHeartbeat.query.filter(
+        ServiceHeartbeat.user_id.in_([u.id for u in users])
+    ).all()}
     result = []
     for u in users:
         h = heartbeats.get(u.id)
-        last_ping_at = h.last_ping_at if h else None
-        is_alive = last_ping_at is not None and last_ping_at >= cutoff
-        received, expected, ratio = get_dynamic_ratio(h, cutoff)
-        result.append({
-            'id': u.id,
-            'username': u.username,
-            'email': u.email,
-            'full_name': u.full_name,
-            'role': u.role,
-            'is_alive': is_alive,
-            'last_ping_at': (last_ping_at.isoformat() + 'Z') if last_ping_at else None,
-            'received_pings': received,
-            'expected_pings': expected,
-            'ratio': ratio,
-        })
-    result.sort(key=lambda x: x['is_alive'])
+        entry = _build_store_entry(u, h, now)
+        result.append(entry)
+    # Sıralama: dead önce, partial ortada, alive sonda
+    order = {'dead': 0, 'partial': 1, 'alive': 2}
+    result.sort(key=lambda x: order.get(x['overall'], 0))
     return {'users': result}
 
 
 def run_dead_service_check():
     """
-    Dead service kontrolünü çalıştırır. Hem route hem scheduler tarafından çağrılabilir.
+    Dead/partial service kontrolü. Hem route hem scheduler tarafından çağrılabilir.
     Flask uygulama context'i içinde çağrılmalıdır.
     """
-    cutoff = datetime.utcnow() - timedelta(minutes=HEARTBEAT_TIMEOUT_MINUTES)
-
+    now = datetime.utcnow()
     all_heartbeats = ServiceHeartbeat.query.all()
     heartbeat_map = {h.user_id: h for h in all_heartbeats}
-
     all_store_users = User.query.filter(User.role != 'admin', User.is_active == True).all()
 
     dead_users = []
+    partial_users = []
     alive_users = []
 
     for u in all_store_users:
         h = heartbeat_map.get(u.id)
         if h is None:
-            continue  # Hiç ping gelmemiş — uyarıya dahil etme
-        if h.last_ping_at < cutoff:
-            dead_users.append((u, h))
+            continue
+        module_pings = _load_module_pings(h)
+        overall = _overall_status(module_pings, now)
+        if overall == 'dead':
+            dead_users.append((u, h, module_pings))
+        elif overall == 'partial':
+            partial_users.append((u, h, module_pings))
         else:
-            alive_users.append((u, h))
+            alive_users.append((u, h, module_pings))
 
-    dead_lines = []
-    for user, service in dead_users:
+    def fmt_time(h):
+        local_dt = h.last_ping_at + timedelta(hours=3)
+        return local_dt.strftime('%d.%m.%Y %H:%M')
+
+    lines = []
+    for user, h, mp in dead_users:
         name = user.full_name or user.username
-        # Türkiye yerel saatine (+3 saat) dönüştürme yapıyoruz
-        local_ping_dt = service.last_ping_at + timedelta(hours=3)
-        last_ping = local_ping_dt.strftime('%d.%m.%Y %H:%M')
-        received, expected, ratio = get_dynamic_ratio(service, cutoff)
-        dead_lines.append(f"🔴 <b>{name}</b> — KAPALI\n   Son sinyal: {last_ping} TSİ | Oran: {ratio}")
-
-    alive_lines = []
-    for user, service in alive_users:
+        lines.append(f"🔴 <b>{name}</b> — KAPALI\n   Son sinyal: {fmt_time(h)} TSİ")
+    for user, h, mp in partial_users:
         name = user.full_name or user.username
-        # Türkiye yerel saatine (+3 saat) dönüştürme yapıyoruz
-        local_ping_dt = service.last_ping_at + timedelta(hours=3)
-        last_ping = local_ping_dt.strftime('%d.%m.%Y %H:%M')
-        received, expected, ratio = get_dynamic_ratio(service, cutoff)
-        status_icon = "✅" if received >= expected else "⚠️"
-        alive_lines.append(f"{status_icon} <b>{name}</b> — AKTİF\n   Son sinyal: {last_ping} TSİ | Oran: {ratio}")
+        dead_mods = [m for m in KNOWN_MODULES if not (_module_status(mp, now)[m]['alive'])]
+        lines.append(f"⚠️ <b>{name}</b> — KISMİ\n   Sorunlu modüller: {', '.join(dead_mods)}\n   Son sinyal: {fmt_time(h)} TSİ")
+    for user, h, mp in alive_users:
+        name = user.full_name or user.username
+        lines.append(f"✅ <b>{name}</b> — AKTİF\n   Son sinyal: {fmt_time(h)} TSİ")
 
-    if dead_lines or alive_lines:
-        # Türkiye yerel saatine (+3 saat) dönüştürme yapıyoruz
+    if lines:
         now_str = (datetime.utcnow() + timedelta(hours=3)).strftime('%d.%m.%Y %H:%M TSİ')
         message = f"📊 <b>Vislivis Sistem Durumu</b>\n📅 {now_str}\n\n"
-
-        if dead_lines:
-            message += f"<b>❌ Kapalı Mağazalar ({len(dead_lines)}):</b>\n"
-            message += "\n\n".join(dead_lines)
-            message += "\n\n"
-
-        if alive_lines:
-            message += f"<b>✅ Açık Mağazalar ({len(alive_lines)}):</b>\n"
-            message += "\n\n".join(alive_lines)
-            message += "\n"
-
-        if dead_lines:
-            message += "\n⚡ Lütfen kapalı mağazaların sistem durumunu kontrol edin."
-
+        if dead_users:
+            message += f"<b>❌ Kapalı ({len(dead_users)}):</b>\n" + "\n\n".join(
+                f"🔴 <b>{u.full_name or u.username}</b> — KAPALI\n   Son: {fmt_time(h)} TSİ"
+                for u, h, _ in dead_users) + "\n\n"
+        if partial_users:
+            message += f"<b>⚠️ Kısmi ({len(partial_users)}):</b>\n" + "\n\n".join(
+                f"⚠️ <b>{u.full_name or u.username}</b> — KISMİ" for u, _, _ in partial_users) + "\n\n"
+        if alive_users:
+            message += f"<b>✅ Aktif ({len(alive_users)}):</b>\n" + "\n\n".join(
+                f"✅ <b>{u.full_name or u.username}</b>" for u, _, _ in alive_users)
+        if dead_users or partial_users:
+            message += "\n\n⚡ Lütfen sorunlu mağazaların sistem durumunu kontrol edin."
         thread = threading.Thread(target=send_telegram_alert, args=(message,))
         thread.daemon = True
         thread.start()
 
     return {
         'checked_at': datetime.utcnow().isoformat(),
-        'dead_count': len(dead_lines),
-        'alive_count': len(alive_lines),
-        'alerts_sent': len(dead_lines) > 0 or len(alive_lines) > 0,
-        'details': dead_lines
+        'dead_count': len(dead_users),
+        'partial_count': len(partial_users),
+        'alive_count': len(alive_users),
+        'alerts_sent': len(dead_users) > 0 or len(partial_users) > 0,
     }
 
 

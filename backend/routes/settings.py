@@ -196,21 +196,53 @@ def post_setup():
     db.session.commit()
 
     cameras_data = data.get('cameras') or []
-    CameraConfig.query.filter_by(user_id=user_id).delete()
 
+    # Mevcut kameraları isim bazlı indeksle
+    existing = CameraConfig.query.filter_by(user_id=user_id).all()
+    existing_by_name = {}
+    for c in existing:
+        key = (c.name or '').strip().lower()
+        if key not in existing_by_name:
+            existing_by_name[key] = c
+
+    seen_ids = set()
     for i, cam in enumerate(cameras_data):
+        name = (cam.get('name') or f'Kamera {i+1}').strip()
+        cam_type = cam.get('type') or cam.get('camera_type') or 'Kişi Sayım'
+        rtsp = cam.get('rtsp') or cam.get('rtsp_url') or ''
         img = cam.get('image_base64') or cam.get('imageBase64') or ''
         if img and img.startswith('data:image'):
             img = img.split(',', 1)[-1] if ',' in img else img
-        r = CameraConfig(
-            user_id=user_id,
-            name=cam.get('name') or f'Kamera {i+1}',
-            camera_type=cam.get('type') or cam.get('camera_type') or 'Kişi Sayım',
-            rtsp_url=cam.get('rtsp') or cam.get('rtsp_url') or '',
-            image_base64=img or None,
-            sort_order=i,
-        )
-        db.session.add(r)
+
+        key = name.lower()
+        if key in existing_by_name:
+            # Mevcut kaydı güncelle: eğer yeni veri daha doluysa (img var) veya tip/rtsp farklıysa
+            r = existing_by_name[key]
+            r.camera_type = cam_type
+            r.rtsp_url = rtsp
+            r.sort_order = i
+            if img:  # Yeni veri fotoğraf içeriyorsa güncelle
+                r.image_base64 = img
+            # Eğer mevcut kayıtta fotoğraf varsa yeni boş gelirse mevcut korunur (üstteki if ile)
+            seen_ids.add(r.id)
+        else:
+            r = CameraConfig(
+                user_id=user_id,
+                name=name,
+                camera_type=cam_type,
+                rtsp_url=rtsp,
+                image_base64=img or None,
+                sort_order=i,
+            )
+            db.session.add(r)
+            db.session.flush()  # id almak için
+            seen_ids.add(r.id)
+
+    # Gönderilmeyen (artık listede olmayan) kameraları sil
+    for c in existing:
+        if c.id not in seen_ids:
+            db.session.delete(c)
+
     db.session.commit()
     return {'message': 'Kurulum kaydedildi', 'site_name': site_name}
 
