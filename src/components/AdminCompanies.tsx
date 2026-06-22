@@ -74,7 +74,7 @@ const AdminCompanies: React.FC = () => {
     email: '',
     password: '',
     full_name: '',
-    company_role: 'store_manager' as 'store_manager' | 'user',
+    company_role: 'user' as 'store_manager' | 'user',
   });
 
   const token = localStorage.getItem('token')?.trim() || '';
@@ -237,7 +237,7 @@ const AdminCompanies: React.FC = () => {
     if (res.ok) {
       setUserModal(null);
       setEditingUser(null);
-      setUserForm({ username: '', email: '', password: '', full_name: '', company_role: 'store_manager' });
+      setUserForm({ username: '', email: '', password: '', full_name: '', company_role: 'user' });
       fetchCompanyUsers(userTargetCompanyId);
       fetchCompanies();
     } else {
@@ -351,7 +351,7 @@ const AdminCompanies: React.FC = () => {
                       <Store className="w-3.5 h-3.5" />
                       <span className="hidden sm:inline">Alt Mağaza</span>
                     </button>
-                    <button onClick={() => { setUserTargetCompanyId(company.id); setUserForm({ username: '', email: '', password: '', full_name: '', company_role: 'store_manager' }); setEditingUser(null); setUserModal('add'); }} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/80 hover:bg-emerald-500 text-white text-xs font-medium transition-colors" title="Kullanıcı Ekle">
+                    <button onClick={() => { setUserTargetCompanyId(company.id); setUserForm({ username: '', email: '', password: '', full_name: '', company_role: 'user' }); setEditingUser(null); setUserModal('add'); }} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/80 hover:bg-emerald-500 text-white text-xs font-medium transition-colors" title="Kullanıcı Ekle">
                       <UserPlus className="w-3.5 h-3.5" />
                       <span className="hidden sm:inline">Kullanıcı</span>
                     </button>
@@ -382,7 +382,7 @@ const AdminCompanies: React.FC = () => {
                                       <span className="text-xs text-slate-500">{child.user_count} kullanıcı</span>
                                     </div>
                                     <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
-                                      <button onClick={() => { setUserTargetCompanyId(child.id); setUserForm({ username: '', email: '', password: '', full_name: '', company_role: 'store_manager' }); setEditingUser(null); setUserModal('add'); }} className="p-1.5 rounded hover:bg-slate-600/50 text-slate-400 hover:text-emerald-400" title="Kullanıcı Ekle"><UserPlus className="w-3.5 h-3.5" /></button>
+                                      <button onClick={() => { setUserTargetCompanyId(child.id); setUserForm({ username: '', email: '', password: '', full_name: '', company_role: 'user' }); setEditingUser(null); setUserModal('add'); }} className="p-1.5 rounded hover:bg-slate-600/50 text-slate-400 hover:text-emerald-400" title="Kullanıcı Ekle"><UserPlus className="w-3.5 h-3.5" /></button>
                                       <button onClick={() => handleUnlinkChild(company.id, child.id, child.name)} className="p-1.5 rounded hover:bg-slate-600/50 text-slate-400 hover:text-orange-400" title="Gruptan Ayır"><Unlink className="w-3.5 h-3.5" /></button>
                                       <button onClick={() => handleDeleteCompany(child.id, child.name)} className="p-1.5 rounded hover:bg-slate-600/50 text-slate-400 hover:text-red-400" title="Sil"><Trash2 className="w-3.5 h-3.5" /></button>
                                     </div>

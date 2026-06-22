@@ -42,6 +42,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [userRole, setUserRole] = useState<string>('');
+  const [companyRole, setCompanyRole] = useState<string>('store_manager');
   const [userName, setUserName] = useState<string>('');
   const [userLogo, setUserLogo] = useState<string | null>(null);
   const [ticketUnreadCount, setTicketUnreadCount] = useState(0);
@@ -141,6 +142,15 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
 
   // Kullanıcı adı ve rolünü al (storage event ile de güncelle)
   const loadUserFromStorage = React.useCallback(() => {
+    // JWT'den company_role oku
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+        const payload = JSON.parse(atob(base64));
+        setCompanyRole(payload.role === 'admin' ? 'store_manager' : (payload.company_role || 'user'));
+      } catch { /* ignore */ }
+    }
     const userStr = localStorage.getItem('user');
     if (userStr) {
       try {
@@ -154,7 +164,6 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
         setUserRole('user');
       }
     }
-    const token = localStorage.getItem('token');
     if (token) {
       try {
         const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
@@ -298,14 +307,16 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
             {menuItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.path;
+              const isSettingsLocked = item.path === '/settings' && companyRole === 'user';
               
               return (
                 <motion.button
                   key={item.path}
-                  onClick={() => navigate(item.path)}
+                  onClick={() => { if (isSettingsLocked) return; navigate(item.path); }}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
                   className={`relative w-full flex items-center gap-4 px-5 py-3.5 rounded-xl transition-all duration-300 text-left group overflow-hidden ${
+                    isSettingsLocked ? 'opacity-40 cursor-not-allowed' :
                     isActive
                       ? 'bg-white/[0.10] text-white shadow-lg shadow-white/5 border border-white/10'
                       : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200 border border-transparent hover:border-white/[0.06]'
@@ -380,17 +391,20 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
+            const isSettingsLocked = item.path === '/settings' && companyRole === 'user';
             
             return (
               <motion.button
                 key={item.path}
                 onClick={() => {
+                  if (isSettingsLocked) return;
                   navigate(item.path);
                   setIsCollapsed(true);
                 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-200 text-left ${
+                  isSettingsLocked ? 'opacity-40 cursor-not-allowed' :
                   isActive
                     ? 'bg-gradient-to-r from-blue-500/15 to-blue-600/10 border border-blue-500/25 text-blue-300 shadow-sm shadow-indigo-500/5'
                     : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200 border border-transparent'

@@ -199,8 +199,14 @@ def get_customers():
             'id': r.id,
             'timestamp': r.timestamp.isoformat() if r.timestamp else None,
             'location': r.location,
-            'entered': getattr(r, 'entered', 0),
-            'exited': getattr(r, 'exited', 0),
+            'entered': getattr(r, 'entered', 0) or 0,
+            'exited': getattr(r, 'exited', 0) or 0,
+            'male_count': getattr(r, 'male_count', 0) or 0,
+            'female_count': getattr(r, 'female_count', 0) or 0,
+            'age_18_30': getattr(r, 'age_18_30', 0) or 0,
+            'age_30_50': getattr(r, 'age_30_50', 0) or 0,
+            'age_50_plus': getattr(r, 'age_50_plus', 0) or 0,
+            'camera_id': getattr(r, 'camera_id', None),
         }
         for r in rows
     ]

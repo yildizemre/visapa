@@ -5,12 +5,19 @@ from flask_jwt_extended import get_jwt_identity, get_jwt
 from models import ManagedStore, User
 
 
-def _get_company_user_ids(user_id: int) -> list[int]:
-    """Kullanıcının company_id'sine bağlı olarak aynı şirketteki tüm user_id'leri döndürür."""
-    user = User.query.get(user_id)
-    if not user or not user.company_id:
+def _get_company_user_ids(user_id: int, company_id: int | None = None) -> list[int]:
+    """
+    Belirtilen company_id'deki tüm user_id'leri döndürür.
+    company_id verilmezse user'ın DB'deki company_id'si kullanılır.
+    """
+    if not company_id:
+        user = User.query.get(user_id)
+        if not user or not user.company_id:
+            return [user_id]
+        company_id = user.company_id
+    company_users = User.query.filter_by(company_id=company_id).all()
+    if not company_users:
         return [user_id]
-    company_users = User.query.filter_by(company_id=user.company_id).all()
     return [u.id for u in company_users]
 
 
@@ -110,7 +117,9 @@ def get_resolved_user_ids():
         return ([store_id_param], store_id_param)
 
     # Normal user veya store_manager: company bazlı erişim
-    company_ids = _get_company_user_ids(user_id)
+    # JWT'deki company_id'yi kullan (store switcher ile değişebilir)
+    jwt_company_id = claims.get('company_id')
+    company_ids = _get_company_user_ids(user_id, jwt_company_id)
     return (company_ids, user_id)
 
 
@@ -133,4 +142,10 @@ def get_settings_user_id():
     if role == 'brand_manager':
         managed = get_effective_user_ids(user_id, role)
         return managed[0] if managed else user_id
+    # JWT company_id ile: aktif şirketteki ilk kullanıcıyı döndür (settings user_id)
+    jwt_company_id = claims.get('company_id')
+    if jwt_company_id:
+        company_user_ids = _get_company_user_ids(user_id, jwt_company_id)
+        # Settings verisi ilk kullanıcıya bağlıdır
+        return company_user_ids[0] if company_user_ids else user_id
     return user_id

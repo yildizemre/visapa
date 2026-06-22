@@ -98,8 +98,19 @@ const Settings = () => {
   const [selectedCamera, setSelectedCamera] = useState<CameraInfo | null>(null);
 
   // Yazma yetkisi: admin veya store_manager → true, düz user → false
+  // JWT token payload'dan okuyoruz (localStorage user objesi eski kalabilir)
   const [canWrite, setCanWrite] = useState(true);
   useEffect(() => {
+    try {
+      const token = localStorage.getItem('token') || '';
+      if (token) {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        if (payload.role === 'admin') { setCanWrite(true); return; }
+        setCanWrite(payload.company_role === 'store_manager');
+        return;
+      }
+    } catch { /* ignore */ }
+    // fallback: localStorage user
     try {
       const userStr = localStorage.getItem('user');
       if (userStr) {
@@ -168,7 +179,7 @@ const Settings = () => {
   // GÜNCELLENDİ: Sekme listesi
   const tabs = [
     { id: 'profile', label: t('settings.profileTab'), icon: User },
-    { id: 'cameras', label: t('settings.camerasTab'), icon: Camera },
+    ...(canWrite ? [{ id: 'cameras', label: t('settings.camerasTab'), icon: Camera }] : []),
     { id: 'reporting', label: t('settings.reportingTab'), icon: Mail },
   ];
 
@@ -597,6 +608,7 @@ const Settings = () => {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-3 sm:space-y-4 md:space-y-6">
                 <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-white mb-2 sm:mb-3 md:mb-4">{t('settings.reportRecipients')}</h3>
                 <p className="text-slate-400 text-[10px] sm:text-xs md:text-sm -mt-1 sm:-mt-2 md:-mt-4 mb-3 sm:mb-4 md:mb-6">{t('settings.reportRecipientsDesc')}</p>
+                {canWrite && (
                 <form onSubmit={handleAddEmail} className="flex flex-col sm:flex-row gap-2 items-start">
                     <div className="flex-grow w-full sm:w-auto">
                         <input 
@@ -610,6 +622,7 @@ const Settings = () => {
                     </div>
                     <button type="submit" className="w-full sm:w-auto px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg text-xs sm:text-sm">{t('settings.add')}</button>
                 </form>
+                )}
 
                 <div className="border-t border-slate-700 pt-3 sm:pt-4 md:pt-6">
                     <h4 className="text-xs sm:text-sm md:text-base font-semibold text-white mb-2 sm:mb-3">{t('settings.currentRecipients')}</h4>
@@ -617,9 +630,11 @@ const Settings = () => {
                         {recipients.map(recipient => (
                             <li key={recipient.id} className="flex items-center justify-between bg-slate-700/30 p-2 sm:p-2.5 md:p-3 rounded-lg">
                                 <span className="text-slate-200 text-xs sm:text-sm break-all pr-2">{recipient.email}</span>
+                                {canWrite && (
                                 <button onClick={() => handleDeleteEmail(recipient.id)} className="text-red-400 hover:text-red-300 p-1 rounded-full hover:bg-red-500/10 flex-shrink-0">
                                     <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
                                 </button>
+                                )}
                             </li>
                         ))}
                         {recipients.length === 0 && <p className="text-slate-500 text-center py-3 sm:py-4 text-xs sm:text-sm">{t('settings.noRecipients')}</p>}
@@ -632,6 +647,19 @@ const Settings = () => {
         return null;
     }
   };
+
+  // company_role='user' ise ayarlar sayfasına erişim engeli
+  if (!canWrite) {
+    return (
+      <div className="p-8 flex flex-col items-center justify-center min-h-[60vh]">
+        <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 mb-4">
+          <AlertTriangle className="w-12 h-12 text-red-400" />
+        </div>
+        <h2 className="text-xl font-bold text-white mb-2">Erişim Engellendi</h2>
+        <p className="text-slate-400 text-center max-w-md">Bu sayfaya erişim yetkiniz bulunmamaktadır. Ayarları değiştirmek için mağaza yöneticisi ile iletişime geçin.</p>
+      </div>
+    );
+  }
 
   return (
     <>
