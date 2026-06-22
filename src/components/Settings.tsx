@@ -648,6 +648,19 @@ const Settings = () => {
     }
   };
 
+  // company_role='user' ise ayarlar sayfasına erişim engeli
+  if (!canWrite) {
+    return (
+      <div className="p-8 flex flex-col items-center justify-center min-h-[60vh]">
+        <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 mb-4">
+          <AlertTriangle className="w-12 h-12 text-red-400" />
+        </div>
+        <h2 className="text-xl font-bold text-white mb-2">Erişim Engellendi</h2>
+        <p className="text-slate-400 text-center max-w-md">Bu sayfaya erişim yetkiniz bulunmamaktadır. Ayarları değiştirmek için mağaza yöneticisi ile iletişime geçin.</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <CameraViewModal camera={selectedCamera} onClose={() => setSelectedCamera(null)} t={t} />
