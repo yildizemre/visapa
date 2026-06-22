@@ -98,8 +98,19 @@ const Settings = () => {
   const [selectedCamera, setSelectedCamera] = useState<CameraInfo | null>(null);
 
   // Yazma yetkisi: admin veya store_manager → true, düz user → false
+  // JWT token payload'dan okuyoruz (localStorage user objesi eski kalabilir)
   const [canWrite, setCanWrite] = useState(true);
   useEffect(() => {
+    try {
+      const token = localStorage.getItem('token') || '';
+      if (token) {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        if (payload.role === 'admin') { setCanWrite(true); return; }
+        setCanWrite(payload.company_role === 'store_manager');
+        return;
+      }
+    } catch { /* ignore */ }
+    // fallback: localStorage user
     try {
       const userStr = localStorage.getItem('user');
       if (userStr) {
