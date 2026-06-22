@@ -395,11 +395,11 @@ const CustomerAnalytics = () => {
               value={selectedCamera}
               onChange={setSelectedCamera}
               options={[
-                { value: 'all', label: language === 'tr' ? 'Tüm Kameralar' : 'All Cameras' },
+                { value: 'all', label: t('analytics.allCameras') },
                 ...allCameras.map(camera => ({ value: camera, label: camera }))
               ]}
               icon={Camera}
-              placeholder={language === 'tr' ? 'Kamera Seçin' : 'Select Camera'}
+              placeholder={t('analytics.selectCamera')}
               onEyeClick={handleViewSelectedCamera}
             />
             <div className="relative">
@@ -459,18 +459,16 @@ const CustomerAnalytics = () => {
               {isRangeMode ? (
                 <>
                   <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-5">
-                    {language === 'tr' 
-                      ? `${startDate} — ${endDate} Günlük Müşteri Akışı` 
-                      : `Daily Customer Flow for ${startDate} — ${endDate}`}
+                    {language === 'tr' ? `${startDate} — ${endDate} ${t('analytics.dailyFlowRange')}` : `${t('analytics.dailyFlowRange')} ${startDate} — ${endDate}`}
                   </h3>
                   <div ref={flow1Ref} style={{width:'100%', overflow:'hidden'}}>
                     <ComposedChart width={flow1W} height={340} data={analyticsData.dailyCustomerFlow ?? []}>
                       <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" />
                       <XAxis dataKey="date" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
                       <YAxis stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
-                      <Tooltip contentStyle={tooltipStyle} labelFormatter={(label) => `${language === 'tr' ? 'Tarih' : 'Date'}: ${label}`} />
+                      <Tooltip contentStyle={tooltipStyle} labelFormatter={(label) => `${t('analytics.date')}: ${label}`} />
                       <Legend iconType="circle" iconSize={8} />
-                      <Line type="monotone" dataKey="entering" stroke={chartColors.secondary} strokeWidth={2.5} name={language === 'tr' ? 'Giren' : 'Entered'} dot={{ fill: chartColors.secondary, r: 3 }} />
+                      <Line type="monotone" dataKey="entering" stroke={chartColors.secondary} strokeWidth={2.5} name={t('analytics.entered')} dot={{ fill: chartColors.secondary, r: 3 }} />
                     </ComposedChart>
                   </div>
                 </>
@@ -478,9 +476,7 @@ const CustomerAnalytics = () => {
                 <>
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 border-b border-slate-700/40 pb-5">
                     <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider">
-                      {language === 'tr' 
-                        ? `${selectedDate.toLocaleDateString('tr-TR')} Tarihli Saatlik Müşteri Akışı (10:00 - 22:00)`
-                        : `Hourly Customer Flow for ${selectedDate.toLocaleDateString('en-US')} (10:00 - 22:00)`}
+                      {language === 'tr' ? `${selectedDate.toLocaleDateString('tr-TR')} ${t('analytics.hourlyFlowDate')}` : `${t('analytics.hourlyFlowDate')} ${selectedDate.toLocaleDateString('en-US')}`}
                     </h3>
                     <div className="flex flex-wrap items-center gap-3">
                       <button
@@ -505,14 +501,14 @@ const CustomerAnalytics = () => {
                         <svg className={`w-4 h-4 ${compareDate ? 'animate-bounce' : 'group-hover:scale-110 transition-transform'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                         </svg>
-                        <span>{compareDate ? (language === 'tr' ? 'Karşılaştırma Aktif' : 'Comparison Active') : (language === 'tr' ? 'Karşılaştır' : 'Compare')}</span>
+                        <span>{compareDate ? t('analytics.comparisonActive') : t('analytics.compare')}</span>
                         {compareDate && <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-green-400 rounded-full animate-ping" />}
                       </button>
 
                       {compareDate && (
                         <div className="flex items-center gap-2 bg-slate-900/60 p-1.5 rounded-xl border border-slate-700/50 shadow-inner">
                           <div className="flex items-center gap-1.5 px-2">
-                            <span className="text-[10px] text-slate-500 font-bold uppercase">{language === 'tr' ? '1. Tarih' : '1st Date'}</span>
+                            <span className="text-[10px] text-slate-500 font-bold uppercase">{t('analytics.date1')}</span>
                             <input 
                               type="date" 
                               value={formatDateForAPI(selectedDate)} 
@@ -533,7 +529,7 @@ const CustomerAnalytics = () => {
                           <span className="text-[10px] text-slate-600 font-black">VS</span>
 
                           <div className="flex items-center gap-1.5 px-2">
-                            <span className="text-[10px] text-blue-400 font-bold uppercase">{language === 'tr' ? '2. Tarih' : '2nd Date'}</span>
+                            <span className="text-[10px] text-blue-400 font-bold uppercase">{t('analytics.date2')}</span>
                             <input 
                               type="date" 
                               value={compareDate} 
@@ -557,11 +553,11 @@ const CustomerAnalytics = () => {
                       <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" />
                       <XAxis dataKey="hour" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
                       <YAxis stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
-                      <Tooltip contentStyle={tooltipStyle} labelFormatter={(label) => `${language === 'tr' ? 'Saat' : 'Hour'}: ${label}`} />
+                      <Tooltip contentStyle={tooltipStyle} labelFormatter={(label) => `${t('analytics.hour')}: ${label}`} />
                       <Legend iconType="circle" iconSize={8} />
-                      <Line type="monotone" dataKey="entering" stroke={chartColors.secondary} strokeWidth={2} name={compareDate ? `${language === 'tr' ? 'Giren' : 'Entered'} (${selectedDate.toLocaleDateString(language === 'tr' ? 'tr-TR' : 'en-US', { day: 'numeric', month: 'short' })})` : (language === 'tr' ? "Giren" : "Entered")} dot={{ fill: chartColors.secondary, r: 3 }} />
+                      <Line type="monotone" dataKey="entering" stroke={chartColors.secondary} strokeWidth={2} name={compareDate ? `${t('analytics.entered')} (${selectedDate.toLocaleDateString(language === 'tr' ? 'tr-TR' : 'en-US', { day: 'numeric', month: 'short' })})` : t('analytics.entered')} dot={{ fill: chartColors.secondary, r: 3 }} />
                       {compareDate && (
-                        <Line type="monotone" dataKey="compareEntering" stroke={chartColors.pink} strokeWidth={2} strokeDasharray="4 2" name={`${language === 'tr' ? 'Giren' : 'Entered'} (${new Date(compareDate + 'T00:00:00').toLocaleDateString(language === 'tr' ? 'tr-TR' : 'en-US', { day: 'numeric', month: 'short' })})`} dot={{ fill: chartColors.pink, r: 3 }} />
+                        <Line type="monotone" dataKey="compareEntering" stroke={chartColors.pink} strokeWidth={2} strokeDasharray="4 2" name={`${t('analytics.entered')} (${new Date(compareDate + 'T00:00:00').toLocaleDateString(language === 'tr' ? 'tr-TR' : 'en-US', { day: 'numeric', month: 'short' })})`} dot={{ fill: chartColors.pink, r: 3 }} />
                       )}
                     </ComposedChart>
                   </div>
@@ -597,7 +593,7 @@ const CustomerAnalytics = () => {
                         formatter={(value: number, name: string) => {
                           const total = (analyticsData.demographics?.ageGroupsChart ?? []).reduce((s, i) => s + (i?.value ?? 0), 0);
                           const pct = total > 0 ? ((Number(value) / total) * 100).toFixed(1) : '0';
-                          return [`${value} ${language === 'tr' ? 'kişi' : 'people'} (${pct}%)`, name];
+                          return [`${value} ${t('analytics.people')} (${pct}%)`, name];
                         }}
                       />
                       <Legend
@@ -696,7 +692,7 @@ const CustomerAnalytics = () => {
                 {previewLoading ? (
                   <div className="flex flex-col items-center gap-3">
                     <RefreshCw className="w-8 h-8 text-blue-400 animate-spin" />
-                    <span className="text-xs text-slate-400">{language === 'tr' ? 'Kameraya bağlanılıyor...' : 'Connecting to camera...'}</span>
+                    <span className="text-xs text-slate-400">{t('analytics.connectingCamera')}</span>
                   </div>
                 ) : previewImageUrl ? (
                   <img
@@ -707,7 +703,7 @@ const CustomerAnalytics = () => {
                 ) : (
                   <div className="flex flex-col items-center gap-2 text-slate-500">
                     <AlertCircle className="w-10 h-10 text-rose-500" />
-                    <span className="text-xs font-semibold text-rose-400">{language === 'tr' ? 'Görüntü Alınamadı' : 'Failed to retrieve image'}</span>
+                    <span className="text-xs font-semibold text-rose-400">{t('analytics.imageFailed')}</span>
                   </div>
                 )}
               </div>

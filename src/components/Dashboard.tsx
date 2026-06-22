@@ -118,7 +118,7 @@ const PremiumDonut = ({ data, colors, total, labelTitle }: { data: { name: strin
 };
 
 const Dashboard = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const storeRefresh = useStoreChange();
   
   const [userName, setUserName] = useState('');
@@ -441,30 +441,30 @@ const Dashboard = () => {
           <KpiCard 
             icon={<UserPlus className="w-5 h-5 text-white" />}
             iconGradient="from-blue-500 to-cyan-500"
-            label={language === 'tr' ? 'Toplam Giren' : 'Total Entered'}
+            label={t('dashboard.totalEntered')}
             value={dashboardData.weeklyStats.customersEntered.toLocaleString()}
-            subtitle={dateRange.start ? `${formatDateForRange(dateRange.start)} — ${formatDateForRange(dateRange.end)}` : 'Dönem'}
+            subtitle={dateRange.start ? `${formatDateForRange(dateRange.start)} — ${formatDateForRange(dateRange.end)}` : t('dashboard.period')}
           />
           <KpiCard 
             icon={<Activity className="w-5 h-5 text-white" />}
             iconGradient="from-emerald-500 to-teal-500"
-            label={language === 'tr' ? 'Günlük Ortalama' : 'Daily Average'}
+            label={t('dashboard.dailyAverage')}
             value={totalVisitors > 0 ? Math.round(totalVisitors / Math.max(1, dashboardData.dailyCustomerFlow.length)).toLocaleString() : '0'}
-            subtitle="Ziyaretçi / Gün"
+            subtitle={t('dashboard.visitorPerDay')}
           />
           <KpiCard 
             icon={<Timer className="w-5 h-5 text-white" />}
             iconGradient="from-amber-500 to-orange-500"
-            label={language === 'tr' ? 'Ort. Bekleme' : 'Avg. Wait'}
+            label={t('dashboard.avgWait')}
             value={`${formatSecondsToMinutes(dashboardData.weeklyStats.avgQueueTime)} dk`}
-            subtitle="Kasa bekleme süresi"
+            subtitle={t('dashboard.checkoutWait')}
           />
           <KpiCard 
             icon={<CalendarDays className="w-5 h-5 text-white" />}
             iconGradient="from-blue-500 to-blue-600"
-            label={language === 'tr' ? 'En Yoğun Gün' : 'Peak Day'}
+            label={t('dashboard.peakDay')}
             value={peakDay ? new Date((peakDay.date as string) + 'T00:00:00').toLocaleDateString('tr-TR', { day: '2-digit', month: 'short' }) : '—'}
-            subtitle={peakDay ? `${Number(peakDay.entered ?? 0).toLocaleString()} giriş` : 'Veri yok'}
+            subtitle={peakDay ? `${Number(peakDay.entered ?? 0).toLocaleString()} ${t('dashboard.entry')}` : t('dashboard.noData')}
           />
         </motion.div>
 
@@ -486,15 +486,15 @@ const Dashboard = () => {
                   <TrendingUp className="w-5 h-5 text-blue-400" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm font-bold text-slate-200 mb-1">Zirve Gün Analizi</p>
+                  <p className="text-sm font-bold text-slate-200 mb-1">{t('dashboard.peakDayAnalysis')}</p>
                   <p className="text-xs text-slate-400 leading-relaxed">
-                    En yoğun gün, günlük ortalamadan{' '}
-                    <span className="text-blue-300 font-semibold">%{peakRatio} fazla</span> ziyaretçi çekti.{' '}
+                    {t('dashboard.peakDayDesc1')}{' '}
+                    <span className="text-blue-300 font-semibold">%{peakRatio} {t('dashboard.peakDayMore')}</span> {t('dashboard.peakDayVisitor')}{' '}
                     {Number(peakRatio) > 30
-                      ? 'Bu gün için ekstra kasa ve personel planlanmalı.'
+                      ? t('dashboard.peakDayHigh')
                       : Number(peakRatio) > 15
-                      ? 'Yoğun günlerde stok ve personel hazırlığı yapın.'
-                      : 'Trafik dağılımı oldukça dengeli seyredyor.'}
+                      ? t('dashboard.peakDayMed')
+                      : t('dashboard.peakDayLow')}
                   </p>
                 </div>
               </div>
@@ -507,11 +507,11 @@ const Dashboard = () => {
                   <ShoppingCart className={`w-5 h-5 ${queueSec > 120 ? 'text-amber-400' : 'text-emerald-400'}`} />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm font-bold text-slate-200 mb-1">Kasa Verimliliği</p>
+                  <p className="text-sm font-bold text-slate-200 mb-1">{t('dashboard.cashierEfficiency')}</p>
                   <p className="text-xs text-slate-400 leading-relaxed">
                     <span className={`font-semibold ${queueSec > 120 ? 'text-amber-300' : 'text-emerald-300'}`}>{cashierName}</span>{' '}
-                    kasası haftada <span className="text-slate-200 font-semibold">{cashierLoad.toLocaleString()}</span> müşteri işledi.{' '}
-                    {queueSec > 120 ? 'Yük dengeleme için ek kasa devreye alınabilir.' : 'Kasa yükü dengeli dağılıyor.'}
+                    {t('dashboard.cashierWeekly')} <span className="text-slate-200 font-semibold">{cashierLoad.toLocaleString()}</span> {t('dashboard.cashierProcessed')}{' '}
+                    {queueSec > 120 ? t('dashboard.cashierHigh') : t('dashboard.cashierOk')}
                   </p>
                 </div>
               </div>
@@ -521,13 +521,13 @@ const Dashboard = () => {
                   <Users className="w-5 h-5 text-blue-400" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm font-bold text-slate-200 mb-1">Kampanya Stratejisi</p>
+                  <p className="text-sm font-bold text-slate-200 mb-1">{t('dashboard.campaignStrategy')}</p>
                   <p className="text-xs text-slate-400 leading-relaxed">
                     {totalGender > 0
                       ? femPct >= malPct
-                        ? <>Kadın ziyaretçi oranı <span className="text-pink-300 font-semibold">%{femPct}</span> ile baskın. Aksesuar, kozmetik ve kadın giyim ön planlarda konumlandırılmalı.</>
-                        : <>Erkek ziyaretçi oranı <span className="text-blue-300 font-semibold">%{malPct}</span> ile öne çıkıyor. Erkek giyim ve elektronik aksesuar kampanyaları öncelikli değerlendirilebilir.</>
-                      : 'Demografik veri biriktiğinde kişiselleştirilmiş kampanya önerileri burada görünecek.'}
+                        ? <>{t('dashboard.femaleRate')} <span className="text-pink-300 font-semibold">%{femPct}</span> {t('dashboard.femaleDesc')}</>
+                        : <>{t('dashboard.maleRate')} <span className="text-blue-300 font-semibold">%{malPct}</span> {t('dashboard.maleDesc')}</>
+                      : t('dashboard.noDemoData')}
                   </p>
                 </div>
               </div>
@@ -547,12 +547,12 @@ const Dashboard = () => {
               <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 rounded-2xl border border-slate-700/50 flex flex-col justify-between min-h-[220px]">
                 <div className="flex items-center gap-2 mb-3">
                   <BarChart3 className="w-4 h-4 text-blue-400 animate-pulse" />
-                  <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">Bölge Dağılımı</h3>
+                  <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">{t('dashboard.zoneDistribution')}</h3>
                 </div>
                 {zoneData.length > 0 && totalZone > 0 ? (
-                  <PremiumDonut data={donutData} colors={ZONE_COLORS} total={totalZone} labelTitle="Bölgeler" />
+                  <PremiumDonut data={donutData} colors={ZONE_COLORS} total={totalZone} labelTitle={t('dashboard.zones')} />
                 ) : (
-                  <div className="flex-1 flex items-center justify-center text-slate-500 text-sm">Veri yok</div>
+                  <div className="flex-1 flex items-center justify-center text-slate-500 text-sm">{t('dashboard.noData')}</div>
                 )}
               </div>
             );
@@ -562,14 +562,14 @@ const Dashboard = () => {
           <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 rounded-2xl border border-slate-700/50">
             <div className="flex items-center gap-2 mb-4">
               <ShoppingCart className="w-4 h-4 text-teal-400" />
-              <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">Kuyruk & Trafik</h3>
+              <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">{t('dashboard.queueTraffic')}</h3>
             </div>
             <div className="space-y-3">
               {[
-                { label: 'Ort. Bekleme', value: `${formatSecondsToMinutes(dashboardData.weeklyStats.avgQueueTime)} dk`, color: 'text-amber-400', icon: <Timer className="w-3.5 h-3.5" /> },
-                { label: 'Toplam Kuyruk', value: dashboardData.weeklyStats.busiestCashier.weeklyCustomers.toLocaleString(), color: 'text-teal-400', icon: <Users className="w-3.5 h-3.5" /> },
-                { label: 'Günlük Ort.', value: totalVisitors > 0 ? Math.round(totalVisitors / Math.max(1, dashboardData.dailyCustomerFlow.length)).toLocaleString() : '0', color: 'text-emerald-400', icon: <Activity className="w-3.5 h-3.5" /> },
-                { label: 'Toplam Giren', value: totalVisitors.toLocaleString(), color: 'text-blue-400', icon: <UserPlus className="w-3.5 h-3.5" /> },
+                { label: t('dashboard.avgWait'), value: `${formatSecondsToMinutes(dashboardData.weeklyStats.avgQueueTime)} ${t('dashboard.minShort')}`, color: 'text-amber-400', icon: <Timer className="w-3.5 h-3.5" /> },
+                { label: t('dashboard.totalQueue'), value: dashboardData.weeklyStats.busiestCashier.weeklyCustomers.toLocaleString(), color: 'text-teal-400', icon: <Users className="w-3.5 h-3.5" /> },
+                { label: t('dashboard.dailyAvgShort'), value: totalVisitors > 0 ? Math.round(totalVisitors / Math.max(1, dashboardData.dailyCustomerFlow.length)).toLocaleString() : '0', color: 'text-emerald-400', icon: <Activity className="w-3.5 h-3.5" /> },
+                { label: t('dashboard.totalEntered'), value: totalVisitors.toLocaleString(), color: 'text-blue-400', icon: <UserPlus className="w-3.5 h-3.5" /> },
               ].map((row) => (
                 <div key={row.label} className="flex items-center justify-between bg-slate-800/50 rounded-xl px-3.5 py-2.5 border border-slate-700/30">
                   <div className="flex items-center gap-2">{row.icon}<span className="text-xs text-slate-400">{row.label}</span></div>
@@ -583,10 +583,10 @@ const Dashboard = () => {
           <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 rounded-2xl border border-slate-700/50">
             <div className="flex items-center gap-2 mb-4">
               <Trophy className="w-4 h-4 text-yellow-400" />
-              <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">En Yoğun 5 Gün</h3>
+              <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">{t('dashboard.top5Days')}</h3>
             </div>
             {top5Days.length === 0 ? (
-              <div className="flex items-center justify-center h-24 text-slate-500 text-sm">Veri yok</div>
+              <div className="flex items-center justify-center h-24 text-slate-500 text-sm">{t('dashboard.noData')}</div>
             ) : (
               <div className="space-y-2.5">
                 {top5Days.map((row, i) => {
@@ -619,7 +619,7 @@ const Dashboard = () => {
             <div className="flex items-center justify-between mb-5">
               <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 text-blue-400" />
-                Günlük Müşteri Akışı
+                {t('dashboard.dailyCustomerFlow')}
               </h3>
               {dateRange.start && <span className="text-[11px] text-slate-500 bg-slate-800/80 border border-slate-700/40 px-2 py-1 rounded-lg">{formatDateForRange(dateRange.start)} — {formatDateForRange(dateRange.end)}</span>}
             </div>
@@ -642,7 +642,7 @@ const Dashboard = () => {
                   stroke="#3b82f6" 
                   strokeWidth={2.5} 
                   fill="url(#dashGradEntered)" 
-                  name="Giren" 
+                  name={t('dashboard.entered')} 
                   dot={{ r: 4, stroke: '#3b82f6', strokeWidth: 1.5, fill: '#0f172a' }} 
                   activeDot={{ r: 6, stroke: '#60a5fa', strokeWidth: 2, fill: '#ffffff' }}
                   isAnimationActive={true}

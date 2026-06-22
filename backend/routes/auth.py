@@ -32,7 +32,12 @@ def login():
 
     access_token = create_access_token(
         identity=user.id,
-        additional_claims={'role': user.role, 'username': user.username}
+        additional_claims={
+            'role': user.role,
+            'username': user.username,
+            'company_id': user.company_id,
+            'company_role': user.company_role,
+        }
     )
     user_dict = user.to_public_dict()
     user_dict['logo_base64'] = user.logo_base64 or None
@@ -84,6 +89,61 @@ def update_logo():
     user.logo_base64 = logo if logo else None
     db.session.commit()
     return jsonify({'message': 'Logo güncellendi', 'logo_base64': user.logo_base64})
+
+
+@auth_bp.route('/me/companies', methods=['GET'])
+@jwt_required()
+def my_companies():
+    """Kullanıcının erişebileceği şirketleri döndür (store switcher için)."""
+    from user_context import get_accessible_companies
+    user_id = get_jwt_identity()
+    companies = get_accessible_companies(int(user_id))
+    return jsonify({'companies': companies})
+
+
+@auth_bp.route('/me/switch-company', methods=['POST'])
+@jwt_required()
+def switch_company():
+    """Kullanıcının aktif şirketini değiştir — yeni token döner."""
+    from user_context import get_accessible_companies
+    user_id = get_jwt_identity()
+    data = request.get_json(silent=True) or {}
+    target_company_id = data.get('company_id')
+
+    if not target_company_id:
+        return jsonify({'error': 'company_id gerekli'}), 400
+
+    accessible = get_accessible_companies(int(user_id))
+    accessible_ids = [c['id'] for c in accessible]
+
+    if int(target_company_id) not in accessible_ids:
+        return jsonify({'error': 'Bu şirkete erişim yetkiniz yok'}), 403
+
+    user = User.query.get(int(user_id))
+    if not user:
+        return jsonify({'error': 'Kullanıcı bulunamadı'}), 404
+
+    # Kullanıcının company_id'sini güncelle
+    user.company_id = int(target_company_id)
+    db.session.commit()
+
+    # Yeni token oluştur
+    access_token = create_access_token(
+        identity=user.id,
+        additional_claims={
+            'role': user.role,
+            'username': user.username,
+            'company_id': user.company_id,
+            'company_role': user.company_role,
+        }
+    )
+    user_dict = user.to_public_dict()
+    user_dict['logo_base64'] = user.logo_base64 or None
+    return jsonify({
+        'access_token': access_token,
+        'user': user_dict,
+        'message': 'Şirket değiştirildi'
+    })
 
 
 @auth_bp.route('/register', methods=['POST'])

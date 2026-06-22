@@ -12,6 +12,7 @@ import QueueAnalysis from './components/QueueAnalysis';
 import ReportAnalytics from './components/ReportAnalytics';
 import Settings from './components/Settings';
 import AdminGuard, { AdminGuardWrapper } from './components/AdminGuard';
+import AdminCompanies from './components/AdminCompanies';
 import ActivityLogs from './components/ActivityLogs';
 import Chat from './components/Chat';
 import Ticket from './components/Ticket';
@@ -70,6 +71,7 @@ function App() {
                   <Route path="/chat" element={<Chat />} />
                   <Route path="/tickets" element={<Ticket />} />
                   <Route path="/admin/users" element={<AdminGuard />} />
+                  <Route path="/admin/companies" element={<AdminGuardWrapper><AdminCompanies /></AdminGuardWrapper>} />
                   <Route path="/admin/tickets" element={<AdminGuardWrapper><AdminTickets /></AdminGuardWrapper>} />
                   <Route path="/admin/activity-logs" element={<AdminGuardWrapper><ActivityLogs /></AdminGuardWrapper>} />
                   <Route path="/admin/health" element={<AdminGuardWrapper><AdminHealthOverview /></AdminGuardWrapper>} />

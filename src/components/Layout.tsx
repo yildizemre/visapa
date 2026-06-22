@@ -31,6 +31,7 @@ import {
   Database,
   ArrowLeftCircle,
   Video,
+  Building2,
 } from 'lucide-react';
 
 interface LayoutProps {
@@ -43,7 +44,6 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
   const [userRole, setUserRole] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
   const [userLogo, setUserLogo] = useState<string | null>(null);
-  const [showStoreSwitcher, setShowStoreSwitcher] = useState(false);
   const [ticketUnreadCount, setTicketUnreadCount] = useState(0);
   const [logoUploading, setLogoUploading] = useState(false);
   const logoInputRef = useRef<HTMLInputElement>(null);
@@ -148,7 +148,6 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
         setUserName(user.full_name || user.username || '');
         setUserRole(user.role || 'user');
         setUserLogo(user.logo_base64 || null);
-        setShowStoreSwitcher(user.role === 'brand_manager' && (user.managed_stores?.length ?? 0) > 0);
         return;
       } catch {
         setUserName('');
@@ -241,6 +240,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
       ? [{ icon: Headphones, label: t('nav.ticketManagement'), path: '/admin/tickets' }]
       : [{ icon: Headphones, label: t('nav.tickets'), path: '/tickets', badge: ticketUnreadCount }]),
     ...(userRole === 'admin' ? [
+      { icon: Building2, label: t('nav.companyManagement'), path: '/admin/companies' },
       { icon: Shield, label: t('nav.userManagement'), path: '/admin/users' },
       { icon: HeartPulse, label: t('nav.healthOverview'), path: '/admin/health' },
       { icon: FileText, label: t('nav.activityLogs'), path: '/admin/activity-logs' },
@@ -468,7 +468,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                   <span className="hidden sm:inline">Admin'e Dön</span>
                 </button>
               )}
-              {showStoreSwitcher && <StoreSwitcher />}
+              <StoreSwitcher />
 
               {/* Notification Bell */}
               <NotificationBell />

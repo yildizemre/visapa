@@ -4,6 +4,27 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
+class Company(db.Model):
+    """Şirket/Mağaza. Kullanıcılar bir şirkete bağlıdır. parent_id ile hiyerarşik alt mağaza desteği."""
+    __tablename__ = 'companies'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    parent_id = db.Column(db.Integer, db.ForeignKey('companies.id'), nullable=True)
+    logo_base64 = db.Column(db.Text, nullable=True)
+    is_active = db.Column(db.Boolean, default=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'parent_id': self.parent_id,
+            'logo_base64': self.logo_base64,
+            'is_active': self.is_active,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+        }
+
+
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -14,6 +35,8 @@ class User(db.Model):
     full_name = db.Column(db.String(120))
     logo_base64 = db.Column(db.Text, nullable=True)  # şirket logosu / profil fotoğrafı
     is_active = db.Column(db.Boolean, default=True)
+    company_id = db.Column(db.Integer, db.ForeignKey('companies.id'), nullable=True)
+    company_role = db.Column(db.String(20), default='user')  # store_manager, user
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def set_password(self, password):
@@ -30,6 +53,8 @@ class User(db.Model):
             'role': self.role,
             'full_name': self.full_name,
             'is_active': self.is_active,
+            'company_id': self.company_id,
+            'company_role': self.company_role,
             'created_at': self.created_at.isoformat() if self.created_at else None
         }
 
@@ -39,7 +64,9 @@ class User(db.Model):
             'username': self.username,
             'email': self.email,
             'role': self.role,
-            'full_name': self.full_name
+            'full_name': self.full_name,
+            'company_id': self.company_id,
+            'company_role': self.company_role,
         }
 
 
@@ -184,6 +211,8 @@ class ServiceHeartbeat(db.Model):
     expected_pings = db.Column(db.Integer, default=0)   # Beklenen ping sayısı (ör: 6 = saatte 6)
     received_pings = db.Column(db.Integer, default=0)   # Gerçekten gelen ping sayısı
     window_start = db.Column(db.DateTime, nullable=True) # Mevcut 1 saatlik pencere başlangıcı
+    # Modül bazlı son ping zamanları: {"counting": "2024-01-01T10:00:00", "heatmap": ..., "queue": ..., "camera": ...}
+    module_pings = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
