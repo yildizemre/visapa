@@ -20,6 +20,9 @@ fi
 echo '[deploy] Python deps...'
 ./venv/bin/pip install -r backend/requirements.txt -q
 
+echo '[deploy] DB migration (additive - veri kaybolmaz)...'
+./venv/bin/python backend/migrate_companies.py
+
 echo '[deploy] Node deps...'
 npm install --legacy-peer-deps --silent
 

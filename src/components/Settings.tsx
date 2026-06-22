@@ -97,6 +97,19 @@ const Settings = () => {
   const [siteName, setSiteName] = useState<string | null>(null);
   const [selectedCamera, setSelectedCamera] = useState<CameraInfo | null>(null);
 
+  // Yazma yetkisi: admin veya store_manager → true, düz user → false
+  const [canWrite, setCanWrite] = useState(true);
+  useEffect(() => {
+    try {
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        const u = JSON.parse(userStr);
+        if (u.role === 'admin') { setCanWrite(true); return; }
+        setCanWrite(u.company_role === 'store_manager');
+      }
+    } catch { /* ignore */ }
+  }, []);
+
   const [profile, setProfile] = useState<{ username: string; email: string; full_name: string | null } | null>(null);
   const [profileForm, setProfileForm] = useState({ full_name: '', email: '' });
   const [profileMessage, setProfileMessage] = useState({ type: '', text: '' });
@@ -454,46 +467,50 @@ const Settings = () => {
                         >
                           <Eye className="w-4 h-4" />
                         </button>
-                        <label
-                          className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-                          title="Fotoğraf Yükle"
-                        >
-                          <Upload className="w-4 h-4" />
-                          <input
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            onChange={async (e) => {
-                              const file = e.target.files?.[0];
-                              if (!file) return;
-                              const reader = new FileReader();
-                              reader.onload = async (ev) => {
-                                const base64 = (ev.target?.result as string)?.split(',')[1] || '';
-                                try {
-                                  const res = await apiFetch(`/api/settings/cameras/${camera.id}`, {
-                                    method: 'PATCH',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({ image_base64: base64 }),
-                                  });
-                                  if (res.ok) {
-                                    const updated = await res.json();
-                                    const imgUrl = updated.imageUrl || (base64 ? `data:image/jpeg;base64,${base64}` : '');
-                                    setCameras(prev => prev.map(c => c.id === camera.id ? { ...c, imageUrl: imgUrl } : c));
-                                  }
-                                } catch { /* silent */ }
-                              };
-                              reader.readAsDataURL(file);
-                              e.target.value = '';
-                            }}
-                          />
-                        </label>
-                        <button
-                          onClick={() => setZoneEditorCamera(camera)}
-                          className="p-2 rounded-xl bg-emerald-500/30 hover:bg-emerald-500/50 text-emerald-300 transition-colors"
-                          title="Alan Çiz"
-                        >
-                          <PenTool className="w-4 h-4" />
-                        </button>
+                        {canWrite && (
+                          <label
+                            className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                            title="Fotoğraf Yükle"
+                          >
+                            <Upload className="w-4 h-4" />
+                            <input
+                              type="file"
+                              accept="image/*"
+                              className="hidden"
+                              onChange={async (e) => {
+                                const file = e.target.files?.[0];
+                                if (!file) return;
+                                const reader = new FileReader();
+                                reader.onload = async (ev) => {
+                                  const base64 = (ev.target?.result as string)?.split(',')[1] || '';
+                                  try {
+                                    const res = await apiFetch(`/api/settings/cameras/${camera.id}`, {
+                                      method: 'PATCH',
+                                      headers: { 'Content-Type': 'application/json' },
+                                      body: JSON.stringify({ image_base64: base64 }),
+                                    });
+                                    if (res.ok) {
+                                      const updated = await res.json();
+                                      const imgUrl = updated.imageUrl || (base64 ? `data:image/jpeg;base64,${base64}` : '');
+                                      setCameras(prev => prev.map(c => c.id === camera.id ? { ...c, imageUrl: imgUrl } : c));
+                                    }
+                                  } catch { /* silent */ }
+                                };
+                                reader.readAsDataURL(file);
+                                e.target.value = '';
+                              }}
+                            />
+                          </label>
+                        )}
+                        {canWrite && (
+                          <button
+                            onClick={() => setZoneEditorCamera(camera)}
+                            className="p-2 rounded-xl bg-emerald-500/30 hover:bg-emerald-500/50 text-emerald-300 transition-colors"
+                            title="Alan Çiz"
+                          >
+                            <PenTool className="w-4 h-4" />
+                          </button>
+                        )}
                       </div>
                       {/* Tip etiketi */}
                       <div className="absolute top-2 left-2">
@@ -512,13 +529,15 @@ const Settings = () => {
                             </span>
                           )}
                         </div>
-                        <button
-                          onClick={() => isEditing ? setEditingCameraId(null) : handleCameraEditStart(camera)}
-                          className={`flex-shrink-0 p-1.5 rounded-lg transition-colors ${isEditing ? 'bg-slate-700 text-slate-300' : 'bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 border border-blue-500/20'}`}
-                          title={isEditing ? 'İptal' : 'Düzenle'}
-                        >
-                          {isEditing ? <X className="w-3.5 h-3.5" /> : <Edit3 className="w-3.5 h-3.5" />}
-                        </button>
+                        {canWrite && (
+                          <button
+                            onClick={() => isEditing ? setEditingCameraId(null) : handleCameraEditStart(camera)}
+                            className={`flex-shrink-0 p-1.5 rounded-lg transition-colors ${isEditing ? 'bg-slate-700 text-slate-300' : 'bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 border border-blue-500/20'}`}
+                            title={isEditing ? 'İptal' : 'Düzenle'}
+                          >
+                            {isEditing ? <X className="w-3.5 h-3.5" /> : <Edit3 className="w-3.5 h-3.5" />}
+                          </button>
+                        )}
                       </div>
 
                       {/* Düzenleme formu */}

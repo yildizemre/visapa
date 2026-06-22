@@ -4,6 +4,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 import json
 from models import db, User, SiteConfig, CameraConfig, CameraZone, ManagedStore
 from user_context import get_settings_user_id, get_resolved_user_ids
+from auth_utils import write_permission_required
 
 settings_bp = Blueprint('settings', __name__)
 
@@ -118,6 +119,7 @@ def get_cameras():
 
 @settings_bp.route('/cameras', methods=['POST'])
 @jwt_required()
+@write_permission_required
 def add_camera():
     """Tek kamera ekle. Body: {name, type, rtsp, image_base64}"""
     user_id = get_jwt_identity()
@@ -148,6 +150,7 @@ def add_camera():
 
 @settings_bp.route('/cameras/<int:camera_id>', methods=['DELETE'])
 @jwt_required()
+@write_permission_required
 def delete_camera(camera_id):
     """Tek kamera sil."""
     user_id = get_jwt_identity()
@@ -159,6 +162,7 @@ def delete_camera(camera_id):
 
 @settings_bp.route('/cameras/<int:camera_id>', methods=['PATCH'])
 @jwt_required()
+@write_permission_required
 def update_camera(camera_id):
     """Tek kamera güncelle: isim, tip, konum."""
     user_id = get_jwt_identity()
@@ -181,6 +185,7 @@ def update_camera(camera_id):
 
 @settings_bp.route('/setup', methods=['POST'])
 @jwt_required()
+@write_permission_required
 def post_setup():
     """Kurulum gönder: site_name + cameras. Mağaza kullanıcısı için kaydedilir (data_sender)."""
     user_id = get_jwt_identity()
@@ -261,6 +266,7 @@ def get_camera_zones(camera_id):
 
 @settings_bp.route('/cameras/<int:camera_id>/zones', methods=['POST'])
 @jwt_required()
+@write_permission_required
 def create_camera_zone(camera_id):
     """Yeni zone oluştur. Body: {name, points, color}"""
     user_id = get_jwt_identity()
@@ -289,6 +295,7 @@ def create_camera_zone(camera_id):
 
 @settings_bp.route('/cameras/<int:camera_id>/zones/<int:zone_id>', methods=['PATCH'])
 @jwt_required()
+@write_permission_required
 def update_camera_zone(camera_id, zone_id):
     """Zone güncelle: name, points, color"""
     user_id = get_jwt_identity()
@@ -306,6 +313,7 @@ def update_camera_zone(camera_id, zone_id):
 
 @settings_bp.route('/cameras/<int:camera_id>/zones/<int:zone_id>', methods=['DELETE'])
 @jwt_required()
+@write_permission_required
 def delete_camera_zone(camera_id, zone_id):
     """Zone sil."""
     user_id = get_jwt_identity()
