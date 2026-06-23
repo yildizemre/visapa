@@ -15,6 +15,7 @@ import {
 import { useLanguage } from '../contexts/LanguageContext';
 import { apiUrl } from '../lib/api';
 import { useStoreChange } from '../hooks/useStoreChange';
+import { useWorkHours } from '../hooks/useWorkHours';
 import {
   Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ComposedChart,
 } from 'recharts';
@@ -56,6 +57,7 @@ type EditableFields = {
 const QueueAnalysis = () => {
   const { t } = useLanguage();
   const storeRefresh = useStoreChange();
+  const workHours = useWorkHours();
   const [chart1Ref, chart1W] = useContainerWidth(800);
   const [chart2Ref, chart2W] = useContainerWidth(800);
   const [chart3Ref, chart3W] = useContainerWidth(800);
@@ -217,10 +219,10 @@ const QueueAnalysis = () => {
       }))
       .filter(summary => {
           const hour = parseInt(summary.hour, 10);
-          return hour >= 10 && hour <= 22;
+          return hour >= workHours.work_start && hour <= workHours.work_end;
       })
       .sort((a, b) => parseInt(a.hour, 10) - parseInt(b.hour, 10));
-  }, [dailyData]);
+  }, [dailyData, workHours.work_start, workHours.work_end]);
 
   if (loading) {
     return (<div className="p-6 text-white text-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>{t('queue.loading')}</div>);

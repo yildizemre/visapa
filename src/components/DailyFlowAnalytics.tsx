@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { apiUrl } from '../lib/api';
 import { useStoreChange } from '../hooks/useStoreChange';
+import { useWorkHours } from '../hooks/useWorkHours';
 import {
   Calendar, UserPlus, Clock, AlertCircle, BarChart3,
   Thermometer, ChevronLeft, ChevronRight, Save, XCircle, RefreshCw,
@@ -101,6 +102,7 @@ interface DailyFlowAnalyticsProps {
 const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, selectedDate, selectedCamera, genderDistribution }) => {
   const { language, t } = useLanguage();
   const storeRefresh = useStoreChange();
+  const workHours = useWorkHours();
   const [flowData, setFlowData] = useState<FlowData | null>(null);
   const [weatherData, setWeatherData] = useState<{ [hour: string]: WeatherInfo } | null>(null);
   const [loading, setLoading] = useState(true);
@@ -241,14 +243,15 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
   // 10:00 - 22:00 sabit + API'den gelen ve bu aralık dışındaki saatler (veritabanındaki toplam tek saatte dönebiliyor)
   const filteredHourlyData = useMemo(() => {
       const hourly = flowData?.hourly_data ?? {};
-      const baseSlots = Array.from({ length: 13 }, (_, i) => `${String(10 + i).padStart(2, '0')}:00`);
+      const slotCount = workHours.work_end - workHours.work_start + 1;
+      const baseSlots = Array.from({ length: slotCount }, (_, i) => `${String(workHours.work_start + i).padStart(2, '0')}:00`);
       const apiHours = Object.keys(hourly).filter((h) => !baseSlots.includes(h)).sort();
       const allSlots = [...baseSlots, ...apiHours];
       return allSlots.map((hour) => {
         const data = hourly[hour] ?? { entered: 0, exited: 0, editable_id: null };
         return [hour, data] as const;
       });
-  }, [flowData]);
+  }, [flowData, workHours.work_start, workHours.work_end]);
 
 
   const weatherInsight = useMemo(() => {
