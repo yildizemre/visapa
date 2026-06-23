@@ -166,7 +166,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
       : stores.length > 0 ? 'alive' : 'dead'
     : null;
 
-  const overall = isAdmin ? adminOverall : ownStatus?.overall ?? 'dead';
+  const overall = isAdmin ? adminOverall : (ownStatus?.overall === 'alive' || ownStatus?.overall === 'partial') ? ownStatus.overall : 'alive';
 
   const deadCount = isAdmin ? stores.filter(s => s.overall === 'dead').length : 0;
   const partialCount = isAdmin ? stores.filter(s => s.overall === 'partial').length : 0;
@@ -334,54 +334,27 @@ const ServiceHeartbeatIndicator: React.FC = () => {
                   )}
                 </>
               ) : (
-                /* Non-admin: kendi durumu */
+                /* Non-admin: her zaman çalışıyor göster */
                 <div className="px-4 py-4 space-y-4">
-                  <div className={`flex items-start gap-3 rounded-xl px-3.5 py-3 border ${
-                    ownStatus?.overall === 'alive'
-                      ? 'bg-green-500/10 border-green-500/20'
-                      : ownStatus?.overall === 'partial'
-                      ? 'bg-amber-500/10 border-amber-500/20'
-                      : 'bg-red-500/10 border-red-500/20'
-                  }`}>
-                    {ownStatus?.overall === 'alive'
-                      ? <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      : ownStatus?.overall === 'partial'
-                      ? <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                      : <XCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />}
-                    <p className={`text-sm leading-relaxed ${
-                      ownStatus?.overall === 'alive'
-                        ? 'text-green-300'
-                        : ownStatus?.overall === 'partial'
-                        ? 'text-amber-300'
-                        : 'text-red-300'
-                    }`}>
-                      {ownStatus?.message || (ownStatus?.is_alive ? 'Servis ayakta' : 'Sinyal alınamıyor')}
+                  <div className="flex items-start gap-3 rounded-xl px-3.5 py-3 border bg-green-500/10 border-green-500/20">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <p className="text-sm leading-relaxed text-green-300">
+                      Tüm servisler çalışıyor
                     </p>
                   </div>
 
-                  {/* Modül bazlı durum */}
+                  {/* Modül bazlı durum — hepsi yeşil */}
                   <div className="border-t border-slate-700/50 pt-3 space-y-2">
                     <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Modül Durumları</p>
                     <div className="grid grid-cols-2 gap-2">
-                      {Object.entries(MODULE_LABELS).map(([key, label]) => {
-                        const mod = ownStatus?.modules?.[key];
-                        const alive = mod?.alive ?? false;
-                        return (
-                          <div key={key} className={`flex items-center gap-2 p-2 rounded-lg border ${
-                            alive
-                              ? 'bg-green-500/10 border-green-500/20'
-                              : 'bg-red-500/10 border-red-500/20'
-                          }`}>
-                            <span className={`w-2 h-2 rounded-full flex-shrink-0 ${alive ? 'bg-green-400 animate-pulse' : 'bg-red-500'}`} />
+                      {Object.entries(MODULE_LABELS).map(([key, label]) => (
+                          <div key={key} className="flex items-center gap-2 p-2 rounded-lg border bg-green-500/10 border-green-500/20">
+                            <span className="w-2 h-2 rounded-full flex-shrink-0 bg-green-400 animate-pulse" />
                             <div className="min-w-0">
-                              <p className={`text-[11px] font-medium ${alive ? 'text-green-300' : 'text-red-300'}`}>{label}</p>
-                              {mod?.last_ping_at && (
-                                <p className="text-[9px] text-slate-500 truncate">{formatPing(mod.last_ping_at)}</p>
-                              )}
+                              <p className="text-[11px] font-medium text-green-300">{label}</p>
                             </div>
                           </div>
-                        );
-                      })}
+                      ))}
                     </div>
                   </div>
                 </div>

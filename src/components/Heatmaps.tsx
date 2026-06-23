@@ -25,6 +25,7 @@ import {
   PieChart, Pie, Cell, AreaChart, Area,
 } from 'recharts';
 import { useContainerWidth } from '../hooks/useContainerWidth';
+import { useWorkHours } from '../hooks/useWorkHours';
 import InsightsPanel from './shared/InsightsPanel';
 import DateRangePicker from './shared/DateRangePicker';
 import ExportPDFButton from './shared/ExportPDFButton';
@@ -202,6 +203,7 @@ const PremiumDonut = ({ data, colors, total, labelTitle }: { data: { name: strin
 const Heatmaps = () => {
   const { t } = useLanguage();
   const storeRefresh = useStoreChange();
+  const workHours = useWorkHours();
   const [chart1Ref, chart1W] = useContainerWidth(800);
   const [chart2Ref, chart2W] = useContainerWidth(800);
   const [chart3Ref, chart3W] = useContainerWidth(800);
@@ -325,10 +327,10 @@ const Heatmaps = () => {
       }))
       .filter(summary => {
           const hour = parseInt(summary.hour, 10);
-          return hour >= 10 && hour <= 22;
+          return hour >= workHours.work_start && hour <= workHours.work_end;
       })
       .sort((a, b) => parseInt(a.hour, 10) - parseInt(b.hour, 10));
-  }, [dailyData?.hourlySummary]);
+  }, [dailyData?.hourlySummary, workHours.work_start, workHours.work_end]);
 
 
   const handleDataChange = (hour: string, field: 'totalVisitors' | 'avgDwellTime', value: string) => {

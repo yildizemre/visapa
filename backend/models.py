@@ -152,6 +152,8 @@ class SiteConfig(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     site_name = db.Column(db.String(120))
+    work_start = db.Column(db.Integer, default=10)  # Mesai başlangıç saati (0-23)
+    work_end = db.Column(db.Integer, default=22)    # Mesai bitiş saati (0-23)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 

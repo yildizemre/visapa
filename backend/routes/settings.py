@@ -94,6 +94,44 @@ def get_managed_stores():
 
 
 # --- Kurulum: Site + Kameralar ---
+@settings_bp.route('/work-hours', methods=['GET'])
+@jwt_required()
+def get_work_hours():
+    """Mesai saatlerini getir: {work_start, work_end}"""
+    user_id = get_settings_user_id() or get_jwt_identity()
+    site = SiteConfig.query.filter_by(user_id=user_id).first()
+    return {
+        'work_start': (site.work_start if site and site.work_start is not None else 10),
+        'work_end': (site.work_end if site and site.work_end is not None else 22),
+    }
+
+
+@settings_bp.route('/work-hours', methods=['PUT'])
+@jwt_required()
+@write_permission_required
+def update_work_hours():
+    """Mesai saatlerini güncelle. Body: {work_start, work_end}"""
+    user_id = get_jwt_identity()
+    data = request.get_json() or {}
+    start = data.get('work_start')
+    end = data.get('work_end')
+    if start is None or end is None:
+        return {'error': 'work_start ve work_end gerekli'}, 400
+    start = int(start)
+    end = int(end)
+    if not (0 <= start <= 23 and 0 <= end <= 23 and start < end):
+        return {'error': 'Geçersiz saat aralığı (0-23, başlangıç < bitiş)'}, 400
+    site = SiteConfig.query.filter_by(user_id=user_id).first()
+    if site:
+        site.work_start = start
+        site.work_end = end
+    else:
+        site = SiteConfig(user_id=user_id, work_start=start, work_end=end)
+        db.session.add(site)
+    db.session.commit()
+    return {'work_start': start, 'work_end': end, 'message': 'Mesai saatleri güncellendi'}
+
+
 @settings_bp.route('/cameras', methods=['GET'])
 @jwt_required()
 def get_cameras():
