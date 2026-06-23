@@ -113,8 +113,13 @@ def get_resolved_user_ids():
             return ([store_id_param], store_id_param)
         return (managed_ids, None)  # konsolide: tüm mağazalar
 
-    if role == 'admin' and store_id_param:
-        return ([store_id_param], store_id_param)
+    if role == 'admin':
+        if store_id_param:
+            return ([store_id_param], store_id_param)
+        # Admin: tüm user'ları gör
+        all_users = User.query.filter_by(is_active=True).all()
+        all_ids = [u.id for u in all_users]
+        return (all_ids if all_ids else [user_id], None)
 
     # Normal user veya store_manager: company bazlı erişim
     # JWT'deki company_id'yi kullan (store switcher ile değişebilir)
