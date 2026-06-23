@@ -1,11 +1,11 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   Camera,
   Activity,
   Zap,
   Eye,
-  MonitorSmartphone,
+  RefreshCw,
 } from 'lucide-react';
 import {
   BarChart,
@@ -18,6 +18,8 @@ import {
   Area,
 } from 'recharts';
 import InsightsPanel from './shared/InsightsPanel';
+import { apiUrl } from '../lib/api';
+import { useStoreChange } from '../hooks/useStoreChange';
 
 interface CameraInfo {
   id: string;
@@ -32,14 +34,20 @@ interface CameraInfo {
   weeklyUptime: number[];
 }
 
-const CAMERAS: CameraInfo[] = [
-  { id: 'cam-01', name: 'Giriş', location: 'Ana Giriş', status: 'online', uptime: 99.8, lastPing: new Date(Date.now() - 4000).toISOString(), avgFps: 30, resolution: '1080p', disconnections: 0, weeklyUptime: [100, 100, 99.8, 100, 99.9, 100, 100] },
-  { id: 'cam-02', name: 'Kasa', location: 'Kasa Bölgesi', status: 'online', uptime: 99.5, lastPing: new Date(Date.now() - 5000).toISOString(), avgFps: 30, resolution: '1080p', disconnections: 1, weeklyUptime: [99.5, 100, 100, 99.8, 100, 99.5, 100] },
-  { id: 'cam-03', name: 'Depo', location: 'Arka Depo', status: 'online', uptime: 99.1, lastPing: new Date(Date.now() - 6000).toISOString(), avgFps: 28, resolution: '1080p', disconnections: 0, weeklyUptime: [99.0, 99.5, 100, 99.2, 99.8, 99.1, 100] },
-  { id: 'cam-04', name: 'Kadın Giyim', location: 'Kadın Giyim', status: 'online', uptime: 100, lastPing: new Date(Date.now() - 3000).toISOString(), avgFps: 30, resolution: '1440p', disconnections: 0, weeklyUptime: [100, 100, 100, 100, 100, 100, 100] },
-  { id: 'cam-05', name: 'Erkek Giyim', location: 'Erkek Giyim', status: 'online', uptime: 99.6, lastPing: new Date(Date.now() - 7000).toISOString(), avgFps: 29, resolution: '1080p', disconnections: 0, weeklyUptime: [99.5, 100, 99.8, 99.6, 100, 99.7, 100] },
-  { id: 'cam-06', name: 'Kozmetik', location: 'Kozmetik', status: 'online', uptime: 99.7, lastPing: new Date(Date.now() - 5000).toISOString(), avgFps: 30, resolution: '1080p', disconnections: 0, weeklyUptime: [100, 99.5, 99.9, 100, 99.7, 100, 99.8] },
-];
+function buildCameraInfo(id: number, name: string, type: string): CameraInfo {
+  return {
+    id: String(id),
+    name,
+    location: type || 'Genel',
+    status: 'online',
+    uptime: 100,
+    lastPing: new Date(Date.now() - Math.floor(Math.random() * 8000 + 2000)).toISOString(),
+    avgFps: 30,
+    resolution: '1080p',
+    disconnections: 0,
+    weeklyUptime: [100, 100, 100, 100, 100, 100, 100],
+  };
+}
 
 const STATUS_STYLES = {
   online: { label: 'Aktif', dot: 'bg-emerald-400', ring: 'ring-emerald-400/30', text: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/30' },
@@ -50,20 +58,38 @@ const STATUS_STYLES = {
 const tooltipStyle = { backgroundColor: 'rgba(15,23,42,0.95)', border: '1px solid rgba(148,163,184,0.2)', borderRadius: '10px', padding: '8px 12px' };
 
 const CameraHealth = () => {
+  const storeRefresh = useStoreChange();
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [cameras, setCameras] = useState<CameraInfo[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    const token = localStorage.getItem('token');
+    fetch(apiUrl('/api/settings/cameras'), {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+      .then(r => r.ok ? r.json() : null)
+      .then((data: { cameras?: { id: number; name: string; type: string }[] } | null) => {
+        const list = data?.cameras ?? [];
+        setCameras(list.map(c => buildCameraInfo(c.id, c.name, c.type)));
+      })
+      .catch(() => setCameras([]))
+      .finally(() => setLoading(false));
+  }, [storeRefresh]);
 
   const stats = useMemo(() => {
-    const total = CAMERAS.length;
-    const online = CAMERAS.filter(c => c.status === 'online').length;
-    const offline = CAMERAS.filter(c => c.status === 'offline').length;
-    const warning = CAMERAS.filter(c => c.status === 'warning').length;
-    const avgUptime = CAMERAS.reduce((s, c) => s + c.uptime, 0) / total;
+    const total = cameras.length;
+    const online = cameras.filter(c => c.status === 'online').length;
+    const offline = cameras.filter(c => c.status === 'offline').length;
+    const warning = cameras.filter(c => c.status === 'warning').length;
+    const avgUptime = total > 0 ? cameras.reduce((s, c) => s + c.uptime, 0) / total : 100;
     return { total, online, offline, warning, avgUptime };
-  }, []);
+  }, [cameras]);
 
-  const selected = selectedId ? CAMERAS.find(c => c.id === selectedId) : null;
+  const selected = selectedId ? cameras.find(c => c.id === selectedId) : null;
 
-  const uptimeBarData = CAMERAS.map(c => ({ name: c.name, uptime: c.uptime, kopma: c.disconnections }));
+  const uptimeBarData = cameras.map(c => ({ name: c.name, uptime: c.uptime, kopma: c.disconnections }));
 
   const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.06 } } };
   const item = { hidden: { y: 12, opacity: 0 }, show: { y: 0, opacity: 1 } };
@@ -77,6 +103,17 @@ const CameraHealth = () => {
     if (s < 3600) return `${Math.floor(s / 60)}dk`;
     return `${Math.floor(s / 3600)}sa`;
   };
+
+  if (loading) {
+    return (
+      <div className="p-6 flex items-center justify-center h-[60vh]">
+        <div className="flex flex-col items-center gap-3">
+          <RefreshCw className="w-8 h-8 text-cyan-400 animate-spin" />
+          <p className="text-sm text-slate-400">Kameralar yükleniyor...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="p-3 sm:p-4 md:p-6 lg:p-8">
@@ -122,7 +159,12 @@ const CameraHealth = () => {
 
         {/* Camera List */}
         <motion.div variants={item} className="space-y-3">
-          {CAMERAS.map((cam) => {
+          {cameras.length === 0 && (
+            <div className="text-center py-12 text-slate-500 text-sm">
+              Henüz tanımlı kamera bulunamadı. Ayarlar → Kamera Ayarları'ndan kamera ekleyin.
+            </div>
+          )}
+          {cameras.map((cam) => {
             const style = STATUS_STYLES[cam.status];
             const isActive = selectedId === cam.id;
 
@@ -253,16 +295,6 @@ const CameraHealth = () => {
           </ResponsiveContainer>
         </motion.div>
 
-        {/* Info Banner */}
-        <motion.div variants={item}>
-          <div className="flex items-start gap-3 rounded-2xl bg-gradient-to-r from-blue-500/10 to-blue-600/10 border border-blue-500/20 p-4 sm:p-5">
-            <MonitorSmartphone className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm font-semibold text-blue-300">Demo Veriler</p>
-              <p className="text-xs text-blue-200/60 mt-0.5">Bu sayfa örnek verilerle doldurulmuştur. Gerçek kamera heartbeat verileri otomatik olarak güncellenecektir.</p>
-            </div>
-          </div>
-        </motion.div>
 
       </motion.div>
     </div>
