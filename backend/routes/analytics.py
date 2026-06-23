@@ -5,8 +5,18 @@ from collections import defaultdict
 from zoneinfo import ZoneInfo
 from sqlalchemy import func
 
-from models import db, CustomerData, QueueData, HeatmapData, StaffData, Report
+from models import db, CustomerData, QueueData, HeatmapData, StaffData, Report, SiteConfig
 from user_context import get_resolved_user_ids
+
+
+def _get_work_hours(user_ids: list) -> tuple:
+    """Kullanıcı listesinden ilk SiteConfig'deki mesai saatlerini döndürür. Varsayılan: 10-22."""
+    if not user_ids:
+        return 10, 23
+    site = SiteConfig.query.filter(SiteConfig.user_id.in_(user_ids)).first()
+    start = site.work_start if site and site.work_start is not None else 10
+    end = site.work_end if site and site.work_end is not None else 22
+    return start, end + 1  # range() için end+1
 
 analytics_bp = Blueprint('analytics', __name__)
 ISTANBUL_TZ = ZoneInfo("Europe/Istanbul")
@@ -346,10 +356,11 @@ def get_flow_data():
         result_data[date_str]['summary']['total_entered'] += v['entered']
         result_data[date_str]['summary']['total_exited'] += v['exited']
 
-    # Her tarih için 10:00–22:00 arası tüm saatleri döndür; veri yoksa 0 (saat saat gösterim için)
+    # Her tarih için mesai saatleri arası tüm saatleri döndür; veri yoksa 0 (saat saat gösterim için)
+    _wh_start, _wh_end = _get_work_hours(user_ids)
     for date_str in result_data:
         hourly = result_data[date_str]['hourly_data']
-        for h in range(10, 23):
+        for h in range(_wh_start, _wh_end):
             hour_key = f'{h:02d}:00'
             if hour_key not in hourly:
                 hourly[hour_key] = {'entered': 0, 'exited': 0, 'editable_id': None}
@@ -828,8 +839,9 @@ def queues_daily_summary():
         if by_hour[h]['editable_id'] is None:
             by_hour[h]['editable_id'] = r.id
 
+    _wh_start, _wh_end = _get_work_hours(user_ids)
     hourly = []
-    for h in range(10, 23):
+    for h in range(_wh_start, _wh_end):
         key = str(h)
         v = by_hour[key]
         avg_wt = v['wait_sum'] / v['totalCustomers'] if v['totalCustomers'] > 0 else 0
@@ -998,8 +1010,9 @@ def heatmaps_daily_summary():
         if by_hour[h]['editable_id'] is None:
             by_hour[h]['editable_id'] = r.id
     
+    _wh_start, _wh_end = _get_work_hours(user_ids)
     hourly = []
-    for h in range(10, 23):
+    for h in range(_wh_start, _wh_end):
         key = str(h)
         v = by_hour[key]
         avg_dwell = v['intensity_sum'] / v['count'] if v['count'] > 0 else 0

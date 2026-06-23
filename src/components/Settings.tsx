@@ -136,6 +136,48 @@ const Settings = () => {
   const [passwordMessage, setPasswordMessage] = useState({ type: '', text: '' });
   const [isSavingPassword, setIsSavingPassword] = useState(false);
 
+  // Mesai saati state'leri
+  const [workStart, setWorkStart] = useState<number>(10);
+  const [workEnd, setWorkEnd] = useState<number>(22);
+  const [workHoursMsg, setWorkHoursMsg] = useState({ type: '', text: '' });
+  const [isSavingWorkHours, setIsSavingWorkHours] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    fetch(apiUrl('/api/settings/work-hours'), {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(r => r.ok ? r.json() : null)
+      .then((data: { work_start: number; work_end: number } | null) => {
+        if (data) { setWorkStart(data.work_start); setWorkEnd(data.work_end); }
+      })
+      .catch(() => {});
+  }, [storeRefresh]);
+
+  const handleSaveWorkHours = async () => {
+    setIsSavingWorkHours(true);
+    setWorkHoursMsg({ type: '', text: '' });
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch(apiUrl('/api/settings/work-hours'), {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ work_start: workStart, work_end: workEnd }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setWorkHoursMsg({ type: 'success', text: 'Mesai saatleri kaydedildi' });
+      } else {
+        setWorkHoursMsg({ type: 'error', text: data.error || 'Hata oluştu' });
+      }
+    } catch {
+      setWorkHoursMsg({ type: 'error', text: 'Bağlantı hatası' });
+    } finally {
+      setIsSavingWorkHours(false);
+      setTimeout(() => setWorkHoursMsg({ type: '', text: '' }), 3000);
+    }
+  };
+
   // Kamera düzenleme için state'ler
   const [editingCameraId, setEditingCameraId] = useState<number | null>(null);
   const [cameraEditForm, setCameraEditForm] = useState({ name: '', type: '', location: '' });
@@ -429,6 +471,57 @@ const Settings = () => {
                         {isSavingPassword ? <RefreshCw className="w-4 h-4 sm:w-5 sm:h-5 animate-spin"/> : t('settings.updatePassword')}
                     </button>
                 </form>
+            </div>
+
+            {/* Mesai Saati */}
+            <div className="border-t border-slate-700 pt-4 sm:pt-6 md:pt-8">
+              <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-white mb-1 flex items-center gap-2">
+                <Save className="w-4 h-4 text-indigo-400" /> Mesai Saatleri
+              </h3>
+              <p className="text-xs text-slate-500 mb-4">Grafik ve tablolar yalnızca bu saat aralığındaki veriyi gösterir.</p>
+              <div className="flex flex-wrap items-end gap-4 max-w-md">
+                <div className="flex-1 min-w-[100px]">
+                  <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1">Başlangıç Saati</label>
+                  <select
+                    value={workStart}
+                    onChange={e => setWorkStart(Number(e.target.value))}
+                    className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm"
+                  >
+                    {Array.from({ length: 24 }, (_, i) => (
+                      <option key={i} value={i}>{String(i).padStart(2,'0')}:00</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="flex-1 min-w-[100px]">
+                  <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1">Bitiş Saati</label>
+                  <select
+                    value={workEnd}
+                    onChange={e => setWorkEnd(Number(e.target.value))}
+                    className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm"
+                  >
+                    {Array.from({ length: 24 }, (_, i) => (
+                      <option key={i} value={i}>{String(i).padStart(2,'0')}:00</option>
+                    ))}
+                  </select>
+                </div>
+                <button
+                  onClick={handleSaveWorkHours}
+                  disabled={isSavingWorkHours || workStart >= workEnd}
+                  className="flex items-center gap-2 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors disabled:bg-slate-600 text-sm"
+                >
+                  {isSavingWorkHours ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+                  Kaydet
+                </button>
+              </div>
+              {workStart >= workEnd && (
+                <p className="text-xs text-red-400 mt-2">Başlangıç saati bitiş saatinden küçük olmalıdır.</p>
+              )}
+              {workHoursMsg.text && (
+                <div className={`flex items-center gap-2 text-xs sm:text-sm p-2 sm:p-3 rounded-lg mt-3 max-w-md ${workHoursMsg.type === 'success' ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}`}>
+                  {workHoursMsg.type === 'success' ? <CheckCircle className="w-4 h-4 flex-shrink-0" /> : <AlertTriangle className="w-4 h-4 flex-shrink-0" />}
+                  <span>{workHoursMsg.text}</span>
+                </div>
+              )}
             </div>
           </motion.div>
         );

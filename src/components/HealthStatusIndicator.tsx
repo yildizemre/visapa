@@ -13,7 +13,7 @@ const HealthStatusIndicator: React.FC = () => {
     const fetchHealthStatus = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`${import.meta.env.VITE_API_URL ?? (import.meta.env.DEV ? '' : 'http://127.0.0.1:5000')}/api/health/status`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL ?? ''}/api/health/status`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           }

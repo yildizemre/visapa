@@ -166,7 +166,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
       : stores.length > 0 ? 'alive' : 'dead'
     : null;
 
-  const overall = isAdmin ? adminOverall : ownStatus?.overall ?? 'dead';
+  const overall = isAdmin ? adminOverall : (ownStatus?.overall === 'alive' || ownStatus?.overall === 'partial') ? ownStatus.overall : 'alive';
 
   const deadCount = isAdmin ? stores.filter(s => s.overall === 'dead').length : 0;
   const partialCount = isAdmin ? stores.filter(s => s.overall === 'partial').length : 0;
