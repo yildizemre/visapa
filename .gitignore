@@ -33,3 +33,7 @@ backend/*.db
 backend/instance/
 # server_db klasörü (geçici, push'a dahil etme)
 server_db/
+
+# Local data & reports
+yas/
+lara/

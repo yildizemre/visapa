@@ -111,7 +111,7 @@ def get_work_hours():
 @write_permission_required
 def update_work_hours():
     """Mesai saatlerini güncelle. Body: {work_start, work_end}"""
-    user_id = get_jwt_identity()
+    user_id = get_settings_user_id() or get_jwt_identity()
     data = request.get_json() or {}
     start = data.get('work_start')
     end = data.get('work_end')

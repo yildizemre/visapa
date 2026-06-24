@@ -327,7 +327,7 @@ const Heatmaps = () => {
       }))
       .filter(summary => {
           const hour = parseInt(summary.hour, 10);
-          return hour >= workHours.work_start && hour <= workHours.work_end;
+          return hour >= workHours.work_start && hour < workHours.work_end;
       })
       .sort((a, b) => parseInt(a.hour, 10) - parseInt(b.hour, 10));
   }, [dailyData?.hourlySummary, workHours.work_start, workHours.work_end]);

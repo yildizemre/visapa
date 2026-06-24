@@ -167,6 +167,9 @@ const Settings = () => {
       const data = await res.json();
       if (res.ok) {
         setWorkHoursMsg({ type: 'success', text: 'Mesai saatleri kaydedildi' });
+        // Cache'i temizle — diğer modüller güncel veriyi alsın
+        const { invalidateWorkHoursCache } = await import('../hooks/useWorkHours');
+        invalidateWorkHoursCache();
       } else {
         setWorkHoursMsg({ type: 'error', text: data.error || 'Hata oluştu' });
       }

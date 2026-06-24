@@ -30,7 +30,7 @@ def migrate():
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     """)
-    print("✓ companies tablosu hazır")
+    print("OK: companies tablosu hazir")
 
     # 2. users tablosuna company_id kolonu ekle (yoksa)
     cur.execute("PRAGMA table_info(users)")
@@ -38,19 +38,19 @@ def migrate():
 
     if 'company_id' not in columns:
         cur.execute("ALTER TABLE users ADD COLUMN company_id INTEGER REFERENCES companies(id)")
-        print("✓ users.company_id kolonu eklendi")
+        print("OK: users.company_id kolonu eklendi")
     else:
         print("- users.company_id zaten mevcut")
 
     if 'company_role' not in columns:
         cur.execute("ALTER TABLE users ADD COLUMN company_role VARCHAR(20) DEFAULT 'user'")
-        print("✓ users.company_role kolonu eklendi")
+        print("OK: users.company_role kolonu eklendi")
     else:
         print("- users.company_role zaten mevcut")
 
     conn.commit()
     conn.close()
-    print("\n✅ Migration tamamlandı. DB bozulmadı.")
+    print("\nOK: Migration tamamlandi. DB bozulmadi.")
 
 
 if __name__ == '__main__':
