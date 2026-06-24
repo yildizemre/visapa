@@ -10,13 +10,14 @@ from user_context import get_resolved_user_ids
 
 
 def _get_work_hours(user_ids: list) -> tuple:
-    """Kullanıcı listesinden ilk SiteConfig'deki mesai saatlerini döndürür. Varsayılan: 10-22."""
+    """Kullanıcı listesinden ilk SiteConfig'deki mesai saatlerini döndürür. Varsayılan: 10-22.
+    work_end exclusive: work_end=21 → son slot 20:00 (20-21 periyodu). range(start, end) kullanın."""
     if not user_ids:
-        return 10, 23
+        return 10, 22
     site = SiteConfig.query.filter(SiteConfig.user_id.in_(user_ids)).first()
     start = site.work_start if site and site.work_start is not None else 10
     end = site.work_end if site and site.work_end is not None else 22
-    return start, end + 1  # range() için end+1
+    return start, end  # range(start, end) → son slot = end-1
 
 analytics_bp = Blueprint('analytics', __name__)
 ISTANBUL_TZ = ZoneInfo("Europe/Istanbul")
@@ -302,6 +303,13 @@ def post_customer():
         check_anomalies_for_user(int(target_user_id), user_name, data_timestamp=r.timestamp)
     except Exception as e:
         print(f"[Anomaly Check] Hata: {e}")
+
+    # Heartbeat güncelle
+    try:
+        from routes.health import update_module_heartbeat
+        update_module_heartbeat(int(target_user_id), 'counting')
+    except Exception as e:
+        print(f"[Heartbeat Auto-Update] Hata: {e}")
 
     return {'id': r.id, 'message': 'Kaydedildi'}, 201
 
@@ -774,6 +782,14 @@ def post_queue():
     )
     db.session.add(r)
     db.session.commit()
+
+    # Heartbeat güncelle
+    try:
+        from routes.health import update_module_heartbeat
+        update_module_heartbeat(int(r.user_id), 'queue')
+    except Exception as e:
+        print(f"[Heartbeat Auto-Update] Hata: {e}")
+
     return {'id': r.id, 'message': 'Kaydedildi'}, 201
 
 
@@ -955,6 +971,14 @@ def post_heatmap():
     )
     db.session.add(r)
     db.session.commit()
+
+    # Heartbeat güncelle
+    try:
+        from routes.health import update_module_heartbeat
+        update_module_heartbeat(int(r.user_id), 'heatmap')
+    except Exception as e:
+        print(f"[Heartbeat Auto-Update] Hata: {e}")
+
     return {'id': r.id, 'message': 'Kaydedildi'}, 201
 
 

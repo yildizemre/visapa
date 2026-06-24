@@ -240,14 +240,12 @@ const DailyFlowAnalytics: React.FC<DailyFlowAnalyticsProps> = ({ onDateChange, s
 
   const item = { hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 } };
 
-  // 10:00 - 22:00 sabit + API'den gelen ve bu aralık dışındaki saatler (veritabanındaki toplam tek saatte dönebiliyor)
+  // Sadece mesai saatleri arasındaki slotları göster (work_end exclusive: 21 → son slot 20:00)
   const filteredHourlyData = useMemo(() => {
       const hourly = flowData?.hourly_data ?? {};
-      const slotCount = workHours.work_end - workHours.work_start + 1;
+      const slotCount = workHours.work_end - workHours.work_start;
       const baseSlots = Array.from({ length: slotCount }, (_, i) => `${String(workHours.work_start + i).padStart(2, '0')}:00`);
-      const apiHours = Object.keys(hourly).filter((h) => !baseSlots.includes(h)).sort();
-      const allSlots = [...baseSlots, ...apiHours];
-      return allSlots.map((hour) => {
+      return baseSlots.map((hour) => {
         const data = hourly[hour] ?? { entered: 0, exited: 0, editable_id: null };
         return [hour, data] as const;
       });

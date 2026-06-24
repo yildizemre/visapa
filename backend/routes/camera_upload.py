@@ -133,6 +133,13 @@ def upload_image():
     db.session.add(record)
     db.session.commit()
 
+    # Heartbeat güncelle
+    try:
+        from routes.health import update_module_heartbeat
+        update_module_heartbeat(int(record.user_id), 'camera')
+    except Exception as e:
+        print(f"[Heartbeat Auto-Update] Hata: {e}")
+
     return jsonify(record.to_dict()), 201
 
 
@@ -269,6 +276,13 @@ def upload_by_name():
         camera.image_base64 = b64_data
         db.session.commit()
         
+        # Heartbeat güncelle
+        try:
+            from routes.health import update_module_heartbeat
+            update_module_heartbeat(int(user_id), 'camera')
+        except Exception as e:
+            print(f"[Heartbeat Auto-Update] Hata: {e}")
+
         return jsonify({
             'ok': True,
             'message': f"'{camera_name}' kamerası için yeni görüntü başarıyla kaydedildi.",

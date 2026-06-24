@@ -11,6 +11,11 @@ const DEFAULT_WORK_HOURS: WorkHours = { work_start: 10, work_end: 22 };
 
 let _cache: WorkHours | null = null;
 
+/** Cache'i temizle — Settings'den mesai kaydedildikten sonra çağır */
+export function invalidateWorkHoursCache() {
+  _cache = null;
+}
+
 export function useWorkHours(): WorkHours {
   const storeRefresh = useStoreChange();
   const [hours, setHours] = useState<WorkHours>(_cache ?? DEFAULT_WORK_HOURS);

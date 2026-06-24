@@ -44,6 +44,34 @@ def send_telegram_alert(message: str):
         print(f"[Telegram Alert Error] {e}")
 
 
+def update_module_heartbeat(user_id, module):
+    """Belirli bir modül için heartbeat zamanını günceller veya oluşturur."""
+    if module not in KNOWN_MODULES:
+        return
+    try:
+        now = datetime.utcnow()
+        rec = ServiceHeartbeat.query.filter_by(user_id=user_id).first()
+        if rec:
+            module_pings = _load_module_pings(rec)
+            module_pings[module] = now.isoformat()
+            rec.module_pings = json.dumps(module_pings)
+            rec.last_ping_at = now
+        else:
+            module_pings = {m: (now.isoformat() if m == module else None) for m in KNOWN_MODULES}
+            rec = ServiceHeartbeat(
+                user_id=user_id,
+                last_ping_at=now,
+                module_pings=json.dumps(module_pings),
+                received_pings=1,
+                expected_pings=len(KNOWN_MODULES),
+            )
+            db.session.add(rec)
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        print(f"[Heartbeat Auto-Update Error] {e}")
+
+
 def _load_module_pings(rec) -> dict:
     """ServiceHeartbeat kaydından module_pings dict'ini yükle."""
     if not rec or not rec.module_pings:

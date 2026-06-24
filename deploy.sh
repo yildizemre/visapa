@@ -22,6 +22,7 @@ echo '[deploy] Python deps...'
 
 echo '[deploy] DB migration (additive - veri kaybolmaz)...'
 ./venv/bin/python backend/migrate_companies.py
+./venv/bin/python backend/migrate_heartbeat.py
 
 echo '[deploy] Node deps...'
 npm install --legacy-peer-deps --silent
