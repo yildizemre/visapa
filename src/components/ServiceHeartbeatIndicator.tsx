@@ -389,7 +389,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
 
             {/* Footer */}
             <div className="px-4 py-2 border-t border-slate-700 bg-slate-800/60">
-              <p className="text-xs text-slate-500">Her 30 sn güncellenir • 30 dk içinde sinyal gelmezse modül kapalı sayılır</p>
+              <p className="text-xs text-slate-500">Her 30 sn güncellenir • 90 dk içinde sinyal gelmezse modül kapalı sayılır</p>
             </div>
           </motion.div>
         )}
