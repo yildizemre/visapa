@@ -15,7 +15,7 @@ health_bp = Blueprint('health', __name__)
 # Modül bazlı heartbeat: her modül 30 dakikada 1 ping atar.
 # Panel bu süre içinde ping gelmediyse o modülü kapalı sayar.
 MODULE_TIMEOUT_MINUTES = 30
-KNOWN_MODULES = ['counting', 'heatmap', 'queue', 'camera']
+KNOWN_MODULES = ['counting', 'heatmap', 'queue']
 
 # Telegram bildirim ayarları
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT', '')
@@ -176,10 +176,30 @@ def heartbeat():
 @health_bp.route('/heartbeat/status', methods=['GET'])
 @jwt_required()
 def heartbeat_status():
-    """Panel: kendi mağaza servisinin modül bazlı durumu."""
-    user_id = get_jwt_identity()
-    rec = ServiceHeartbeat.query.filter_by(user_id=user_id).first()
+    """Panel: kendi mağaza servisinin modül bazlı durumu.
+    Company bazlı: şirketin primary_user_id'sinin heartbeat'ini sorgula."""
+    from flask_jwt_extended import get_jwt
+    from models import Company
+    user_id = int(get_jwt_identity())
     now = datetime.utcnow()
+
+    # Company'nin primary_user_id'sine bak (veri o kullanıcıya bağlı)
+    target_user_id = user_id
+    claims = get_jwt() or {}
+    jwt_company_id = claims.get('company_id')
+    if jwt_company_id:
+        company = Company.query.get(jwt_company_id)
+        if company and company.primary_user_id:
+            target_user_id = company.primary_user_id
+    else:
+        # company_id JWT'de yoksa user'ın own company'sinden bak
+        u = User.query.get(user_id)
+        if u and u.company_id:
+            company = Company.query.get(u.company_id)
+            if company and company.primary_user_id:
+                target_user_id = company.primary_user_id
+
+    rec = ServiceHeartbeat.query.filter_by(user_id=target_user_id).first()
 
     if not rec:
         return {
@@ -191,8 +211,10 @@ def heartbeat_status():
         }
 
     module_pings = _load_module_pings(rec)
-    modules = _module_status(module_pings, now)
-    overall = _overall_status(module_pings, now)
+    # Sadece KNOWN_MODULES'daki modülleri filtrele (eski camera verisi varsa yoksay)
+    filtered_pings = {m: module_pings.get(m) for m in KNOWN_MODULES}
+    modules = _module_status(filtered_pings, now)
+    overall = _overall_status(filtered_pings, now)
     is_alive = overall in ('alive', 'partial')
 
     if overall == 'alive':

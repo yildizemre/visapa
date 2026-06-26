@@ -33,7 +33,6 @@ const MODULE_LABELS: Record<string, string> = {
   counting: 'Kişi Sayım',
   heatmap: 'Isı Haritası',
   queue: 'Kasa Analizi',
-  camera: 'Kamera',
 };
 
 function getRole(): string {

@@ -37,10 +37,19 @@ interface ChildCompany {
   is_active: boolean;
 }
 
+interface PrimaryUser {
+  id: number;
+  username: string;
+  full_name?: string | null;
+  email: string;
+}
+
 interface CompanyItem {
   id: number;
   name: string;
   parent_id: number | null;
+  primary_user_id?: number | null;
+  primary_user?: PrimaryUser | null;
   logo_base64?: string | null;
   is_active: boolean;
   user_count: number;
@@ -77,7 +86,51 @@ const AdminCompanies: React.FC = () => {
     company_role: 'user' as 'store_manager' | 'user',
   });
 
+  // DB Sahibi Atama
+  const [assignModal, setAssignModal] = useState<number | null>(null); // company_id
+  const [allUsers, setAllUsers] = useState<{id: number; username: string; full_name?: string; email: string}[]>([]);
+  const [selectedPrimaryUserId, setSelectedPrimaryUserId] = useState<number | null>(null);
+  const [assignLoading, setAssignLoading] = useState(false);
+
   const token = localStorage.getItem('token')?.trim() || '';
+
+  const fetchAllUsers = useCallback(async () => {
+    try {
+      const res = await fetch(apiUrl('/api/admin/users?per_page=100'), {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setAllUsers((data.users || []).map((u: {id: number; username: string; full_name?: string; email: string}) => ({ id: u.id, username: u.username, full_name: u.full_name, email: u.email })));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [token]);
+
+  const handleAssignPrimary = async () => {
+    if (!assignModal || !selectedPrimaryUserId) return;
+    setAssignLoading(true);
+    try {
+      const res = await fetch(apiUrl(`/api/admin/companies/${assignModal}/assign-primary`), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ user_id: selectedPrimaryUserId }),
+      });
+      if (res.ok) {
+        setAssignModal(null);
+        setSelectedPrimaryUserId(null);
+        fetchCompanies();
+      } else {
+        const err = await res.json().catch(() => ({}));
+        alert((err as { error?: string }).error || 'Hata olustu');
+      }
+    } catch {
+      alert('Sunucuya ulasilamadi');
+    } finally {
+      setAssignLoading(false);
+    }
+  };
 
   const fetchCompanies = useCallback(async () => {
     setLoading(true);
@@ -343,10 +396,17 @@ const AdminCompanies: React.FC = () => {
                         {(company.children?.length || 0) > 0 && (
                           <span className="flex items-center gap-1"><Store className="w-3 h-3" />{company.children!.length} alt mağaza</span>
                         )}
+                        {company.primary_user && (
+                          <span className="flex items-center gap-1 text-amber-400"><Shield className="w-3 h-3" />{company.primary_user.full_name || company.primary_user.username}</span>
+                        )}
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                    <button onClick={() => { setAssignModal(company.id); setSelectedPrimaryUserId(company.primary_user_id || null); fetchAllUsers(); }} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-600/80 hover:bg-amber-500 text-white text-xs font-medium transition-colors" title="DB Sahibi Ata">
+                      <Shield className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">DB Ata</span>
+                    </button>
                     <button onClick={() => { setChildParentId(company.id); setChildForm({ name: '' }); setChildModal('new'); }} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-600/80 hover:bg-purple-500 text-white text-xs font-medium transition-colors" title="Alt Mağaza Ekle">
                       <Store className="w-3.5 h-3.5" />
                       <span className="hidden sm:inline">Alt Mağaza</span>
@@ -479,6 +539,48 @@ const AdminCompanies: React.FC = () => {
                 <button type="button" onClick={() => { setChildModal(null); setChildParentId(null); }} className="flex-1 py-2.5 bg-slate-600 hover:bg-slate-700 rounded-lg text-white">İptal</button>
               </div>
             </form>
+          </motion.div>
+        </div>
+      )}
+
+      {/* ─── DB Sahibi Atama Modal ─── */}
+      {assignModal && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-slate-800 rounded-xl border border-slate-700 w-full max-w-md p-6 relative">
+            <button onClick={() => { setAssignModal(null); setSelectedPrimaryUserId(null); }} className="absolute top-3 right-3 p-1 text-slate-400 hover:text-white"><X className="w-5 h-5" /></button>
+            <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+              <Shield className="w-5 h-5 text-amber-400" />
+              DB Sahibi Ata
+            </h2>
+            <p className="text-sm text-slate-400 mb-4">
+              Bu kullanıcının verileri (kameralar, sayaçlar, ısı haritası vb.) şirkete bağlanır.
+            </p>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm text-slate-400 mb-1">Kullanıcı Seçin</label>
+                <select
+                  value={selectedPrimaryUserId ?? ''}
+                  onChange={(e) => setSelectedPrimaryUserId(e.target.value ? Number(e.target.value) : null)}
+                  className="w-full px-4 py-2.5 bg-slate-700 border border-slate-600 rounded-lg text-white"
+                >
+                  <option value="">-- Kullanıcı Seçin --</option>
+                  {allUsers.map((u) => (
+                    <option key={u.id} value={u.id}>{u.full_name || u.username} ({u.email})</option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={handleAssignPrimary}
+                  disabled={!selectedPrimaryUserId || assignLoading}
+                  className="flex-1 py-2.5 bg-amber-600 hover:bg-amber-700 disabled:opacity-50 rounded-lg text-white font-medium"
+                >
+                  {assignLoading ? 'Atanıyor...' : 'Ata'}
+                </button>
+                <button type="button" onClick={() => { setAssignModal(null); setSelectedPrimaryUserId(null); }} className="flex-1 py-2.5 bg-slate-600 hover:bg-slate-700 rounded-lg text-white">İptal</button>
+              </div>
+            </div>
           </motion.div>
         </div>
       )}

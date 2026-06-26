@@ -10,6 +10,7 @@ class Company(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
     parent_id = db.Column(db.Integer, db.ForeignKey('companies.id'), nullable=True)
+    primary_user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
     logo_base64 = db.Column(db.Text, nullable=True)
     is_active = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -19,6 +20,7 @@ class Company(db.Model):
             'id': self.id,
             'name': self.name,
             'parent_id': self.parent_id,
+            'primary_user_id': self.primary_user_id,
             'logo_base64': self.logo_base64,
             'is_active': self.is_active,
             'created_at': self.created_at.isoformat() if self.created_at else None,

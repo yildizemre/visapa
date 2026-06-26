@@ -17,7 +17,7 @@ notifications_bp = Blueprint('notifications', __name__)
 
 # Eşik değerleri
 CUSTOMER_DROP_THRESHOLD = 0.50  # Ortalamanın %50 altı
-QUEUE_WAIT_THRESHOLD_SECONDS = 180  # 3 dakika üzeri kuyruk bekleme
+QUEUE_WAIT_THRESHOLD_SECONDS = 600  # 10 dakika üzeri kuyruk bekleme
 
 
 def _get_telegram_config():
