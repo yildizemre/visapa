@@ -1,7 +1,7 @@
 // Heatmaps.tsx dosyasının TAMAMI
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Users, 
   Clock, 
@@ -15,7 +15,11 @@ import {
   ArrowDown,
   Minus,
   TrendingUp,
-  TrendingDown
+  TrendingDown,
+  Camera,
+  X,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { apiUrl } from '../lib/api';
@@ -197,6 +201,209 @@ const PremiumDonut = ({ data, colors, total, labelTitle }: { data: { name: strin
         })}
       </div>
     </div>
+  );
+};
+
+// Kamera Alan Galerisi Bileşeni
+interface CameraZoneData {
+  id: number;
+  name: string;
+  points: number[][];
+  color: string;
+}
+interface CameraWithZones {
+  id: number;
+  name: string;
+  type: string;
+  imageUrl: string;
+  zones?: CameraZoneData[];
+}
+
+const CameraZoneGallery: React.FC = () => {
+  const [cameras, setCameras] = useState<CameraWithZones[]>([]);
+  const [expandedCamera, setExpandedCamera] = useState<CameraWithZones | null>(null);
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+    fetch(apiUrl('/api/settings/cameras?include_zones=true'), {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if (d?.cameras) {
+          // Sadece ısı haritası kameraları veya resmi olan kameralar
+          const heatmapCams = d.cameras.filter((c: CameraWithZones) =>
+            c.type === 'Isı Haritası' || (c.imageUrl && c.zones && c.zones.length > 0)
+          );
+          // Resmi olan tüm kameralar (fallback)
+          const allWithImage = heatmapCams.length > 0 ? heatmapCams : d.cameras.filter((c: CameraWithZones) => c.imageUrl);
+          setCameras(allWithImage);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const scroll = (dir: 'left' | 'right') => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: dir === 'left' ? -280 : 280, behavior: 'smooth' });
+    }
+  };
+
+  if (cameras.length === 0) return null;
+
+  return (
+    <>
+      <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-2xl border border-slate-700/50 p-4 sm:p-5">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <Camera className="w-4 h-4 text-amber-400" />
+            <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">Kamera Alanları</h3>
+            <span className="text-[10px] text-slate-500 bg-slate-700/50 px-2 py-0.5 rounded-full">{cameras.length} kamera</span>
+          </div>
+          {cameras.length > 2 && (
+            <div className="flex items-center gap-1">
+              <button onClick={() => scroll('left')} className="p-1.5 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 text-slate-400 hover:text-white transition-colors">
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button onClick={() => scroll('right')} className="p-1.5 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 text-slate-400 hover:text-white transition-colors">
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+        </div>
+        <div ref={scrollRef} className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent snap-x">
+          {cameras.map((cam) => (
+            <div
+              key={cam.id}
+              onClick={() => setExpandedCamera(cam)}
+              className="relative flex-shrink-0 w-[240px] sm:w-[280px] h-[160px] sm:h-[180px] rounded-xl overflow-hidden border border-slate-700/50 hover:border-blue-500/50 transition-all cursor-pointer group snap-start"
+            >
+              {cam.imageUrl ? (
+                <img src={cam.imageUrl} alt={cam.name} className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full bg-slate-900 flex items-center justify-center">
+                  <Camera className="w-8 h-8 text-slate-600" />
+                </div>
+              )}
+              {/* Overlay with zone count */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-3">
+                <p className="text-sm font-bold text-white truncate">{cam.name}</p>
+                <p className="text-[10px] text-slate-300">
+                  {cam.zones && cam.zones.length > 0 ? `${cam.zones.length} alan tanımlı` : 'Alan tanımlanmamış'}
+                </p>
+              </div>
+              {/* Hover effect */}
+              <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <span className="text-xs font-medium text-white bg-blue-600/80 px-3 py-1.5 rounded-lg backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                  Büyüt
+                </span>
+              </div>
+              {/* Zone indicators on thumbnail */}
+              {cam.imageUrl && cam.zones && cam.zones.length > 0 && (
+                <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  {cam.zones.map((zone) => {
+                    if (!zone.points || zone.points.length < 3) return null;
+                    const pts = zone.points.map(p => `${p[0] * 100},${p[1] * 100}`).join(' ');
+                    return (
+                      <polygon
+                        key={zone.id}
+                        points={pts}
+                        fill={`${zone.color}20`}
+                        stroke={zone.color}
+                        strokeWidth="0.5"
+                      />
+                    );
+                  })}
+                </svg>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Expanded Modal */}
+      <AnimatePresence>
+        {expandedCamera && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setExpandedCamera(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-4xl w-full max-h-[85vh] bg-slate-900 rounded-2xl border border-slate-700/50 overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between px-5 py-3 border-b border-slate-700/50 bg-slate-800/50">
+                <div className="flex items-center gap-2">
+                  <Camera className="w-4 h-4 text-amber-400" />
+                  <h3 className="text-sm font-bold text-white">{expandedCamera.name}</h3>
+                  {expandedCamera.zones && expandedCamera.zones.length > 0 && (
+                    <span className="text-[10px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full">{expandedCamera.zones.length} alan</span>
+                  )}
+                </div>
+                <button onClick={() => setExpandedCamera(null)} className="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-white transition-colors">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              {/* Image with zones */}
+              <div className="relative w-full" style={{ maxHeight: 'calc(85vh - 120px)' }}>
+                {expandedCamera.imageUrl ? (
+                  <img src={expandedCamera.imageUrl} alt={expandedCamera.name} className="w-full h-auto max-h-[70vh] object-contain bg-black" />
+                ) : (
+                  <div className="w-full h-[400px] bg-slate-950 flex items-center justify-center">
+                    <Camera className="w-16 h-16 text-slate-700" />
+                  </div>
+                )}
+                {/* Zone overlays */}
+                {expandedCamera.imageUrl && expandedCamera.zones && expandedCamera.zones.length > 0 && (
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    {expandedCamera.zones.map((zone) => {
+                      if (!zone.points || zone.points.length < 3) return null;
+                      const pts = zone.points.map(p => `${p[0] * 100},${p[1] * 100}`).join(' ');
+                      const cx = zone.points.reduce((s, p) => s + p[0], 0) / zone.points.length * 100;
+                      const cy = zone.points.reduce((s, p) => s + p[1], 0) / zone.points.length * 100;
+                      return (
+                        <g key={zone.id}>
+                          <polygon
+                            points={pts}
+                            fill={`${zone.color}30`}
+                            stroke={zone.color}
+                            strokeWidth="0.4"
+                          />
+                          <text x={cx} y={cy} textAnchor="middle" dominantBaseline="middle" fill="white" fontSize="2.5" fontWeight="bold" style={{ textShadow: '0 0 3px rgba(0,0,0,0.8)' }}>
+                            {zone.name}
+                          </text>
+                        </g>
+                      );
+                    })}
+                  </svg>
+                )}
+              </div>
+              {/* Zone legend */}
+              {expandedCamera.zones && expandedCamera.zones.length > 0 && (
+                <div className="px-5 py-3 border-t border-slate-700/50 flex flex-wrap gap-2">
+                  {expandedCamera.zones.map((zone) => (
+                    <div key={zone.id} className="flex items-center gap-1.5 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700/50">
+                      <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: zone.color }} />
+                      <span className="text-xs text-slate-300 font-medium">{zone.name}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
@@ -506,6 +713,9 @@ const Heatmaps = () => {
           </div>
         </div>
         
+        {/* Kamera Alan Galerisi */}
+        <CameraZoneGallery />
+
         <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-5 sm:p-6 rounded-2xl border border-slate-700/50">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 mb-4 sm:mb-5">
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider">{t('heatmap.hourlyDetails')}</h3>

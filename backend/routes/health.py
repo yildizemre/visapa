@@ -12,10 +12,11 @@ from auth_utils import admin_required
 
 health_bp = Blueprint('health', __name__)
 
-# Modül bazlı heartbeat: her modül 30 dakikada 1 ping atar.
-# Panel bu süre içinde ping gelmediyse o modülü kapalı sayar.
-MODULE_TIMEOUT_MINUTES = 30
-KNOWN_MODULES = ['counting', 'heatmap', 'queue']
+# Modül bazlı heartbeat: AI uygulaması her 30 dakikada 1 kez POST /heartbeat atar.
+# camera: her zaman atılır (uygulama açıkken), counting/heatmap/queue: sistem çalışırken.
+# 35 dakika içinde ping gelmediyse modülü kapalı sayar (30dk interval + 5dk tolerans).
+MODULE_TIMEOUT_MINUTES = 35
+KNOWN_MODULES = ['camera', 'counting', 'heatmap', 'queue']
 
 # Telegram bildirim ayarları
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT', '')
@@ -199,9 +200,26 @@ def heartbeat_status():
             if company and company.primary_user_id:
                 target_user_id = company.primary_user_id
 
+    # Mesai saati kontrolü: mesai dışındaysa "off" durumu döndür
+    from models import SiteConfig
+    local_hour = (now + timedelta(hours=3)).hour  # TSİ saati
+    site = SiteConfig.query.filter_by(user_id=target_user_id).first()
+    work_start = site.work_start if site and site.work_start is not None else 9
+    work_end = site.work_end if site and site.work_end is not None else 22
+
+    is_off_hours = (local_hour >= work_end or local_hour < work_start)
+
     rec = ServiceHeartbeat.query.filter_by(user_id=target_user_id).first()
 
     if not rec:
+        if is_off_hours:
+            return {
+                'is_alive': True,
+                'overall': 'off',
+                'last_ping_at': None,
+                'modules': {m: {'alive': False, 'last_ping_at': None} for m in KNOWN_MODULES},
+                'message': f'Mesai dışı ({work_end}:00 - {work_start}:00). Sistem mesai saatlerinde aktif olacak.'
+            }
         return {
             'is_alive': False,
             'overall': 'dead',
@@ -211,11 +229,22 @@ def heartbeat_status():
         }
 
     module_pings = _load_module_pings(rec)
-    # Sadece KNOWN_MODULES'daki modülleri filtrele (eski camera verisi varsa yoksay)
+    # Sadece KNOWN_MODULES'daki modülleri filtrele
     filtered_pings = {m: module_pings.get(m) for m in KNOWN_MODULES}
     modules = _module_status(filtered_pings, now)
     overall = _overall_status(filtered_pings, now)
     is_alive = overall in ('alive', 'partial')
+
+    # Mesai dışındaysa ve tüm modüller dead ise → "off" olarak göster
+    # Ama camera modülü alive ise partial/alive olarak göstermeye devam et (uygulama açık)
+    if is_off_hours and overall == 'dead':
+        return {
+            'is_alive': True,
+            'overall': 'off',
+            'last_ping_at': rec.last_ping_at.isoformat() + 'Z',
+            'modules': modules,
+            'message': f'Mesai dışı ({work_end}:00 - {work_start}:00). Sistem kapalı, bu normal.'
+        }
 
     if overall == 'alive':
         message = 'Tüm modüller aktif.'
@@ -223,7 +252,7 @@ def heartbeat_status():
         dead_modules = [m for m, v in modules.items() if not v['alive']]
         message = f"Bazı modüllerden sinyal gelmiyor: {', '.join(dead_modules)}"
     else:
-        message = '30 dakikadır hiçbir modülden veri gelmiyor. Sistem çökmüş olabilir.'
+        message = '35 dakikadır hiçbir modülden veri gelmiyor. Sistem çökmüş olabilir.'
 
     return {
         'is_alive': is_alive,
@@ -246,8 +275,10 @@ def _build_store_entry(u, h, now):
             'received_pings': 0, 'expected_pings': len(KNOWN_MODULES), 'ratio': f"0/{len(KNOWN_MODULES)}",
         }
     module_pings = _load_module_pings(h)
-    modules = _module_status(module_pings, now)
-    overall = _overall_status(module_pings, now)
+    # Sadece KNOWN_MODULES'daki modülleri filtrele
+    filtered_pings = {m: module_pings.get(m) for m in KNOWN_MODULES}
+    modules = _module_status(filtered_pings, now)
+    overall = _overall_status(filtered_pings, now)
     alive_count = sum(1 for v in modules.values() if v['alive'])
     return {
         'id': u.id, 'username': u.username, 'email': u.email,
@@ -286,28 +317,55 @@ def run_dead_service_check():
     """
     Dead/partial service kontrolü. Hem route hem scheduler tarafından çağrılabilir.
     Flask uygulama context'i içinde çağrılmalıdır.
+    Sadece primary_user_id'si olan şirketlerin kullanıcılarını kontrol eder.
     """
+    from models import Company, SiteConfig
     now = datetime.utcnow()
+    local_hour = (now + timedelta(hours=3)).hour  # TSİ saati
+
     all_heartbeats = ServiceHeartbeat.query.all()
     heartbeat_map = {h.user_id: h for h in all_heartbeats}
-    all_store_users = User.query.filter(User.role != 'admin', User.is_active == True).all()
+
+    # Sadece primary_user'ları kontrol et (asıl veri sahibi kullanıcılar)
+    companies_with_primary = Company.query.filter(Company.primary_user_id.isnot(None)).all()
+    primary_user_ids = [c.primary_user_id for c in companies_with_primary]
+    # Ayrıca heartbeat kaydı olup company'ye bağlı olmayan tekil user'lar
+    for h in all_heartbeats:
+        if h.user_id not in primary_user_ids:
+            u = User.query.get(h.user_id)
+            if u and u.role != 'admin' and u.is_active:
+                primary_user_ids.append(h.user_id)
 
     dead_users = []
     partial_users = []
     alive_users = []
 
-    for u in all_store_users:
-        h = heartbeat_map.get(u.id)
+    for uid in set(primary_user_ids):
+        u = User.query.get(uid)
+        if not u or not u.is_active:
+            continue
+        h = heartbeat_map.get(uid)
         if h is None:
             continue
+
+        # Mesai dışı saatlerde (gece 23:00 - sabah 08:00) dead sayma
+        site = SiteConfig.query.filter_by(user_id=uid).first()
+        work_start = site.work_start if site and site.work_start is not None else 9
+        work_end = site.work_end if site and site.work_end is not None else 22
+        if local_hour >= work_end or local_hour < work_start:
+            # Mesai dışı: alive sayılır (mağaza kapalı, veri gelmemesi normal)
+            continue
+
         module_pings = _load_module_pings(h)
-        overall = _overall_status(module_pings, now)
+        # Sadece KNOWN_MODULES'daki modülleri filtrele (eski camera verisi varsa yoksay)
+        filtered_pings = {m: module_pings.get(m) for m in KNOWN_MODULES}
+        overall = _overall_status(filtered_pings, now)
         if overall == 'dead':
-            dead_users.append((u, h, module_pings))
+            dead_users.append((u, h, filtered_pings))
         elif overall == 'partial':
-            partial_users.append((u, h, module_pings))
+            partial_users.append((u, h, filtered_pings))
         else:
-            alive_users.append((u, h, module_pings))
+            alive_users.append((u, h, filtered_pings))
 
     def fmt_time(h):
         local_dt = h.last_ping_at + timedelta(hours=3)
