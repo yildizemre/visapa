@@ -199,9 +199,26 @@ def heartbeat_status():
             if company and company.primary_user_id:
                 target_user_id = company.primary_user_id
 
+    # Mesai saati kontrolü: mesai dışındaysa "off" durumu döndür
+    from models import SiteConfig
+    local_hour = (now + timedelta(hours=3)).hour  # TSİ saati
+    site = SiteConfig.query.filter_by(user_id=target_user_id).first()
+    work_start = site.work_start if site and site.work_start is not None else 9
+    work_end = site.work_end if site and site.work_end is not None else 22
+
+    is_off_hours = (local_hour >= work_end or local_hour < work_start)
+
     rec = ServiceHeartbeat.query.filter_by(user_id=target_user_id).first()
 
     if not rec:
+        if is_off_hours:
+            return {
+                'is_alive': True,
+                'overall': 'off',
+                'last_ping_at': None,
+                'modules': {m: {'alive': False, 'last_ping_at': None} for m in KNOWN_MODULES},
+                'message': f'Mesai dışı ({work_end}:00 - {work_start}:00). Sistem mesai saatlerinde aktif olacak.'
+            }
         return {
             'is_alive': False,
             'overall': 'dead',
@@ -216,6 +233,16 @@ def heartbeat_status():
     modules = _module_status(filtered_pings, now)
     overall = _overall_status(filtered_pings, now)
     is_alive = overall in ('alive', 'partial')
+
+    # Mesai dışındaysa ve dead ise → "off" olarak göster (normal durum)
+    if is_off_hours and overall == 'dead':
+        return {
+            'is_alive': True,
+            'overall': 'off',
+            'last_ping_at': rec.last_ping_at.isoformat() + 'Z',
+            'modules': modules,
+            'message': f'Mesai dışı ({work_end}:00 - {work_start}:00). Sistem kapalı, bu normal.'
+        }
 
     if overall == 'alive':
         message = 'Tüm modüller aktif.'

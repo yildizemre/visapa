@@ -140,7 +140,6 @@ def dashboard_insights():
 
     # 3. Kuyruk/trafik verimlilik oranı
     if avg_wait > 0 and this_entered > 0:
-        wait_per_100 = avg_wait / (this_entered / 100)
         if avg_wait > 90:
             insights.append({
                 'type': 'danger',
@@ -246,11 +245,11 @@ def customer_insights():
     except Exception as e:
         print("Error generating Card 1:", e)
         insights.append({
-            'type': 'warning',
-            'title': 'Müşteri Sadakat Analizi',
-            'description': 'Müşteri geri dönüş oranları analize hazır. Sadakat kartı veya SMS kampanyası ile ziyaretçilerin tekrar gelmesini teşvik edebilirsiniz.',
-            'metric': '12%',
-            'priority': 'high'
+            'type': 'info',
+            'title': 'Sadakat Analizi Hazırlanıyor',
+            'description': 'Müşteri geri dönüş verileri işleniyor. Yeterli veri toplandığında sadakat analizi burada görünecektir.',
+            'metric': '—',
+            'priority': 'low'
         })
 
     # --- KART 2: Zirve Saat Penceresi ---
@@ -288,18 +287,18 @@ def customer_insights():
             insights.append({
                 'type': 'info',
                 'title': 'Saat Bazlı Analiz',
-                'description': 'Ziyaretçi trafiğinin en yoğun olduğu saat 14:00 - 16:00 pencereleridir. Bu saatlerde ek kasa açılması ve ürün yerleşimlerinin tamamlanması önerilir.',
-                'metric': '14:00',
-                'priority': 'medium'
+                'description': 'Henüz yeterli saatlik veri birikimi yok. Birkaç gün içinde en yoğun saatler otomatik tespit edilecektir.',
+                'metric': '—',
+                'priority': 'low'
             })
     except Exception as e:
         print("Error generating Card 2:", e)
         insights.append({
             'type': 'info',
-            'title': 'Zirve Trafik Penceresi',
-            'description': 'Öğleden sonra saat 15:00 ile 17:00 arası mağaza trafiğinizin en yüksek olduğu zaman dilimidir. Personel vardiyalarını bu saate göre ayarlayın.',
-            'metric': '15:00',
-            'priority': 'medium'
+            'title': 'Saat Analizi Hazırlanıyor',
+            'description': 'Saatlik trafik verileri işleniyor. Yeterli veri toplandığında zirve saat analizi burada görünecektir.',
+            'metric': '—',
+            'priority': 'low'
         })
 
     # --- KART 3: Yaş/Cinsiyet Hedef Segmenti ---
@@ -348,10 +347,10 @@ def customer_insights():
         print("Error generating Card 3:", e)
         insights.append({
             'type': 'info',
-            'title': 'Hedef Kitle Demografisi',
-            'description': 'Mağazanızda 18-30 yaş arası genç kitle yoğunluğu göze çarpıyor. Sosyal medya trendlerine uygun dinamik ürün lansmanları yapın.',
-            'metric': '%42',
-            'priority': 'medium'
+            'title': 'Demografik Analiz Hazırlanıyor',
+            'description': 'Yaş ve cinsiyet verileri işleniyor. Yeterli veri toplandığında hedef segment analizi burada görünecektir.',
+            'metric': '—',
+            'priority': 'low'
         })
 
     # Her halükarda tam 3 kart döndüğünü doğrula (güvenlik koruması)
@@ -521,15 +520,15 @@ def heatmap_insights():
             'priority': 'medium'
         })
 
-        # En uzun kalınan bölge
-        zone_dwell_avg = {k: sum(v['dwell'])/len(v['dwell']) for k, v in by_zone.items() if v['dwell']}
-        if zone_dwell_avg:
-            longest_dwell = max(zone_dwell_avg, key=zone_dwell_avg.get)
+        # En yoğun bölge (intensity skoru)
+        zone_intensity_avg = {k: sum(v['dwell'])/len(v['dwell']) for k, v in by_zone.items() if v['dwell']}
+        if zone_intensity_avg:
+            most_intense = max(zone_intensity_avg, key=zone_intensity_avg.get)
             insights.append({
                 'type': 'info',
-                'title': f'En Uzun Kalınan: {longest_dwell}',
-                'description': f'{longest_dwell} bölgesinde ortalama {zone_dwell_avg[longest_dwell]:.0f}s kalınıyor. İlgiyi satışa dönüştürmek için personel desteği sağlayın.',
-                'metric': f'{zone_dwell_avg[longest_dwell]:.0f}s',
+                'title': f'En Yoğun İlgi: {most_intense}',
+                'description': f'{most_intense} bölgesinde yoğunluk skoru {zone_intensity_avg[most_intense]:.1f} ile en yüksek. İlgiyi satışa dönüştürmek için personel desteği sağlayın.',
+                'metric': f'{zone_intensity_avg[most_intense]:.1f}',
                 'priority': 'medium'
             })
 
@@ -728,42 +727,100 @@ def flow_insights():
 @insights_bp.route('/insights/camera_health', methods=['GET'])
 @jwt_required()
 def camera_health_insights():
-    """Kamera sağlığı önerileri (dummy - gerçek veri entegrasyonu yapılacak)."""
-    insights = [
-        {
-            'type': 'warning',
-            'title': 'Çevrimdışı Kamera Tespit Edildi',
-            'description': 'Depo Kamerası son 1 saattir sinyal göndermiyor. Kamera bağlantısını ve ağ ayarlarını kontrol edin.',
-            'metric': '1 kamera',
-            'priority': 'high'
-        },
-        {
-            'type': 'danger',
-            'title': 'Yüksek Kopma Oranı',
-            'description': 'Erkek Giyim Kamerası son 7 günde 8 kez bağlantı kopması yaşadı. Kablo veya ağ altyapısını kontrol edin.',
-            'metric': '8 kopma',
-            'priority': 'high'
-        },
-        {
-            'type': 'success',
-            'title': 'En Stabil Kamera',
-            'description': 'Kadın Giyim Kamerası %99.9 uptime ile en stabil performansı gösteriyor. Hiç kopma yaşanmadı.',
-            'metric': '%99.9',
-            'priority': 'low'
-        },
-        {
+    """Kamera sağlığı önerileri — gerçek heartbeat verisine dayalı."""
+    from models import ServiceHeartbeat, SiteConfig, Company
+    from routes.health import KNOWN_MODULES, MODULE_TIMEOUT_MINUTES, _load_module_pings
+    user_ids = _user_ids()
+    now = datetime.utcnow()
+    cutoff = now - timedelta(minutes=MODULE_TIMEOUT_MINUTES)
+    insights = []
+
+    # Kullanıcının heartbeat durumunu kontrol et
+    recs = ServiceHeartbeat.query.filter(ServiceHeartbeat.user_id.in_(user_ids)).all()
+    if not recs:
+        insights.append({
             'type': 'info',
-            'title': 'Ortalama FPS',
-            'description': 'Çevrimiçi kameraların ortalama FPS değeri 26.3. Tüm kameralar kabul edilebilir performans aralığında.',
-            'metric': '26.3 FPS',
-            'priority': 'low'
-        },
-        {
-            'type': 'warning',
-            'title': 'Düşük FPS Uyarısı',
-            'description': 'Erkek Giyim Kamerası ortalama 18.2 FPS ile düşük performans gösteriyor. Kamera kalitesini veya ağ bant genişliğini kontrol edin.',
-            'metric': '18.2 FPS',
+            'title': 'Sistem Durumu Bekleniyor',
+            'description': 'Henüz mağaza AI servisinden heartbeat verisi gelmedi. Sistem çalışmaya başladığında modül durumları burada görünecektir.',
+            'metric': 'Beklemede',
             'priority': 'medium'
-        }
-    ]
+        })
+        return {'insights': insights}
+
+    alive_modules = 0
+    dead_modules = []
+    total_modules = len(KNOWN_MODULES)
+    last_ping = None
+
+    for rec in recs:
+        mp = _load_module_pings(rec)
+        for m in KNOWN_MODULES:
+            ping_str = mp.get(m)
+            if ping_str:
+                try:
+                    ping_dt = datetime.fromisoformat(ping_str)
+                    if ping_dt > cutoff:
+                        alive_modules += 1
+                    else:
+                        dead_modules.append(m)
+                    if last_ping is None or ping_dt > last_ping:
+                        last_ping = ping_dt
+                except (ValueError, TypeError):
+                    dead_modules.append(m)
+            else:
+                dead_modules.append(m)
+
+    MODULE_TR = {'counting': 'Kişi Sayım', 'heatmap': 'Isı Haritası', 'queue': 'Kasa Analizi'}
+
+    if alive_modules == total_modules:
+        insights.append({
+            'type': 'success',
+            'title': 'Tüm Modüller Aktif',
+            'description': f'Kişi Sayım, Isı Haritası ve Kasa Analizi modülleri sorunsuz çalışıyor.',
+            'metric': f'{alive_modules}/{total_modules}',
+            'priority': 'low'
+        })
+    elif alive_modules > 0:
+        dead_names = ', '.join(MODULE_TR.get(m, m) for m in dead_modules)
+        insights.append({
+            'type': 'warning',
+            'title': 'Bazı Modüller Yanıt Vermiyor',
+            'description': f'{dead_names} modüllerinden {MODULE_TIMEOUT_MINUTES} dakikadır sinyal gelmiyor. Mağaza AI servisini kontrol edin.',
+            'metric': f'{alive_modules}/{total_modules}',
+            'priority': 'high'
+        })
+    else:
+        # Mesai dışı mı kontrol et
+        local_hour = (now + timedelta(hours=3)).hour
+        uid = user_ids[0] if user_ids else None
+        site = SiteConfig.query.filter_by(user_id=uid).first() if uid else None
+        ws = site.work_start if site and site.work_start is not None else 9
+        we = site.work_end if site and site.work_end is not None else 22
+        if local_hour >= we or local_hour < ws:
+            insights.append({
+                'type': 'info',
+                'title': 'Mesai Dışı',
+                'description': f'Mağaza mesai saatleri ({ws}:00 - {we}:00) dışında. Sistem mesai başladığında otomatik aktif olacaktır.',
+                'metric': 'Kapalı',
+                'priority': 'low'
+            })
+        else:
+            insights.append({
+                'type': 'danger',
+                'title': 'Tüm Modüller Kapalı',
+                'description': f'{MODULE_TIMEOUT_MINUTES} dakikadır hiçbir modülden sinyal gelmiyor. Mağaza AI servisinin çalışıp çalışmadığını kontrol edin.',
+                'metric': f'0/{total_modules}',
+                'priority': 'high'
+            })
+
+    if last_ping:
+        local_ping = last_ping + timedelta(hours=3)
+        insights.append({
+            'type': 'info',
+            'title': 'Son Sinyal',
+            'description': f'Son veri sinyali {local_ping.strftime("%d.%m.%Y %H:%M")} TSİ\'de alındı.',
+            'metric': local_ping.strftime('%H:%M'),
+            'priority': 'low'
+        })
+
     return {'insights': insights}
