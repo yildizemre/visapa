@@ -257,14 +257,25 @@ def activity_logs():
 # =====================================================================
 
 def _company_to_full_dict(c):
-    """Şirket dict'ine user_count ve children ekle."""
+    """Şirket dict'ine user_count, children ve primary_user bilgisi ekle."""
     d = c.to_dict()
     d['user_count'] = User.query.filter_by(company_id=c.id).count()
+    # Primary user bilgisi
+    if c.primary_user_id:
+        pu = User.query.get(c.primary_user_id)
+        d['primary_user'] = {'id': pu.id, 'username': pu.username, 'full_name': pu.full_name, 'email': pu.email} if pu else None
+    else:
+        d['primary_user'] = None
     children = Company.query.filter_by(parent_id=c.id).order_by(Company.name).all()
     d['children'] = []
     for child in children:
         cd = child.to_dict()
         cd['user_count'] = User.query.filter_by(company_id=child.id).count()
+        if child.primary_user_id:
+            cpu = User.query.get(child.primary_user_id)
+            cd['primary_user'] = {'id': cpu.id, 'username': cpu.username, 'full_name': cpu.full_name, 'email': cpu.email} if cpu else None
+        else:
+            cd['primary_user'] = None
         d['children'].append(cd)
     return d
 
@@ -335,8 +346,44 @@ def update_company(company_id):
         company.logo_base64 = data['logo_base64']
     if 'is_active' in data:
         company.is_active = bool(data['is_active'])
+    if 'primary_user_id' in data:
+        pid = data['primary_user_id']
+        if pid:
+            user = User.query.get(int(pid))
+            if not user:
+                return jsonify({'error': 'Kullanıcı bulunamadı'}), 404
+            company.primary_user_id = user.id
+            # Kullanıcıyı bu şirkete bağla
+            if user.company_id != company_id:
+                user.company_id = company_id
+        else:
+            company.primary_user_id = None
     db.session.commit()
     return jsonify({'message': 'Güncellendi', 'company': company.to_dict()})
+
+
+@admin_bp.route('/companies/<int:company_id>/assign-primary', methods=['POST'])
+@admin_required
+def assign_primary_user(company_id):
+    """Şirkete birincil kullanıcı (DB sahibi) ata. Bu kullanıcının verileri şirketin verileri olur."""
+    company = Company.query.get_or_404(company_id)
+    data = request.get_json(silent=True) or {}
+    user_id = data.get('user_id')
+    if not user_id:
+        return jsonify({'error': 'user_id gerekli'}), 400
+    user = User.query.get(int(user_id))
+    if not user:
+        return jsonify({'error': 'Kullanıcı bulunamadı'}), 404
+
+    company.primary_user_id = user.id
+    # Kullanıcıyı bu şirkete bağla ve store_manager yap
+    user.company_id = company_id
+    user.company_role = 'store_manager'
+    db.session.commit()
+    return jsonify({
+        'message': f'{user.full_name or user.username} şirkete birincil kullanıcı olarak atandı',
+        'company': company.to_dict(),
+    })
 
 
 @admin_bp.route('/companies/<int:company_id>', methods=['DELETE'])
