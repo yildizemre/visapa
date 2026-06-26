@@ -140,18 +140,23 @@ def get_cameras():
         user_id = get_jwt_identity()
     site = SiteConfig.query.filter_by(user_id=user_id).first()
     cameras = CameraConfig.query.filter_by(user_id=user_id).order_by(CameraConfig.sort_order, CameraConfig.id).all()
+    include_zones = request.args.get('include_zones', '').lower() in ('1', 'true', 'yes')
     items = []
     for c in cameras:
         img = c.image_base64
         if img and not img.startswith('data:'):
             img = f'data:image/jpeg;base64,{img}' if img else None
-        items.append({
+        cam_dict = {
             'id': c.id,
             'name': c.name,
             'type': c.camera_type or 'Kapı',
             'rtsp': c.rtsp_url or '',
             'imageUrl': img or '',
-        })
+        }
+        if include_zones:
+            zones = CameraZone.query.filter_by(camera_id=c.id, user_id=user_id).order_by(CameraZone.sort_order, CameraZone.id).all()
+            cam_dict['zones'] = [z.to_dict() for z in zones]
+        items.append(cam_dict)
     return {'site_name': site.site_name if site else None, 'cameras': items}
 
 

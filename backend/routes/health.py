@@ -12,10 +12,11 @@ from auth_utils import admin_required
 
 health_bp = Blueprint('health', __name__)
 
-# Modül bazlı heartbeat: veri saatte 1 gelir (analytics POST ile güncellenir).
-# 90 dakika içinde ping gelmediyse modülü kapalı sayar (1 saat + 30dk tolerans).
-MODULE_TIMEOUT_MINUTES = 90
-KNOWN_MODULES = ['counting', 'heatmap', 'queue']
+# Modül bazlı heartbeat: AI uygulaması her 30 dakikada 1 kez POST /heartbeat atar.
+# camera: her zaman atılır (uygulama açıkken), counting/heatmap/queue: sistem çalışırken.
+# 35 dakika içinde ping gelmediyse modülü kapalı sayar (30dk interval + 5dk tolerans).
+MODULE_TIMEOUT_MINUTES = 35
+KNOWN_MODULES = ['camera', 'counting', 'heatmap', 'queue']
 
 # Telegram bildirim ayarları
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT', '')
@@ -228,13 +229,14 @@ def heartbeat_status():
         }
 
     module_pings = _load_module_pings(rec)
-    # Sadece KNOWN_MODULES'daki modülleri filtrele (eski camera verisi varsa yoksay)
+    # Sadece KNOWN_MODULES'daki modülleri filtrele
     filtered_pings = {m: module_pings.get(m) for m in KNOWN_MODULES}
     modules = _module_status(filtered_pings, now)
     overall = _overall_status(filtered_pings, now)
     is_alive = overall in ('alive', 'partial')
 
-    # Mesai dışındaysa ve dead ise → "off" olarak göster (normal durum)
+    # Mesai dışındaysa ve tüm modüller dead ise → "off" olarak göster
+    # Ama camera modülü alive ise partial/alive olarak göstermeye devam et (uygulama açık)
     if is_off_hours and overall == 'dead':
         return {
             'is_alive': True,
@@ -250,7 +252,7 @@ def heartbeat_status():
         dead_modules = [m for m, v in modules.items() if not v['alive']]
         message = f"Bazı modüllerden sinyal gelmiyor: {', '.join(dead_modules)}"
     else:
-        message = '90 dakikadır hiçbir modülden veri gelmiyor. Sistem çökmüş olabilir.'
+        message = '35 dakikadır hiçbir modülden veri gelmiyor. Sistem çökmüş olabilir.'
 
     return {
         'is_alive': is_alive,
