@@ -234,8 +234,8 @@ const CameraZoneGallery: React.FC = () => {
       .then(d => {
         if (d?.cameras) {
           // Zone tanımlı kameraları öncelikli göster, yoksa resmi olan tüm kameralar
-          const withZones = d.cameras.filter((c: CameraWithZones) => c.zones && c.zones.length > 0);
-          const withImage = d.cameras.filter((c: CameraWithZones) => c.imageUrl);
+          const withZones = d.cameras.filter((c: CameraWithZones) => c.zones && c.zones.length > 0 && c.imageUrl && c.imageUrl.length > 10);
+          const withImage = d.cameras.filter((c: CameraWithZones) => c.imageUrl && c.imageUrl.length > 10);
           setCameras(withZones.length > 0 ? withZones : withImage);
         }
       })
