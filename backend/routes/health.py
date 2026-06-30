@@ -248,14 +248,19 @@ def heartbeat_status():
     overall = _overall_status(filtered_pings, now)
     is_alive = overall in ('alive', 'partial')
 
-    # Mesai dışındaysa ve tüm modüller dead ise → "off" olarak göster
-    if is_off_hours and overall == 'dead':
+    # Mesai dışındaysa → "off" olarak göster ama modül durumlarını da döndür
+    if is_off_hours:
+        alive_mods = [m for m, v in modules.items() if v['alive']]
+        if alive_mods:
+            msg = f'Mesai dışı ({work_end}:00 - {work_start}:00). Sistem aktif, sorun yok.'
+        else:
+            msg = f'Mesai dışı ({work_end}:00 - {work_start}:00). Sistem kapalı, bu normal.'
         return {
             'is_alive': True,
             'overall': 'off',
             'last_ping_at': rec.last_ping_at.isoformat() + 'Z',
             'modules': modules,
-            'message': f'Mesai dışı ({work_end}:00 - {work_start}:00). Sistem kapalı, bu normal.'
+            'message': msg,
         }
 
     # Grace period: mesai yeni başladı ve henüz hiçbir modülden ping gelmemişse
