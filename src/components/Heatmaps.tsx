@@ -233,13 +233,10 @@ const CameraZoneGallery: React.FC = () => {
       .then(r => r.ok ? r.json() : null)
       .then(d => {
         if (d?.cameras) {
-          // Sadece ısı haritası kameraları veya resmi olan kameralar
-          const heatmapCams = d.cameras.filter((c: CameraWithZones) =>
-            c.type === 'Isı Haritası' || (c.imageUrl && c.zones && c.zones.length > 0)
-          );
-          // Resmi olan tüm kameralar (fallback)
-          const allWithImage = heatmapCams.length > 0 ? heatmapCams : d.cameras.filter((c: CameraWithZones) => c.imageUrl);
-          setCameras(allWithImage);
+          // Zone tanımlı kameraları öncelikli göster, yoksa resmi olan tüm kameralar
+          const withZones = d.cameras.filter((c: CameraWithZones) => c.zones && c.zones.length > 0);
+          const withImage = d.cameras.filter((c: CameraWithZones) => c.imageUrl);
+          setCameras(withZones.length > 0 ? withZones : withImage);
         }
       })
       .catch(() => {});

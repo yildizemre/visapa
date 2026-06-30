@@ -13,10 +13,10 @@ from auth_utils import admin_required
 health_bp = Blueprint('health', __name__)
 
 # Modül bazlı heartbeat: AI uygulaması her 30 dakikada 1 kez POST /heartbeat atar.
-# camera: her zaman atılır (uygulama açıkken), counting/heatmap/queue: sistem çalışırken.
+# counting/heatmap/queue: veri gönderildiğinde veya heartbeat atıldığında güncellenir.
 # 35 dakika içinde ping gelmediyse modülü kapalı sayar (30dk interval + 5dk tolerans).
 MODULE_TIMEOUT_MINUTES = 35
-KNOWN_MODULES = ['camera', 'counting', 'heatmap', 'queue']
+KNOWN_MODULES = ['counting', 'heatmap', 'queue']
 
 # Telegram bildirim ayarları
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT', '')
@@ -200,14 +200,19 @@ def heartbeat_status():
             if company and company.primary_user_id:
                 target_user_id = company.primary_user_id
 
-    # Mesai saati kontrolü: mesai dışındaysa "off" durumu döndür
+    # Mesai saati kontrolü
     from models import SiteConfig
-    local_hour = (now + timedelta(hours=3)).hour  # TSİ saati
+    local_now = now + timedelta(hours=3)  # TSİ saati
+    local_hour = local_now.hour
+    local_minute = local_now.minute
     site = SiteConfig.query.filter_by(user_id=target_user_id).first()
     work_start = site.work_start if site and site.work_start is not None else 9
     work_end = site.work_end if site and site.work_end is not None else 22
 
     is_off_hours = (local_hour >= work_end or local_hour < work_start)
+    # Mesai başladıktan sonraki ilk 35dk: grace period (henüz ping gelmemiş olabilir)
+    minutes_since_work_start = (local_hour - work_start) * 60 + local_minute if local_hour >= work_start else -1
+    is_grace_period = (not is_off_hours and 0 <= minutes_since_work_start < MODULE_TIMEOUT_MINUTES)
 
     rec = ServiceHeartbeat.query.filter_by(user_id=target_user_id).first()
 
@@ -219,6 +224,14 @@ def heartbeat_status():
                 'last_ping_at': None,
                 'modules': {m: {'alive': False, 'last_ping_at': None} for m in KNOWN_MODULES},
                 'message': f'Mesai dışı ({work_end}:00 - {work_start}:00). Sistem mesai saatlerinde aktif olacak.'
+            }
+        if is_grace_period:
+            return {
+                'is_alive': True,
+                'overall': 'starting',
+                'last_ping_at': None,
+                'modules': {m: {'alive': False, 'last_ping_at': None} for m in KNOWN_MODULES},
+                'message': f'Mesai yeni başladı ({work_start}:00). İlk veri bekleniyor...'
             }
         return {
             'is_alive': False,
@@ -236,7 +249,6 @@ def heartbeat_status():
     is_alive = overall in ('alive', 'partial')
 
     # Mesai dışındaysa ve tüm modüller dead ise → "off" olarak göster
-    # Ama camera modülü alive ise partial/alive olarak göstermeye devam et (uygulama açık)
     if is_off_hours and overall == 'dead':
         return {
             'is_alive': True,
@@ -246,13 +258,23 @@ def heartbeat_status():
             'message': f'Mesai dışı ({work_end}:00 - {work_start}:00). Sistem kapalı, bu normal.'
         }
 
+    # Grace period: mesai yeni başladı ve henüz hiçbir modülden ping gelmemişse
+    if is_grace_period and overall == 'dead':
+        return {
+            'is_alive': True,
+            'overall': 'starting',
+            'last_ping_at': rec.last_ping_at.isoformat() + 'Z',
+            'modules': modules,
+            'message': f'Mesai yeni başladı ({work_start}:00). İlk veri bekleniyor...'
+        }
+
     if overall == 'alive':
         message = 'Tüm modüller aktif.'
     elif overall == 'partial':
         dead_modules = [m for m, v in modules.items() if not v['alive']]
         message = f"Bazı modüllerden sinyal gelmiyor: {', '.join(dead_modules)}"
     else:
-        message = '35 dakikadır hiçbir modülden veri gelmiyor. Sistem çökmüş olabilir.'
+        message = f'{MODULE_TIMEOUT_MINUTES} dakikadır hiçbir modülden veri gelmiyor. Sistem çökmüş olabilir.'
 
     return {
         'is_alive': is_alive,
@@ -339,6 +361,7 @@ def run_dead_service_check():
     dead_users = []
     partial_users = []
     alive_users = []
+    local_minute = (now + timedelta(hours=3)).minute
 
     for uid in set(primary_user_ids):
         u = User.query.get(uid)
@@ -348,7 +371,7 @@ def run_dead_service_check():
         if h is None:
             continue
 
-        # Mesai dışı saatlerde (gece 23:00 - sabah 08:00) dead sayma
+        # Mesai dışı saatlerde dead sayma
         site = SiteConfig.query.filter_by(user_id=uid).first()
         work_start = site.work_start if site and site.work_start is not None else 9
         work_end = site.work_end if site and site.work_end is not None else 22
@@ -356,8 +379,13 @@ def run_dead_service_check():
             # Mesai dışı: alive sayılır (mağaza kapalı, veri gelmemesi normal)
             continue
 
+        # Grace period: mesai yeni başladıysa (ilk 35dk) dead sayma
+        minutes_since_start = (local_hour - work_start) * 60 + local_minute if local_hour >= work_start else -1
+        if 0 <= minutes_since_start < MODULE_TIMEOUT_MINUTES:
+            continue
+
         module_pings = _load_module_pings(h)
-        # Sadece KNOWN_MODULES'daki modülleri filtrele (eski camera verisi varsa yoksay)
+        # Sadece KNOWN_MODULES'daki modülleri filtrele
         filtered_pings = {m: module_pings.get(m) for m in KNOWN_MODULES}
         overall = _overall_status(filtered_pings, now)
         if overall == 'dead':
@@ -367,37 +395,42 @@ def run_dead_service_check():
         else:
             alive_users.append((u, h, filtered_pings))
 
+    MODULE_LABELS = {'counting': 'Kişi Sayım', 'heatmap': 'Isı Haritası', 'queue': 'Kasa Analizi'}
+
     def fmt_time(h):
         local_dt = h.last_ping_at + timedelta(hours=3)
         return local_dt.strftime('%d.%m.%Y %H:%M')
 
-    lines = []
-    for user, h, mp in dead_users:
-        name = user.full_name or user.username
-        lines.append(f"🔴 <b>{name}</b> — KAPALI\n   Son sinyal: {fmt_time(h)} TSİ")
-    for user, h, mp in partial_users:
-        name = user.full_name or user.username
-        dead_mods = [m for m in KNOWN_MODULES if not (_module_status(mp, now)[m]['alive'])]
-        lines.append(f"⚠️ <b>{name}</b> — KISMİ\n   Sorunlu modüller: {', '.join(dead_mods)}\n   Son sinyal: {fmt_time(h)} TSİ")
-    for user, h, mp in alive_users:
-        name = user.full_name or user.username
-        lines.append(f"✅ <b>{name}</b> — AKTİF\n   Son sinyal: {fmt_time(h)} TSİ")
+    def fmt_modules(mp, now):
+        statuses = _module_status(mp, now)
+        parts = []
+        for m in KNOWN_MODULES:
+            label = MODULE_LABELS.get(m, m)
+            alive = statuses[m]['alive']
+            parts.append(f"{'✅' if alive else '❌'} {label}")
+        return ' | '.join(parts)
 
-    if lines:
+    if dead_users or partial_users or alive_users:
         now_str = (datetime.utcnow() + timedelta(hours=3)).strftime('%d.%m.%Y %H:%M TSİ')
         message = f"📊 <b>Vislivis Sistem Durumu</b>\n📅 {now_str}\n\n"
         if dead_users:
-            message += f"<b>❌ Kapalı ({len(dead_users)}):</b>\n" + "\n\n".join(
-                f"🔴 <b>{u.full_name or u.username}</b> — KAPALI\n   Son: {fmt_time(h)} TSİ"
-                for u, h, _ in dead_users) + "\n\n"
+            message += f"<b>❌ Kapalı ({len(dead_users)}):</b>\n"
+            for u, h, mp in dead_users:
+                name = u.full_name or u.username
+                message += f"🔴 <b>{name}</b>\n   {fmt_modules(mp, now)}\n   Son: {fmt_time(h)} TSİ\n\n"
         if partial_users:
-            message += f"<b>⚠️ Kısmi ({len(partial_users)}):</b>\n" + "\n\n".join(
-                f"⚠️ <b>{u.full_name or u.username}</b> — KISMİ" for u, _, _ in partial_users) + "\n\n"
+            message += f"<b>⚠️ Kısmi ({len(partial_users)}):</b>\n"
+            for u, h, mp in partial_users:
+                name = u.full_name or u.username
+                dead_mods = [MODULE_LABELS.get(m, m) for m in KNOWN_MODULES if not (_module_status(mp, now)[m]['alive'])]
+                message += f"⚠️ <b>{name}</b>\n   Sorunlu: {', '.join(dead_mods)}\n   {fmt_modules(mp, now)}\n   Son: {fmt_time(h)} TSİ\n\n"
         if alive_users:
-            message += f"<b>✅ Aktif ({len(alive_users)}):</b>\n" + "\n\n".join(
-                f"✅ <b>{u.full_name or u.username}</b>" for u, _, _ in alive_users)
+            message += f"<b>✅ Aktif ({len(alive_users)}):</b>\n"
+            for u, h, mp in alive_users:
+                name = u.full_name or u.username
+                message += f"✅ <b>{name}</b> — Son: {fmt_time(h)} TSİ\n"
         if dead_users or partial_users:
-            message += "\n\n⚡ Lütfen sorunlu mağazaların sistem durumunu kontrol edin."
+            message += "\n⚡ Sorunlu mağazaların sistem durumunu kontrol edin."
         thread = threading.Thread(target=send_telegram_alert, args=(message,))
         thread.daemon = True
         thread.start()
