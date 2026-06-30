@@ -13,7 +13,7 @@ interface StoreStatus {
   username: string;
   full_name: string | null;
   is_alive: boolean;
-  overall: 'alive' | 'partial' | 'dead' | 'off';
+  overall: 'alive' | 'partial' | 'dead' | 'off' | 'starting';
   last_ping_at: string | null;
   received_pings?: number;
   expected_pings?: number;
@@ -23,14 +23,13 @@ interface StoreStatus {
 
 interface OwnStatus {
   is_alive: boolean;
-  overall: 'alive' | 'partial' | 'dead' | 'off';
+  overall: 'alive' | 'partial' | 'dead' | 'off' | 'starting';
   last_ping_at: string | null;
   modules: Record<string, ModuleStatus>;
   message: string;
 }
 
 const MODULE_LABELS: Record<string, string> = {
-  camera: 'Kamera',
   counting: 'Kişi Sayım',
   heatmap: 'Isı Haritası',
   queue: 'Kasa Analizi',
@@ -177,7 +176,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
     ? 'bg-slate-500/10 border-slate-500/30 text-slate-400'
     : overall === 'alive'
     ? 'bg-green-500/10 border-green-500/30 text-green-300 hover:bg-green-500/20'
-    : overall === 'off'
+    : overall === 'off' || overall === 'starting'
     ? 'bg-blue-500/10 border-blue-500/30 text-blue-300 hover:bg-blue-500/20'
     : overall === 'partial'
     ? 'bg-amber-500/10 border-amber-500/30 text-amber-300 hover:bg-amber-500/20'
@@ -187,7 +186,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
     ? 'bg-slate-400'
     : overall === 'alive'
     ? 'bg-green-400 animate-pulse'
-    : overall === 'off'
+    : overall === 'off' || overall === 'starting'
     ? 'bg-blue-400'
     : overall === 'partial'
     ? 'bg-amber-400 animate-pulse'
@@ -197,7 +196,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
     ? <Loader className="w-4 h-4 animate-spin" />
     : overall === 'alive'
     ? <Zap className="w-4 h-4" />
-    : overall === 'off'
+    : overall === 'off' || overall === 'starting'
     ? <Zap className="w-4 h-4" />
     : <AlertTriangle className="w-4 h-4" />;
 
@@ -346,7 +345,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
                   <div className={`flex items-start gap-3 rounded-xl px-3.5 py-3 border ${
                     ownStatus?.overall === 'alive'
                       ? 'bg-green-500/10 border-green-500/20'
-                      : ownStatus?.overall === 'off'
+                      : ownStatus?.overall === 'off' || ownStatus?.overall === 'starting'
                       ? 'bg-blue-500/10 border-blue-500/20'
                       : ownStatus?.overall === 'partial'
                       ? 'bg-amber-500/10 border-amber-500/20'
@@ -354,7 +353,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
                   }`}>
                     {ownStatus?.overall === 'alive'
                       ? <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      : ownStatus?.overall === 'off'
+                      : ownStatus?.overall === 'off' || ownStatus?.overall === 'starting'
                       ? <Zap className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
                       : ownStatus?.overall === 'partial'
                       ? <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
@@ -362,13 +361,13 @@ const ServiceHeartbeatIndicator: React.FC = () => {
                     <p className={`text-sm leading-relaxed ${
                       ownStatus?.overall === 'alive'
                         ? 'text-green-300'
-                        : ownStatus?.overall === 'off'
+                        : ownStatus?.overall === 'off' || ownStatus?.overall === 'starting'
                         ? 'text-blue-300'
                         : ownStatus?.overall === 'partial'
                         ? 'text-amber-300'
                         : 'text-red-300'
                     }`}>
-                      {ownStatus?.message || (ownStatus?.overall === 'alive' ? 'Tüm servisler çalışıyor' : ownStatus?.overall === 'off' ? 'Mesai dışı' : ownStatus?.overall === 'partial' ? 'Bazı modüller kapalı' : 'Henüz heartbeat gelmedi. Mağaza scripti çalışıyor mu?')}
+                      {ownStatus?.message || (ownStatus?.overall === 'alive' ? 'Tüm servisler çalışıyor' : ownStatus?.overall === 'off' ? 'Mesai dışı' : ownStatus?.overall === 'starting' ? 'Mesai yeni başladı, ilk veri bekleniyor...' : ownStatus?.overall === 'partial' ? 'Bazı modüller kapalı' : 'Henüz heartbeat gelmedi. Mağaza scripti çalışıyor mu?')}
                     </p>
                   </div>
 
@@ -403,7 +402,7 @@ const ServiceHeartbeatIndicator: React.FC = () => {
 
             {/* Footer */}
             <div className="px-4 py-2 border-t border-slate-700 bg-slate-800/60">
-              <p className="text-xs text-slate-500">Her 30 sn güncellenir • 35 dk içinde sinyal gelmezse modül kapalı sayılır</p>
+              <p className="text-xs text-slate-500">Her 30 sn güncellenir • Veri veya heartbeat gelirse modül aktif sayılır</p>
             </div>
           </motion.div>
         )}
