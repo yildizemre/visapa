@@ -272,7 +272,8 @@ const CameraZoneGallery: React.FC = () => {
             </div>
           )}
         </div>
-        <div ref={scrollRef} className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent snap-x">
+        <div ref={scrollRef} className="overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent snap-x">
+          <div className="flex gap-3 w-max mx-auto">
           {cameras.map((cam) => (
             <div
               key={cam.id}
@@ -321,6 +322,7 @@ const CameraZoneGallery: React.FC = () => {
               )}
             </div>
           ))}
+          </div>
         </div>
       </div>
 
