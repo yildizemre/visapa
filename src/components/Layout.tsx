@@ -40,7 +40,9 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  // Mobilde (< lg = 1024px) sidebar kapalı, masaüstünde açık başlasın.
+  // Böylece mobilde site açılınca sol bar açık gelmiyor ve içerik ekrana tam sığıyor.
+  const [isCollapsed, setIsCollapsed] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024);
   const [userRole, setUserRole] = useState<string>('');
   const [companyRole, setCompanyRole] = useState<string>('store_manager');
   const [userName, setUserName] = useState<string>('');
