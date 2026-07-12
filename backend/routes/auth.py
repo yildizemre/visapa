@@ -1,8 +1,26 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jwt
 
-from models import db, User, ManagedStore
+from models import db, User, ManagedStore, Company
 from activity_logger import log_activity
+
+
+def _resolve_company_and_profile(user):
+    """Kullanıcının şirketini ve efektif profil resmini döndür.
+    Profil resmi önceliği: kullanıcının kendi logosu > şirketin profil resmi > üst şirketin profil resmi."""
+    company = None
+    company_profile = None
+    if user.company_id:
+        company = Company.query.get(user.company_id)
+        if company:
+            company_profile = company.profile_image_base64
+            # Alt mağazanın kendi profil resmi yoksa üst şirketinkini kullan
+            if not company_profile and company.parent_id:
+                parent = Company.query.get(company.parent_id)
+                if parent:
+                    company_profile = parent.profile_image_base64
+    profile_image = user.logo_base64 or company_profile
+    return company, profile_image
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -28,6 +46,12 @@ def login():
         log_activity('login_fail', user_id=user.id, extra={'reason': 'account_inactive'})
         return jsonify({'error': 'Hesap devre dışı'}), 403
 
+    # Lisans kontrolü: kullanıcının şirketinin lisansı geçerli mi? (admin muaf)
+    company, profile_image = _resolve_company_and_profile(user)
+    if user.role != 'admin' and company and not company.is_license_valid():
+        log_activity('login_fail', user_id=user.id, extra={'reason': 'license_expired', 'company_id': company.id})
+        return jsonify({'error': 'Lisans süreniz sona ermiştir. Lütfen yöneticinizle iletişime geçin.'}), 403
+
     log_activity('login_ok', user_id=user.id, extra={'username': user.username, 'role': user.role})
 
     access_token = create_access_token(
@@ -40,7 +64,7 @@ def login():
         }
     )
     user_dict = user.to_public_dict()
-    user_dict['logo_base64'] = user.logo_base64 or None
+    user_dict['logo_base64'] = profile_image or None
     if user.role == 'brand_manager':
         rows = ManagedStore.query.filter_by(manager_user_id=user.id).all()
         user_dict['managed_stores'] = []
@@ -62,7 +86,8 @@ def me():
     if not user:
         return jsonify({'error': 'Kullanıcı bulunamadı'}), 404
     data = user.to_public_dict()
-    data['logo_base64'] = user.logo_base64 or None
+    _, profile_image = _resolve_company_and_profile(user)
+    data['logo_base64'] = profile_image or None
     if user.role == 'brand_manager':
         rows = ManagedStore.query.filter_by(manager_user_id=user.id).all()
         data['managed_stores'] = [{'id': r.store_user_id} for r in rows]

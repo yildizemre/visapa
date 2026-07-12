@@ -12,8 +12,21 @@ class Company(db.Model):
     parent_id = db.Column(db.Integer, db.ForeignKey('companies.id'), nullable=True)
     primary_user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
     logo_base64 = db.Column(db.Text, nullable=True)
+    profile_image_base64 = db.Column(db.Text, nullable=True)  # şirket profil fotoğrafı - tüm kullanıcılara yansır
     is_active = db.Column(db.Boolean, default=True)
+    # Lisans süresi: null ise sınırsız. license_end geçmişse giriş engellenir.
+    license_start = db.Column(db.DateTime, nullable=True)
+    license_end = db.Column(db.DateTime, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def is_license_valid(self):
+        """Lisans geçerli mi? Tarih belirtilmemişse sınırsız (True)."""
+        now = datetime.utcnow()
+        if self.license_start and now < self.license_start:
+            return False
+        if self.license_end and now > self.license_end:
+            return False
+        return True
 
     def to_dict(self):
         return {
@@ -22,7 +35,11 @@ class Company(db.Model):
             'parent_id': self.parent_id,
             'primary_user_id': self.primary_user_id,
             'logo_base64': self.logo_base64,
+            'profile_image_base64': self.profile_image_base64,
             'is_active': self.is_active,
+            'license_start': self.license_start.isoformat() if self.license_start else None,
+            'license_end': self.license_end.isoformat() if self.license_end else None,
+            'license_valid': self.is_license_valid(),
             'created_at': self.created_at.isoformat() if self.created_at else None,
         }
 

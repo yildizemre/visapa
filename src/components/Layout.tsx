@@ -40,7 +40,9 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  // Mobilde (< lg = 1024px) sidebar kapalı, masaüstünde açık başlasın.
+  // Böylece mobilde site açılınca sol bar açık gelmiyor ve içerik ekrana tam sığıyor.
+  const [isCollapsed, setIsCollapsed] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024);
   const [userRole, setUserRole] = useState<string>('');
   const [companyRole, setCompanyRole] = useState<string>('store_manager');
   const [userName, setUserName] = useState<string>('');
@@ -517,9 +519,9 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
                 </div>
                 {/* Avatar - click to upload logo */}
                 <div className="relative group cursor-pointer" onClick={() => logoInputRef.current?.click()} title="Logo yükle">
-                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center overflow-hidden border-2 border-transparent group-hover:border-blue-400 transition-all">
+                  <div className={`w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center overflow-hidden border-2 border-transparent group-hover:border-blue-400 transition-all ${userLogo ? 'bg-white' : 'bg-gradient-to-r from-blue-500 to-blue-700'}`}>
                     {userLogo
-                      ? <img src={userLogo} alt="logo" className="w-full h-full object-cover" />
+                      ? <img src={userLogo} alt="logo" className="w-full h-full object-contain p-0.5" />
                       : <User className="w-4 h-4 lg:w-5 lg:h-5 text-white" />}
                   </div>
                   {logoUploading && <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-full"><div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" /></div>}
@@ -531,9 +533,9 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
               </div>
               {/* Mobile user icon */}
               <div className="md:hidden relative group cursor-pointer" onClick={() => logoInputRef.current?.click()} title="Logo yükle">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center overflow-hidden border-2 border-transparent group-hover:border-blue-400 transition-all">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center overflow-hidden border-2 border-transparent group-hover:border-blue-400 transition-all ${userLogo ? 'bg-white' : 'bg-gradient-to-r from-blue-500 to-blue-700'}`}>
                   {userLogo
-                    ? <img src={userLogo} alt="logo" className="w-full h-full object-cover" />
+                    ? <img src={userLogo} alt="logo" className="w-full h-full object-contain p-0.5" />
                     : <User className="w-4 h-4 text-white" />}
                 </div>
               </div>
@@ -551,8 +553,8 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
       <FloatingChatBot />
       <div className="fixed bottom-2 sm:bottom-4 right-24 z-50 flex flex-row gap-1.5 sm:gap-2 items-center">
         <WeatherForecastIndicator />
-        {userRole === 'admin' && <ServiceHeartbeatIndicator />}
-        <HealthStatusIndicator />
+        <ServiceHeartbeatIndicator />
+        {userRole === 'admin' && <HealthStatusIndicator />}
       </div>
 
       {/* Logo Kırpma / Önizleme Modalı */}
