@@ -51,6 +51,10 @@ interface CompanyItem {
   primary_user_id?: number | null;
   primary_user?: PrimaryUser | null;
   logo_base64?: string | null;
+  profile_image_base64?: string | null;
+  license_start?: string | null;
+  license_end?: string | null;
+  license_valid?: boolean;
   is_active: boolean;
   user_count: number;
   created_at?: string;
@@ -69,7 +73,13 @@ const AdminCompanies: React.FC = () => {
   // Modals
   const [companyModal, setCompanyModal] = useState<'add' | 'edit' | null>(null);
   const [editingCompany, setEditingCompany] = useState<CompanyItem | ChildCompany | null>(null);
-  const [companyForm, setCompanyForm] = useState({ name: '', parent_id: null as number | null });
+  const [companyForm, setCompanyForm] = useState({
+    name: '',
+    parent_id: null as number | null,
+    license_start: '',
+    license_end: '',
+    profile_image_base64: '' as string | null,
+  });
 
   const [childModal, setChildModal] = useState<'new' | 'link' | null>(null);
   const [childParentId, setChildParentId] = useState<number | null>(null);
@@ -195,15 +205,23 @@ const AdminCompanies: React.FC = () => {
       : `/api/admin/companies/${editingCompany?.id}`;
     const method = companyModal === 'add' ? 'POST' : 'PUT';
 
+    const body: Record<string, unknown> = { name: companyForm.name };
+    if (companyModal === 'edit') {
+      // Boş string = sınırsız (null gönder)
+      body.license_start = companyForm.license_start || null;
+      body.license_end = companyForm.license_end || null;
+      body.profile_image_base64 = companyForm.profile_image_base64 || null;
+    }
+
     const res = await fetch(apiUrl(path), {
       method,
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-      body: JSON.stringify({ name: companyForm.name }),
+      body: JSON.stringify(body),
     });
     if (res.ok) {
       setCompanyModal(null);
       setEditingCompany(null);
-      setCompanyForm({ name: '', parent_id: null });
+      setCompanyForm({ name: '', parent_id: null, license_start: '', license_end: '', profile_image_base64: '' });
       fetchCompanies();
     } else {
       const err = await res.json().catch(() => ({}));
@@ -364,7 +382,7 @@ const AdminCompanies: React.FC = () => {
             </h1>
             <p className="text-slate-400 text-xs sm:text-sm mt-1">Şirketleri, alt mağazaları ve kullanıcıları yönetin</p>
           </div>
-          <button onClick={() => { setCompanyForm({ name: '', parent_id: null }); setEditingCompany(null); setCompanyModal('add'); }} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-medium text-sm transition-colors">
+          <button onClick={() => { setCompanyForm({ name: '', parent_id: null, license_start: '', license_end: '', profile_image_base64: '' }); setEditingCompany(null); setCompanyModal('add'); }} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-medium text-sm transition-colors">
             <Plus className="w-4 h-4" />
             Şirket Ekle
           </button>
@@ -415,7 +433,7 @@ const AdminCompanies: React.FC = () => {
                       <UserPlus className="w-3.5 h-3.5" />
                       <span className="hidden sm:inline">Kullanıcı</span>
                     </button>
-                    <button onClick={() => { setEditingCompany(company); setCompanyForm({ name: company.name, parent_id: null }); setCompanyModal('edit'); }} className="p-2 rounded-lg hover:bg-slate-600/50 text-slate-400 hover:text-blue-400 transition-colors"><Edit2 className="w-4 h-4" /></button>
+                    <button onClick={() => { setEditingCompany(company); setCompanyForm({ name: company.name, parent_id: null, license_start: company.license_start ? company.license_start.slice(0, 10) : '', license_end: company.license_end ? company.license_end.slice(0, 10) : '', profile_image_base64: company.profile_image_base64 || '' }); setCompanyModal('edit'); }} className="p-2 rounded-lg hover:bg-slate-600/50 text-slate-400 hover:text-blue-400 transition-colors"><Edit2 className="w-4 h-4" /></button>
                     <button onClick={() => handleDeleteCompany(company.id, company.name)} className="p-2 rounded-lg hover:bg-slate-600/50 text-slate-400 hover:text-red-400 transition-colors"><Trash2 className="w-4 h-4" /></button>
                   </div>
                 </div>
@@ -489,6 +507,65 @@ const AdminCompanies: React.FC = () => {
                 <label className="block text-sm text-slate-400 mb-1">Şirket Adı</label>
                 <input type="text" value={companyForm.name} onChange={(e) => setCompanyForm((f) => ({ ...f, name: e.target.value }))} required placeholder="Örn: Emilio Lara" className="w-full px-4 py-2.5 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400" />
               </div>
+
+              {companyModal === 'edit' && (
+                <>
+                  {/* Lisans Süresi */}
+                  <div className="border-t border-slate-700/50 pt-4">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-1.5">
+                      <Shield className="w-4 h-4 text-amber-400" /> Lisans Süresi
+                    </label>
+                    <p className="text-xs text-slate-500 mb-3">Boş bırakırsanız sınırsız. Bitiş tarihi geçmişse kullanıcılar giriş yapamaz.</p>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-xs text-slate-400 mb-1">Başlangıç</label>
+                        <input type="date" value={companyForm.license_start} onChange={(e) => setCompanyForm((f) => ({ ...f, license_start: e.target.value }))} className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm [color-scheme:dark]" />
+                      </div>
+                      <div>
+                        <label className="block text-xs text-slate-400 mb-1">Bitiş</label>
+                        <input type="date" value={companyForm.license_end} onChange={(e) => setCompanyForm((f) => ({ ...f, license_end: e.target.value }))} className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm [color-scheme:dark]" />
+                      </div>
+                    </div>
+                    {(companyForm.license_start || companyForm.license_end) && (
+                      <button type="button" onClick={() => setCompanyForm((f) => ({ ...f, license_start: '', license_end: '' }))} className="mt-2 text-xs text-slate-400 hover:text-white underline">Tarihleri temizle (sınırsız yap)</button>
+                    )}
+                  </div>
+
+                  {/* Şirket Profil Resmi */}
+                  <div className="border-t border-slate-700/50 pt-4">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-1.5">
+                      <Building2 className="w-4 h-4 text-blue-400" /> Şirket Profil Resmi
+                    </label>
+                    <p className="text-xs text-slate-500 mb-3">Bu resim, şirketin altındaki tüm kullanıcılarda profil fotoğrafı olarak görünür.</p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-slate-600 bg-slate-900 flex items-center justify-center shrink-0">
+                        {companyForm.profile_image_base64 ? (
+                          <img src={companyForm.profile_image_base64} alt="profil" className="w-full h-full object-cover" />
+                        ) : (
+                          <Building2 className="w-6 h-6 text-slate-600" />
+                        )}
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <label className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 rounded-lg text-white text-xs font-medium cursor-pointer inline-block">
+                          Resim Seç
+                          <input type="file" accept="image/*" className="hidden" onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (!file) return;
+                            const reader = new FileReader();
+                            reader.onload = (ev) => setCompanyForm((f) => ({ ...f, profile_image_base64: (ev.target?.result as string) || '' }));
+                            reader.readAsDataURL(file);
+                            e.target.value = '';
+                          }} />
+                        </label>
+                        {companyForm.profile_image_base64 && (
+                          <button type="button" onClick={() => setCompanyForm((f) => ({ ...f, profile_image_base64: '' }))} className="text-xs text-red-400 hover:text-red-300 underline text-left">Kaldır</button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
               <div className="flex gap-3 pt-2">
                 <button type="submit" className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-medium">{companyModal === 'add' ? 'Oluştur' : 'Kaydet'}</button>
                 <button type="button" onClick={() => { setCompanyModal(null); setEditingCompany(null); }} className="flex-1 py-2.5 bg-slate-600 hover:bg-slate-700 rounded-lg text-white">İptal</button>

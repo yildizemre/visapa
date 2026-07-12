@@ -235,13 +235,11 @@ const CameraZoneGallery: React.FC = () => {
       .then(r => r.ok ? r.json() : null)
       .then(d => {
         if (d?.cameras) {
-          // Sadece Isı Haritası ve Kasa Analizi (kuyruk) modül kameralarını göster
+          // Sadece Isı Haritası ve Kasa Analizi (kuyruk) modül kameralarını göster.
+          // Resmi olmayanlar da gösterilir (placeholder ile) - böylece bölüm gelip kaybolmaz.
           const allowedTypes = ['Isı Haritası', 'Kasa Analizi'];
           const relevant = d.cameras.filter((c: CameraWithZones) => allowedTypes.includes(c.type));
-          // Zone tanımlı + resimli olanları öncelikli göster, yoksa resmi olanlar
-          const withZones = relevant.filter((c: CameraWithZones) => c.zones && c.zones.length > 0 && c.imageUrl && c.imageUrl.length > 10);
-          const withImage = relevant.filter((c: CameraWithZones) => c.imageUrl && c.imageUrl.length > 10);
-          setCameras(withZones.length > 0 ? withZones : withImage);
+          setCameras(relevant);
         }
       })
       .catch(() => {})
@@ -303,8 +301,9 @@ const CameraZoneGallery: React.FC = () => {
               {cam.imageUrl ? (
                 <img src={cam.imageUrl} alt={cam.name} className="w-full h-full object-cover" />
               ) : (
-                <div className="w-full h-full bg-slate-900 flex items-center justify-center">
+                <div className="w-full h-full bg-slate-900 flex flex-col items-center justify-center gap-1.5">
                   <Camera className="w-8 h-8 text-slate-600" />
+                  <span className="text-[10px] text-slate-500">Görüntü henüz yüklenmedi</span>
                 </div>
               )}
               {/* Overlay with zone count */}

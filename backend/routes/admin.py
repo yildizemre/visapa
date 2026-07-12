@@ -256,6 +256,26 @@ def activity_logs():
 # COMPANY (ŞİRKET) CRUD
 # =====================================================================
 
+def _parse_license_date(val):
+    """ISO tarih string'ini datetime'a çevir. Boş/None ise None (sınırsız)."""
+    if not val:
+        return None
+    from datetime import datetime as _dt
+    s = str(val).strip()
+    if not s:
+        return None
+    # 'YYYY-MM-DD' veya tam ISO formatını destekle
+    for fmt in ('%Y-%m-%dT%H:%M:%S', '%Y-%m-%dT%H:%M', '%Y-%m-%d'):
+        try:
+            return _dt.strptime(s[:len(fmt) + 2] if 'T' in fmt else s[:10], fmt)
+        except ValueError:
+            continue
+    try:
+        return _dt.fromisoformat(s.replace('Z', ''))
+    except ValueError:
+        return None
+
+
 def _company_to_full_dict(c):
     """Şirket dict'ine user_count, children ve primary_user bilgisi ekle."""
     d = c.to_dict()
@@ -344,8 +364,15 @@ def update_company(company_id):
             company.name = new_name
     if 'logo_base64' in data:
         company.logo_base64 = data['logo_base64']
+    if 'profile_image_base64' in data:
+        company.profile_image_base64 = data['profile_image_base64']
     if 'is_active' in data:
         company.is_active = bool(data['is_active'])
+    # Lisans tarihleri: ISO string veya null. Null = sınırsız.
+    if 'license_start' in data:
+        company.license_start = _parse_license_date(data['license_start'])
+    if 'license_end' in data:
+        company.license_end = _parse_license_date(data['license_end'])
     if 'primary_user_id' in data:
         pid = data['primary_user_id']
         if pid:

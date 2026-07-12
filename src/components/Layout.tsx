@@ -551,8 +551,8 @@ const Layout: React.FC<LayoutProps> = ({ children, onLogout }) => {
       <FloatingChatBot />
       <div className="fixed bottom-2 sm:bottom-4 right-24 z-50 flex flex-row gap-1.5 sm:gap-2 items-center">
         <WeatherForecastIndicator />
-        {userRole === 'admin' && <ServiceHeartbeatIndicator />}
-        <HealthStatusIndicator />
+        <ServiceHeartbeatIndicator />
+        {userRole === 'admin' && <HealthStatusIndicator />}
       </div>
 
       {/* Logo Kırpma / Önizleme Modalı */}
