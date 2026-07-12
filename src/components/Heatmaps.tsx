@@ -221,25 +221,31 @@ interface CameraWithZones {
 
 const CameraZoneGallery: React.FC = () => {
   const [cameras, setCameras] = useState<CameraWithZones[]>([]);
+  const [loading, setLoading] = useState(true);
   const [expandedCamera, setExpandedCamera] = useState<CameraWithZones | null>(null);
   const scrollRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (!token) return;
+    if (!token) { setLoading(false); return; }
+    setLoading(true);
     fetch(apiUrl('/api/settings/cameras?include_zones=true'), {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(r => r.ok ? r.json() : null)
       .then(d => {
         if (d?.cameras) {
-          // Zone tanımlı kameraları öncelikli göster, yoksa resmi olan tüm kameralar
-          const withZones = d.cameras.filter((c: CameraWithZones) => c.zones && c.zones.length > 0 && c.imageUrl && c.imageUrl.length > 10);
-          const withImage = d.cameras.filter((c: CameraWithZones) => c.imageUrl && c.imageUrl.length > 10);
+          // Sadece Isı Haritası ve Kasa Analizi (kuyruk) modül kameralarını göster
+          const allowedTypes = ['Isı Haritası', 'Kasa Analizi'];
+          const relevant = d.cameras.filter((c: CameraWithZones) => allowedTypes.includes(c.type));
+          // Zone tanımlı + resimli olanları öncelikli göster, yoksa resmi olanlar
+          const withZones = relevant.filter((c: CameraWithZones) => c.zones && c.zones.length > 0 && c.imageUrl && c.imageUrl.length > 10);
+          const withImage = relevant.filter((c: CameraWithZones) => c.imageUrl && c.imageUrl.length > 10);
           setCameras(withZones.length > 0 ? withZones : withImage);
         }
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setLoading(false));
   }, []);
 
   const scroll = (dir: 'left' | 'right') => {
@@ -248,7 +254,8 @@ const CameraZoneGallery: React.FC = () => {
     }
   };
 
-  if (cameras.length === 0) return null;
+  // Yükleme bitti ve hiç kamera yoksa bölümü tamamen gizle
+  if (!loading && cameras.length === 0) return null;
 
   return (
     <>
@@ -257,9 +264,15 @@ const CameraZoneGallery: React.FC = () => {
           <div className="flex items-center gap-2">
             <Camera className="w-4 h-4 text-amber-400" />
             <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">Kamera Alanları</h3>
-            <span className="text-[10px] text-slate-500 bg-slate-700/50 px-2 py-0.5 rounded-full">{cameras.length} kamera</span>
+            {loading ? (
+              <span className="text-[10px] text-slate-400 bg-slate-700/50 px-2 py-0.5 rounded-full flex items-center gap-1">
+                <RefreshCw className="w-2.5 h-2.5 animate-spin" /> Yükleniyor
+              </span>
+            ) : (
+              <span className="text-[10px] text-slate-500 bg-slate-700/50 px-2 py-0.5 rounded-full">{cameras.length} kamera</span>
+            )}
           </div>
-          {cameras.length > 2 && (
+          {!loading && cameras.length > 2 && (
             <div className="flex items-center gap-1">
               <button onClick={() => scroll('left')} className="p-1.5 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 text-slate-400 hover:text-white transition-colors">
                 <ChevronLeft className="w-4 h-4" />
@@ -270,6 +283,16 @@ const CameraZoneGallery: React.FC = () => {
             </div>
           )}
         </div>
+        {loading && (
+          <div className="flex gap-3 overflow-hidden pb-2">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="flex-shrink-0 w-[240px] sm:w-[280px] h-[160px] sm:h-[180px] rounded-xl bg-slate-800/60 border border-slate-700/40 animate-pulse flex items-center justify-center">
+                <Camera className="w-8 h-8 text-slate-700" />
+              </div>
+            ))}
+          </div>
+        )}
+        {!loading && (
         <div ref={scrollRef} className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent snap-x">
           {cameras.map((cam) => (
             <div
@@ -319,6 +342,7 @@ const CameraZoneGallery: React.FC = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
 
       {/* Expanded Modal */}
