@@ -7,11 +7,19 @@ from activity_logger import log_activity
 
 def _resolve_company_and_profile(user):
     """Kullanıcının şirketini ve efektif profil resmini döndür.
-    Profil resmi: kullanıcının kendi logosu yoksa şirketin profil resmi kullanılır."""
+    Profil resmi önceliği: kullanıcının kendi logosu > şirketin profil resmi > üst şirketin profil resmi."""
     company = None
+    company_profile = None
     if user.company_id:
         company = Company.query.get(user.company_id)
-    profile_image = user.logo_base64 or (company.profile_image_base64 if company else None)
+        if company:
+            company_profile = company.profile_image_base64
+            # Alt mağazanın kendi profil resmi yoksa üst şirketinkini kullan
+            if not company_profile and company.parent_id:
+                parent = Company.query.get(company.parent_id)
+                if parent:
+                    company_profile = parent.profile_image_base64
+    profile_image = user.logo_base64 or company_profile
     return company, profile_image
 
 auth_bp = Blueprint('auth', __name__)

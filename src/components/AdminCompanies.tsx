@@ -404,8 +404,10 @@ const AdminCompanies: React.FC = () => {
                 <div className="flex items-center justify-between px-4 sm:px-5 py-4 cursor-pointer hover:bg-slate-700/20 transition-colors" onClick={() => toggleExpand(company.id)}>
                   <div className="flex items-center gap-3">
                     {expandedId === company.id ? <ChevronDown className="w-5 h-5 text-slate-400" /> : <ChevronRight className="w-5 h-5 text-slate-400" />}
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 flex items-center justify-center">
-                      <Building2 className="w-5 h-5 text-blue-400" />
+                    <div className="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 flex items-center justify-center shrink-0">
+                      {company.profile_image_base64
+                        ? <img src={company.profile_image_base64} alt={company.name} className="w-full h-full object-cover" />
+                        : <Building2 className="w-5 h-5 text-blue-400" />}
                     </div>
                     <div>
                       <p className="font-semibold text-white">{company.name}</p>
